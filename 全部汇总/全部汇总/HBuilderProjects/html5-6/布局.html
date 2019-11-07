@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--添加viewport属性  让页面能在移动端上正常显示-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2" />
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />-->
+		<title>布局响应式媒体查询</title>
+		<style type="text/css">
+			html{
+				/*font-size: 200%;*/
+			}
+			body{
+				font-size: 100%;
+			}
+			.d1{
+				width: 920px;
+				height: 300px;
+				margin: 0 auto;
+				border: 1px solid;
+			}
+			.header{
+				height: 100px;
+				background: rgba(0,0,0,0.6);
+			}
+			.header nav{
+				/*当设置宽高的百分比时,是相对于父元素的百分比*/
+				width: 80%;
+				margin: 20px auto;
+				border: 1px solid white;
+				overflow: hidden;
+			}
+			.header nav a{
+				/*设置浮动是为了 BFC问题*/
+				float: left;
+				width: 21%;
+				/*当设置margin/padding的百分比时,是相对于父元素宽度的百分比*/
+				margin: 0 2%;
+				line-height: 2;
+				/*字体以百分比或相对单位em,rem形式*/
+				font-size: 87.5%;
+				/*em,rem设置字体大小的相对单位,也可以作为元素宽高的单位
+				 区别: 
+				 	em: 相对于父级元素字体大小
+				 	rem: 相对于根元素(html)字体大小,一般多用于移动端
+				 	百分比: 也是相对于父级元素*/
+				font-size: 0.875em;
+				color: white;
+			}
+			.banner{
+				width: 90%;
+				margin: 0 auto;
+				border: 1px solid;
+				max-width: 1170px;
+			}
+			.banner img{
+				/*对于图片,可以用百分比的形式设置宽高,当父元素大小尺寸发生变化时,图片尺寸也跟随变化以实现自适应*/
+				width: 100%;
+				/*为避免图片缩放时造成图片失真,用阈值来限制尺寸范围*/
+				max-width: 1200px;
+			}
+			/*媒体查询
+			 语法: 
+			 @media开头 设备类型 and/not/only (条件){
+			 	css code
+			 } 
+			 当满足对应的设备类型和条件时,加载其中对应的CSS样式
+			 1.设备类型:
+			 	screen 显示屏
+			 	print 打印机
+			 	speech 读音设备
+			 	all 所有
+			 2. and 与 not 不是 only 只在 注意 and not only 这些单词要前后加空格
+			 3.条件
+			  width/height
+			  min-width/min-heigjt
+			  max-width/max-height
+			  orientation: 设备的朝向
+			  			portrail 竖屏
+			  			landscape 横屏
+			 * */
+			/*方式1: 内部引入媒体查询     直接写在CSS里面*/
+			/*仅仅在显示屏上浏览并且宽度不大于720px时:*/
+			@media only screen and (max-width: 720px) {
+				.header{
+					height: 60px;
+					background-color:rgba(255,0,0,0.6);
+				}
+			}
+		</style>
+		<!--方式2:外部引入媒体查询   项目中使用-->
+		<link rel="stylesheet" href="css/pc.css" media="only screen and (min-width: 1024px)"/>
+		<link rel="stylesheet" href="css/pad.css" media="only screen and (min-width: 720px) and (max-width: 1023px)"/>
+		<link rel="stylesheet" href="css/mobile.css" media="only screen and (max-width: 720px)"/>
+	</head>
+	<body>
+		<!--布局方式: 
+			固定布局
+			浮动,定位
+			流式布局(百分比布局/自适应布局)
+			响应式布局
+			弹性布局
+		-->
+		<h2>固定布局(静态布局): 以实际的尺寸大小固定像素值进行布局</h2>
+		<div class="d1"></div>
+		<h2>流式布局:百分比布局</h2>
+		<ul>
+			<li>以百分比形式代替固定像素值</li>
+			<li>以百分比或相对单位em,rem取代字体大小的固定px值</li>
+			<li>图片以百分比形式设置尺寸,同时可结合阈值来使用</li>
+		</ul>
+		<div class="d2">
+			<div class="header">
+				<nav>
+					<a href="">HOME</a>
+					<a href="">WORK</a>
+					<a href="">CONTACT</a>
+					<a href="">JOIN US</a>
+				</nav>
+			</div>
+			<div class="banner">
+				<img src="http://www.infinistudio.cn/Public//Upload/2017-03-08/58bf8b9d13662.jpg"/>
+			</div>
+		</div>
+		
+		<h2>响应式布局: 根据不同的设备以及屏幕宽高条件,有选择的加载不同的样式,可实现一个网站兼容多个终端设备</h2>
+		<ol>响应式的设置:
+			<li>viewport:视窗('虚拟的窗口') </li>
+			<!--
+				<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2" />
+				1.width=device-width:  让页面宽度=设备宽度
+				2.initial-scale=1      初始缩放比(页面加载完时的缩放比)
+				3.minimum-scale=1 	   最小缩放比
+				4.maximum-scale=1      最大缩放比
+				5.user-scalable=0     是否支持用户手势缩放
+								yes/1表示支持;no/0 表示不支持
+			-->
+			<li>使用流式布局</li>
+			<li>媒体查询: 查询不同的终端设备或不同的尺寸宽高条件,选择性的加载不同的样式</li>
+			<!--1.内部引入-->
+			<!--2.外部引入-->
+			<li></li>
+		</ol>
+	</body>
+</html>

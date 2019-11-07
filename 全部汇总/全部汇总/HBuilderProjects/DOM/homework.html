@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>homework</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.btn{
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				border: none;
+				border-radius: 10px;
+				color: white;
+				font-size: 15px;
+				font-family: "arial rounded mt bold";
+				background: rgba(218,112,59,1);
+			}
+			.wrap{
+				width: 450px;
+				border: 2px solid;
+				padding: 10px;
+			}
+			.wrap>.discur{
+				background: rgba(218,112,59,0.7);
+			}
+			#shadow{
+				margin-top: 10px;
+				position: relative;
+				width: 350px;
+				height: 80px;
+				padding: 5px;
+				border-radius: 15px;
+				background: rgba(0,0,0,0.3);
+				display: none;
+			}
+			.remark{
+				position: absolute;
+				top: 30px;
+				right: 5px;
+				border: 1px solid white;
+				background: white;
+				z-index: 999;
+				font-size: 12px;
+			}
+			.tri{
+				position: absolute;
+				top: 20px;
+				right: 15px;
+				width: 0px;
+				height: 0;
+				border-top: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-bottom: 5px solid white;
+				border-left: 5px solid transparent;
+			}
+			span{
+				width: 30px;
+				height: 25px;
+				text-align: center;
+				position: absolute;
+				top: 8px;
+				right: 15px;
+				cursor: pointer;
+			}
+			.re-wrap{
+				opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		 <div class="wrap">
+		 	<textarea name="" rows="10" cols="50" required></textarea>
+		 	<br />
+		 	<button id="btn" class="btn">发表</button>
+		 	<div id="shadow">
+		 		<p></p>
+		 		<span id="delete">&times;</span>
+		 		<div class="re-wrap">	
+		 			<div class="remark">删除该评论￣へ￣</div>
+		 			<div class="tri"></div>
+		 		</div>
+		 	</div>
+		 
+		 </div>
+		 <script type="text/javascript">
+		 	var btn = document.querySelector("#btn");
+		 	var txt = document.querySelector("textarea");
+		 	var shadow = document.querySelector("#shadow");
+		 	var dele = document.querySelector("#delete");
+		 	var re_wrap = document.getElementsByClassName("re-wrap")[0];
+		 	btn.disabled = true;
+		 	txt.onfocus = function (){
+		 		btn.className = 'btn discur';
+		 		btn.disabled = true;
+		 	}
+			txt.oninput = function(){
+				console.log(txt.value);
+				if(txt.value == ''){
+		 			btn.className = 'btn discur';
+		 		}else{
+		 			btn.disabled = false;
+		 			btn.className = 'btn';
+		 		}
+			}
+			btn.onclick = function (){
+				document.querySelector("#shadow>p").innerText = txt.value;
+				shadow.style.display = "block";
+				txt.value = '';
+			}
+			dele.onclick = function(){
+				shadow.style.display = 'none';
+			}
+			dele.onmouseover = function(){
+				re_wrap.style.opacity = '1';
+			}
+			dele.onmouseout = function(){
+				re_wrap.style.opacity = '0';
+			}
+		 </script>
+	</body>
+</html>

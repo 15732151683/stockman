@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1">
+			<p>哈哈哈哈周五啦O(∩_∩)O~~</p>
+		</div>
+		<p>红红火火</p>
+		<p>红红火火啊</p>
+		<p>红红火火呀</p>
+		<p>红红火火呐</p>
+		<input value="1" />
+		<input type="text" />
+		<input value="2" />
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/* html()   取得!!第一个!!匹配元素的html内容。 相当于原生中的 innerHTML 可获取也可设置哦
+			 * text()   取得!!所有!!匹配元素的文本内容。       相当于原生中的 innerText 
+			 * val()  相当于原生中的value(表单元素的值)
+			 * 若不给参数,则是获取对应内容或者值,若给参数则是设置为对应内容或者值
+			 * */
+			$(function(){
+				console.log($("#d1").html());
+				console.log($("#d1").html("哈哈哈哈")	);
+				$("#d1").html("<a>hahhahah</a>");
+				console.log($("p").html());
+				
+				console.log($("p").text());
+				$("p").text("so easy");
+				
+				//如果用来获取的话,就是匹配到的第一个元素中的值  有些是所有啦 比如说: .text()
+				//如果是设置则会对所有匹配到的元素都有效果
+				//获取value这
+				console.log($("input").val());
+				$("input").val("该吃饭了");
+				console.log($("input").val());
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.bartop{
+				display: flex;
+				justify-content: space-around;
+			}
+			.bartop>span{
+				background: rgba(0,0,0,0.3);
+				flex-grow: 1;
+				text-align: center;
+				padding: 5px;
+				cursor: pointer;
+			}
+			img{
+				float: left;
+				width: 100%;
+				height: 100%;
+				display: none;
+			}
+			.barcon>img.full{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--选项卡切换-->
+		<div class="bartop">
+			<span style="background: transparent;">选项1</span>
+			<span>选项2</span>
+			<span>选项3</span>
+			<span>选项4</span>
+			<span>选项5</span>
+			<span>选项6</span>
+		</div>
+		<div class="barcon">
+			<img src="img/l1.jpg" class = "full">
+			<img src="img/l2.jpg"/>
+			<img src="img/l3.jpg"/>
+			<img src="img/l4.jpg"/>
+			<img src="img/j5.jpg"/>
+			<img src="img/l6.jpg"/>
+		</div>
+		<script type="text/javascript">
+			var imgs = document.getElementsByClassName('barcon')[0].getElementsByTagName('img');
+			var spans = document.getElementsByClassName('bartop')[0].getElementsByTagName('span');
+			
+		for (var i = 0; i < spans.length; i++) {
+			spans[i].num = i;
+			spans[i].onclick = function (){
+				for (var m = 0; m < spans.length; m++) {
+					spans[m].style.background = "rgba(0,0,0,0.4)";
+				}
+				this.style.background = "transparent";
+				for (var j = 0; j < imgs.length; j++) {
+					imgs[j].className = '';
+				}
+				imgs[this.num].className = 'full';
+			}
+		}
+		</script>
+	</body>
+</html>

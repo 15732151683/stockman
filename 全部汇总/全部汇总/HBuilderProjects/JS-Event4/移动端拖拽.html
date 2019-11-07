@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1" />
+		<title>移动端拖拽</title>
+		<style type="text/css">
+			#d1{
+				width: 100px;
+				height: 100px;
+				background: goldenrod;
+			}
+			#d2{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background: cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<div id="d2"></div>
+		<script type="text/javascript">
+			var d1 = document.getElementById("d1");
+			d1.addEventListener('touchstart', fn, false);
+			function fn(event){//获取关联的事件信息,拿到事件对象
+				console.log(event);
+				//event.touches   存储触摸点的集合
+				//通过event对象获取手指对象, 若要获取第一个手指,touches[0]
+				var t1 = event.touches[0];
+				/*clientX/clientY 触摸点距离可视区域左上角的位置
+				 *screenX/screenY 触摸点距离屏幕左上角的位置
+				 * pageX/pageY	  触摸点距离页面左上角的位置       page和client一样但是page有浏览器兼容
+				 * target  目标源
+				 * 
+				 * */
+				console.log(t1.clientX,t1.clientY);
+				console.log(t1.screenX,t1.screenY);
+				console.log(t1.pageX,t1.pageY);
+				console.log(t1.target);
+				
+				//一般取消触摸事件的默认行为(为了避免移动端事件默认行为对交互产生影响)
+				event.preventDefault();
+			}
+			
+			
+			//拖拽:
+			var d2 = document.getElementById("d2");
+			var x,y;//参数没传过去,先考虑全局比变量问题, 或者自定义属性 
+			//当按下时
+			d2.addEventListener('touchstart', function(e){
+				var eve = event || e;
+				x = eve.touches[0].clientX - d2.offsetLeft;
+				y = eve.touches[0].clientY - d2.offsetTop;
+				document.addEventListener('touchmove', move, false);
+				document.addEventListener('touchend',function(){
+					document.removeEventListener('touchmove', move);//注意事件监听匿名函数不能被移除,所以把move写到外面去
+				}, false);
+				eve.preventDefault();  //取消默认行为
+			}, false);
+			
+			function move(e){
+				var eve = event || e;
+				var l = eve.touches[0].clientX - x;
+				var t = eve.touches[0].clientY - y;
+				//边界限制
+					if(l<=0) l = 0;
+					if(l>=window.innerWidth - d2.offsetWidth) l = window.innerWidth - d2.offsetWidth;
+					if(t<=0) t = 0;
+					if(t>=window.innerHeight - d2.offsetHeight) t = window.innerHeight - d2.offsetHeight;
+					d2.style.left = l + 'px';
+					d2.style.top = t + 'px';
+				}
+		</script>
+	</body>
+</html>

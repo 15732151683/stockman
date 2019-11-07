@@ -1,0 +1,2 @@
+<!--pages/movies/movie-more/movie-more.wxml-->
+<movie-grid movies="{{movies}}"></movie-grid>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>dreammaker</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/pageone.css" />
+		<link rel="stylesheet" type="text/css" href="css/pageThree.css" />
+		<link rel="stylesheet" type="text/css" href="css/pagefour.css" />
+		<style>
+			html,
+			body {
+				position: relative;
+				height: 100%;
+			}
+			
+			body {
+				background: #eee;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.swiper-container-v {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.v-slide-1,
+			.v-slide-2,
+			.v-slide-3,
+			.v-slide-4,
+			.h-slide-1,
+			.h-slide-2,
+			.h-slide-3,
+			.h-slide-4,
+			.h-slide-5,
+			.h-slide-6,
+			.h-slide-7,
+			.h-slide-8 {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: url(img/bg2.jpg);
+			}
+			
+			.arrow-d {
+				position: absolute;
+				bottom: 5px;
+				width: 30px;
+				height: 10px;
+				left: 50%;
+				margin-left: -5px;
+				animation: downup 1s linear infinite;
+			}
+			
+			@keyframes downup {
+				from {
+					bottom: 5px;
+				}
+				85% {
+					bottom: 18px
+				}
+				to {
+					bottom: 25px;
+				}
+			}
+			
+			.musico {
+				position: absolute;
+				bottom: 15px;
+				right: 15px;
+				width: 8%;
+				animation: roo 1s linear infinite;
+			}
+			
+			@keyframes roo {
+				from {
+					transform: rotateZ(0);
+				}
+				to {
+					transform: rotateZ(360deg);
+				}
+			}
+			
+			.bg2 {
+				position: absolute;
+				top: -30px;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.logo-text2 {
+				position: absolute;
+				/*z-index: 999;*/
+				bottom: 22%;
+				width: 65%;
+				left: 50%;
+				margin-left: -32.5%;
+			}
+			
+			.logo-text3 {
+				position: absolute;
+				bottom: 13%;
+				width: 90%;
+				left: 50%;
+				margin-left: -45%;
+			}
+			
+			.them,
+			.had {
+				position: absolute;
+				letter-spacing: 6px;
+				color: white;
+				font-size: 20px;
+				left: 50%;
+				font-weight: bolder;
+				z-index: 999;
+			}
+			
+			.them {
+				width: 52px;
+				margin-left: -26px;
+				top: 30%;
+				animation: fade 1s linear;
+			}
+			
+			.had {
+				width: 130px;
+				margin-left: -65px;
+				top: 35%;
+			}
+			
+			@keyframes fade {
+				from {
+					opacity: 0;
+					left: 20%;
+				}
+				to {
+					opacity: 1;
+					left: 50%;
+				}
+			}
+			/*这里停留了很长时间,因为👆的动画写错了,所以导致连这个选择器在检查中都木有出现,科科,这种bug要留一个印象 ㄟ( ▔, ▔ )ㄏ*/
+			
+			#ball {
+				position: absolute;
+				z-index: 888;
+				width: 111%;
+				height: 110%;
+				top: -20px;
+				left: -30px
+			}
+			
+			.swiper-container-h {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.p1 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 324px;
+				margin-top: -150px;
+				height: 300px;
+				margin-left: -162px;
+				/*animation: zoomIn 2s infinite;*/
+			}
+			
+			.close {
+				position: absolute;
+				top: 52px;
+				left: 24px;
+				width: 15%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Swiper -->
+		<div class="swiper-container swiper-container-v">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide v-slide-1">
+					<img class="l1" src="img/pageone/l1.png"/>
+					<img class="l2" src="img/pageone/l2.png"/>
+					<img class="l3" src="img/pageone/l3.png"/>
+					<div class="logo">
+						<img class="green" src="img/pageone/rr.png"/>
+						<img class="red" src="img/pageone/re.png"/>
+						<img class="gold" src="img/pageone/hh.png"/>
+						<img class="gray" src="img/pageone/qq.png"/>
+						<img class="v-gray" src="img/pageone/ccc.png"/>
+						<img class="v-green" src="img/pageone/gg.png"/>
+						<img class="v-green2" src="img/pageone/yy.png"/>
+						<img class="DD" src="img/pageone/dd.png"/>
+						<img class="DDa" src="img/pageone/dda.png"/>
+						<img class="pd" src="img/pageone/pd.png"/>
+						<img class="pr" src="img/pageone/pr.png"/>
+						<img class="pe" src="img/pageone/pe.png"/>
+						<img class="pm" src="img/pageone/pm.png"/>
+						<img class="maker" src="img/pageone/maker.png"/>
+					</div>
+					<div class="logo-text">
+						<p>2015</p>
+						<p>创想家盛典</p>
+					</div>
+					<img class="Cd" src="img/pageone/Cd.png"/>
+					<img class="Cdd" src="img/pageone/Cdd.png"/>
+					<img src="img/slide.png" class="arrow-d"/>
+					<img class="musico" src="img/music.png"/>
+				</div>
+				<div class="swiper-slide v-slide-2">
+					<img class="bg2" src="img/pagetwo/abc4.gif"/>
+					<img src="img/pagetwo/ww.png" class="logo-text2 ani" swiper-animate-effect="fadeInLeft"/>
+					<img src="img/pagetwo/www.png" class="logo-text3 ani" swiper-animate-effect="fadeInRight"/>
+					<img src="img/slide.png" class="arrow-d"/>
+					<img class="musico" src="img/music.png"/>
+				</div>
+				<div class="swiper-slide v-slide-3">
+					<img src="img/pagethree/img1.png" class="img1"/>
+					<img src="img/pagethree/group1.png" class="group1"/>
+					<img src="img/pagethree/group2.png" class="group2"/>
+					<img src="img/pagethree/img2.png" class="img2"/>
+					<img src="img/pagethree/group3.png" class="group3"/>
+					<img src="img/pagethree/group4.png" class="group4"/>
+					<img src="img/pagethree/group5.png"  class="group5"/>
+					<img src="img/pagethree/img3.png" class="img3"/>
+					<img src="img/slide.png" class="arrow-d"/>
+					<img class="musico" src="img/music.png"/>
+				</div>
+				<div class="swiper-slide v-slide-4">
+					<p class="them">他们</p>
+					<p class="had ani" swiper-animate-effect="zoomIn" swiper-animate-delay="0.8s">已改变世界</p>
+					<img class="ani" id="ball" src="img/pagefour/pointlight.png" swiper-animate-effect="zoomIn" swiper-animate-delay="1s" swiper-animate-duration="2s" />
+					<img class="circle-2" src="img/pagefour/circle-2.png" />
+					<img class="one ani clis" src="img/pagefour/aluo.png" swiper-animate-delay="1s" />
+					<img class="two ani clis" src="img/pagefour/wqg.png" swiper-animate-delay="2s" />
+					<img class="three ani clis" src="img/pagefour/wxf.png" swiper-animate-delay="2s" />
+					<img class="four ani clis" src="img/pagefour/madong.png" swiper-animate-delay="2s" />
+					<img class="five ani clis" src="img/pagefour/wangzhuang.png" swiper-animate-delay="1s" />
+					<img class="six ani clis" src="img/pagefour/gy.png" swiper-animate-delay="1.5s" />
+					<img class="seven ani clis" src="img/pagefour/liuyong.png" swiper-animate-delay="1s" />
+					<img class="eight ani clis" src="img/pagefour/shenxiaohui.png" swiper-animate-delay="1.5s" />
+					<img class="obj-font" src="img/pagefour/objct-font.png" />
+					<ul id="line">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<img src="img/slide.png" class="arrow-d" />
+					<img class="musico" src="img/music.png" />
+				</div>
+
+				<div class="swiper-slide">
+					<div class="swiper-container swiper-container-h">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide h-slide-1">
+								<img src="img/pagefour/x.png" class="close" />
+								<img src="img/pagefour/anuoins.png" class="p1 ani animated zoomIn" swiper-animate-effect="zoomIn" />
+								<img src="img/slide.png" class="arrow-d" />
+								<img class="musico" src="img/music.png" />
+							</div>
+							<div class="swiper-slide">Horizontal Slide 2</div>
+							<div class="swiper-slide">Horizontal Slide 3</div>
+							<div class="swiper-slide">Horizontal Slide 4</div>
+							<div class="swiper-slide">Horizontal Slide 5</div>
+							<div class="swiper-slide">Horizontal Slide 6</div>
+							<div class="swiper-slide">Horizontal Slide 7</div>
+							<div class="swiper-slide">Horizontal Slide 8</div>
+						</div>
+						<!--横向嵌套的导航按钮-->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Add Pagination -->
+			<!--<div class="swiper-pagination swiper-pagination-v"></div>-->
+		</div>
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.animate1.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>-->
+
+		<script type="text/javascript">
+			Zepto(function() {
+				$(".clis").tap(function() {
+					$(this).parent().hide().next().show();
+				});
+			});
+			var swiperV = new Swiper('.swiper-container-v', {
+				direction: 'vertical',
+				spaceBetween: 50,
+				pagination: {
+					el: '.swiper-pagination-v',
+					clickable: true,
+				},
+				on: {
+					init: function() {
+						swiperAnimateCache(this); //隐藏动画元素 
+						swiperAnimate(this); //初始化完成开始动画
+					},
+					slideChangeTransitionEnd: function() {
+						swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+					}
+				}
+			});
+			var swiperH = new Swiper('.swiper-container-h', {
+				spaceBetween: 50,
+				//前进后退按钮
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				on: {
+					init: function() {
+						swiperAnimateCache(this); //隐藏动画元素 
+						swiperAnimate(this); //初始化完成开始动画
+					},
+					slideChangeTransitionEnd: function() {
+						swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

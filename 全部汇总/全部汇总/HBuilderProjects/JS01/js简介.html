@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Javascript基础</title>
+		<style type="text/css">
+			#btn{
+				width: 100px;
+				height: 30px;
+				background-color: green;
+				border-radius: 10px;
+			}
+		</style>
+		<!--<script type="text/javascript">
+			alert(1111);
+		</script>-->
+	</head>
+	<!--<script type="text/javascript">
+		alert(222);
+	</script>-->
+	<body>
+		<!-- html  网页的结构和内容
+			 css		网页 的外观样式
+			 javascript  网页的交互行为
+		-->
+		<!--js: 一种编程语言,也是脚本语言,用于web页面,添加交互开发动态网页-->
+		<!--注释: 
+			编程语言:c语言 oc Java等 要经过编写 编译 链接 运行生成可执行文件
+			脚本语言:省去了传统编程语言繁琐的过程,编写的代码就是最终可执行的文件
+		-->
+		<!--js的组成部分:
+			ECMAScript ES6 规定基本语法
+			DOM 文档对象模型 document object model
+			BOM 浏览器对象模型 browser object model
+		-->
+		<!--js的特点:
+			脚本语言
+			跨平台
+			面向对象
+			弱类型
+			基于事件驱动的  
+		--> 
+		<!--js引入: -->
+		<!--方式1: 在html中添加事件属性-->
+		<button id="btn" type="button" onclick="alert('单引号双引号,外双内单,外单内双');">登录</button>
+		
+		<!--方式2:内部引入
+			添加script标签,在其中书写js代码.
+			可以添加不限数量的脚本;js可以放在head和body中,也可以是任何位置;js代码可以阻断HTML 文档的加载,为了优化页面加载,一般会把js写在body的后面,(先加载页面,再加载js交互)增加用户的体验度,所以之后在内部添加多个js,要注意先后顺序
+		-->
+		<!--<script type="text/javascript">
+			//js code.... 
+			alert(333);
+		</script>
+		<script type="text/javascript">
+			//js code.......
+			alert(444)
+		</script>-->
+	</body>
+	<!--<script type="text/javascript">
+		alert(555);
+	</script>-->
+	
+	<!--方式3: 外部引入
+		使用<script src="" type="text/javascript"></script> 引入外部.js文件
+		外部引入,只要标签里面有src="",在标签里面写js代码是不会执行的
+	-->
+	
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+</html>
+<!--<script type="text/javascript">
+	alert(666);
+</script>-->

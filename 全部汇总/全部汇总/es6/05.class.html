@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*对象的简化*/
+    // var obj = {
+    //     name:'zhangsan',
+    //     age:88,
+    //     say:function () {
+    //         console.log(`我的名字是${this.name}`);
+    //     }
+    // }
+
+
+    // var name = "lisi";
+    // var age = 18;
+    // var obj = {
+    //     name,
+    //     age,
+    //     say () {
+    //         console.log(`我的名字是${this.name}`);
+    //     }
+    // }
+    // console.log(obj.age);
+    // obj.say();
+    //
+
+
+    // function People(name,age) {
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // People.prototype.say = function () {
+    //     console.log(`我的名字是${this.name}`)
+    // }
+    //
+    // var per = new People('xxx',10);
+    // console.log(per);
+    //
+    // function Son(name,age,job) {
+    //     People.call(this,name,age);
+    //     this.job = job;
+    // }
+    // Son.prototype = new People();
+    // Son.prototype.constructor = Son
+    // var son = new Son('儿子',8,'上学');
+    // console.log(son);
+
+
+    class People{
+        constructor (name,age) {
+        //    类的构造器，每一次实例化对象时，都会加载，等同于构造函数内部的东西,属性一般在此处定义
+            this.name = name;
+            this.age = age;
+        }
+
+    //  此处定义实例化对象原型上的方法
+        say () {
+            console.log(`我的名字是${this.name}`)
+        }
+    }
+
+    var person = new People('Jenny',32);
+    console.log(person);
+    person.say();
+    /*通过extends继承，super()继承来自于父类的属性*/
+    class Son extends People {
+        constructor (name,age,job){
+            super(name,age);
+            this.job = job;
+        }
+    }
+
+    var son = new Son('son',3,'吃糊糊');
+    console.log(son);
+
+
+</script>
+</html>

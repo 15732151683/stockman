@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件对象</title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				height: 100px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--事件对象: 当事件被触发时,系统会自动创建一个对象event,用来记录和保存该事件的相关信息.-->
+		<div id="d1"></div>
+		<script type="text/javascript">
+			document.getElementById("d1").onclick = function(e){
+				//除了火狐以外的其他浏览器都支持event, 火狐下不支持, 在FF下需要添加一个参数,该参数就代表事件对象
+				//获取事件对象
+				var eve = window.event || e;
+				console.log(eve);
+				//事件对象常用的属性:
+				//type 事件类型
+				console.log(eve.type);
+				/*获取当前鼠标基于浏览器页面可视范围左上角的距离
+				 *clientX
+				 *clientY*/
+				console.log(eve.clientX, eve.clientY);
+				/*获取当前鼠标基于屏幕可视范围左上角的距离
+				 *screenX
+				 *screenY*/
+				console.log(eve.screenX, eve.screenY);
+				/*获取目标源对象
+				 目标源: 触发该事件的元素对象
+				 srcElement  IE.chrome,safari
+				 target  标准浏览器下
+				 */
+				console.log(eve.srcElement);
+				console.log(eve.target);
+				//button 鼠标按键值  0: 左键 1: 中键 2:右键
+				console.log(eve.button);
+			}
+		</script>
+	</body>
+</html>

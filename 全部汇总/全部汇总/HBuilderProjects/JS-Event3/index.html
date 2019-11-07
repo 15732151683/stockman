@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>自定义滚动条</title>
+		<style type="text/css">
+			p{
+				margin: 0;
+				padding: 0;
+			}
+			.con{
+				position: relative;
+				width: 300px;
+				height: 300px;
+				padding-right: 10px;
+				border: 1px solid;
+				overflow: hidden;
+			}
+			#bar-con{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 10px;
+				height: 100%;
+				background: gold;
+			}
+			#bar{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 10px;
+				height: 30px;
+				background: red;
+				border-radius: 10px;
+			}
+			.content{
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="con">
+			<div class="content">
+				<p>内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...内容啦啦啦啦啦...</p>
+			</div>
+			<div id="bar-con">
+				<div id="bar"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var conDiv = document.querySelector(".con");
+			var barwrap  = document.querySelector("#bar-con");
+			var bar = document.getElementById("bar");
+			var maxT = conDiv.clientHeight - bar.offsetHeight;
+			var content = document.querySelector(".content");
+			//当鼠标按下时并且移动时
+			var t;
+			bar.onmousedown = function(e){
+				var eve = event || e;
+				var y = eve.clientY - bar.offsetTop;
+				conDiv.onmousemove = function(e){     //没作轨道的时候,内容标签conDiv onmousemove,所以会有bug(鼠标在内容页move,就move了)
+					var evt = event || e;
+					t = evt.clientY - y;
+					//边界限制
+					if( t > maxT) t = maxT;
+					if( t < 0) t = 0;
+					bar.style.top =  t+'px';
+					//滚动内容
+					move(t);
+				}
+				document.onmouseup = function (){
+					conDiv.onmousemove = null;         //基于用户体验  显然按下后move的时候移动到外面内容区也是可以的滚动的,相应的mouseup不能移动
+				}
+			}
+			
+			function move(dy){
+				/*dy/maxT == ??/页面可滚动距离*/
+				var sy = dy/maxT*(content.offsetHeight - conDiv.offsetHeight);
+				content.style.top = -sy + 'px';
+				//记录滑块当前的位置 基于此位置继续滚动
+				y = dy;
+			}
+			
+			
+			var y = 0;
+			function mouseScroll(obj){
+				var isFF = navigator.userAgent.indexOf('Firefox') > -1;
+				if(isFF){
+					obj.addEventListener('DOMMouseScroll', scroll, false);
+				}else {
+					obj.onmousewheel = scroll;
+				}
+				function scroll(e){
+					var eve = event || e;
+					//记录方向 false向上 true向下
+					var dir = false;
+					if(eve.detail){
+						dir = eve.detail < 0 ? false : true;
+					}else{
+						dir = eve.wheelDelta < 0 ? true : false;
+					}
+					if(dir == false){
+						//上
+						y -= 5;
+						if(y < 0) y = 0;
+						content.style.top = -y + 'px';
+					}else{
+						//下
+						y += 5;
+						if(y > content.offsetHeight - conDiv.offsetHeight) y = content.offsetHeight - conDiv.offsetHeight;
+						content.style.top = -y + 'px';
+					}
+					/*y/content.offsetHeight - conDiv.offsetHeight == ???/ maxT*/
+					bar.style.top = y/(content.offsetHeight - conDiv.offsetHeight)*maxT + 'px';
+				}
+			}
+			
+			
+			mouseScroll(conDiv);
+		</script>
+	</body>
+</html>

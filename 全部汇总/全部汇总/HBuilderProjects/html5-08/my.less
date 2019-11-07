@@ -1,0 +1,77 @@
+//less: 变量 嵌套 混合 运算 继承 函数....
+//1.变量
+@bgcolor: #000;
+//运算
+@bcolor: #111;
+@fcolor: @bcolor + #555;
+@color_hover: #fff;
+//3. 混合
+//无参数的混合
+.basefont{
+    font: 16px/1.5 arial, helvetica, sans-serif;
+    color: @fcolor;
+}
+//带参数的混合
+//带1个参数的
+.basefont(@color){
+    font: 16px/1.5 arial, helvetica, sans-serif;
+    color: @color;
+}
+//带多参数 参数之间 逗号,或者分号;间隔
+.basefont(@font,@color){
+    font: @font/1.5 arial, helvetica, sans-serif;
+    color: @color;
+}
+//带默认值的参数
+.border-radius(@value:10px){
+    -webkit-border-radius: @value;
+    -moz-border-radius: @value;
+    border-radius: @value;
+}
+//arguments参数 指代所有参数 支持多组设置 用+号              
+.box-shadow(@x:1px, @y:3px, @blur:5px, @color:#00f){
+000    -webkit-box-shadow+: @arguments;
+    -moz-box-shadow+: @arguments;
+    box-shadow+: @arguments;
+}
+.header{
+    width: 100%;
+    height: 100%;
+    background: @bgcolor;
+    //调用
+    .basefont;
+    //添加阴影
+    .box-shadow(0,0,15px,yellow);
+    .box-shadow(0,0,5px,red);
+    //2嵌套
+    .nav{
+        width: 80%;
+        margin: 20px auto;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        li{
+            list-style: none;
+            a{
+                //继承
+                &:extend(.basefont);
+                //伪类
+                //&想写串联选择器,而不是后代选择器,则可以使用&
+                &:hover{
+                    color: @color_hover;
+                }
+            }
+        }
+    }
+    
+}
+.content{
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid;
+    //不加参数,会取默认值
+    .border-radius;
+    .border-radius(20px);
+    //调用
+    .basefont(30px, red);
+}

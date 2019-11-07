@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>clock</title>
+		<style type="text/css">
+			#clock{
+				border: 1px solid;
+				margin: auto;
+				display:  block;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="clock" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("clock");
+			var ctx = canvas.getContext("2d");
+			ctx.translate(200,200);
+			function draw(){
+				//绘制表盘
+				ctx.beginPath();
+				ctx.arc(0,0,200,0,Math.PI*2);
+				ctx.fill();
+				for (var i = 0; i < 12; i++) {
+					//先保存
+					ctx.save();
+					ctx.rotate(i*Math.PI/6);
+					ctx.beginPath();
+					ctx.moveTo(180,0);
+					ctx.lineTo(200,0);
+					ctx.lineWidth = 10;
+					ctx.lineCap = "round";
+					ctx.strokeStyle = "white";
+					ctx.stroke();
+					//提取原来没转变过的坐标系,从三点钟方向开始旋转
+					ctx.restore();
+				}
+				//绘制分针刻度
+				for (var i = 0; i < 60; i++) {
+					if(i%5 != 0){
+						ctx.save();
+						ctx.rotate(i*Math.PI/30);
+						ctx.beginPath();
+						ctx.moveTo(190,0);
+						ctx.lineTo(195,0);
+						ctx.lineWidth = 5;
+						ctx.lineCap = "round";
+						ctx.strokeStyle = "orange";
+						ctx.stroke();
+						ctx.restore();
+					}
+				}
+				//绘制时针刻度
+				var nums = [3,4,5,6,7,8,9,10,11,12,1,2];
+				//绘制数字
+				for(var i = 0; i < 12; i++){
+					ctx.save();
+					ctx.rotate(i*Math.PI/6);
+					ctx.translate(160,0);
+					ctx.rotate(-i*Math.PI/6);
+					ctx.fillStyle = "white";
+					ctx.font = "20px serif";
+					ctx.fillText(nums[i],0,10);
+					ctx.restore();
+				}
+				//获取当前时间
+				var time = new Date();
+				var h = time.getHours();
+				var m = time.getMinutes();
+				var s = time.getSeconds();
+				//绘制时针分针秒针
+				//秒针
+				ctx.save();
+				ctx.rotate(s*Math.PI/30-(Math.PI/2));
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(150,0);
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = "red";
+				ctx.lineCap = "round";
+				ctx.stroke();
+				ctx.restore();
+				
+				//分针
+				ctx.save();
+				ctx.rotate(m*Math.PI/30+(s*Math.PI/1800)-(Math.PI/2));
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(140,0);
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "coral";
+				ctx.lineCap = "round";
+				ctx.stroke();
+				ctx.restore();
+				
+				//时针
+				ctx.save();
+				ctx.rotate(h*Math.PI/6+(m*Math.PI/360)-(Math.PI/2));
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(120,0);
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "white";
+				ctx.lineCap = "round";
+				ctx.stroke();
+				ctx.restore();
+			}
+			draw();
+			/*canvas实现动画的原理: 重复的清除画布,重新绘制*/
+			setInterval(function(){
+				//清除画布
+				ctx.clearRect(-200,-200,canvas.width, canvas.height);
+				//重新绘制
+				draw();
+			},500);
+
+			
+			
+		</script>
+	</body>
+</html>

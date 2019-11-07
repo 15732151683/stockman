@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>transition过渡动画</title>
+		<style type="text/css">
+			.d1{
+				width: 100px;
+				height: 50px;
+				background-color: red;
+				-webkit-transition: 1s;
+				-moz-transition: 1s;
+				-ms-transition: 1s;
+				-o-transition: 1s;
+				/*transition-property: width;*/
+				/*transition-duration: 1s;*/
+				/*transition-timing-function: ease-in;
+				 ease: 加速
+				 ease-in: 淡入(加速)
+				 ease-out: 淡出(减速)
+				 ease-in-out: 淡入淡出(先加后减)
+				 linear: 匀速
+				 cubi-bezier(x1,y1,x2,y2) 贝塞尔曲线,两个坐标值,值的范围0~1*/
+				/*transition-delay: ;*/
+				/*简写 要加兼容写法*/
+				transition: width 1s ease-in;
+			}
+			.d1:hover{
+				width: 500px;
+				height: 100px;
+				background-color: green;
+				border-radius: 50%;
+			}
+			input[type=checkbox]:checked+p{
+				transition: 1s;
+				color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<p>过渡: 让变化更加自然</p>
+		<p>IE10+以及标准浏览器支持transition属性</p>
+		<ul>transition:简写形式
+			<li>transition-property: 过渡属性 默认值为all,即所有支持过渡动画的属性</li>
+			<li>transition-duration: 1s;过渡时长 单位: s 必须设置</li>
+			<li>transition-timing-function:;速度变化函数</li>
+			<li>transition-delay:;延迟时间</li>
+		</ul>
+		<p><strong>过渡动画需要触发时机.触发条件:</strong></p>
+		<ol>
+			<li>伪类选择器(hover,checked,focus)</li>
+			<li>媒体查询</li>
+			<li>js触发</li>
+		</ol>
+		<div class="d1"></div>
+		<input type="checkbox">
+		<p>选我选我选我选我选我选我选我选我选我</p>
+	</body>
+</html>

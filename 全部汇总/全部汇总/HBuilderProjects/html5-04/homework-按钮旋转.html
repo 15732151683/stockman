@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>按钮旋转</title>
+		<style>
+			a{
+				text-decoration: none;
+				float: left;
+			}
+			.shun,.ni{
+				overflow: hidden;
+				margin: 30px 0;
+			}
+	/*动画结束后,悬浮在其上仍旧是变大的,用hover*/
+			.shun img:hover{
+				animation: shun  0.5s;
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.2);		
+			}
+			@keyframes shun{
+				from{
+					-webkit-transform: scale(1) rotateZ(0deg);
+					-moz-transform: scale(1) rotateZ(0deg);
+					-ms-transform: scale(1) rotateZ(0deg);
+					-o-transform: scale(1) rotateZ(0deg);
+					transform: scale(1) rotateZ(0deg);
+				}
+				to{
+					-webkit-transform: scale(1.2) rotateZ(360deg);
+					-moz-transform: scale(1.2) rotateZ(360deg);
+					-ms-transform: scale(1.2) rotateZ(360deg);
+					-o-transform: scale(1.2) rotateZ(360deg);
+					transform: scale(1.2) rotateZ(360deg);
+				}
+			}
+			.ni img:hover{
+				animation: ni 0.8s;
+				transform: scale(0.7);
+			}
+			@keyframes ni{
+				from{
+					-webkit-transform: scale(1) rotateZ(0);
+					-moz-transform: scale(1) rotateZ(0);
+					-ms-transform: scale(1) rotateZ(0);
+					-o-transform: scale(1) rotateZ(0);
+					transform: scale(1) rotateZ(0);
+					}
+				to{
+					-webkit-transform: scale(0.7) rotateZ(360deg);
+					-moz-transform: scale(0.7) rotateZ(360deg);
+					-ms-transform: scale(0.7) rotateZ(360deg);
+					-o-transform: scale(0.7) rotateZ(360deg);
+					transform: scale(0.7) rotateZ(360deg);
+				}
+			}
+			.wrap{
+				float: left;
+				position:relative;
+				width: 310px;
+				height: 100px;
+				margin: 5px;
+				cursor: pointer;
+				transform-style: preserve-3d;
+				transition: transform 1s;
+			}
+			.wrap:hover {
+				transform: rotateX(90deg);
+				}
+			.d1{
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translateZ(50px);
+			}
+			.d2{
+				box-sizing: border-box;
+				width: 310px;
+				height: 100px;
+				box-shadow: 0 0 10px #CCD6E1;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotateX(-90deg) translateZ(50px);
+				background: linear-gradient(to top,#BFCBD9,#CCD6E1,#DAE2EA,#EAEFF3,white);
+			}
+			.d2 p:last-child{
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="d1"></div>
+		<h1>顺时针旋转360度放大1.2倍</h1>
+		<div class="shun">
+			<a href=""><img src="img/rss.png" alt="" /></a>
+			<a href=""><img src="img/delicious.png" alt="" /></a>
+			<a href=""><img src="img/facebook.png" alt="" /></a>
+			<a href=""><img src="img/twitter.png" alt="" /></a>
+			<a href=""><img src="img/yahoo.png" alt="" /></a>
+		</div>
+		<h1>逆时针旋转360度缩小0.7倍</h1>
+		<div class="ni">
+			<a href=""><img src="img/rss.png" alt="" /></a>
+			<a href=""><img src="img/delicious.png" alt="" /></a>
+			<a href=""><img src="img/facebook.png" alt="" /></a>
+			<a href=""><img src="img/twitter.png" alt="" /></a>
+			<a href=""><img src="img/yahoo.png" alt="" /></a>
+		</div>
+		<h3>CSS 类似立方体</h3>
+		<div class="wrap">
+			<div class="d1"><img src="img/contact.png"/></div>
+			<div class="d2">
+				<p>Contact Form</p>
+				<p>The easiest way to add a contact form to your shop.</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="d1"><img src="img/chimpified.jpeg"/></div>
+			<div class="d2">
+				<p>Contact Form</p>
+				<p>The easiest way to add a contact form to your shop.</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="d1"><img src="img/olark.png"/></div>
+			<div class="d2">
+				<p>Contact Form</p>
+				<p>The easiest way to add a contact form to your shop.</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="d1"><img src="img/jilt.png"/></div>
+			<div class="d2">
+				<p>Contact Form</p>
+				<p>The easiest way to add a contact form to your shop.</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="d1"><img src="img/ordoro.png"/></div>
+			<div class="d2">
+				<p>Contact Form</p>
+				<p>The easiest way to add a contact form to your shop.</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="d1"><img src="img/yotpo.jpeg"/></div>
+			<div class="d2">
+				<p>Contact Form</p>
+				<p>The easiest way to add a contact form to your shop.</p>
+			</div>
+		</div>
+	</body>
+</html>

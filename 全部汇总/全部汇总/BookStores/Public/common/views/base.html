@@ -1,0 +1,37 @@
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <block name="title">
+  </block>
+  <link rel="stylesheet" href="/BookStore/Public/common/css/normalize.css">
+  <block name="baseCss">
+    <include file="Public/common/views/style.html" />
+  </block>
+  <block name="mainCss">
+  </block>
+</head>
+
+<body>
+  <!-- 顶部导航栏 -->
+  <block name="nav">
+    <include file="Public/common/views/nav.html" />
+  </block>
+
+  <!-- 中间内容 -->
+  <block name="body">
+  </block>
+
+  <!-- 底部 -->
+  <block name="footer">
+      <include file="Public/common/views/footer.html" />
+  </block>
+
+  <!-- jq引入 -->
+  <js href="/BookStore/Public/common/js/jquery.min.js" />
+  <js href="/BookStore/Public/common/js/switchTab.js" />
+  <!-- 自写js -->
+  <block name="script"></block>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>飞翔的小鸟</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.wrap {
+				width: 343px;
+				height: 480px;
+				margin: auto;
+			}
+			.beginPage, .game {
+				position: relative;
+				height: 100%;
+				background: url(img/bg.jpg) center no-repeat;
+				overflow: hidden;
+			}
+			#menu {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -118px;
+				margin-top: -150px;
+				width: 236px;
+				height: 300px;
+			}
+			#head {
+				position: relative;
+				height: 77px;
+				background: url(img/head.jpg);
+				-webkit-animation: updown .5s linear infinite alternate;
+				animation: updown .5s linear infinite alternate;
+			}
+			@-webkit-keyframes updown{
+				from{top: 0;}
+				to{top: 30px;}
+			}
+			@keyframes updown{
+				from{top: 0;}
+				to{top: 30px;}
+			}
+			.bird0 {
+				position: absolute;
+				right: 0;
+				top: 25px;
+				width: 40px;
+				height: 26px;
+				background: url(img/bird0.png) no-repeat;
+				-webkit-animation: fly .5s infinite;
+				animation: fly .5s infinite;
+			}
+			@-webkit-keyframes fly{
+				from{background-image: url(img/bird0.png);}
+				to{background-image: url(img/bird1.png);}
+			}
+			@keyframes fly{
+				from{background-image: url(img/bird0.png);}
+				to{background-image: url(img/bird1.png);}
+			}
+			#start {
+				position: absolute;
+				bottom: 50px;
+				left: 0;
+				right: 0;
+				margin: auto;
+				width: 85px;
+				height: 29px;
+				background: url(img/start.jpg) center;
+				cursor: pointer;
+			}
+			.game {
+				display: none;
+			}
+			#bird {
+				position: absolute;
+				top: 150px;
+				left: 50px;
+			}
+			#score {
+				position: relative;
+				z-index: 100;
+				text-align: center;
+			}
+			.grass {
+				position: absolute;
+				left: 0;
+				top: 423px;
+				width: 200%;
+				-webkit-animation: move 2s linear infinite;
+				animation: move 2s linear infinite;
+			}
+			@keyframes move{
+				from{left: 0;}
+				to{left: -100%;}
+			}
+			.grass>img {
+				float: left;
+			}
+
+			.pipe {
+				position: absolute;
+				top: 0;
+				left: 120%;
+				width: 62px;
+				height: 423px;
+			}
+			.pipe-top {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				background: url(img/up_pipe.png) left bottom no-repeat,
+				url(img/up_mod.png);
+			}
+			.pipe-bottom {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				background: url(img/down_pipe.png) left top no-repeat, url(img/down_mod.png);
+			}
+
+
+
+
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<!--启动页-->
+			<div class="beginPage">
+				<div id="menu">
+					<div id="head">
+						<div class="bird0"></div>
+					</div>
+					<div id="start"></div>
+				</div>
+			</div>
+			<!--游戏界面-->
+			<div class="game">
+				<img src="img/bird.png" id="bird" />
+				<!--分数-->
+				<div id="score">
+					<img src="img/0.jpg"/>
+				</div>
+				<!--管道-->
+				<!--滚动的草坪-->
+				<div class="grass">
+					<img src="img/grass.jpg"/>
+					<img src="img/grass.jpg"/>
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var startBtn = document.getElementById("start");
+				var beginDiv = document.getElementsByClassName("beginPage")[0];
+				var gameDiv = document.querySelector(".game");
+				var bird = document.getElementById("bird");
+				var scoreDiv = document.getElementById("score");
+				var grassDiv = document.querySelector(".grass");
+
+				startBtn.onclick = gameBegin;
+
+				/*游戏开始*/
+				function gameBegin() {
+					beginDiv.style.display = "none";
+					gameDiv.style.display = "block";
+					//播放游戏音效
+					//小鸟飞翔
+					birdFly();
+					//出现管道
+					showPipe();
+				}
+
+				var t1;
+				function birdFly() {
+					//速度
+					bird.speed = 2;
+					t1 = setInterval(function(){
+						bird.speed++;
+						if(bird.speed>=5) bird.speed = 5;
+
+						bird.style.top = bird.offsetTop + bird.speed + "px";
+						if(bird.offsetTop >= 423-bird.offsetHeight) {
+							//代表小鸟落地
+							bird.style.top = 423-bird.offsetHeight + "px";
+							//游戏结束 清除计时器
+							clearInterval(t1);
+							gameEnd();
+						}
+						if(bird.offsetTop <= 0) {
+							bird.style.top = 0;
+						}
+
+					}, 50);
+				}
+
+				gameDiv.onclick = function() {
+					bird.speed = -8;
+				}
+
+				var t2;
+				function showPipe() {
+					t2 = setInterval(function(){
+						var pipe = document.createElement("div");
+						pipe.className = "pipe";
+						//上管道
+						var pipeTop = document.createElement("div");
+						pipeTop.className = "pipe-top";
+						//随机高度
+						var ht = rand(50, 200);
+
+						pipeTop.style.height = ht+ "px";
+						pipe.appendChild(pipeTop);
+						//随机间距
+						var m = rand(80, 120);
+						//下管道
+						var pipeBot = document.createElement("div");
+						pipeBot.className = "pipe-bottom";
+						var hb = 423 - ht - m;
+						pipeBot.style.height = hb + "px";
+						pipe.appendChild(pipeBot);
+						gameDiv.appendChild(pipe);
+						//移动
+						var sx = 1;
+						var timer =  setInterval(function(){
+							var l = pipe.offsetLeft - sx;
+							pipe.style.left = l  + "px";
+							if(l <= -62) {
+								//管道已完全移出界面 移除该管道  清除计时器
+								gameDiv.removeChild(pipe);
+								clearInterval(timer);
+							}
+							//代表小鸟已通过该管道 得分
+							if(l == -12) {
+								//得分
+								getNum();
+							}
+							//检测小鸟是否碰到管道
+						if(isPeng(pipeTop) || isPeng(pipeBot)) {
+							gameEnd();
+						}
+
+						}, 10);
+					}, 2500);
+				}
+
+				function gameEnd() {
+					//清除计时器
+					var a = setInterval(function(){}, 100);
+					for (var i = a; i > 0; i--) {
+						clearInterval(i);
+					}
+					grassDiv.style.display = "none";
+					//出现结束菜单
+
+				}
+				//得分
+				var num = 0;
+				function getNum() {
+					//先移除之前的分数图片
+					scoreDiv.innerHTML = "";
+					num++;
+					var nStr = num + "";
+					for (var i = 0; i < nStr.length; i++) {
+						var img = new Image();
+						img.src =  "img/"+ nStr[i] +".jpg";
+						scoreDiv.appendChild(img);
+
+					}
+
+				}
+			}
+
+
+
+			function isPeng(obj) {
+				var l1 = bird.offsetLeft;
+				var r1 = bird.offsetWidth + l1;
+				var t1 = bird.offsetTop;
+				var b1 = bird.offsetHeight + t1;
+				var l2 = obj.parentElement.offsetLeft;
+				var r2 = obj.offsetWidth + l2;
+				var t2 = obj.offsetTop;
+				var b2 = obj.offsetHeight + t2;
+				if(l1>r2 || r1<l2 || t1>b2 || b1<t2) {
+					console.log("1111");
+					return false;
+				} else {
+					console.log("2222");
+					return true;
+				}
+			}
+
+			function rand(x, y){
+				return Math.floor(Math.random()*(y - x + 1) + x);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>原型</title>
+	</head>
+	<body>
+		原型: JS所有的函数有一个prototype属性,这个属性引用了一个对象,即原型对象.也简称为原型
+		作用: 允许我们为对象添加新的属性或方法
+		<script type="text/javascript">
+			var arr = [1,2,3,4];
+			//通过原型追加方法
+			Array.prototype.add = function(){//这里是给系统的对象追加功能 给构造函数也可以这样扩充属性和方法
+				var sum = 0;
+				for (var i = 0; i < this.length; i++) {
+					sum += this[i];
+				}
+				return sum;
+			}
+			arr.add();
+			console.log(arr.add());
+			
+			//通过原型为字符串对象扩充一个新的方法,实现首字母大写功能
+			String.prototype.captialize = function(){
+				//this 谁调用就是谁
+				return this.replace(this[0], this[0].toUpperCase());
+			}
+			var str ="morning";
+			str.captialize();
+			console.log(str.captialize());
+			
+			Date.prototype.getWeek = function(){
+				return ["周日","周一","周二","周三","周四","周五","周六"][this.getDay()];
+//				var i = this.getDay();
+//				switch (i){
+//					case 0:
+//						return "周日";
+//						break;
+//					case 1:
+//						return "周一";
+//						break;
+//					case 2:
+//						return "周二";
+//						break;
+//					case 3:
+//						return "周三";
+//						break;
+//					case 4:
+//						return "周四";
+//						break;
+//					case 5:
+//						return "周五";
+//						break;
+//					case 6:
+//						return "周六";
+//						break;
+//					default:
+//						break;
+//				}
+			}
+			var today = new Date();
+			alert(today);
+			//alert(today.getWeek());
+			//追加方法  实现日期时间格式化 2018/03/19 15:21:23
+			Date.prototype.formatDate = function(){
+				return [this.getFullYear(),this.getMonth()+1,this.getDate()].map(function(item){//返回处理后的数组
+					return item>=10?item:"0"+item;//如果是1位数那就拼接个0
+				}).join("/");
+			}
+			alert(today.formatDate());
+			
+			/*一般方法都是通过原型添加的.创建的多个不同对象若有相同的功能方法,这个方法可以写在构造函数内部;
+			 * 对应创建的多个对象若有相同的属性,这些属性一般可通过原型添加
+			 *对应创建的多个对象若有不同的一些属性,可在构造函数中添加,以形参方式来设置不同的属性 */
+			function Girl(name, age){
+				this.name = name;
+				this.age = age;
+				//方法:
+				this.shopping = function(){
+					
+				}
+			};
+			//通过原型添加属性
+			Girl.prototype.gender = "female";
+			//在原有的基础上添加新方法
+			Girl.prototype.play = function(){
+				console.log("玩耍........");
+			}
+			var g = new Girl("十元", 30);
+			g.shopping();
+			g.play();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录页面</title>
+	</head>
+	<body>
+		用户名:<input type="text" id="user" placeholder="请输入用户名"/>
+		<br />
+		密码:<input type="password" id="pwd" placeholder="请输入密码"/>
+		<br />
+		<input type="submit" id="login" value="登录" />
+		
+	</body>
+	<script type="text/javascript">
+		var userInput = document.getElementById("user");
+		var pwdInput = document.getElementById("pwd");
+		var loginInput = document.getElementById("login");
+		loginInput.onclick = function(){
+			if(userInput.value.length == 0){
+				alert("请输入用户名");
+				return false;
+			}
+			if(pwdInput.value.length == 0){
+				alert("请输入密码");
+				return false;
+			}
+			//默认标记为 true为登陆啦
+			localStorage.setItem("flag","true");
+			localStorage.setItem("uservalue",userInput.value);
+			localStorage.setItem("pwdvalue",pwdInput.value);
+			//当第二次打开的时候判断 localStorage中有没有
+			if(userInput.value == localStorage.uservalue&&pwdInput.value == localStorage.pwdvalue){
+				location.href = "person.html";
+			}else{
+				location.href = "nouser.html";
+			}
+			window.location.href = "person.html";
+			return false;  //return 会提前结束  所以要放到最后面
+		}
+		
+		
+	</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.p1{
+				font-size: 20px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<!--DOM节点的处理就是文档处理,科科,-->
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//创建元素节点
+				//方式1: $(html标签形式的字符串)
+				$("<div>啦啦啦啦啦</div>").css({
+					height: "100px",
+					border: "1px solid"
+				}).appendTo($("body"));
+				
+				var p = $("<p>", {
+					class: "p1",
+					css: {
+						color: "red"
+					},
+					click:function(){
+						alert($(this).text());
+					}
+				}).text("我是段落,哈哈哈哈哈哈");
+				$(document.body).append(p);
+				//添加元素
+				/*内部的:
+				 * A.append(B)   在元素A的内部的最后添加元素B
+				 *A.appendTo(B)  将元素A添加到元素B的内部的最后
+				 *A.prepend(B)  在元素A的内部的最前面添加元素B
+				 *A.prependTo(B)    将元素A添加到元素B的内部的最前面
+				 * 外部的:
+				 *A.after(B)  在A的外部的后面添加B
+				 *A.before(B)  在A的外部的前面添加元素B
+				 *A.insertAfter(B)   把A插到B的外面的后面  
+				 *A.insertBefore(B)  把A插到B的外面的面
+				 * */
+				$(document.body).prepend($("<h1>hahhahahh</h1>"));
+				p.after("<h2>我是p后面的</h2>");
+				p.before("<img src='img/pic_bulboff.gif'>");
+				
+				//替换
+				//A.replaceWith(B)  将A替换成B
+				p.replaceWith("<b>jQuery简单么</b>");
+				
+				//删除
+				//A.remove()  删除所有匹配的元素A
+				$("b").remove();
+				
+				//清空匹配到的元素中的所有内容
+				//A.empty();  清空A中所有的内容
+//				$("body").empty();
+			});
+		</script>
+	</body>
+</html>

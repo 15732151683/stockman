@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 300px;
+				height: 200px;
+				background-color: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="light" src="img/pic_bulboff.gif"/>
+		<hr>
+		<input type="date" name="" id="" value="" />
+		<button id="cal">计算</button>
+		<p id="res"></p>
+		<hr />
+		<button id="btn">显示</button>
+		<div id="d1"></div>
+		<hr />
+		<input type="number" name="" id="weight" value="" placeholder="请输入行李重量" />
+		<input type="button" name="" id="btn1" value="计算运费量" />
+		
+		
+		<script type="text/javascript">
+			//获取元素
+			var img = document.getElementById("light");
+			//绑定事件
+			//on+事件名 = function 事件处理函数
+			//默认灯是关闭的(true: 表示开启 false: 表示关闭)  标记,记得要标记置反
+			var flag = false; 
+			img.onclick = function(){
+	//			alert(img.src);//取的是绝对路径
+				//如果灯是开启的则关闭
+				if (flag) {
+					img.src = "img/pic_bulboff.gif";
+					//标记置反  表示处于关闭状态
+//					flag = false;
+				} else{
+					//否则开启
+					 img.src = "img/pic_bulbon.gif";
+					 //标记置反  表示处于关闭状态
+//					flag = true;
+				}
+				flag? img.src = "img/pic_bulboff.gif" : img.src = "img/pic_bulbon.gif";
+				flag = !flag;  
+			}
+			
+		</script>
+		<script type="text/javascript">
+			//2
+			var dateInput = document.getElementsByTagName("input")[0];
+			var calBtn = document.getElementById("cal");
+			calBtn.onclick = function(){
+			//获取日期
+				var dstr = dateInput.value;
+				//获取年份
+				//substr 截取字符串
+				var year =  dstr.substr(0,4) - 0;
+				alert(typeof year);
+				//获取月份
+				var month  = dstr.substr(5,2) -0;
+				//获取日
+				var day = dstr.substr(8) - 0;
+				console.log(year,month,day);
+				var mdays = 0;//要给初数值,否则类型为undefined,undefined不能进行加减运算.  存储前n-1个月的天数
+				//计算前n-1月的总天数,和当前月所在的天数的累加
+				
+				switch (month - 1){
+					case 11:
+					mdays = 30;
+					case 10:
+					mdays += 31;
+					case 9:
+					mdays += 30;
+					case 8:
+					mdays += 31;
+					case 7:
+					mdays += 31;
+					case 6:
+					mdays += 30;
+					case 5:
+					mdays += 31;
+					case 4:
+					mdays += 30;
+					case 3:
+					mdays += 31;
+					case 2:
+					mdays += 30;
+					case 1:
+					mdays += 31;
+						break;
+					default:
+						break;
+				}
+				//若是闰年,且 月份为2月份之后的月份 总天数加一天
+				if (year%400 == 0 || (year%4 == 0&&year%100 !=0)){
+					if(month > 2){
+						mdays +=1;
+					}
+				}
+				//总天数
+				var alldays = mdays + day;
+				document.getElementById("res").innerHTML = "这一天是概念的第"+ alldays+"天";
+			}
+		</script>
+		
+		<script type="text/javascript">
+			var d1 = document.getElementById("d1");
+			var btn = document.getElementById("btn");
+			//添加标记,记录当前状态
+			var isShow = false;
+			btn.onclick = function(){
+				if(isShow){
+					d1.style.display = "none";
+					btn.innerHTML = "显示";
+				} else{
+					d1.style.display = "block";
+					btn.innerHTML = "隐藏";
+				}
+				isShow = !isShow;
+			}
+		</script>
+		
+		
+		<script type="text/javascript">
+			var w = document.getElementById("weight");
+		 document.getElementById("btn1").onclick = function(){
+		 	var weight = parseFloat(w.value);
+		 	var price;
+		 	if (weight ) {
+		 		price = weight * 0.15;
+		 	} else{
+		 		price = 50 * 0.15 + (weight - 50) * 0.25;
+		 	}
+		 	//toFixed(n) 保留小数点后n位  数值类型的方法
+		 	//Math.round()  四舍五入
+		 	
+		 	price.toFixed(2);
+		 	alert(price.toFixed(2));
+		 };
+		 
+		 
+		/*parseInt(); 提取字符串中数字的整数部分
+		 	parseFloat(); 提取字符串中的数字部分,包括小数,包括整数
+		*第一个字符就是数字才会开始提取,如果是别的,比如:a,b,.这些,是不会提取的,并且提取时会一直到非数字字符为止.
+		* 若提取不到数字返回值为NAN这种类型*(not a number)
+		*isNaN("a") //->false 判断是不是一个数字   
+		*/
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

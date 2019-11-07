@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>box-sizing</title>
+		<style type="text/css">
+			.d1,.d2{
+				width: 200px;
+				height: 200px;
+				padding: 50px;
+				border: 10px solid blue;
+				margin: 30px;
+			}
+			.d1{
+			/*标准盒模型*/
+				background-color: red;
+			}
+			.d2{
+				background-color: gold;
+			/*怪异盒模型*/
+				box-sizing: border-box
+			}
+			.box{
+				border: 1px solid;
+				overflow: hidden;
+			}
+			.left{
+				width: 50%;
+				height: 295px;
+				border-top: 5px solid red;
+				background-color: pink;
+				float: left;
+			}
+			.right{
+				float: left;
+				height: 300px;
+				width: 50%;
+				background-color: red;
+				border: 5px solid blue;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<p>标准盒模型下: 由 内容+padding+border+margin 决定元素的尺寸大小</p>
+		<div class="d1"></div>
+		<p>box-sizing: 调整盒模型的模式:</p>
+		<p>border-box: 怪异盒模型: 由width+ margin两部分决定,width= 内容+ padding+ border</p>
+		<p>cotnent-box: 标准盒模型</p>
+		<div class="d2"></div>
+		
+		<!---->
+		<div class="box">
+			<div class="left">
+				
+			</div>
+			<div class="right"></div>
+		</div>
+	</body>
+</html>

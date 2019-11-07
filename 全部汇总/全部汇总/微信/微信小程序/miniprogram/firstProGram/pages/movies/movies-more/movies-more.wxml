@@ -1,0 +1,4 @@
+<!--pages/movies/movies-more/movies-more.wxml-->
+<view>
+  <movie-grid movieGroup="{{movieMore}}"></movie-grid>
+</view>

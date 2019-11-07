@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>渐变</title>
+		<style type="text/css">
+			.d1{
+				height: 100px;
+				background-image: linear-gradient(to right,red 0px,yellow 30%,green 60%,blue);
+			}
+			.btn{
+				width: 100px;
+				height: 50px;
+				background-image: -webkit-linear-gradient(pink,orange,cyan);
+				background-image: -o-linear-gradient(pink,orange,cyan);
+				background-image: linear-gradient(pink,orange,cyan);
+			}
+			/*悬停状态*/
+			.btn:hover{
+				background-image: -webkit-linear-gradient(to top,pink,orange,cyan);
+				background-image: -o-linear-gradient(to top,pink,orange,cyan);
+				background-image: linear-gradient(to top,pink,orange,cyan);
+			}
+			.d2{
+				width: 800px;
+				height: 400px;
+				background-image: radial-gradient(farthest-side circle at 200px 200px,red,orange,yellow,green,cyan,blue,purple);
+			}
+			.d3{
+				width: 600px;
+				height: 300px;
+				background-image: radial-gradient(200px 100px ellipse at 300px 150px,red,orange,yellow,green,cyan,blue,purple);
+			}
+			.d4{
+				height: 100px;
+				/*重复线性渐变*/
+				background-image: repeating-linear-gradient(to right,red,orange 15%, transparent 15%,orange 30%);
+			}
+			.d5{
+				height: 400px;
+				/*重复径向渐变: */
+				background-image: repeating-radial-gradient(200px circle at 50% 200px,orange,red 20%);
+			}
+		</style>
+	</head>
+	<body>
+		<p>渐变: 由一种颜色到另外一种颜色缓慢的变化过程</p>
+		<p>CSS3中新增的渐变,可用作背景图</p>
+		<p>浏览器支持: IE10+以及标准浏览器(低版本需要加前缀兼容)</p>
+		<p>1.线性渐变
+				至少设置2种颜色</
+		   <p>方向
+		   	方式1: ①要加to, to right,就是从左到右
+		   		②可设方向left right top bottom,left bottom,left top, right top,right bottom
+		   方式2: 0deg 90deg 180deg 顺时针正方向,0deg -90deg 180deg 就是反方向</p>
+		   <p>位置: 对应颜色出现的位置 像素值或百分比形式</p>
+		<!--background-image: linear-gradient(方向,颜色1 位置1,颜色2 位置2,颜色3 位置3,.......);-->
+		<div class="d1"></div>
+		<div class="btn"></div>
+		<p>2.径向渐变</p>
+		<p>①.半径: 渐变半径 像素值;渐变半径: 	closest-corner 最近的角<br />
+											farthest-corner  最远的角<br />
+											closest-side 最近的边<br />
+											farthest-side 最远的边</p>
+		<p>②形状: 1.circle 2.ellipse(半径要给两个值:水平半径 垂直半径)</p>
+		<p>③.颜色 至少2中</p>
+		<!--background-image: radial-gradient(半径 circle at 圆心X轴位置 圆心y轴位置,颜色1 位置1,颜色2 位置2,颜色3 位置3,颜色4 位置4,.....);-->
+		<div class="d2"></div>
+		<div class="d3"></div>
+		
+		<p>重复渐变: 只有当颜色铺不满时才会出现重复</p>
+		<div class="d4"></div>
+		<div class="d5"></div>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for循环</title>
+	</head>
+	<body>
+		<!--循环: 当满足特定条件时,重复执行特定的功能代码-->
+		<script type="text/javascript">
+			/*for循环语句语法结构: 
+			 * for (1.循环变量初始化;2.循环条件;3.循环变量变化) {
+				4.特定语句(循环体);
+			}
+当满足循环条件时,重复执行循环体语句,直到条件不成立,则跳出整个循环																																																			
+			*循环必须要有循环终止的条件,否则会一直重复执行,进入'死循环'
+			* 执行的流程: 1-2-4-3-2-4-3-2-4-3.........2跳出   循环变量 满足循环条件之后 执行循环体 才回来变化循环变量 如果刚开始循环变量就满足不了循环条件 死循环啦 */
+			for (var i = 1; i <= 100; i++) {
+				document.write(i  + "<br>");//加一个标签也是可以的,以拼接的方式
+			}
+			for (var i= 10; i > 0; i--) {
+				document.write("还剩"+ i+"个");
+			}
+			//输出1~10之间的偶数
+			for (var i = 2; i <= 10; i+=2) {
+				document.write(i + "");
+			}
+			//1~100之间的和
+			var sum = 0;
+			for (i = 1; i<101; i++) {
+				sum +=i;
+			}
+			document.write(sum);
+			//1~100之间的奇数和
+			var s = 0;
+			for(i = 1; i<101; i+=2){
+				s +=i;
+			}
+			document.write(s);
+			//1~100的素数和
+			
+			var a = 0;
+			for(i = 1; i <  101; i++){
+				if(i % 2 == 0){
+					continue;            //1.continue  用于循环中,表示跳过本次循环如果是for循环.就找到for语句),开始循环变量变化
+				}
+				a +=i
+			}
+			console.log(a);
+			
+			//2.break用于循环中,表示跳出整个循环
+			for (var i = 1; i <= 10; i++) {
+				if(i == 3){
+					break;
+				}
+				document.write("第" + i + "个<br>")
+			}
+			//for循环可以嵌套使用
+			for(var i = 7; i < 101; i++){
+				//假定该数是质数
+				var flag = true;
+				//查找2~i-1 范围内 有没有能整除该数的第三个数,若有,说明不是质数
+				for(var j = 2; j < i; j++){
+					if(i % j == 0){
+						flag  = false;
+						//中断
+						break;
+					}
+				}
+				//若代码执行到该行,flag还是初始值true,说明无其他公约数,则为质数
+				if(flag == true){
+					document.write(i+"^_^");
+				}
+			}
+			document.write("<hr>");
+			
+			
+			
+			//外层循环控制输出的行数
+			for (var i = 0; i < 4; i++) {
+			//循环嵌套: 外层循环执行一次,内层循环就会执行一遍
+			//内层循环控制每行输出的内容
+				for (var j = 1; j <= i+1; j++) {
+					document.write(j + " ")
+				}
+				document.write("<br>");
+			}
+			
+			//9*9乘法表
+			for (var i = 1; i < 10; i++) {
+				for (var j = 1; j <= i; j++ ) {
+					document.write(j+"*"+i+"="+ i*j+" ");
+				}
+				document.write("<br>");
+				document.write("<br>");
+			}
+		</script>
+		
+	</body>
+</html>

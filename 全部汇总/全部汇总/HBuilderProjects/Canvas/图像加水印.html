@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图像加水印</title>
+		<style type="text/css">
+			#mark{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas6" width="500" height="300"></canvas>
+		<canvas id="mark" width="300" height="50" style="display: block;"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas6");
+			var ctx = canvas.getContext("2d");
+			var mark = document.getElementById("mark");
+			var context = mark.getContext("2d");
+			//添加文字
+			context.font = "40px serif";
+			context.fillStyle ="red";
+			context.textAlign = "center";
+			context.fillText("菜菜是个美人",0,0);
+			/*var img = new Image();
+			img.src = "img/girl10.jpg";
+			img.onload = function(){
+				ctx.drawImage(img,0,0,500,300);
+				//添加文字水印
+				ctx.drawImage(mark,0,0)
+			}*/
+			/*toDataURL() 
+			 *将画布canvas转为可用的url链接*/
+			var urls = canvas.toDataURL();
+			console.log(urls);
+		</script>
+	</body>
+</html>

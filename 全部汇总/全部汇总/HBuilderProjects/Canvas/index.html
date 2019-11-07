@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#canvas1{
+				border: 1px solid;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<!--canvas 是H5中新增的画布元素,可以自持基本图形,文字的绘制,图像,视频的处理和渲染以及动画,小游戏的制作等等
+			使用JS操作画布元素进行绘制,最终以图片的形式显示在浏览器上呈现
+		-->
+		<!--浏览器支持: 
+			IE9+以及标准浏览器支持
+		-->
+		<!--canvas元素默认是没有内容和边框的,不设置宽高,默认宽300,高150,-->
+		<!--设置canvas的宽高:
+			方式1.使用自带的Width和height属性,不用加px
+			方式2: 在JS中设置宽高,不用加px
+			不要在CSS样式中设置canvas尺寸,会有意想不到的bug
+			
+		-->
+		<canvas id="canvas1" width="800" height="800">当浏览器不支持时,显示的内容(放张图啦,弄个视频啦),请升级你的浏览器</canvas>
+		<script type="text/javascript">
+			//获取画布元素,可理解为画板
+			var canvas = document.getElementById("canvas1");
+			//获取绘制的上下文对象(可理解   为绘制是的画笔)  实际上是内置的H5对象,拥有绘制路径,图形,图像等相关的方法
+			var ctx = canvas.getContext("2d");
+			//绘制路径
+			/*beginPath()  开始绘制
+			 */
+			ctx.beginPath();
+			/*moveTo(x,y) 设置起点 默认在左上角*/
+			ctx.moveTo(50,50);
+			/*lineTo(x,y)  设置绘制的终点*/
+			ctx.lineTo(200,50);
+			/*strokeStyle 设置绘制样式
+			 *支持颜色,渐变,模式(重复平铺啦.....)
+			 * */
+			ctx.strokeStyle = "red";
+			/*lineWidth: 设置线宽*/
+			ctx.lineWidth = 5;
+			/*stroke() 描边绘制*/
+			ctx.stroke()
+			
+			/*绘制三角形*/
+			ctx.beginPath();
+			ctx.moveTo(100, 100);
+			ctx.lineTo(150, 200);
+			ctx.lineTo(50, 200);
+			/*closePath() 闭合路径 自动链接起点和终点*/
+			ctx.closePath();
+			//描边绘制
+			ctx.stroke();
+			/*fillStyle 设置填充样式
+			 *支持颜色,渐变,模式
+			 * */
+			ctx.fillStyle = "aliceblue";
+			/*fill() 填充绘制*/
+			ctx.fill();
+			
+			//画个圆
+			ctx.beginPath();
+			/*arc(x,y,r,sAngle,eAngle,clockwise)
+			 *x,y圆心坐标
+			 * r为半径
+			 * sAngle 起始角度  弧度制
+			 * eAngle 终止角度
+			 * clockwise 布尔值 是否顺逆时针 默认false代表顺时针 true代表逆时针
+			 * */
+			//ctx.moveTo(71,120);  //把起点设置在圆心,然后填充那就是从圆心开始的几分支几圆,否则就是首尾连接的填充圆
+			ctx.arc(71,120,20,0,Math.PI/2.5,true);
+//			ctx.closePath();
+			ctx.stroke();
+			
+			
+			//绘制一个填充的下半圆
+			ctx.beginPath();
+			ctx.moveTo(300,200);
+			ctx.arc(300,270,20,0,Math.PI);
+			ctx.closePath();
+//			ctx.stroke();
+			ctx.fill();
+			
+			
+			ctx.beginPath();
+			ctx.moveTo(50, 200);
+			ctx.lineTo(50,280);
+			ctx.lineTo(150,280);
+			ctx.lineTo(150,200);
+			ctx.strokeStyle = "aqua";
+			ctx.stroke();
+			ctx.fill();
+			
+			
+			//绘制矩形
+			/*strokeRect(x,y,w,h) 绘制无填充的矩形
+			 * x,y代表矩形左上角的原点坐标
+			 * w,h代表矩形的宽和高
+			 *fillRect(x,y,w,h)   绘制填充的矩形
+			 * 
+			 * */
+			ctx.beginPath();
+			ctx.strokeRect(50,210,40,40);//线宽从中间向两边扩散
+			ctx.fillStyle = "cornflowerblue";
+			ctx.fillRect(110,210,40,40);
+			
+			
+			/*绘制文本
+			 *strokeText(text,x,y,maxWidth);   绘制无填充的文本
+			 * text 文本
+			 * x,y代表绘制的位置坐标
+			 * maxWidth:可选 最大的阈值宽
+			 * 
+			 * fillText(text,x,y,maxWidth);   绘制填充的文本
+			 * */
+			ctx.beginPath();
+			ctx.strokeStyle = "gold";
+			ctx.lineWidth = 1;
+			/*font: 设置字体样式 简写形式必须有font-size和font-family*/
+			ctx.font = "30px STKaiati";
+			//文本对齐方式  以绘制的起点坐标为中心点,中心对齐,否则是默认左对齐
+			ctx.textAlign = "center";
+			//文本垂直对齐方式
+			ctx.textBaseline = "top";
+			ctx.strokeText("菜菜的鳄鱼眼泪",280,350,100);
+			ctx.font = "20px STKaiati";
+			ctx.fillText("科科",200,300);
+			
+			
+			/*渐变*/
+			ctx.beginPath();
+			//绘制样式支持渐变
+			/*创建渐变对象
+			 *createLinearGradient(x1,y1,x2,y2);
+			 * 分别代表两个点的坐标位置
+			 * 由两点位置确定线性渐变方向,以及渐变产生的范围
+			 * */
+			var linear = ctx.createLinearGradient(10,0,260,20); 
+			//添加渐变颜色以及位置
+			//addColorStop(位置,颜色)
+			//位置范围: 0~1 至少设置两种渐变颜色
+			linear.addColorStop(0,"red");
+			linear.addColorStop(0.3,"gold");
+			linear.addColorStop(0.5,"blue");
+			linear.addColorStop(1,"pink");
+			ctx.fillStyle = linear;
+			ctx.fillRect(10,0,250,20);
+			ctx.strokeStyle = linear;
+			ctx.strokeRect(10,30,250,20);
+			ctx.textAlign = "left";
+			ctx.strokeText("菜菜的小屋",10,30);
+			
+			//径向渐变
+			/*createRadialGradient(x0,y0,,r0,x1,y1,r1)
+			 *x0,y0,r0代表开始圆的圆心位置及半径
+			 * x1,y1,r1代表结束圆的圆心位置及半径
+			 * */
+			
+			var radial = ctx.createRadialGradient(440,60,40,440,60,50);
+			radial.addColorStop(0,"red");
+			radial.addColorStop(0.6,"orange");
+			radial.addColorStop(1,"gold");
+			ctx.beginPath();
+			ctx.arc(440,60,50,0,2*Math.PI);
+			ctx.fillStyle = radial;
+			ctx.fill();
+			
+			/*阴影*/
+			//阴影颜色
+			ctx.shadowColor = "gold";
+			//阴影的模糊半径
+			ctx.shadowBlur = 30;
+			//阴影偏移量
+			ctx.shadowOffsetX = 3;
+			ctx.shadowOffsetY = 5;
+			ctx.beginPath();
+			ctx.arc(450,200,40,0,2*Math.PI);
+			ctx.fillStyle = "red";
+			ctx.fill();
+			
+			/*属性
+			 * lineWidth 线宽
+			 *lineCap    线帽样式
+			 * butt默认值
+			 * round 圆角
+			 * square 方形线帽
+			 * 
+			 * 
+			 * lineJoin 线条拐角类型
+			 * miter 默认值 尖角形式
+			 * bevel 斜角
+			 * round 圆角
+			 * */
+			ctx.beginPath();
+			ctx.moveTo(300,400);
+			ctx.lineTo(400,400);
+			ctx.lineTo(300,450);
+			ctx.lineWidth = 10;
+			ctx.lineCap = "round";
+			ctx.lineJoin = "bevel";
+			ctx.stroke();
+			
+			/*贝塞尔曲线
+			 *二次贝塞尔曲线:quadraticCurveTo(cx,cy,x,y);
+			 * cx,cy代表控制点的坐标位置
+			 * x,y代表终点的坐标位置
+			 * */
+			ctx.beginPath();
+			ctx.moveTo(50,450);
+			ctx.quadraticCurveTo(150,400,300,500);
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(10,480);
+			ctx.quadraticCurveTo(50,480,60,600);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(60,600);
+			ctx.quadraticCurveTo(60,680,130,680);
+			ctx.stroke();
+			
+			/*三次贝塞尔曲线
+			 *bezierCurveTo(cx1,cy1,cx2,cy2,x,y);
+			 * cx1,cy1,cx2,cy2代表控制点1和控制点2的坐标位置
+			 *  x,y代表终点的坐标位置
+			 * */
+			ctx.beginPath();
+			ctx.moveTo(500,100);
+			ctx.bezierCurveTo(550,0,650,200,700,100);
+			ctx.stroke();
+			//绘制一个💖
+			ctx.beginPath();
+			ctx.moveTo(600,500);
+			ctx.bezierCurveTo(500,460,500,520,600,580);
+			ctx.stroke();
+			ctx.beginPath();
+			ctx.moveTo(600,500);
+			ctx.bezierCurveTo(700,460,700,520,600,580);
+			ctx.stroke();
+			//绘制一个雨滴
+			ctx.beginPath();
+			ctx.moveTo(600,300);
+			ctx.bezierCurveTo(450,150,750,150,600,300);
+			ctx.stroke();
+			
+			/*clearRect(x,y,w,h) 清除画布对应区域的内容*/
+			ctx.clearRect(0,0,300,300);  //w:想要清除的大小宽度  h:想要清除的大小的高度
+			
+		</script>
+	</body>
+</html>

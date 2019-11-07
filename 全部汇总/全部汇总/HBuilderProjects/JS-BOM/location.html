@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>location对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//location 网址对象 存储窗口的url
+			console.log(location);
+			//协议名
+			console.log(location.protocol);
+			//域名
+			console.log(location.hostname);
+			//主机号   主机号比域名多一个端口号
+			console.log(location.host);
+			//port 端口号
+			console.log(location.port);
+			//文件路径 /后面一直到问号前面
+			console.log(location.pathname);
+			//查询信息(?及后面到锚点#前面的数据)
+			console.log(location.search);
+			//href 完整的网址字符串
+			console.log(location.href);
+			//hash 锚点
+			console.log(location.hash);
+			
+			//常用的方法:
+			//可实现页面跳转切换的方法:
+			//assign(url)  加载对应路径的页面
+			//location.assign('http://www.baidu.com');
+			
+			//replace() 替换当前页面(的网址)
+			//location.replace('http://www.baidu.com');
+			
+			//reload() 重新加载页面刷新
+			document.onclick = function(){
+				location.reload();
+			}
+			
+		</script>
+		
+	</body>
+</html>

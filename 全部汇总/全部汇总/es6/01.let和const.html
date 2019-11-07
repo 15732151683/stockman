@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+/*
+* var声明的变量以及function声明的函数都具备声明提升
+* 在声明提升时，function声明在前，var在后
+* */
+
+    //let没有变量声明提升
+    // console.log(a);//undefined
+// // var a = 10;
+
+    /*考一考*/
+    // var a = 10;
+    // function a(){
+    //
+    // }
+    // console.log(a);//10
+
+
+    // console.log(a);//Error
+    // let a = 10;
+
+    /*二、let不能重复声明*/
+    // var a = 10;
+    // var a = 5;
+    // console.log(a);//5
+
+    // let a = 10;
+    // let a = 5;
+    // console.log(a);//Error
+
+    /*三、let具备暂时性死区*/
+    // var a = 10;
+    // if(true){
+    //     console.log(a);//10
+    //     var a = 5;
+    // }
+    /*暂时性死区：在一个块级作用域内，let声明之前，无法获得变量的值*/
+    // let a = 10;
+    // if(true){
+    //     console.log(a);//Error
+    //     let a = 5;
+    // }
+
+    /*四：let的块级作用域*/
+    // {
+    //     var a = 10;
+    //     let b = 15;
+    // }
+    // console.log(a);//10
+    // console.log(b);//Error
+
+//    小作业
+//     var a = [];
+    // for(var i=0; i<10; i++){
+    //     a[i] = function(){
+    //         console.log(i);
+    //     }
+    // }
+    // var i = 0;
+    // a[0] = function(){
+    //     console.log(i)
+    // }
+    // i++;
+    // a[1] = function () {
+    //     console.log(i);
+    // }
+    // i++;
+    // a[2] = function () {
+    //     console.log(i);
+    // }
+    // i++;
+    //
+    // a[0]()//10;
+
+
+
+//    实现a[1]()=1,a[2]()=2,a[3]()=3
+
+    // var a = [];
+    // for(let i=0; i<10; i++){
+    //     a[i] = function(){
+    //         console.log(i);
+    //     }
+    // }
+    //
+    // a[6]()//6;
+
+    // var a = [];
+    // for(var i=0; i<10; i++){
+    //     (function(i){
+    //         a[i] = function () {
+    //             console.log(i);
+    //         }
+    //     })(i)
+    //
+    // }
+
+     // a[0] = function () {
+     //     console.log(0);
+     // }
+
+    // a[6]();
+
+
+    /*const:常量，不能修改的量*/
+    console.log(a);
+    const a = 10;
+    // a = 15;//常量的值不能修改
+
+
+
+</script>
+</html>

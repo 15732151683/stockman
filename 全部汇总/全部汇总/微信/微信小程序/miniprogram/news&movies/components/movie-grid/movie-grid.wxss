@@ -1,0 +1,16 @@
+/* components/movie-grid/movie-grid.wxss */
+@import "/template/movie-item/movie-item-template.wxss";
+
+
+.movie-grid{
+  width: 680rpx;
+  margin:0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie-grid-item{
+  margin-right: 38rpx;
+}
+.movie-grid-item-active{
+  margin-right: 0;
+}

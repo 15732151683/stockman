@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				height: 200px;  
+				border: 1px solid;
+			}
+			#d2{
+				width: 500px;
+				height: 500px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<div id="d2"><span></span></div>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*jQuery绑定事件的方式:
+			 *1. on("事件类型名称", 事件处理函数)
+			 *2.事件名(事件处理函数)
+			 *3.bind("事件类型名称", 事件处理函数)   3.0版本之后被弃用了,建议使用on替代
+			 * 
+			 * jQuery中的事件支持同一种类型的事件同时绑定多个处理函数不会被覆盖
+			 * 支持同时绑定多种不同类型的事件
+			 * */
+			$(function(){
+				$(window).scroll(function() {
+					console.log("scroll");
+});
+				$("#d2").mouseover(function(){
+					var that = this;
+					console.log(that);//指的是#d2这个DOM节点 具体的可看打印结果
+					console.log($(this)); //指的是#d2这个对象,里面还有很多很多属性和方法呢,比如说 innerHTML: "<span></span>"  innerText: ""    具体的可看打印结果
+					console.log("这里是mouseover");
+				}).click(function(){
+					console.log("这里是click");
+				}).mouseout(function(){
+					console.log("这里是mouseout");
+				});
+				$("#d1").on("click",fn);    //直接写函数名就可以了
+				function fn(){
+					$(this).text("你你你你点我啦😱");
+				}
+				$("#d1").click(function(){
+					$(this).css("background","#BC8F8F");
+				});
+				//参数1支持多个事件类型同时一起绑定 语法: 空格间隔
+				$("#d1").on("mouseover mouseout click",function(){
+					console.log(event.type);
+					if(event.type=="click"){
+						console.log("点击");
+					}else if(event.type=="mouseover"){
+						console.log("移入");
+					}else if(event.type=="mouseout"){
+						console.log("移出");
+					}
+				});
+				//jQuery中取消事件流绑定；
+				//on()方式添加事件：  采用 off（）取消绑定
+				//bind():     采用unbind（）
+				//如果没有给参数，则取消的是当前对象上的所有处理函数
+				//$("#d1").off();
+				
+				//参数1： 事件类型名 若给,则取消对应事件处理函数
+				//$("#d1").off("click");
+				//若要取消对应类型的事件特定的某个处理函数,必须传入对应的事件名和函数的引用(函数名)
+				$("#d1").off("click",fn);
+				
+				
+				// one("事件类型", 处理函数)   用于绑定只触发执行一次的事件
+				
+				//trigger(type,[data])  直接触发匹配到的元素对应的类型事件处理函数  JQ版本3.0+会报错   $("#d1").trigger("click", fn);
+				
+				/*
+				 事件
+blur([[data],fn])
+change([[data],fn])
+click([[data],fn])
+dblclick([[data],fn])
+error([[data],fn])1.8-
+focus([[data],fn])
+focusin([data],fn)
+focusout([data],fn)
+keydown([[data],fn])
+keypress([[data],fn])
+keyup([[data],fn])
+mousedown([[data],fn])
+mouseenter([[data],fn])
+mouseleave([[data],fn])
+mousemove([[data],fn])
+mouseout([[data],fn])
+mouseover([[data],fn])
+mouseup([[data],fn])
+resize([[data],fn])
+scroll([[data],fn])
+select([[data],fn])
+submit([[data],fn])
+unload([[data],fn])1.8-
+				 * */
+				
+				
+				//特殊:   hover(fn1, fn2)  当鼠标移入时执行fn1;鼠标移出时执行fn2
+				$("#d1").hover(function(){
+					$(this).css("background", "pink");
+				}, function(){
+					$(this).css("background", "lightblue")}
+				);
+			
+				//事件对象: 
+				/*常用的属性:
+				 * target  获取目标源对象
+				 * type   事件类型
+				 * pageX 获取基于页面左上角的水平横向位置
+				 * pageY  获取基于页面左上角的纵向位置
+				 * which  识别键盘按键键码值和鼠标按键(左中右)
+				 * data  获取绑定事件是时传递的数据
+				 * */
+				$("#d1").on("click", {msg: "hahaha"}, function(e){
+					//参数e指的就是事件对象
+					console.log(e.data.msg);
+				});
+				$(document).keydown(function(e){
+					console.log(e);
+					console.log(e.which);
+				});
+				//jQuery中的事件也有冒泡过程
+				/*eve.stopPropagation()  取消冒泡
+				 *取消事件的默认行为
+				 * eve.preventDefault()  取消默认行为
+				 * return false;   在JQ中,即取消默认行为同时阻止冒泡
+				 * */
+			
+			});
+			
+			
+		</script>
+	</body>
+</html>

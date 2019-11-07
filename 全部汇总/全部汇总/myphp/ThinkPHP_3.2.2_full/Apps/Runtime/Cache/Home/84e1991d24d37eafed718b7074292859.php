@@ -1,0 +1,38 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="index.php" method="post" name="score"><br />
+			<table>js:</table><input type="text" name="js" id="js" value="${data.js}" /><br />
+			<table>php:</table><input type="text" name="php" id="php" value="${data.php}" /><br />
+			<table>java:</table><input type="text" name="java" id="java" value="${data.java}" /><br />
+			<table>python:</table><input type="text" name="python" id="python" value="${data.python}" /><br />
+			<table>c++:</table><input type="text" name="c++" id="c++" value="${data.c}" /><br />
+			<input type="button" value="提交成绩"/> 
+		</form>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+//			$(function() {
+				//从列表过来,a链接直接拼接了值的
+				var str = location.search;
+				var id = str.split("id=")[1];
+				$("input[type=button]").click(function() {
+					var formData = new FormData(document.score);
+					//把不是表单里面的信息也想传到后台,append到FormData里面就OK啦
+					formData.append('id',id);
+					$.ajax({
+						type: "post",
+						url:"index.php?m=home&c=score&a=update",
+						data:formData,
+						dataType:"json",
+						processData:false,
+						contentType:false
+					});
+				});
+//			});
+		</script>
+	</body>
+</html>

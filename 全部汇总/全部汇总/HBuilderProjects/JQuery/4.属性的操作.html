@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性的操作</title>
+	</head>
+	<body>
+		<input type="text" />
+		<img src="img/pic_bulboff.gif"/>
+		<input type="checkbox" checked/>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/* attr("属性名",属性值|函数)  设置元素对应属性为对应属性值
+			 * attr("属性名")             获取对应属性值
+			 * removeAttr("属性名")       删除对应属性
+			 * prop()
+			 * removeProp("属性名")       删除对应属性
+			 * */
+			/*两种方式的区别:
+			 * attr()  常用于操作元素的自定义属性,也可以操作自带属性
+			 * prop() 常用于操作元素的自带属性
+			 *当操作的是布尔值类型的属性时,使用prop()
+			 * */
+			$(function(){
+				//设置添加一个属性
+				$("input:eq(0)").attr("placeholder","请输入");
+				//可同时添加多个属性: 以对象{}形式设置(键值对)
+				$("img").attr({
+					src:"img/pic_bulboff.gif",
+					width: 200,
+					height: 300,
+					
+				});
+				//attr("属性名") 获取对应的属性的值
+				console.log($("img").attr("src"));
+				
+				//参数2也可以是个函数  该函数有2个参数,分别表示下标以及对应属性的原有值,必须返回对应的属性值(return)
+				$("img").attr("height", function(i,v){
+					console.log(i, v);
+					return 500;
+				});
+				//添加一个属性
+				$("input:first").prop("placeholder","hahhahhahahhah");
+				//添加多个属性  键名可加可不加引号,键值一般要加,有单位的数字一定要加,有多个的话每一对之间逗号间隔
+				$("img").prop({
+					width: 100,
+					title: "可爱的狗狗"
+				});
+				//区别: 当要获取元素的固有属性是布尔类型的值时,通过attr无法正常获取布尔值,该场景下使用prop获取元素布尔类型的属性值
+				console.log($(":checkbox").attr("checked"));
+				console.log($(":checkbox").prop("checked"));
+			});
+		</script>
+	</body>
+</html>

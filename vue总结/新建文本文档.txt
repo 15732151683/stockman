@@ -1,0 +1,1 @@
+vue  原生监听事件   @keyup.native='事件名称'

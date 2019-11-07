@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度图片-发现多彩的世界</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				min-width: 1000px;
+			}
+			ul,li{
+				list-style: none;
+			}
+			.header{
+				height: 620px;
+				background: url(img/timg.jpeg) no-repeat;
+		/*注意:  这个要单独写*/
+				background-size: cover;
+			}
+			.header-top{
+				position: relative;
+				height: 32px;
+				background: rgba(0,0,0,0.3);
+				filter:alpha(opacity=0.3);
+				text-align: right;
+			}
+			.header-top a{
+				color:white;
+				font-size: 12px;
+				margin-left: 22px;
+				line-height: 32px;
+			}
+		/*三角形要这样做*/
+			.triangle{
+				position: absolute;
+				top: -14px;
+				right: 27px;
+				display: inline-block;
+				width: 0;
+				vertical-align: middle;				
+				border: 7px solid white;
+				line-height: 62px;
+				border-right-color: transparent;
+				border-top-color: transparent;
+				border-left-color: transparent;
+			}
+			nav i{
+				width: 12px;
+				height: 10px;
+				padding-right: 15px;
+				display: inline-block;
+				background: url(img/home_user_name_icon_a056a01.png) no-repeat;
+			}
+			nav a:last-of-type:hover+.sub-nav{
+				display: block;
+			}
+			.sub-nav{
+				margin-right:10px;
+				position: absolute;
+				top: 37px;
+				right: 0;
+				background-color: #fff;
+				display: none;
+			}
+			.sub-nav a{
+				text-decoration: none;
+				line-height: 26px;
+				color: black;
+				font-size: 12px;
+				margin-left: 9px;
+			}
+			.sub-nav li{
+				width: 123px;
+				height: 26px;
+				text-align: left;
+			}
+			.sub-nav li:hover{
+				background-color: #3388FF;
+			}
+			.sub-nav li:hover a{
+				color: white;
+			}
+			.con{
+				margin-top: 200px;
+			}
+			.logo{
+				width: 244px;
+				display: block;
+				margin: 0 auto;
+			}
+			.search{
+				width: 540px;
+				height: 50px;
+				margin: 30px auto 0;
+				border: 1px solid white;
+			}
+			.search input[type=text]{
+				border: none;
+				outline: none;
+				padding: 12px 15px;
+				width: 376px;
+				line-height: 26px;
+				font-size: 14px;
+				background: transparent;
+				color: white;
+			}
+			.icon-camera{
+				display: inline-block;
+				width: 18px;
+				height: 16px;
+				margin: 0 10px;
+				background-image: url(img/camera_new.png);
+				cursor: pointer;
+			}
+			.icon-camera:hover{
+				background: url(img/camera_new.png) 0 -20px;
+			}
+			.line{
+				font-size: 24px;
+				color: white;
+				margin: 0 10px;
+				vertical-align: middle;
+			}
+			.search input[type=submit]{
+				width: 20px;
+				height: 21px;
+				background: url(img/search.png) no-repeat center;
+				margin: 0 10px;
+				vertical-align: middle;
+				cursor: pointer;
+				outline: none;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<header class="header-top">
+				<nav>
+					<a href="">网页</a>
+					<a href="">新闻</a>
+					<a href="">贴吧</a>
+					<a href="">知道</a>
+					<a href="">音乐</a>
+					<a href="">图片</a>
+					<a href="">视频</a>
+					<a href="">地图</a>
+					<a href="">文库</a>
+				<!--没有href 就没有交互效果了, 每点击刷新了-->
+					<a>|</a>
+					<a href="">百度首页</a>
+					<a href="">登录</a>
+					<a href="">注册</a>
+					<a href="">收藏本页</a>
+					<ul class="sub-nav this-page">    定个位
+						<div class="triangle"></div>
+						<li><a href="">请按Commend+D收藏</a></li>
+					</ul>
+					<a href="">官方合作</a>
+					<ul class="sub-nav">
+						<div class="triangle"></div>
+						<li><a href="">百度源计划</a></li>
+						<li><a href="">图片版权合作平台</a></li>
+					</ul>
+					<i></i>
+		
+					
+				</nav>
+			</header>
+			<div class="con">
+				<img src="img/index.png" alt="" class="logo"/>
+		<!--注意搜索这个写法,div>inform>input border: none;-->
+				<div class="search">
+					<form action="" method="get">
+						<input type="text" value=""/>
+						<span class="icon-camera"></span>
+						<span class="line">|</span>
+						<input type="submit" name="" id="" value="" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

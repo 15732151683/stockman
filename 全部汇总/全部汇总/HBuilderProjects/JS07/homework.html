@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#con{
+				display: inline-block;
+				width: 520px;
+				height: 280px;
+				vertical-align: top;
+				overflow: hidden;
+			}
+			img{
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bt">
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+		</div>
+		<div class="wrap">
+			<div class="con">
+				<img src="img/1.jpg" alt="" />
+				<img src="img/2.jpg" alt=""/>
+				<img src="img/3.jpg" alt="" />
+				<img src="img/4.jpg" alt=""/>
+				<img src="img/5.jpg" alt="" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			//写函数, 判断一个数是不是素数(质数), 是, 返回true, 不是, 返回false
+			function sushu(a){
+				for (var i = 2; i < a; i++) {
+					if(a%i == 0){
+						return false;
+					}else{
+						return true;
+					}
+				}
+			}
+			console.log(sushu(11));
+			
+			//写函数, 实现计算多个数的最大值, 最小值, 平均值
+			function manyNum(){
+				var sum = 0;
+				var max = Number.NEGATIVE_INFINITY;
+				var min = Number.POSITIVE_INFINITY;
+				for (var i = 0, len = arguments.length; i < len; i++) {
+					sum += arguments[i];
+					max = arguments[i] > max ? arguments[i] : max;
+					min = arguments[i] > min? min : arguments[i]; 
+				}
+				return [max, min, sum/(len+1)]
+			}
+			console.log(manyNum(323,78,98,0,80,9,1,35));
+			
+			//实现图片滑动切换效果
+			var btn = document.getElementById("bt").getElementsByTagName('button');
+			var imgs = document.getElementById("con").getElementsByTagName('img');
+			for(var m = 0; m < btn.length; m++){
+				btn[m].index = m;
+				console.log(m);
+				btn[m].onclick = function(){
+					imgs[this.index].style.transform = "translateY("+this.index*(-280)+"px)"
+				}
+			}
+			setInterval(move, 500);
+			var i = 0;
+			function move() {
+				i++;
+				imgs[i].style.transform = "translateY(" + (-280)*(i) + "px)";
+				if(i >= 5){
+					imgs[4].style.transform = "translateY(480px)";
+					i = 0;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

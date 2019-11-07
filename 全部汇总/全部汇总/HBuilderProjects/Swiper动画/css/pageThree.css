@@ -1,0 +1,136 @@
+.img1 {
+	position: absolute;
+	top: 30px;
+	left: 50px;
+	width: 15%;
+	animation: RB 6s infinite alternate;
+}
+
+@keyframes RB {
+	from {
+		transform: translateX(0) translateY(0);
+	}
+	to {
+		transform: translateX(15px) translateY(15px);
+	}
+}
+
+.img2 {
+	position: absolute;
+	top: 30%;
+	right: 25px;
+	width: 12%;
+	animation: T 3s infinite alternate;
+}
+
+@keyframes T {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-10px);
+	}
+}
+
+.img3 {
+	position: absolute;
+	bottom: 15%;
+	left: 18%;
+	width: 10%;
+	animation: roR 3s infinite alternate;
+}
+
+@keyframes roR {
+	from {
+		transform: rotateZ(0);
+	}
+	to {
+		transform: rotateZ(45deg);
+	}
+}
+
+.group1,
+.group2,
+.group3,
+.group4,
+.group5 {
+	position: absolute;
+}
+
+.group1 {
+	right: 0;
+	top: 9%;
+	width: 45%;
+	animation: rotra 10s infinite alternate;
+}
+
+@keyframes rotra {
+	from {
+		transform: rotateZ(0) translateX(0) translateY(0);
+	}
+	60% {
+		transform: rotateZ(-5deg) translateX(-20px) translateY(-20px);
+	}
+	to {
+		transform: rotateZ(0deg) translateX(5px) translateY(10px);
+	}
+}
+
+.group2 {
+	left: 10px;
+	top: 28%;
+	width: 45%;
+	animation: roL 5s infinite alternate;
+}
+
+@keyframes roL {
+	from {
+		transform: rotateZ(0) scale(0.9);
+	}
+	to {
+		transform: rotateZ(-8deg) scale(1);
+	}
+}
+
+.group3 {
+	right: 0;
+	top: 40%;
+	width: 55%;
+	animation: T 3s infinite alternate;
+}
+
+.group4 {
+	left: 10px;
+	top: 55%;
+	width: 45%;
+	animation: roR 5s infinite alternate;
+}
+
+@keyframes roR {
+	from {
+		transform: rotateZ(0);
+	}
+	to {
+		transform: rotateZ(15deg);
+	}
+}
+
+.group5 {
+	z-index: 999;
+	right: 6%;
+	bottom: 17%;
+	width: 43%;
+	animation: LB 15s infinite alternate;
+}
+
+@keyframes LB {
+	from {
+		transform: translateX(0) translateY(0);
+	}
+	40% {
+		transform: translateX(-20px) translateY(20px);
+	}
+	to {
+		transform: translateX(15px) translateY(-40px);
+	}
+}

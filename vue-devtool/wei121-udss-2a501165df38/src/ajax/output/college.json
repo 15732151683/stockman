@@ -1,0 +1,158 @@
+[
+  {
+    "row": 1,
+    "name": "Medicine",
+    "abridge": "Fac Med",
+    "type": "fac"
+  },
+  {
+    "row": 2,
+    "name": "Engineering",
+    "abridge": "Fac Engn",
+    "type": "fac"
+  },
+  {
+    "row": 3,
+    "name": "Mathematics",
+    "abridge": "Dept Math",
+    "type": "dept"
+  },
+  {
+    "row": 4,
+    "name": "Computing and Information Technology",
+    "abridge": "Fac Comp & Informat Technol",
+    "type": "fac"
+  },
+  {
+    "row": 5,
+    "name": "Chemistry",
+    "abridge": "Dept Chem",
+    "type": "dept"
+  },
+  {
+    "row": 6,
+    "name": "Environmental Designs",
+    "abridge": "Fac Environm Design",
+    "type": "fac"
+  },
+  {
+    "row": 7,
+    "name": "Physics",
+    "abridge": "Dept Phys",
+    "type": "dept"
+  },
+  {
+    "row": 8,
+    "name": "Meteorology, Environment and Arid Land Agriculture",
+    "abridge": "Fac Meteorol Environm & Arid Land Agr",
+    "type": "fac"
+  },
+  {
+    "row": 9,
+    "name": "Pharmacy",
+    "abridge": "Fac Pharm",
+    "type": "fac"
+  },
+  {
+    "row": 10,
+    "name": "Earth Sciences",
+    "abridge": "Fac Earth Sci",
+    "type": "fac"
+  },
+  {
+    "row": 11,
+    "name": "Marine Sciences",
+    "abridge": "Fac Marine Sc",
+    "type": "fac"
+  },
+  {
+    "row": 12,
+    "name": "Applied Medical Sciences",
+    "abridge": "Fac Appl Med Sci",
+    "type": "fac"
+  },
+  {
+    "row": 13,
+    "name": "Art & Humanities",
+    "abridge": "Fac Arts & Humanities",
+    "type": "fac"
+  },
+  {
+    "row": 14,
+    "name": "Dentistry",
+    "abridge": "Fac Dent",
+    "type": "fac"
+  },
+  {
+    "row": 15,
+    "name": "Nursing",
+    "abridge": "Fac Nursing",
+    "type": "fac"
+  },
+  {
+    "row": 16,
+    "name": "Economics and Administration",
+    "abridge": "Fac Econ & Adm",
+    "type": "fac"
+  },
+  {
+    "row": 17,
+    "name": "Jeddah Community Collage",
+    "abridge": "Jeddah Community Coll",
+    "type": "fac"
+  },
+  {
+    "row": 18,
+    "name": "Law",
+    "abridge": "Fac Law",
+    "type": "fac"
+  },
+  {
+    "row": 19,
+    "name": "Maritime Studies",
+    "abridge": "Fac Maritime Studies",
+    "type": "fac"
+  },
+  {
+    "row": 20,
+    "name": "Home Economics",
+    "abridge": "Home Econ",
+    "type": "fac"
+  },
+  {
+    "row": 21,
+    "name": "Communication and Media",
+    "abridge": "Fac Communication & Media",
+    "type": "fac"
+  },
+  {
+    "row": 22,
+    "name": "Islamic Economics Institute",
+    "abridge": "Islamic Econ Dept",
+    "type": "dept"
+  },
+  {
+    "row": 23,
+    "name": "English Language Institute",
+    "abridge": "English Language Inst",
+    "type": "dept"
+  },
+  {
+    "row": 24,
+    "name": "Educational Graduate Studies",
+    "abridge": "Educ Grad Studies",
+    "type": "dept"
+  },
+  {
+    "row": 25,
+    "name": "Tourism",
+    "abridge": "Fac Tourism",
+    "type": "fac"
+  },
+  {
+    "row": 26,
+    "name": "The Arabic Language Institute for Speakers of Other Languages",
+    "abridge": "Arabic Language Inst",
+    "type": "dept"
+  }
+]

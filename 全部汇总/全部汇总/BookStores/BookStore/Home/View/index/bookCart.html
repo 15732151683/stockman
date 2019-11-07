@@ -1,0 +1,77 @@
+<extend name="Public/common/views/base.html" />
+
+<block name="title">
+  <title>购物车</title>
+</block>
+
+<block name="mainCss">
+  <css href="/BookStore/Public/css/bookCart.css" />
+</block>
+
+<block name="body">
+  <div class="wrap">
+    <h1>购物车</h1>
+    <div class="list">
+      <table border="1" cellspacing="0" bordercolor="#ccc">
+        <tr>
+          <th>图书</th>
+          <th>书名</th>
+          <th>数量</th>
+          <th>单价</th>
+          <th>结算</th>
+          <th>删除</th>
+        </tr>
+        <volist name="books" id="book" key="i">
+          <tr>
+            <td>
+              <img src={$book.b_imgpath} />
+            </td>
+            <td>{$book.b_name}</td>
+            <td class="num">{$book.num}</td>
+            <td class="price">{$book.b_price}</td>
+            <td>
+              <button class="pay" index={$book.b_id}>付款</button>
+            </td>
+            <td>
+              <button class="del" index={$book.b_id}>删除</button>
+            </td>
+          </tr>
+        </volist>
+      </table>
+    </div>
+  </div>
+</block>
+
+<block name="script">
+  <script>
+    $('.del').click(function(){
+      let that = $(this)
+      $.post('/BookStore/home/cart/delItem', {
+        id: that.attr('index'),
+        num: 1
+      }, function(res){
+        if(res.num){
+          that.parent().siblings('.num').text(res.num)
+        }else {
+          that.parent().parent().remove();
+        }
+      }, 'json')
+    })
+
+    $('.pay').click(function(){
+      let that = $(this)
+      $.post('/BookStore/home/cart/pay', {
+        id: that.attr('index'),
+        num: that.parent().siblings('.num').text(),
+        price: that.parent().siblings('.price').text()
+      }, function(res){
+        if(res.succeed){
+          alert(res.message)
+          that.parent().parent().remove();
+        }else {
+          alert(res.message)
+        }
+      }, 'json')
+    })
+ </script>
+</block>

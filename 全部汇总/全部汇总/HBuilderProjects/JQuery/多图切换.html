@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多图切换</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width: 595px;
+				height: 196px;
+				margin-top: 20px;
+				margin-left: 60px;
+				border: 1px solid #F1F2F1;
+			}
+			.top{
+				position: relative;
+				background: #EAEBEA;
+				border: 1px solid #F1F2F1;
+			}		
+			.title{
+				width: 86px;
+				height: 35px;
+				background: url(img/btn_cartoon.gif) 0 -101px;
+			}
+			.fenye{
+				position: absolute;
+				top: 5px;
+				left: 96px;
+			}
+			span{
+				display: inline-block;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: white;
+			}
+			.fenye>.cur{
+				background: #34AEF3;
+			}
+			.arrow_l,.arrow_r{
+				width: 30px;
+				height: 23px;
+				background-image: url(img/btn_cartoon.gif);
+				position: absolute;
+				top: 6px;
+			}
+			.arrow_l{
+				background-position: 0 -400px;
+				left: 150px;
+				cursor: pointer;
+			}
+			.arrow_r{
+				background-position: -30px -400px;
+				left: 180px;
+				cursor: pointer;
+			}
+			.more{
+				position: absolute;
+				top: 6px;
+				right: 15px;
+				color: #2A93D6;
+				font-size: 14px;
+			}
+			.more>a:hover{
+				color: red;
+			}
+			.show{
+				position: relative;
+				width: 593px;
+				height: 155px;
+				overflow: hidden;
+			}
+			.con{
+				position: absolute;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				width: 400%;
+				height: 100%;				
+			}
+			.name a{
+				text-decoration: none;
+				font-size: 12px;
+				color: #5395DA;
+			}
+			.name a:hover{
+				color: red;
+				text-decoration: underline;
+			}
+			.name+p{
+				color: #656665;
+				font-size: 12px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top">
+				<div class="title"></div>
+				<div class="fenye">
+					<span class="cur"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="arrow">
+					<div class="arrow_l"></div>
+					<div class="arrow_r"></div>
+				</div>
+				<div class="more"><a><i>更多>></i></a></div>
+			</div>
+			<!--展示区-->
+			<div class="show">
+				<!--内容区-->
+				<div class="con">
+					<div class="image">
+						<img src="img/01.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/01.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/01.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/01.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/02.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/02.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/02.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/02.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/03.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/03.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/03.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/03.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/04.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/04.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/04.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+					<div class="image">
+						<img src="img/04.jpg"/>
+						<p class="name"><a href="">哆啦A梦</a></p>
+						<p>播放:<i>33,326</i></p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var i = 0;
+				//临界下标的问题？？？？？？？
+				$(".arrow_r").click(function(){
+					i++;
+					console.log(i);
+					if(i==4){i = 0};       
+					$(".con").animate({left: $(".show").width()*(-i)+"px"},1000);
+					$(".fenye span").eq(i).addClass("cur").siblings().removeClass("cur");  // className("类名") 不要加点
+				});
+				$(".arrow_l").click(function(){
+					i--;
+					console.log(i);
+					if(i==-1){i = 3};
+					$(".con").animate({left: $(".show").width()*(-i)+"px"},1000);
+					$(".fenye span").eq(i).addClass("cur").siblings().removeClass("cur");
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>背景滚动</title>
+	</head>
+	<body>
+		<canvas id="canvas12" width="320" height="568"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas12");
+			var ctx = canvas.getContext("2d");
+			var bgImg = new Image();
+			bgImg.src ="img/background.png";
+			//背景对象
+			var bg = {//只有一个,可以简写形式
+				x:0,
+				y:0,
+				w:canvas.width,
+				h:canvas.height,
+				draw:function(){
+					ctx.drawImage(bgImg,0,this.y,this.w,this.h);
+					//解决留白的问题
+					ctx.drawImage(bgImg,0,this.y-this.h,this.w,this.h);
+				},
+				//滚动
+				scroll: function(){
+					this.y++;//背景的相对运动
+					if(this.y>=this.h)this.y = 0;
+				}
+			}; 
+			var fImg = new Image();
+			fImg.src = "img/herofly.png";
+			//战机对象
+			var fighter = {
+				w: 66,
+				h: 82,
+				x: canvas.width/2 - 33,
+				y: canvas.height - 100,
+				draw:function(){
+					ctx.drawImage(fImg,0,0,this.w,this.h,this.x,this.y,this.w,this.h);
+				}
+			}
+			/*游戏主入口函数*/
+			function main(){
+				//清除画布
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				//背景图出现并滚动
+				bg.scroll();
+				bg.draw();
+				//战机出现
+				fighter.draw();
+				requestAnimationFrame(main);
+				
+			}
+			window.onload = function(){
+				main();
+				
+			}
+		</script>
+	</body>
+</html>

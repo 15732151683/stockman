@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单事件类型</title>
+		<style type="text/css">
+			input{
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" method="get" id="form1">
+			<input type="text" name="" id="" value="" /><br />
+			<input type="" name="" id="" value="" /><br />
+			<select name="">
+				<option value="a">选项1</option>
+				<option value="b">选项2</option>
+			</select><br />
+			<!--button放在form里面  自带提交功能-->
+			<button></button>
+			<input type="submit" value="提交"/>
+		</form>
+		<script type="text/javascript">
+			/*focus 表单元素获取焦点时
+			 *blur  表单元素失去焦点是
+			 *change 表单元素内容发生变化时且当失去焦点是才会触发
+			 *input 表单元素内容发生变化时*/
+			var inputs = document.querySelectorAll("input");
+			inputs[0].onfocus = function(){
+				this.style.border = '1px solid green';
+			}
+			inputs[0].onblur = function(){
+				this.style.border = '1px solid gray';
+			}
+			//内容发发生改变且失去焦点时触发
+			inputs[0].onchange = function(){
+				console.log(this.value);
+			}
+			//只要内容发生改变就触发
+			inputs[0].oninput = function(){
+				console.log(this.value);
+			}
+			//onsubmit 当表单进行提交时
+			document.getElementById("form1").onsubmit = function(){
+				if (inputs[0].value == ''){
+					//若为空,则无法提交
+					inputs[0].style.borderColor = 'red';
+					//阻止默认行为   比如button在form里面则默认会提交
+					return false;
+				}
+			}
+			
+			document.querySelector("select").onchange = function(){
+				console.log(this.value); 
+			}
+			
+			/*只支持输入框和输入域元素!!!!!!
+			 * onselect 当选中文本内容时
+			 *oncopy 当复制文本内容时
+			 * oncut 当剪切时
+			 * onpaste 当粘贴时*/
+		</script>
+	</body>
+</html>

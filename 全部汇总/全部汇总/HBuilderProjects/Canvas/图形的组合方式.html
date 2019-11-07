@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas3" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas3");
+			var ctx = canvas.getContext("2d");
+			ctx.beginPath();
+			ctx.arc(100,100,50,0,Math.PI*2);
+			ctx.fillStyle = "red";
+			ctx.fill();
+			/*globalCompositeOperation: 设置图形的组合方式
+			 *source-in:  绘制新图(设置该属性之后画的图)和原图(设置该属性之前画的图)的重叠部分<--结果是新图的一部分
+			 * source-out  绘制新图和原图的未重叠部分  <--结果是新图的一部分 
+			 * source-over: 恢复默认
+			 * destination-in: 绘制的是原图和新图重叠的部分  <--结果是原图的一部分
+			 * destination-out:  绘制的是原图和新图未重叠的部分  <--结果是原图的一部分
+			 * destination-atop:  绘制的是原图和新图重叠的部分➕新图未重叠部分
+			 * destination-over: 颠倒层级,原图覆盖新图
+			 * lighter: 重叠部分颜色变淡
+			 * copy: 只绘制新图
+			 * xor: 清除重叠的部分,保留原图和新图未重叠部分
+			 * */
+			ctx.globalCompositeOperation="xor";
+			ctx.beginPath();
+			ctx.arc(150,100,50,0,Math.PI*2);
+			ctx.fillStyle = "aquamarine";
+			ctx.fill();
+			
+		</script>
+	</body>
+</html>

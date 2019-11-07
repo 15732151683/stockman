@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回调函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function test(n, cb){
+				var num = n*n;
+				//回调函数:  在函数体内部被调用的函数
+				cb(num);
+			}
+			//利用回调函数,通常可以通过给参数的形式将函数内部的数据传递给外部使用
+			test(5, function(x){alert(x);});
+		</script>
+		
+	</body>
+</html>

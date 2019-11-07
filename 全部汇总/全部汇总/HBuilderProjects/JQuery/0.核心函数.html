@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>核心函数</title>
+	</head>
+	<body>
+		<!--注意
+			注意
+			注意
+			注意
+			注意
+			注意哦
+		在jQuery链中，后面的操作都是以前面的操作结果为对象的，如果希望操作对象为上一步的对象，则可以使用end()方法。
+		另外，还可以通过andSelf()将前面两个对象进行组合后共同处理。http://www.jb51.net/article/74933.htm
+		-->
+		<div id="d1"></div>
+		<div class="d2"></div>
+		<ul id="list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*核心函数: jQuery 简写形式$
+			 * $(function(){}) 参数是function的话 是$(document).ready(function(){})的简写形式,表示当页面中的DOM结构加载完毕时处理内部函数
+			 * $(选择器)  获取对应选择器的元素  返回的是jquery对象
+			 * $(html标签形式字符串) 创建DOM元素
+			 * $(html元素对象) 将原生JS对象转为jquery对象
+			 * 
+			 * */
+			$(document).ready(function(){
+				//jquery code....
+			})
+			jQuery(function(){})
+			//简写形式:
+			$(function(){})
+			//注:  为了避免文档在完全加载之前运行jquery代码,建议在ready函数中书写jquery代码
+			/*区别: window.onload:
+			 * 1.时机不同: onload是当所有资源(DOM,图片,音视频)加载完毕;而ready是当DOM加载完毕时
+			 * 2.onload是原生js中的事件属性,在jquery中没有,同理,ready是jquery中的方法,原生js中木有
+			 * 3.onload一个页面只能触发一次(只能出现一次),而ready可以同时出现多次,都可以触发执行
+			 * */
+			
+			//获取元素
+			$("#d1");
+			$(".d2");
+			$("#list>li");
+			//创建元素
+			$("<div></div>")
+			//原生对象转为jQuery对象
+			//若要使用jquery中提供的方法,需要转为jquery对象后才能调用
+			$(document);
+		</script>
+	</body>
+</html>

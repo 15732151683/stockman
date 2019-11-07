@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button loading='true' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">Hello,{{userInfo.nickName}}</text>
+      <!--驼峰命名法:data-user-id=""  userId  -->
+      <view class='btn' data-user-id='10001' bindtap='goToNews'>
+        <button class='start'>开启小程序之旅</button>
+      </view>
+    </block>
+  </view>
+</view>

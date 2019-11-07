@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>宝马图标</title>
+	</head>
+	<body>
+		<canvas id="bmw" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("bmw");
+			var ctx = canvas.getContext("2d");
+			ctx.beginPath();
+			ctx.arc(200,200,100,0,Math.PI*2);
+			ctx.lineWidth = 3;
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.arc(200,200,95,0,Math.PI*2);
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.arc(200,200,53,0,Math.PI*2);
+			ctx.fillStyle = "white";
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.moveTo(200,200);
+			ctx.arc(200,200,50,0,Math.PI/2);
+			ctx.fillStyle = "#2D9BFB";
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.moveTo(200,200);
+			ctx.arc(200,200,50,Math.PI,(Math.PI*3/2));
+			ctx.fillStyle = "#2D9BFB";
+			ctx.fill();
+			
+			//开始写字
+			ctx.translate(200,200);
+			ctx.font = "30px STKaiati";
+			ctx.fillStyle = "white";
+			ctx.lineWidth = 20;
+			ctx.textAlign = "center";
+			ctx.save();
+			
+			ctx.rotate(-Math.PI/4);
+			ctx.translate(60,0);
+			ctx.rotate(Math.PI/2);
+			ctx.fillText("W",0,0);
+			
+			ctx.restore();            //!!!!!important  重要: 读档之后要马上存档,否则下一次再读档的时候会有意想不到的bug,其实也就是,调一次restore  存在栈里面的旋转放大缩小移动的改变会pop出来??
+			ctx.save();
+			ctx.translate(0,-60);
+			ctx.fillText("M",0,0);
+			
+			ctx.restore();
+			ctx.rotate(-Math.PI*3/4);
+			ctx.translate(60,0);
+			ctx.rotate(Math.PI/2);
+			ctx.fillText("B",0,0);
+		</script>
+	</body>
+</html>

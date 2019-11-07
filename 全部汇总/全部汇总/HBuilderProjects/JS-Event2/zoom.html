@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜zoom</title>
+		<style type="text/css">
+			.wrap{
+				position: relative;
+				width: 800px;
+				height: 400px;
+			}
+			.normal{
+				position: relative;
+				width: 300px;
+				height: 300px;
+			}
+			#zoom{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				background: rgba(0,0,0,0.4);
+				cursor: crosshair;
+				display: none;
+			}
+			.big{
+				position: absolute;
+				right: -320px;
+				top: 0;
+				width: 300px;
+				height: 300px;
+				overflow: hidden;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<!--offsetLeft ??? 父元素的???-->
+			<!--左侧正常图区域-->
+			<div class="normal">
+				<img src="img/1.jpeg"/>
+				<!--放大镜-->
+				<div id="zoom"></div>
+			</div>
+			<!--右侧放大图-->
+			<div class="big">
+				<img src="img/big.jpeg" alt="" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			var normalDiv = document.querySelector(".normal");
+			var zoomDiv = document.getElementById("zoom");
+			var bigDiv = document.querySelector(".big");
+			var bigImg = bigDiv.getElementsByTagName('img')[0];
+			//当鼠标移入时
+			normalDiv.onmouseover = function (){
+				//出现放大镜  且跟随移动
+				zoomDiv.style.display = 'block';
+				normalDiv.onmousemove = function (e){
+					var eve = window.event || e;
+					var x = eve.clientX - normalDiv.parentElement.offsetLeft - zoomDiv.offsetWidth/2;
+					var y = eve.clientY - normalDiv.parentElement.offsetTop - zoomDiv.offsetHeight/2;
+					//限定移动范围
+					var maxL = normalDiv.clientWidth - zoomDiv.clientWidth;
+					var maxT = normalDiv.clientHeight - zoomDiv.clientHeight;
+					if(x<0) x = 0;
+					if(x>maxL) x = maxL;
+					if(y<0) y = 0;
+					if(y>maxT) y = maxT;
+					
+					zoomDiv.style.left = x + 'px';
+					zoomDiv.style.top = y +'px';
+					//右侧放大区域出现
+					bigDiv.style.display = 'block';
+					//比例: 放大镜镜片移动距离占可移动距离 == 右侧大图移动距离占大图的可移动距离
+					//方式1: 
+					/*bigDiv.scrollLeft = x/maxL*(bigDiv.scrollWidth-bigDiv.offsetWidth);
+					bigDiv.scrollTop = y/maxT*(bigDiv.scrollHeight-bigDiv.offsetHeight);
+					console.log(bigDiv.scrollWidth);*/
+					//方式2:
+					bigImg.style.position = 'absolute';
+					bigImg.style.left = -x/maxL*(bigImg.offsetWidth - bigDiv.offsetWidth) + 'px';
+					bigImg.style.top = -y/maxT*(bigImg.offsetHeight - bigDiv.offsetHeight) + 'px';
+				}
+			}
+			
+			//鼠标移出时
+			leftDiv.onmouseout = function(){
+				zoomDiv.style.display = 'none';
+				bigDiv.style.display = 'none';
+			}
+		</script>
+	</body>
+</html>

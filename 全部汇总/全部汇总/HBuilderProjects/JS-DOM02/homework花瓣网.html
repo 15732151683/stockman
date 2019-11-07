@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>花瓣网</title>
+		<style type="text/css">
+			.wrap{
+				position: relative;
+				margin: 0 auto;
+			}
+			.item{
+				width: 192px;
+				position: absolute;
+				-webkit-transition: 1s;
+				-moz-transition: 1s;
+				-ms-transition: 1s;
+				-o-transition: 1s;
+				transition: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<script type="text/javascript">
+			var wrap = document.querySelectorAll(".wrap");
+			//存放所有的内容
+			var itemsArr = [];
+			var topArr = [];
+			function createItems(count, flag){
+				var vw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+				var w = 192;
+				var margin = 10;
+				var col = Math.floor(vw/(w+margin));
+//				wrap.style.width= col*(w + margin) +'px';
+				//存内容的高度
+				var hArr = [];
+				for (var i = 0; i < col; i++) {
+					hArr[i] = 0;
+				}
+				//创建元素
+				for (var i = 0; i < count; i++) {
+					var item = itemsArr[i] ||document.createElement('img');
+					item.className = 'item';
+					item.src = 'img/P_0'+i+'.jpg';
+					var h = topArr[i] ||itemsArr[i].clientHeight;
+					if(flag){
+						topArr.push(h);
+//						item.src = 'img/P_0'+i+'.jpg';
+					}
+					var minH = hArr[0];
+					var minIndex = 0;
+					for (var j = 0; j < hArr.length; j++) {
+						if(hArr[j] < minH){
+							minIndex = j;
+							minH = hArr[j];
+						}
+					}
+					item.style.left = minIndex * (w + margin) +'px';
+					item.style.top = hArr[minIndex] + 'px';
+					hArr[minIndex] += (h + margin);
+					if(flag){
+					 	itemsArr.push(item);
+					 	wrap.appendChild(item);
+					 }
+				}
+			}
+			createItems(16, true);
+			window.onresize = function(){
+				createItems(16, false);
+			}
+		</script>
+	</body>
+</html>

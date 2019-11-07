@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>画板作业</title>
+		<style type="text/css">
+			/*p{
+				margin: 0;
+			}*/
+			
+			#_board {
+				border: 1px solid #D1D2D1;
+				float: left;
+			}
+			
+			.r {
+				width: 160px;
+				height: 600px;
+				border: 1px solid #D1D2D1;
+				float: left;
+				padding-left: 5px;
+			}
+			
+			.color,
+			.circle {
+				height: 85px;
+				width: 119px;
+				padding: 0 20px;
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+				align-items: center;
+			}
+			
+			.color div {
+				width: 30px;
+				height: 30px;
+			}
+			
+			.color div:nth-child(1) {
+				background: #FEF5A8;
+			}
+			
+			.color div:nth-child(2) {
+				background: #0010BD;
+			}
+			
+			.color div:nth-child(3) {
+				background: #FAC200;
+			}
+			
+			.color div:nth-child(4) {
+				background: #F52B00;
+			}
+			
+			.color div:nth-child(5) {
+				background: #CBCCCB;
+			}
+			
+			.color div:nth-child(6) {
+				background: #56B72E;
+			}
+			
+			.circle>div {
+				border-radius: 50%;
+				border: 1px solid;
+				background: #114087;
+			}
+			
+			.circle div:nth-child(1) {
+				width: 10px;
+				height: 10px;
+			}
+			
+			.circle div:nth-child(2) {
+				width: 15px;
+				height: 15px;
+			}
+			
+			.circle div:nth-child(3) {
+				width: 20px;
+				height: 20px;
+			}
+			
+			.cash {
+				padding-left: 30px;
+			}
+			
+			#build {
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="_board" width="800" height="600"></canvas>
+		<div class="r">
+			<p>画笔颜色</p>
+			<div class="color">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<p>画笔大小</p>
+			<div class="circle">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<p>操作</p>
+			<div class="cash"><img src="img/cash.png" /></div>
+			<p>生成图像</p>
+			<button id="build">生成图像</button>
+			<script type="text/javascript">
+				var canvas = document.getElementById("_board");
+				var ctx = canvas.getContext("2d");
+				var cash = document.getElementsByClassName("cash")[0];
+				var colors = document.getElementsByClassName("color")[0].getElementsByTagName("div");
+				var widd = document.getElementsByClassName("circle")[0].getElementsByTagName("div");
+				var cArr = [' #FEF5A8', '#0010BD', '#FAC200', '#F52B00', '#CBCCCB', '#56B72E'];
+				var ww, col;
+				for(var i = 0; i < 6; i++) {
+					colors[i].index = i;
+					colors[i].onclick = function() {
+						col = cArr[this.index];
+					}
+				}
+				for(var i = 0; i < 3; i++) {
+					widd[i].index = i;
+					widd[i].onclick = function() {
+						ww = (this.index + 1) * 5;
+					}
+				}
+				document.onmousedown = function(e) {
+					var eve = window.event || e;
+					var dx = eve.clientX - canvas.offsetLeft;
+					var dy = eve.clientY - canvas.offsetTop;
+					document.onmousemove = function(e) {
+						var eve = window.event || e;
+						var x = eve.clientX - canvas.offsetLeft;
+						var y = eve.clientY - canvas.offsetTop;
+						ctx.beginPath();
+						ctx.moveTo(dx, dy);
+						ctx.lineTo(x, y);
+						ctx.lineWidth = ww;
+						ctx.strokeStyle = col;
+						ctx.lineCap = "round"; //不设置的话会有笔画与笔画之间的间隙
+						ctx.stroke(); //终点值时下一次move的起点值
+						dx = x;
+						dy = y;
+					}
+					document.onmouseup = function() {
+						document.onmousemove = null;
+					}
+				}
+				cash.onclick = function() {
+					ctx.clearRect(0, 0, 800, 600);
+				}
+				document.getElementById("build").onclick = function() {
+					//新建图片对象
+					var img = new Image();
+					//将图片src和转换成图片链接的canvas链接
+					img.src = canvas.toDataURL();  //同域名下????
+					console.log(img.src);
+					//创建好的图片放入body
+					document.body.appendChild(img);
+				}
+			</script>
+		</div>
+	</body>
+
+</html>

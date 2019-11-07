@@ -1,0 +1,21 @@
+<!--pages/movies/movies.wxml-->
+<view class="search-container">
+  <icon class='icon' type='search' size='14' color='#405f80'></icon>
+<input class='input' placeholder='芳华、妖猫传' placeholder-class='placeholder' bindfocus='beginSearch' bindblur='searching' bindconfirm='searching'
+value='{{query}}'
+></input>
+<image wx:if="{{isSearching}}" class='close' src='/images/icon/xx.png' bindtap='stopSearch'></image>
+</view>
+
+<!--首页的主体部分  -->
+<view wx:if="{{!isSearching}}" class="body">
+  <movie-group movieGroup="{{in_theaters}}"></movie-group>
+  <movie-group movieGroup="{{coming_soon}}"></movie-group>
+  <movie-group movieGroup="{{top250}}"></movie-group>
+</view>
+
+<!--搜索列表  -->
+<view wx:if="{{isSearching}}" class="search-list">
+  <!-- <text>搜索列表</text> -->
+  <movie-grid movies="{{searchList.movies}}"></movie-grid>
+</view>

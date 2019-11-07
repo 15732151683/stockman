@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.d1{
+				width: 200px;
+				height: 200px;
+				background: url(img/dob2.jpeg) no-repeat;
+				background-size: cover;
+				-webkit-mask: url(img/xin.png) no-repeat;
+			}
+			.d2{
+				width: 100px;
+				height: 100px;
+				background: url(img/dob2.jpeg) no-repeat;
+				background-size: cover;
+				-webkit-mask: linear-gradient(red,transparent);
+			}
+		</style>
+	</head>
+	<body>
+		<p>mask: 支持图片或渐变作为蒙版</p>
+		<p>目前只支持webkit内核前缀的浏览器和高版本FF</p>
+		<p>图片蒙版</p>
+		<div class="d1"></div>
+		<div class="d2"></div>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//创建字符串 构造函数 new String()
+			//增加字符串,直接用拼接
+			//空字符串
+			var a = new String();
+			var b = new String('hello');
+			console.log(typeof a);// object对象
+			//在js中,凡是被引号引的都是字符串 单引号双引号都可以
+			//方式2: 简写形式
+			var c = "";
+			var d = 'hello';
+			console.log(typeof c);//  String
+			//length 获取字符串长度
+			console.log(d.length);
+			
+			//字符串可以理解为存储多个字符的一维数组
+			//访问某个字符串某个位置的字符: 
+			console.log(d[0]);
+			
+			/*charAt()  获取对应下标位置的字符*/
+			console.log(d.charAt(0));
+			/*charCodeAt() 获取对应下标位置的字符的ASCII码数值*/
+			console.log(d.charCodeAt(0));
+			
+			/*截取字符串
+			 substr(start,length)  start从0开始
+			 从start下标开始截取length个长度的子字符串,若参数2没有给,默认会截取到字符串末尾*/
+			var str  = "you are very good"
+			console.log(str.substr(8,4));
+			console.log(str.substr(8));
+			
+			/*截取字符串
+			 * substring(start, end)
+			 * 从start下标开始截取到end下标(end不包括)范围内的子字符串,若参数2没有给,默认会截取到字符串末尾*/
+			console.log(str.substring(8,12));
+			console.log(str.substring(8));
+			
+			/*indexOf()
+			 返回某个子字符串在该字符串中首次出现的下标位置;若没有该字符串,则返回-1
+			 *通常可以利用该方法的返回值判断是否包含某指定字符串  className啦 src啦 可以更改的*/
+			console.log(str.indexOf('o'));//如果不给参数2,返回的是第一次遇到的字符
+			//可以指定参数2 ,表示从对应下标开始找
+			console.log(str.indexOf('o', 3));
+			console.log(str.indexOf('best'));
+			if(str.indexOf('best') < 0){
+				alert('没有');
+			}else{
+				alert('有');
+			}
+			/*替换字符串
+			 *replace(str, newStr);
+			 * 将子字符串替换为新字符串newStr
+			 * 返回替换好的新字符串,不会影响原字符串
+			 * 该方法通常结合正则表达式使用*/
+			console.log(str.replace('you', 'we'));// 谁调用了replace,把什么换成什么  A.replace(B,c);
+		
+			
+			/*split()
+			 将字符串以指定分隔符分割为数组.若不指定分隔符,则每一字子字符都被分割*/
+			var str1 = "2017/1/29";
+			var arr = str1.split('2');
+			console.log(arr);             //说明要以字符串里面本身存在的字符进行分割
+			console.log(str1.split(''));
+			var str2 = "name=bob&pwd=123"
+			var arr2 = str2.split('&');
+			console.log(str2.split('&'));
+			
+			/*toUpperCase() 将字母转为大写形式
+			 toLowerCase() 将字母转为小写形式*/
+			console.log(str.toUpperCase());
+			
+			/*trim
+			 去除字符串两边的空白*/
+			var str2 = ' hello   ';
+			console.log(str2);
+			console.log(str2.trim());
+			
+			//获取字符串(3°15′20″)中的 3, 15, 20
+			var str3 = '3°15′20″';
+			console.log(str3.substr(0,1)+','+str3.substr(2,2)+','+str3.substr(5,2));
+			
+			//将字符串“文艺青年”改成字符串“213青年”
+			var str4 = '文艺青年';
+			console.log(str4.replace('文艺','213'));
+			
+			//将字符串abcdef 变为fedcba
+			var str5 = 'abcdef';
+			console.log(str5.split('').reverse().join(''));//方法1   数组的颠倒,数组join 为字符串
+			var str6 = '';
+			for(var i = str5.length - 1; i >= 0; i--){     //方法2
+				str6 += str5[i];
+				//str6 +=str5.charAt(i);
+			}
+			console.log(str6);
+		</script>
+		
+		<!--输入网址, 判断是不是”http://”, 如果不是, 自动添加上”http://”-->
+		<input type="text" name="" id="" value="" placeholder="请输入网址"/>
+		<button>提交</button>
+		<p></p>
+		<script type="text/javascript">
+			var btn = document.getElementsByTagName('button')[0];
+			var src = document.getElementsByTagName('input')[0];
+			var p = document.getElementsByTagName('p')[0];
+			btn.onclick = function(){
+				var addre = src.value;
+				var a = addre.indexOf('http://');
+				console.log(a);
+				if(a == -1 ){
+					p.innerHTML = "http://"+addre;
+				}
+			}
+			//要怎么在input里面添加东西呢????????????????????????????
+		</script>
+	</body>
+</html>

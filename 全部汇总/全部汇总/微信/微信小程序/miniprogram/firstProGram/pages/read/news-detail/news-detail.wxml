@@ -1,0 +1,26 @@
+<!--pages/read/news-detail/news-detail.wxml-->
+<view>
+  <view class='poster'>
+    <image src='{{news.headImgSrc}}'></image>
+    <image class='music' src='{{isPlaying?"/images/music-stop.png":"/images/music-start.png"}}' catchtap='changeMusic'></image>
+  </view>
+  <view class='detail-con'>
+    <view class='detail-head'>
+      <image src='{{news.avatar}}'></image>
+      <text>{{news.author}}</text>
+      <text class='detail-time'>发表于{{news.dateTime}}</text>
+    </view>
+    <view class='detail-title'>
+      <text>{{news.title}}</text>
+    </view>
+    <view class='detail-icon'>
+      <view></view>
+      <image bindtap='changeCollect' wx:if="{{collected}}" src="/images/collection.png" catchtap='changeCollect'></image>
+      <image bindtap='changeCollect' wx:else="{{collected}}" src="/images/collection-anti.png" catchtap='changeCollect'></image>
+      <image src='../../../images/share.png'></image>
+    </view>
+    <view class='detail-des'>
+      <text>{{news.detail}}</text>
+    </view>
+  </view>
+</view>

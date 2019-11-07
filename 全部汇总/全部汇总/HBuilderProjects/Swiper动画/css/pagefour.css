@@ -1,0 +1,658 @@
+			.v-slide-4 img {
+				z-index: 999;
+			}
+			
+			.circle-2 {
+				z-index: 999;
+				/*border: 1px solid white;*/
+				width: 22px;
+				height: 22px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -11px;
+				margin-top: -11px;
+			}
+			
+			.CCLine {
+				position: absolute;
+				top: 70px;
+			}
+			
+			.one {
+				position: absolute;
+				left: 15%;
+				top: 45%;
+				width: 18%;
+				opacity: 0;
+				animation: personshow 1.8s linear forwards;
+			}
+			
+			@keyframes personshow {
+				from {
+					left: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					left: 15%;
+					top: 45%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.two {
+				opacity: 0;
+				position: absolute;
+				width: 20%;
+				left: 13%;
+				top: 60%;
+				opacity: 0;
+				animation: personshow2 2s linear forwards;
+			}
+			
+			@keyframes personshow2 {
+				from {
+					left: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					left: 13%;
+					top: 60%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.three {
+				position: absolute;
+				width: 20%;
+				left: 41%;
+				bottom: 16%;
+				opacity: 0;
+				animation: personshow3 2s linear forwards;
+			}
+			
+			@keyframes personshow3 {
+				from {
+					left: 50%;
+					bottom: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					left: 41%;
+					bottom: 16%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.four {
+				position: absolute;
+				right: 8%;
+				top: 61%;
+				width: 22%;
+				opacity: 0;
+				animation: personshow4 2.5s linear forwards;
+			}
+			
+			@keyframes personshow4 {
+				from {
+					right: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					right: 8%;
+					top: 61%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.five {
+				position: absolute;
+				right: 10%;
+				top: 44%;
+				width: 18%;
+				opacity: 0;
+				animation: personshow5 1s linear forwards;
+			}
+			
+			@keyframes personshow5 {
+				from {
+					right: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					right: 10%;
+					top: 44%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.six {
+				position: absolute;
+				right: 8%;
+				top: 25%;
+				width: 22%;
+				opacity: 0;
+				animation: personshow6 1s linear forwards;
+			}
+			
+			@keyframes personshow6 {
+				from {
+					right: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					right: 8%;
+					top: 25%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.seven {
+				position: absolute;
+				width: 18%;
+				left: 39%;
+				top: 14%;
+				opacity: 0;
+				animation: personshow7 1s linear forwards;
+			}
+			
+			@keyframes personshow7 {
+				from {
+					left: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					left: 39%;
+					top: 14%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.eight {
+				position: absolute;
+				left: 7%;
+				top: 22%;
+				width: 22%;
+				opacity: 0;
+				animation: personshow8 1.5s linear forwards;
+			}
+			
+			@keyframes personshow8 {
+				from {
+					left: 50%;
+					top: 50%;
+					transform: scale(0.1);
+					opacity: 0;
+				}
+				to {
+					left: 7%;
+					top: 22%;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+			
+			.obj-font {
+				position: absolute;
+				bottom: 10%;
+				left: 31%;
+				width: 136px;
+				/*animated.css 封装的动画要延迟出现直接opacity就可以啦*/
+				opacity: 0;
+				animation: flash 3s 4s infinite;
+			}
+			
+			#line>li {
+				list-style: none;
+				position: absolute;
+				border-left: 1px solid white;
+				opacity: 0;
+				transform-origin: top;
+			}
+			
+			#line>li:nth-child(1) {
+				top: 2%;
+				left: 16%;
+				/*直接transform 可变换形状*/
+				transform: rotateZ(-21deg);
+				animation: lis .5s 4s linear forwards;
+			}
+			
+			@keyframes lis {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 51%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(2) {
+				top: 32%;
+				left: 45%;
+				transform: rotateZ(-8deg);
+				animation: lis2 .5s 5s linear forwards;
+			}
+			
+			@keyframes lis2 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 17%;
+					opacity: 1;
+				}
+			}
+			
+			#line>li:nth-child(3) {
+				top: 32%;
+				left: 57%;
+				transform: rotateZ(12deg);
+				animation: lis3 .5s 5s linear forwards;
+			}
+			
+			@keyframes lis3 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 18%;
+					opacity: 1;
+				}
+			}
+			
+			#line>li:nth-child(4) {
+				top: 8%;
+				left: 62%;
+				transform: rotateZ(10deg);
+				animation: lis4 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis4 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 42%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(5) {
+				top: 9%;
+				left: 82%;
+				transform: rotateZ(24deg);
+				animation: lis5 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis5 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 43%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(6) {
+				top: 26%;
+				right: 3%;
+				transform: rotateZ(47deg);
+				animation: lis6 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis6 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 34%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(7) {
+				top: 42%;
+				right: 29%;
+				transform: rotateZ(54deg);
+				animation: lis7 .5s 5s linear forwards;
+			}
+			
+			@keyframes lis7 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 13%;
+					opacity: 1;
+				}
+			}
+			
+			#line>li:nth-child(8) {
+				top: 53%;
+				right: 30%;
+				transform: rotateZ(104deg);
+				animation: lis8 .5s 5s linear forwards;
+			}
+			
+			@keyframes lis8 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 13%;
+					opacity: 1;
+				}
+			}
+			
+			#line>li:nth-child(9) {
+				bottom: 14%;
+				right: 13%;
+				transform: rotateZ(-30deg);
+				transform-origin: bottom;
+				animation: lis9 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis9 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 42%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(10) {
+				bottom: 24%;
+				right: 34%;
+				transform: rotateZ(-20deg);
+				transform-origin: bottom;
+				animation: lis10 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis10 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 26%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(11) {
+				bottom: 10%;
+				right: 73%;
+				transform: rotateZ(18deg);
+				transform-origin: bottom;
+				animation: lis11 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis11 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 40%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(12) {
+				bottom: 25%;
+				right: 76%;
+				transform: rotateZ(31deg);
+				transform-origin: bottom;
+				animation: lis12 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis12 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 29%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(13) {
+				bottom: 41%;
+				left: 14%;
+				transform: rotateZ(67deg);
+				transform-origin: bottom;
+				animation: lis13 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis13 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 22%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(14) {
+				bottom: 39%;
+				left: 14%;
+				transform: rotateZ(-59deg);
+				animation: lis14 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis14 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 22%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(15) {
+				bottom: 39%;
+				left: 14%;
+				transform: rotateZ(-59deg);
+				animation: lis15 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis15 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 22%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(16) {
+				bottom: 50%;
+				left: 50%;
+				transform: rotateZ(-3deg);
+				transform-origin: bottom;
+				animation: lis16 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis16 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 26%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(17) {
+				bottom: 50%;
+				left: 50%;
+				transform: rotateZ(41deg);
+				transform-origin: bottom;
+				animation: lis17 .5s 4s linear forwards;
+			}
+			
+			@keyframes lis17 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 20%;
+					opacity: 0.3;
+				}
+			}
+			
+			#line>li:nth-child(18) {
+				top: 50%;
+				right: 27%;
+				transform: rotateZ(89deg);
+				animation: lis18 .6s 4.5s linear forwards;
+			}
+			
+			@keyframes lis18 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 12%;
+					opacity: 0.6;
+				}
+			}
+			
+			#line>li:nth-child(19) {
+				top: 63%;
+				right: 27%;
+				height: 17%;
+				opacity: 0;
+				transform: rotateZ(136deg);
+				animation: lis19 .4s 5s linear forwards;
+			}
+			
+			@keyframes lis19 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 17%;
+					opacity: 0.6;
+				}
+			}
+			
+			#line>li:nth-child(20) {
+				top: 73%;
+				right: 50%;
+				/*height: 23%;*/
+				/*opacity: 1;*/
+				transform: rotateZ(180deg);
+				animation: lis20 .4s 5s linear forwards;
+			}
+			
+			@keyframes lis20 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 23%;
+					opacity: 0.6;
+				}
+			}
+			
+			#line>li:nth-child(21) {
+				top: 61%;
+				left: 28%;
+				transform: rotateZ(229deg);
+				animation: lis21 .4s 5s linear forwards;
+			}
+			
+			@keyframes lis21 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 16%;
+					opacity: 0.6;
+				}
+			}
+			/*这边写的动画,如果定位是从bottom来定位高度的话,动画会从下面移到目标位置然后才有射线的动画,为什么??????改成top定位效果就好,为什么捏????????????*/
+			
+			#line>li:nth-child(22) {
+				top: 50%;
+				left: 33%;
+				transform: rotateZ(-90deg);
+				animation: lis22 .5s 5s linear forwards;
+			}
+			
+			@keyframes lis22 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 10%;
+					opacity: 0.6;
+				}
+			}
+			
+			#line>li:nth-child(23) {
+				top: 32%;
+				left: 23%;
+				transform: rotateZ(-40deg);
+				animation: lis23 .5s 5s linear forwards;
+			}
+			
+			@keyframes lis23 {
+				from {
+					height: 0;
+					opacity: 0;
+				}
+				to {
+					height: 22%;
+					opacity: 0.6;
+				}
+			}

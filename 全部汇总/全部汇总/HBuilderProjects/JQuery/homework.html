@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>homework</title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var wrapDiv = $("<div></div>").css({
+					width: "520px",
+					border: "1px solid #CCCDCC",
+					background: "#F4F5F4",
+					borderRadius: "10px",
+					padding: "15px"
+				});
+				$("body").append(wrapDiv);
+				$(document.body).css({
+					width: "100%",
+					height: "100%",
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center"
+				});
+				var div1 = $("<input></input>").css({
+					type: "text",
+					outline: "none",
+					width: "300px",
+					height: "30px",
+					padding: 0,
+					margin: "10px auto",
+					display: "block",
+					fontSize: "18px"
+				}).appendTo(wrapDiv);
+				div1.before($("<span>姓名:</span>").css({
+					position: "relative",
+					left: "58px",
+					top: "38px"
+				}));
+				var div2 = $("<textarea></textarea>").css({
+					type: "text",
+					width: "300px",
+					outline: "none",
+					height: "200px",
+					padding: 0,
+					margin: "10px auto",
+					display: "block"
+				}).appendTo(wrapDiv);
+				div2.before($("<span>内容:</span>").css({
+					position: "relative",
+					left: "58px",
+					top: "25px"
+				}));
+				$("<input></input>").val("提交").css({
+					type: "submit",
+					width: 100,
+					height: 26,
+					textAlign: "center",
+					cursor: "pointer",
+					margin: "10px auto",
+					display: "block"
+				}).appendTo(wrapDiv).click(function() {
+					if(div1.val().length == 0) {
+						alert("用户名为空!");
+						return false;
+					}
+					if(div2.val().length == 0) {
+						alert("留言信息为空!");
+						return false;
+					}
+					var bom = $("<div></div>").css({
+						width: "95%",
+						padding: "15px",
+						background: "white",
+						borderBottom: "1px solid #CBCCCB"
+					}).slideDown(5000);    //????????
+					//只有在click的时候新建才可以,已经添加成功一次后再添加一次是没有用的
+					var a = $("<a>删除</a>").css({
+						color: "red",
+						float: "right",
+						cursor: "pointer"
+					});
+					a.click(function(){
+						$(this).parent().parent().remove();
+					});
+					$("<p></p>").css({
+						width: "100%",
+						height: "24px",
+						background: "#D2D3D2",
+						margin: 0
+					}).text(div1.val()).appendTo(bom);
+					$("<p></p>").css({
+						width: "96%",
+						height: "24px",
+						margin: 0,
+						paddingLeft: "20px"
+					}).text(div2.val()).appendTo(bom).append(a);
+					wrapDiv.append(bom);
+					return false;
+				});
+				wrapDiv.append("<p>留言</p>");
+				
+
+			});
+		</script>
+	</body>
+
+</html>

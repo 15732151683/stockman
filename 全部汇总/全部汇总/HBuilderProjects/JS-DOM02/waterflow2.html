@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>带下拉加载更多的瀑布流</title>
+		<style type="text/css">
+			.wrap{
+				width: 1050px;
+				margin: 0 auto;
+			}
+			.col{
+				float: left;
+				width: 200px;
+				margin: 0 5px;
+			}
+			.item{
+				color: white;
+				text-align: center;
+				margin: 5px auto;
+				font-size: 30px;
+			}
+			#loading{
+				text-align: center;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<p id="loading">...正在加载中...</p>
+		<script type="text/javascript">
+			var cols = document.querySelectorAll(".col");  //数组
+			/*创建生成多少个元素 
+			 
+			 * 真是情况应该为:从后台请求数据,请求成功后根据返回的数量动态生成加载对应的内容*/
+			function loadItems(count){
+				for(var i = 0; i < count; i++){
+					createItem();
+				}
+			}
+			//动态创建出一个元素,并存放带所有列中高度最矮的那列
+			function createItem(){
+				var item = document.createElement('div');
+				item.style.height = randNum(120,300) + 'px';
+				item.style.background = 'rgb('+randNum(0,255)+','+randNum(0,255)+','+randNum(0,255)+')';
+				item.className = 'item';
+				//获取高度最矮列,存放该内容
+				var index = 0;
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				cols[index].appendChild(item);
+			}
+			function randNum(x,y){
+				return Math.floor(Math.random()*(y - x + 1) + x);
+			}
+			//
+			loadItems(30);
+			
+			/*获取已经偏移出窗口的可视范围区域的高度  h1*/
+			
+			function scrollH(){
+				return document.body.scrollTop || document.documentElement.scrollTop;  //兼容问题
+			}
+			/*获取当前浏览器窗口的可视范围的高度 h2*/
+			/*window.innerHeight 不包含工具栏,侧边栏  标准浏览器以及IE9+
+			 * document.body.clientHeight           低版本
+			 window.outerHeight 包含工具栏,侧边栏 
+			 document.body.clientHeight   
+			 * */
+			function visibleH(){
+				return window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
+			}
+			//监测页面的滚动距离,当 h1+h2 >= 最矮列列高是,说明此时最矮列已经全部进入到页面的可视区域,故可取该时机去加载新的数据
+			
+			document.onscroll = function(){
+				var h = scrollH() + visibleH();
+				//获取最矮列的高度
+				var index = 0;
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				if(h >= cols[index].offsetHeight){
+					//加载更多(再次请求后台数据,当请求成功后展示)
+					//临时测试
+//					document.getElementById("loading").style.display = 'block';   这个bug之后再改
+					setTimeout(function(){
+						loadItems(20);
+						document.getElementById("loading").style.display = 'none';
+					}, 1000);
+					
+				}
+			}
+		</script>
+	</body>
+</html>

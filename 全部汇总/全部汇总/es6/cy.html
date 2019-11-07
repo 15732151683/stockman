@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//     var a=5
+//     function fn(){
+// a=8
+//     }
+//     fn()
+//     console.log(a)
+
+// function fn(){
+//     var a=5
+// }
+// fn()
+//     console.log(a)
+
+//     var count=0;
+//     function add() {
+//        console.log(count++)
+//     }
+//     add()
+// add()
+// count=5
+// add()
+
+
+// var f=(function add() {
+//     var count=0;
+//     return function () {
+//        console.log(count++)
+//     }
+// })()
+//
+// f()
+// f()
+
+/////////////////////////////////////////////
+
+// var a = [];
+// for(var i=0; i<10; i++){
+//     //?
+//     a[i] = function(){
+//         console.log(i);
+//     }
+// }
+// var i=0
+// a[0] = function(){
+//     console.log(i);
+// }
+// i=1
+// a[1] = function(){
+//     console.log(i);
+// }
+// i=6
+// a[0]()
+
+////////////////////////////////////////////
+
+var a = [];
+for(var i=0; i<10; i++){
+    a[i]  =(function(i){
+        //i?
+         return function () {
+            console.log(i);
+        }
+    })(i)
+
+ }
+
+ var i=0
+a[0]  =(function(0){
+    var x=0
+    return function () {
+
+        console.log(x);
+    }
+})(0)
+i=1
+a[1]  =(function(1){
+var x=1
+    return function () {
+        console.log(x);
+    }
+})(1)
+
+ //console.log()
+ a[0]();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="canvas10" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas10");
+			var ctx = canvas.getContext("2d");
+			var deg = 0;
+			function move() {
+				//清除画布
+//				ctx.clearRect(0, 0, 400, 400);
+				//重新绘制
+				ctx.beginPath();
+				ctx.arc(200, 200, 150, 0, Math.PI * 2);
+				ctx.stroke();
+				//角度递增;
+				deg+=Math.PI/180;
+				//绘制运动的圆
+				ctx.beginPath();
+				var point = pointAt(200,200,150,deg);
+				ctx.arc(point.px,point.py,20,0,Math.PI * 2);
+				ctx.fill();
+				requestAnimationFrame(move);
+				
+			}
+			move();
+			//定义函数计算圆心位置
+			function pointAt(x,y,r,deg){
+				var cx = x+r*Math.cos(deg);
+				var cy = y+r*Math.sin(deg);
+				return {px: cx,py: cy}//外界怎么拿到?  以对象的形式或者数组形式拿到都阔以
+			}
+		</script>
+	</body>
+
+</html>

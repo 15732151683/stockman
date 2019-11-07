@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>移动端事件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			#d1 {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+
+		<script type="text/javascript">
+			var d1 = document.getElementById("d1");
+			//click事件一般多用于PC端,移动端上click事件有300ms左右的延迟,故移动端不建议使用click事件处理点击,而是使用触摸事件
+//			d1.onclick = function() {
+//				this.style.background = "blue";
+//			}
+
+			/*用于移动端的触摸事件:
+			 * touchstart
+			 * touchmove
+			 * touchend
+			 * touchcancel
+			 * */
+			//当手指开始触摸屏幕时
+			d1.ontouchstart = function() {
+				console.log("触摸开始");
+			}
+			//当手指在屏幕上移动时
+			d1.ontouchmove = function() {
+				console.log("触摸移动");
+			}
+			//当手指离开屏幕时
+			d1.ontouchend = function() {
+				console.log("触摸结束");
+			}
+			//当触摸事件被取消时 (被系统事件,如电话,中断时触发)
+			d1.ontouchcancel = function() {
+				console.log("触摸结束");
+			}
+
+		</script>
+
+	</body>
+</html>

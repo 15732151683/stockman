@@ -1,0 +1,708 @@
+.l1 {
+	position: absolute;
+	left: -10%;
+	top: 50%;
+	width: 60%;
+	-webkit-animation: toRB 2s linear infinite;
+	-o-animation: toRB 2s linear infinite;
+	animation: toRB 2s linear infinite;
+}
+
+@-webkit-keyframes toRB {
+	from {
+		left: 0;
+		top: 50%;
+	}
+	40% {
+		left: 100%;
+		top: 100%;
+	}
+	to {
+		left: 100%;
+		top: 100%;
+	}
+}
+
+@keyframes toRB {
+	from {
+		left: 0;
+		top: 50%;
+	}
+	40% {
+		left: 100%;
+		top: 100%;
+	}
+	to {
+		left: 100%;
+		top: 100%;
+	}
+}
+
+.l2 {
+	position: absolute;
+	left: 90%;
+	top: 30%;
+	width: 60%;
+	-webkit-animation: toLT 2s linear infinite;
+	-o-animation: toLT 2s linear infinite;
+	animation: toLT 2s linear infinite;
+}
+
+@-webkit-keyframes toLT {
+	from {
+		left: 90%;
+		top: 30%;
+	}
+	40% {
+		left: -115%;
+		top: -20%;
+	}
+	to {
+		left: -115%;
+		top: -20%;
+	}
+}
+
+@keyframes toLT {
+	from {
+		left: 90%;
+		top: 30%;
+	}
+	40% {
+		left: -115%;
+		top: -20%;
+	}
+	to {
+		left: -115%;
+		top: -20%;
+	}
+}
+
+.l3 {
+	position: absolute;
+	right: -30%;
+	top: 50%;
+	width: 60%;
+	-webkit-animation: toLB 2s linear infinite;
+	-o-animation: toLB 2s linear infinite;
+	animation: toLB 2s linear infinite;
+}
+
+@-webkit-keyframes toLB {
+	from {
+		right: -30%;
+		top: 50%;
+	}
+	40% {
+		right: 100%;
+		top: 100%;
+	}
+	to {
+		right: 100%;
+		top: 100%;
+	}
+}
+
+@keyframes toLB {
+	from {
+		right: -30%;
+		top: 50%;
+	}
+	40% {
+		right: 100%;
+		top: 100%;
+	}
+	to {
+		right: 100%;
+		top: 100%;
+	}
+}
+
+.swiper-container-v {
+	background: #eee;
+}
+
+.logo {
+	position: absolute;
+	left: 50%;
+	margin-left: -140px;
+	top: 10%;
+	width: 280px;
+	height: 280px;
+}
+
+img {
+	width: 100%;
+	vertical-align: top;
+}
+
+.green {
+	position: absolute;
+	/*z-index: 10;*/
+	-webkit-animation: toL .5s linear;
+	-o-animation: toL .5s linear;
+	animation: toL .5s linear;
+}
+
+@-webkit-keyframes toL {
+	from {
+		right: -150%;
+	}
+	to {
+		right: 0;
+	}
+}
+
+@keyframes toL {
+	from {
+		right: -150%;
+	}
+	to {
+		right: 0;
+	}
+}
+
+.red {
+	position: absolute;
+	width: 47%;
+	height: 100%;
+	-webkit-animation: toR .5s linear;
+	-o-animation: toR .5s linear;
+	animation: toR .5s linear;
+}
+
+@-webkit-keyframes toR {
+	from {
+		left: -150%
+	}
+	to {
+		left: 0;
+	}
+}
+
+@keyframes toR {
+	from {
+		left: -150%;
+	}
+	to {
+		left: 0;
+	}
+}
+
+.gold {
+	position: absolute;
+	bottom: 0;
+	-webkit-animation: toT .5s linear;
+	-o-animation: toT .5s linear;
+	animation: toT .5s linear;
+}
+
+@-webkit-keyframes toT {
+	from {
+		bottom: -200%
+	}
+	to {
+		bottom: 0;
+	}
+}
+
+@keyframes toT {
+	from {
+		bottom: -200%
+	}
+	to {
+		bottom: 0;
+	}
+}
+
+.gray {
+	position: absolute;
+	z-index: 10;
+	top: 48%;
+	left: 34%;
+	margin-left: -32px;
+	margin-top: -70px;
+	width: 68px;
+	-webkit-animation: toB2 .5s linear;
+	-o-animation: toB2 .5s linear;
+	animation: toB2 .5s linear;
+}
+
+@-webkit-keyframes tB2 {
+	from {
+		top: -200%;
+		left: 80%;
+	}
+	to {
+		top: 45%;
+		left: 31%;
+	}
+}
+
+@keyframes toB2 {
+	from {
+		top: -200%;
+		left: 80%;
+	}
+	to {
+		top: 45%;
+		left: 31%;
+	}
+}
+
+.v-gray {
+	position: absolute;
+	z-index: 10;
+	left: 51%;
+	width: 36px;
+	-webkit-animation: toB3 .5s linear;
+	-o-animation: toB3 .5s linear;
+	animation: toB3 .5s linear;
+}
+
+@-webkit-keyframes toB3 {
+	from {
+		top: -200%;
+		left: 120%;
+	}
+	to {
+		top: 0;
+		left: 50%;
+	}
+}
+
+@keyframes toB3 {
+	from {
+		top: -200%;
+		left: 120%;
+	}
+	to {
+		top: 0;
+		left: 50%;
+	}
+}
+
+.v-green {
+	position: absolute;
+	z-index: 11;
+	left: 37%;
+	width: 75px;
+	-webkit-animation: toB4 .6s linear;
+	-o-animation: toB4 .6s linear;
+	animation: toB4 .6s linear;
+}
+
+@-webkit-keyframes toB4 {
+	from {
+		top: -200%;
+		left: 100%;
+	}
+	to {
+		top: 0;
+		left: 36%;
+	}
+}
+
+@keyframes toB4 {
+	from {
+		top: -200%;
+	}
+	to {
+		top: 0;
+	}
+}
+
+.v-green2 {
+	position: absolute;
+	/*z-index: 10;*/
+	right: 0;
+	bottom: 0;
+	width: 210px;
+	-webkit-animation: toT2 .7s linear;
+	-o-animation: toT2 .7s linear;
+	animation: toT2 .7s linear;
+}
+
+@-webkit-keyframes toT2 {
+	from {
+		bottom: -200%;
+		right: -200%;
+	}
+	50% {
+		bottom: -100%, right: 0;
+	}
+	to {
+		bottom: 0;
+		right: 0;
+	}
+}
+
+@keyframes toT2 {
+	from {
+		bottom: -200%;
+		right: -200%;
+	}
+	50% {
+		bottom: -100%, right: 0;
+	}
+	to {
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.DD {
+	position: absolute;
+	left: -1px;
+	top: 35%;
+	width: 55px;
+	-webkit-animation: toDD .8s linear;
+	-o-animation: toDD .8s linear;
+	animation: toDD .8s linear;
+}
+
+@-webkit-keyframes toDD {
+	from {
+		left: 50%;
+		top: -100%;
+	}
+	to {
+		left: -1px;
+		top: 35%;
+	}
+}
+
+@keyframes toDD {
+	from {
+		left: 50%;
+		top: -100%;
+	}
+	to {
+		left: -1px;
+		top: 35%;
+	}
+}
+
+.DDa {
+	position: absolute;
+	z-index: 12;
+	left: 26%;
+	top: 39%;
+	width: 22px;
+	-webkit-animation: toDDa 1s linear;
+	-o-animation: toDDa 1s linear;
+	animation: toDDa 1s linear;
+}
+
+@-webkit-keyframes toDDa {
+	from {
+		left: 80%;
+		top: -100%;
+	}
+	to {
+		left: 26%;
+		top: 39%;
+	}
+}
+
+@keyframes toDDa {
+	from {
+		left: 80%;
+		top: -100%;
+	}
+	to {
+		left: 26%;
+		top: 39%;
+	}
+}
+
+.pd {
+	position: absolute;
+	left: 4%;
+	top: 39%;
+	width: 31px;
+	/*display: none;*/
+	-webkit-animation: topd 1.5s linear;
+	-o-animation: topd 1.5s linear;
+	animation: topd 1.5s linear;
+}
+
+@-webkit-keyframes topd {
+	from {
+		left: -300%;
+		top: 200%;
+		transform: scale(40);
+	}
+	20% {
+		left: -300%;
+		top: 200%;
+		transform: scale(40);
+	}
+	to {
+		left: 4%;
+		top: 39%;
+		transform: scale(1);
+	}
+}
+
+@keyframes topd {
+	from {
+		left: -300%;
+		top: 200%;
+		transform: scale(40);
+	}
+	40% {
+		left: -300%;
+		top: 200%;
+		transform: scale(40);
+	}
+	to {
+		left: 4%;
+		top: 39%;
+		transform: scale(1);
+	}
+}
+
+.pr {
+	position: absolute;
+	z-index: 20;
+	left: 21%;
+	top: 35%;
+	width: 116px;
+	-webkit-animation: topr 2s linear;
+	-o-animation: topr 2s linear;
+	animation: topr 2s linear;
+}
+
+@-webkit-keyframes topr {
+	from {
+		left: -300%;
+		top: 300%;
+		transform: scale(40);
+	}
+	20% {
+		left: -300%;
+		top: 300%;
+		transform: scale(40);
+	}
+	to {
+		left: 21%;
+		top: 39%;
+		transform: scale(1);
+	}
+}
+
+@keyframes topr {
+	from {
+		left: -300%;
+		top: 300%;
+		transform: scale(40);
+	}
+	30% {
+		left: -300%;
+		top: 300%;
+		transform: scale(40);
+	}
+	to {
+		left: 21%;
+		top: 39%;
+		transform: scale(1);
+	}
+}
+
+.pe {
+	position: absolute;
+	z-index: 20;
+	right: 50%;
+	top: 35%;
+	width: 40px;
+	-webkit-animation: tope 2.5s linear;
+	-o-animation: tope 2.5s linear;
+	animation: tope 2.5s linear;
+}
+
+@-webkit-keyframes tope {}
+
+@keyframes tope {
+	from {
+		right: -300%;
+		top: 300%;
+		transform: scale(30);
+	}
+	40% {
+		right: -300%;
+		top: 300%;
+		transform: scale(30);
+	}
+	to {
+		right: 50%;
+		top: 35%;
+		transform: scale(1);
+	}
+}
+
+.pm {
+	position: absolute;
+	z-index: 20;
+	right: 0;
+	top: 31%;
+	width: 137px;
+	-webkit-animation: topm 3s linear;
+	-o-animation: topm 3s linear;
+	animation: topm 3s linear;
+}
+
+@-webkit-keyframes topm {}
+
+@keyframes topm {
+	from {
+		right: -300%;
+		top: 300%;
+		transform: scale(10);
+	}
+	50% {
+		right: -300%;
+		top: 300%;
+		transform: scale(10);
+	}
+	to {
+		right: 0;
+		top: 31%;
+		transform: scale(1);
+	}
+}
+
+.maker {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 210px;
+	-webkit-animation: toma 3.5s linear;
+	-o-animation: toma 3.5s linear;
+	animation: toma 3.5s linear;
+}
+
+@-webkit-keyframes toma {}
+
+@keyframes toma {
+	from {
+		right: -300%;
+		bottom: -80%;
+		transform: scale(1);
+	}
+	70% {
+		right: -300%;
+		bottom: -80%;
+		transform: scale(5);
+	}
+	90% {
+		right: -80%;
+		bottom: -50%;
+		transform: scale(6);
+	}
+	to {
+		right: 0;
+		bottom: 0;
+		transform: scale(1);
+	}
+}
+
+.logo-text {
+	text-align: center;
+	position: absolute;
+	z-index: 10;
+	bottom: 15%;
+	left: 50%;
+	width: 210px;
+	margin-left: -105px;
+	transform-style: preserve-3d;
+	perspective: 100px;
+}
+
+.logo-text p {
+	color: white;
+	font-size: 40px;
+	font-weight: 800;
+	margin: 0;
+	animation: plus 4.5s linear;
+}
+
+@-webkit-keyframes plus {
+	from {
+		transform: translateZ(-100px);
+		opacity: 0;
+	}
+	80% {
+		transform: translateZ(-100px);
+		opacity: 0;
+	}
+	to {
+		transform: translateZ(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes plus {
+	from {
+		transform: translateZ(-100px);
+		opacity: 0;
+	}
+	80% {
+		transform: translateZ(-100px);
+		opacity: 0;
+	}
+	to {
+		transform: translateZ(0px);
+		opacity: 1;
+	}
+}
+
+.Cd {
+	position: absolute;
+	left: -14%;
+	bottom: 8%;
+	animation: star 5.5s linear;
+}
+
+@keyframes star {
+	from {
+		left: -28%;
+		bottom: 24%;
+		opacity: 0;
+	}
+	80% {
+		left: -28%;
+		bottom: 24%;
+		opacity: 0;
+	}
+	to {
+		left: -14%;
+		bottom: 8%;
+		opacity: 1;
+	}
+}
+
+.Cdd {
+	position: absolute;
+	right: 0;
+	bottom: -3%;
+	animation: star2 5.5s linear;
+}
+
+@keyframes star2 {
+	from {
+		right: -35%;
+		bottom: -23%;
+		opacity: 0;
+	}
+	80% {
+		right: -35%;
+		bottom: -23%;
+		opacity: 0;
+	}
+	to {
+		right: 0;
+		bottom: -3%;
+		opacity: 1;
+	}
+}

@@ -1,0 +1,5 @@
+<template name="movie-star">
+  <view class='mov-star'>
+    <image wx:for="{{[1,2,3,4,5]}}" wx:key="{{index}}" src='{{stars[index]?"/images/star.png":"/images/none-star.png"}}'></image> 
+  </view>
+</template>

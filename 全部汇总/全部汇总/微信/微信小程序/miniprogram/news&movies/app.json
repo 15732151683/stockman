@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/mine/mine",
+    "pages/about/about",
+    "pages/news/news",
+    "pages/movies/movies",
+    "pages/news/news-detail/news-detail",
+    "pages/movies/movie-detail/movie-detail",
+    "pages/movies/movie-more/movie-more"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#405f80",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "news&movies",
+    "backgroundColor": "#ccc",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#405f80",
+    "backgroundColor": "#fafafa",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/news/news",
+        "text": "新闻",
+        "iconPath": "/images/tab/yuedu.png",
+        "selectedIconPath": "/images/tab/yuedu_hl.png"
+      },
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影",
+        "iconPath": "/images/tab/dianying.png",
+        "selectedIconPath": "/images/tab/dianying_hl.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

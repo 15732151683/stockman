@@ -1,0 +1,44 @@
+.nav {
+  width: 100%;
+  background-color: #212221;
+  line-height: 60px;
+}
+
+.nav .header {
+  width: 800px;
+  margin: 0 auto;
+  color: #959695;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav .header .left .brand {
+  font-size: 25px;
+  padding: 0 10px;
+}
+
+.nav .header .right ul{
+  width: 700px;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav .header .right ul li{
+  padding: 0 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #959695;
+}
+
+.active {
+  background-color: #070807;
+}
+
+.active a {
+  color: #EFF0EF;
+}

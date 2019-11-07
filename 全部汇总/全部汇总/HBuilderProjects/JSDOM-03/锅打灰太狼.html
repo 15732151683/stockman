@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>游戏锅打灰太狼</title>
+		<style type="text/css">
+			.wrap{
+				width: 600px;
+				height: 600px;
+				border: 1px solid;
+			}
+			.cover{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: lightblue;
+				color: white;
+				display: none;
+			}
+			.game{
+				width: 320px;
+				height: 480px;
+				margin: 0 auto;
+			}
+			.load{}
+			.main{
+				position: relative;
+				height: 480px;
+				background: url(img/game_bg.jpg);
+			}
+			.startMenu{
+				position: absolute;
+				top: 0;
+				z-index: 2;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.3);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#begin{
+				width: 100px;
+				height: 30px;
+				background: orangered;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			#rebegin{
+				width: 130px;
+				height: 30px;
+				margin: 30px auto;
+				background: gold;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			#rebegin:hover{
+				background: white;
+				color: black;
+			}
+			#begin:hover{
+				background: white;
+				color: orangered;
+			}
+			#score{
+				position: absolute;
+				top: 10px;
+				left: 60px;
+				color: white;
+			}
+			#time{
+				position: absolute;
+				top: 66px;
+				left: 63px;
+				width: 180px;
+				height: 16px;
+				background: url(img/progress.png);
+			}
+			#wolf{
+				position: absolute;
+				width: 108px;
+				height: 101px;
+			}
+			#rank{
+				position: absolute;
+				top:50%;
+				margin-top: -100px;
+				left: 50%;
+				margin-left: -100px;
+				width: 200px;
+				height: 200px;
+				background: rgba(0,0,0,.5);
+				color:white;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				display: none;
+				text-align: center;
+			}
+			#number{
+				font-size: 20px;
+				color: red;
+			}
+			/*.txt{
+				margin: 50px 40px;
+			}*/
+		</style>
+	</head>
+	<body>
+		<h2>锅打灰太狼</h2>
+		<div class="wrap">
+			<div class="cover">
+				<p>灰太狼在来的路上.........</p>
+			</div>
+			<div class="game">
+				<!--加载界面-->
+				<div id="loading"></div>
+				<div class="main">
+					<!--开始页面/引导-->
+					<div class="startMenu">
+						<div id="begin">开始游戏</div>
+					</div>
+					<!--游戏页面-->
+					<div class="content">
+						<!--得分-->
+						<div id="score">0</div>
+						<!--时间-->
+						<div id="time"></div>
+						<!--灰太狼-->
+						<!--<div id="wolf"></div>-->
+					</div>
+					<!--游戏结束界面得分榜-->
+					<div id="rank">
+						<div class="txt">
+							<span>您的得分是:</span><span id="number"></span>
+						</div>
+						<div id="rebegin">重新开始游戏</div>
+					</div>	
+				</div>
+				<!--<audio src="img/countdown.wav" preload></audio>-->
+			</div>
+		</div>
+		<script type="text/javascript">
+			var coverDiv = document.querySelector(".cover");
+			var mainDiv = document.querySelector(".main");
+			var menuDiv = document.querySelector(".startMenu");
+			var beginBtn = document.getElementById("begin");
+			var scoreDiv = document.getElementById("score");
+			var timeDiv = document.getElementById("time");
+			var wolf = document.createElement("div");     //存储灰太狼或者小灰灰
+			var rankDiv = document.getElementById("rank");
+			var rebegin = document.querySelector("#rebegin");//重新开始
+			//var wolf = document.getElementById("wolf");
+			//创建音频对象
+			var timeBGM = new Audio();
+			//当音频/视频资源加载完毕时
+			//timeBGM.onloadedmetadata = function () {}
+			timeBGM.src = "img/countdown.wav";
+			beginBtn.onclick = function(){
+				//游戏开始
+				gameBegin();
+			}
+			function gameBegin(){
+				//开始界面隐藏,进入游戏页
+				menuDiv.style.display = 'none';
+				//开启倒计时
+				timeReduce();
+				//随机出现灰太狼或者小灰灰
+				showWolf();       //开始游戏,会等1秒才出现狼狼,bug  bug  bug   嘤嘤嘤
+			}
+			var w;
+			function timeReduce() {
+			    w = timeDiv.offsetWidth;
+				var t = setInterval(function(){
+					w -= 0.6;
+					timeDiv.style.width = w + 'px';
+					if(w <= 60) {
+						timeBGM.play();
+					}
+					//时间用完,游戏结束
+					if(w <= 0){
+						clearInterval(t);
+						gameOver();
+					}
+				}, 100);
+			}
+			//存储可能出现的位置
+			var pos = [[98, 115],[17, 160],[15, 220],[30, 293],[122, 273],[207, 295],[200, 211],[187, 141],[100, 185]];
+			/*随机出现灰太狼或者小灰灰*/
+			function showWolf() {
+				setInterval(function(){
+					//动态创建一个灰太狼
+					wolf.id = 'wolf';
+					mainDiv.appendChild(wolf);
+					//随机位置出现
+					var i = rand(0,pos.length-1);
+					wolf.style.left = pos[i][0] + 'px';
+					wolf.style.top = pos[i][1] +'px';
+					//随机狼  自定义属性  wolf已经取过了就不用var 然后点 .自定义属性了
+					wolf.type = rand(0,100) > 80 ? 'x' : 'h';
+					wolf.style.backgroundImage = 'url(img/'+ wolf.type+'.png)';
+					wolf.style.backgroundPosition = '0';    //默认显示第一张
+					//出现和消失的动画
+					upDown();
+					//添加自定义属性 标记是否已被打过
+					wolf.isHit = false;
+					//添加点击事件
+					wolf.onclick = function(){
+						//若已被击打过就不在执行
+						if(wolf.isHit)return; //return 提前结束函数执行
+						wolf.isHit = true;
+						//先暂停上升下降的动画,然后击打
+						clearInterval(t1);
+						clearInterval(t2);
+						//出现击打的动画
+						var n = 5;
+						var t3 = setInterval(function(){
+							n++;
+							wolf.style.backgroundPosition = n*(-108) +'px';
+							if(n == 9){
+								clearInterval(t3);
+								mainDiv.removeChild(wolf);
+							}
+						},50);
+						//更新分数
+						var s = scoreDiv.innerHTML - 0;  //转成number 分数
+						if (wolf.type == 'h') {
+							//代表击打了灰太狼
+							s +=100;
+						}else{
+							//代表击打了小灰灰
+							s -=100;
+						}
+						scoreDiv.innerHTML = s;
+					}
+				}, 2000);   //里面有嵌套一个upDown计时器的,所以外面的计时器的时间要大于里面时间的总和
+			}
+			var t1,t2;
+			function upDown() {
+				var up = 0;
+				t1 = setInterval(function() {
+					up++;
+					wolf.style.backgroundPosition = up*(-108) +'px';
+					if (up == 5) {
+						clearInterval(t1);
+						//没打中自动下降消失
+						t2 = setInterval(function(){
+							up--;
+							wolf.style.backgroundPosition = up*(-108) +'px';
+							if(up == 0){
+								mainDiv.removeChild(wolf);
+								clearInterval(t2);
+							}
+						}, 100);
+					}
+				},100);
+			}
+			function rand(x,y){
+				return Math.floor(Math.random()*(y-x+1)+x);
+			}
+			/*游戏结束*/
+			function gameOver() {
+				//游戏结束,想把仍在上升的狼给清除掉
+				if(wolf){
+					mainDiv.removeChild(wolf);
+				}
+				//清除所有的计时器
+				clearIntervalAll();
+				//结束界面出现
+				rankDiv.style.display = 'block';
+				document.querySelector("#number").innerHTML = scoreDiv.innerHTML;
+			}
+			//定义函数 清除页面中所有的计时器
+			function clearIntervalAll() {
+				var a = setInterval(function(){}, 50);
+				for (var i = a; i > 0; i--) {
+						clearInterval(i);
+					}
+			}
+			//重新开始点击事件
+			rebegin.onclick = function () {
+				//结束界面隐藏
+				rankDiv.style.display = 'none';
+				//分数重置为0
+				scoreDiv.innerHTML = 0;
+				//进度条重置
+				w = 180;
+				timeDiv.style.width = w + 'px';
+				//开始游戏
+				gameBegin();
+			}
+		</script>
+	</body>
+</html>

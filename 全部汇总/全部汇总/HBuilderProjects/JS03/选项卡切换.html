@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.con>div{
+				display: none;
+				}
+			/*优先级问题,要比display: none;高,否则没效果*/
+			.con>div.active{
+				display: block;
+				width: 300px;
+				height: 300px;
+				background: cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--第三题-->
+			
+		
+			<button>选项1</button>
+			<button>选项2</button>
+			<button>选项3</button>
+			<button>选项4</button>
+			<button>选项5</button>
+			<div class="con">
+				<div class="active">1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+			</div>
+			
+			<script type="text/javascript">
+				//.实现简单的选项卡切换效果
+				var btns = document.getElementsByTagName('button');
+				var divs = document.getElementsByClassName('con')[0].getElementsByTagName('div');
+				for (var i = 0; i < btns.length; i++) {
+					btns[i].index = i;
+					btns[i].onclick = function(){
+						for (var j = 0; j < divs.length; j++) {     //如果for循环条件没给对,实际上是一次都不会执行的呢!!!!!!!!!!!
+							divs[j].className = "";
+						}
+						divs[this.index].className = "active";
+					}
+				}
+			</script>
+	</body>
+</html>

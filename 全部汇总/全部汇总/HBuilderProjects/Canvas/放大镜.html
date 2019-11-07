@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+	</head>
+
+	<body>
+		<canvas id="g" width="1280" height="689"></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("g");
+		var ctx = canvas.getContext("2d");
+		var img = new Image();
+		img.src = "img/l1.jpg";
+		img.onload = function() {
+			ctx.drawImage(img, 0, 0, 1280, 689);
+		}
+		canvas.onmousedown = function() {
+			/*var eve =window.event || e;
+			var x = eve.clientX - canvas.offsetLeft;
+			var y = eve.clientY - canvas.offsetTop;
+			ctx.beginPath();
+			ctx.arc()*/
+			canvas.onmousemove = function(e) {
+				var eve = window.event || e;
+				var x = eve.clientX - canvas.offsetLeft;
+				var y = eve.clientY - canvas.offsetTop;
+				//清除画布
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				//重新绘制图像
+				ctx.drawImage(img, 0, 0, 1280, 689);
+				//修改组合方式
+				ctx.globalCompositeOperation = "destination-out";
+				//创建原型镜片
+				ctx.beginPath();
+				ctx.arc(x,y,100,0,Math.PI*2);
+				ctx.fill();
+				//设置图形的组合方式
+				ctx.globalCompositeOperation = "destination-over";
+				//绘制放大图
+				ctx.drawImage(img,x-50,y-50,100,100,x-100,y-100,200,200);//镜片半径为100,直径为200,以按下点为中心,截取100*100的图,放到200*200的框里,当然内容也被放大了2倍,然后图形组合,圆的放大镜遮盖住矩形
+				//恢复之前的组合方式(还原为默认值)
+				ctx.globalCompositeOperation = "source-over";	
+			}
+			document.onmouseup = function(){
+				canvas.onmousemove = null;
+				//清除画布,重新绘制
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				ctx.drawImage(img, 0, 0, 1280, 689);
+			}
+		}
+	</script>
+
+</html>

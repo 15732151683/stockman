@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>返回顶部</title>
+		<style type="text/css">
+			.wrap{
+				height: 3000px;
+				background: lightgray;
+			}
+			#goTop{
+				position: fixed;
+				right: 20px;
+				bottom: 30px;
+				width: 60px;
+				height: 30px;
+				background: rgba(0,0,0,0.5);
+				color: white;
+				cursor: pointer;
+				text-align: center;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--注意点: 
+			1.scrollTop 为一个纯数值,可获取判断,可赋值, 不用带单位, 可连续赋值
+			2.setoffTop 关于定位距离的这个是要有'px'单位的
+		-->
+		<div class="wrap">内容部分( ⊙ o ⊙ )！</div>
+		<div id="goTop">toTop⤴</div>
+		
+		<script type="text/javascript">
+			/*怎么获取页面的滚动距离:
+			 * 浏览器兼容问题:
+			 * webkit浏览器内核的:  document.body.scrollTop
+			 * 其他的: document.documentElement.scrollTop
+			 * */
+			/*document body  window 绑定scroll监测都可以  */
+			/*var btn = document.querySelector("#goTop");
+			document.onscroll = function (){
+				var t = document.body.scrollTop || document.documentElement.scrollTop;
+				if(t >= 200){
+					btn.style.display = 'block';
+				}else{
+					btn.style.display = 'none';
+				}
+			}*/
+			//点击时,回到顶部
+			var timer;
+			btn.onclick = function(){
+				var t = document.body.scrollTop || document.documentElement.scrollTop;
+				//避免重复点多次,点击多次toTop,会加载多个计时器,那么想重新往下滑就会出现bug了
+				clearInterval(timer);
+				timer = setInterval(function(){
+					t -= 10;
+					if(t <= 0){
+						clearInterval(timer);
+					}
+					//支持同时赋值
+					document.body.scrollTop = document.documentElement.scrollTop = t;
+				}, 10);
+			}
+		</script>
+	</body>
+</html>
+ 

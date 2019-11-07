@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>函数</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			/*函数: 具有特定功能的代码段
+			 *函数的分类:
+			 * 库函数(系统提供的函数,直接调用即可)
+			 * 自定义函数(开发者根据具体的需求自己定义的函数) 
+			 * */
+			
+			//函数定义的语法格式:
+			/*
+			function 函数名(形式参数){
+				特定功能的代码段
+			}
+			function  关键字  表示定义函数
+			函数名: 和变量名命名规范一样
+			形式参数: 形参是可选的,根据函数具体功能是否需要来决定参数的有无
+			函数若有返回值,可通过return返回
+			* */
+			
+			/*根据参数和返回值的有无,函数可分为4种类型:
+			 *
+			 * */
+			//1.无参数无返回值 无参无返
+			function sayHi(){
+				alert('hello');
+			}
+			//调用函数  函数只有调用时,才会执行
+			//调用方法:   函数名();
+			sayHi();
+			
+			//2.有参无返
+			/*形参: 函数定义时需要的参数
+			 *实参: 函数在调用时传入的参数
+			 * 参数可有可无,可以有一个,也可以有多个
+			 * */
+			function print(a){
+				console.log(a);
+			}
+			//调用
+			print('I wanner eat turkey');
+			//参数可以有多个,之间逗号间隔
+			function test(a, b){
+				var m = a > b? a : b;
+				console.log(m);
+			}
+			//调用
+			test(3, 5);
+			
+			//3.无参有返
+			function getAward(){
+				//函数如果有返回值使用return 返回
+				//return 函数内的关键字  会提前结束函数的执行,后面的代码不再执行,一个return后面只能跟一个值,可以把多个值放在数组里
+				return 2000;
+				//return后面的代码不会执行,这个特性,一般可以用来测试
+				alert(111);
+			}
+			//调用 一般有返回值的函数,若要使用其返回值,一般要接收,定义一个变量
+			var m = getAward();
+			console.log(m);
+			
+			//4.有参有返
+			function getMax(a, b){
+				return a>b?a:b;
+			}
+			//调用
+			var max = getMax(1, 7);
+			console.log(max);
+			
+			//定义函数  实现[a,b]的随机整数
+			function randomNum(a, b){
+				return Math.floor(Math.random()*(b - a +1)+a);
+			}
+			
+			
+			/*函数的好处:
+			 把功能代码封装在函数中,方便使用
+			 可以复用(精简代码)
+			 */
+			 //调用
+			var ran = randomNum(20, 99);
+			console.log(ran);
+			
+			/*函数可以嵌套调用,嵌套定义
+			 *可以允许在函数定义中调用另一个函数
+			 */
+			//实现求3个数的最大值
+			function maxValue(a, b, c){
+				return getMax(getMax(a, b), c);
+			}
+			//实现求4个数的最大值
+			function lgvalue(a, b, c, d){
+				return getMax(maxValue(a,b,c), d);
+			}
+			
+			var m = lgvalue(1000, 5, 8, 56);
+			console.log(m);
+			
+			/*函数可以在定义之前调用 
+			 * 函数的定义会前置(会提前到当前作用域的最前面)
+			 */
+			/*函数的实参可以比形参多*/
+			/*arguments: 函数中的关键字  
+			 * 存储调用时所有的传入的实参的数组
+			 * */
+			
+			function sum(){
+				console.log(arguments);
+				var s = 0;
+				for(var i = 0; i < arguments.length; i++){
+					arguments[i];
+					s += arguments[i];
+				}
+				return s;
+			}
+			//调用时可以传入比形参数量多的参数
+		    console.log(sum(1,2,5));
+		    
+		    //匿名函数: 没有名字的函数叫做匿名函数
+		    //定义一个匿名函数
+		    //
+		    (function (){
+		    		alert('hello');
+		    });
+		    //调用匿名函数: 在匿名函数后面加()
+		    // 函数里面() 代表调用
+		    (function (){
+		    		alert('hello');
+		    }());//立即执行函数
+		    //有参数的匿名函数
+		    (function (a){    //形参
+		    		alert('我是'+a);
+		    }('bob'));       //实参
+		</script>
+	
+		
+	</body>
+</html>

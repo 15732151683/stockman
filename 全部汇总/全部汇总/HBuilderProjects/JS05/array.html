@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>数组</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数组: 存储多个!!变量!!的容器
+			//定义数组:   方式1: new
+			//没有给值,创建一个空数组
+			var arr = new Array();
+			console.log(arr);
+			//创建一个5个元素长度的数组
+			var arr1 = new Array(5);
+			console.log(arr1);
+			//创建一个有三个元素的数组分别为1,2,3
+			new Array(1,2,3);
+			//数组支持存储不同类型的变量
+			new Array("bob", 20, true);
+			
+			//数组的属性: length 获取数组的长度
+			console.log(arr1.length);
+			
+			//访问数组元素的方式: 数组名[下标]
+			//数组的下标默认从0开始一直到 length -1  **下标不能越界
+			console.log(arr1[0]);
+			//赋值或者修改元素的值
+			arr1[0] = 2;
+			
+			//创建数组: 方式2 简写形式-语法糖
+			//创建空数组
+			[];
+			//创建一个有5个元素的数组分别为1,2,3,4,5
+			var arr2 = [1,2,3,4,5];
+			//数组支持存储不同类型的变量
+			var arr3 = [2, "a", true, arr2];
+			//数组支持存储表达式
+			var a = 1;
+			var arr4 = [a, a++, a>0];
+			
+			//获取数组arr2的每个元素
+			//数组结合for循环,遍历数组元素
+			for(var i = 0; i < arr2.length; i++){
+				console.log(arr2[i]);
+			}
+			//修改数组元素
+			arr2[1] = 6;
+			//添加并赋值对应下标位置的数组元素
+			arr2[5] = 7;
+			console.log(arr2);
+			
+			//数组操作有关的函数: 
+			var arr5 = [1,2];
+			/*push() 向数组尾部添加一个或多个元素
+			 * 操作的是原数组
+			 */
+			arr5.push(3);
+			arr5.push(4,"w");
+			console.log(arr5);
+			
+			/*pop() 删除数组尾部最后一个元素
+			 *操作的是原数组
+			 * 返回值:被删除的元素,若数组为空,pop就不会改变数组了,返回undefined
+			 * */
+			//pop里面不必写内容,因为pop的功能就是 删除最后一个,如果想删除多个,所以要继续调用pop
+			console.log(arr5.pop());
+			arr5.pop();
+			console.log(arr5);
+			
+			/*unshift() 向数组头部添加一个或多个元素
+			 * 操作的是原数组
+			 */
+			arr5.unshift(4);
+			arr5.unshift("a", "b");
+			console.log(arr5);
+			
+			/*shift()  删除数组第一个元素
+			 * 返回值:被删除的元素,若数组为空,shift就不会改变数组了,返回undefined
+			 */
+			arr5.shift();
+			arr5.shift();
+			console.log(arr5);
+			
+			/*.splice(start,length,元素1,元素2...)
+			 *从下标位置start开始,替换length个元素为 元素1,元素2...
+			 * 若参数2,length不为0,则为替换操作;若length为0,则是在start下标位置前插入元素1,元素2...
+			 * 若length不为0,没有给参数3,则为从start下标位置开始删掉length个元素
+			 * */
+			arr5.splice(2,9,"a","b",0,1,2,3,4,5,6);
+			console.log(arr5);
+			arr5.splice(1,0,"add","add");
+			console.log(arr5);
+			//下标从0开始,删掉length个元素
+			arr5.splice(0, 2);
+			console.log(arr5);
+			
+			/*slice(start, end) 截取数组元素
+			 *获取从下标start开始到end下标(不含该元素)结束之间的数组元素,返回一个新数组
+			 * 
+			 * */
+			var newArr = arr5.slice(1,4);
+			console.log(newArr);
+			
+			/*join()  将数组中元素拼接为字符串,并返回.
+			 * 若未给参数,默认以逗号","连接,指定参数作为链接符形成字符串返回.
+			  */
+			 var arr6 = [2018, 1, 26];
+			 var str = arr6.join(":-D");
+			 console.log(str);
+			 
+			 /*concat() 连接数组
+			  *将数组中的元素进行拼接形成一个新数组返回.  不会改变原数组*/
+			var a = [1,2,3];
+			var b = [4,5,6];
+			var c = a.concat(b);
+			console.log(c);
+			
+			/*.sort() 数组排序 
+			 * 默认是按字符串的各个位ASCII码比较的方式进行排序 且升序排序
+			 * 返回排序好的新数组
+			 */
+			var arr7 = [123,14,210,2];
+			var sorted = arr7.sort();
+			console.log(sorted);
+			
+			//若需按数值大小进行排序,需传入一个参数,作为排序规则.该参数需是函数,函数须有2个参数  函数里面的参数仅供{}内使用,不是全局变量
+			//升序排序
+			var f = arr7.sort(function(a,b){return a - b;});
+			console.log(f);
+			//降序排序
+			var h = arr7.sort(function(a,b){return b - a;});
+			console.log(h);
+			
+			//reverse()颠倒数组顺序
+			var r = arr7.reverse();
+			console.log(r);
+			
+			/*ie9+ 标准浏览器
+			*every() 检测数组中的每一个元素是否满足我们指定的条件,都满足则返回true,否则返回false
+			 * 参数1:函数(函数用于指定规则) 该函数有2个参数: 参数①指代数组中的每一个元素,参数②指代对应元素的下标
+			 * 
+			 * 参数2:用于指定this的指向 
+			 some() 检测数组中有没有满则我们设定的条件的元素,若有则返回true,若都没有则返回false
+			 *
+			 *
+			 filter() 检测数组元素,并将满足指定条件的元素以数组的形式返回 
+			 map() 通过指定的函数处理数组中的每一个元素,并将处理后的数组返回
+			 forEach() 遍历获取数组元素
+			 */
+			
+			var arr8 = [10, 21, 18, 30];
+			var res = arr8.every(function(item){
+				return item >= 18;
+			});
+			console.log(res);
+			var res = arr8.some(function(a,i){
+				return a%2 != 0;
+			});
+			console.log(res);
+			var resArr = arr8.filter(function(item, i){
+				return item % 2 == 0;
+			});
+			console.log(resArr);
+			
+			var arr9 = [100, 200, 300];
+			var brr = arr9.map(function(item){
+				return item + "px";
+			});
+			console.log(brr);
+			arr9.forEach(function(item, index){
+				console.log(item, index);
+			});
+		</script>
+		
+	</body>
+</html>

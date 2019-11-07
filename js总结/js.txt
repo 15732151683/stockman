@@ -1,0 +1,104 @@
+http://idea.imsxm.com/
+
+
+filter
+filter也是一个常用的操作，它用于把Array的某些元素过滤掉，然后返回剩下的元素。
+
+和map()类似，Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。
+
+例如，在一个Array中，删掉偶数，只保留奇数，可以这么写：
+
+1 var arr = [1, 2, 4, 5, 6, 9, 10, 15];
+2 var r = arr.filter(function (x) {
+3     return x % 2 !== 0;
+4 });
+5 r; // [1, 5, 9, 15]
+
+ s.trim(); // 注意：IE9以下的版本没有trim()方法
+
+toLowerCase() 方法用于把字符串转换为小写。
+
+indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+
+1、删除功能，第一个参数为第一项位置，第二个参数为要删除几个。
+array.splice(index,num)，返回值为删除内容，array为结果值。
+var array = ['a','b','c','d'];
+var removeArray = array.splice(0,2);
+alert(array);//弹出c,d
+alert(removeArray);//返回值为删除项，即弹出a,b
+
+2、插入功能，第一个参数（插入位置），第二个参数（0），第三个参数（插入的项）
+
+array.splice(index,0,insertValue)，返回值为空数组，array值为最终结果值
+var array = ['a','b','c','d'];
+var removeArray = array.splice(1,0,'insert');
+alert(array);//弹出a,insert,b,c,d
+alert(removeArray);//弹出空
+
+3、替换功能，第一个参数（起始位置），第二个参数（删除的项数），第三个参数（插入任意数量的项）
+
+array.splice(index,num,insertValue)，返回值为删除内容，array为结果值。
+
+var array = ['a','b','c','d'];
+var removeArray = array.splice(1,1,'insert');
+alert(array);//弹出a,insert,c,d
+alert(removeArray);//弹出b
+
+for in更适合遍历对象 ，for of遍历的只是数组内的元素，而不包括数组的原型属性method和索引name
+
+for in遍历数组的毛病
+1.index索引为字符串型数字，不能直接进行几何运算
+2.遍历顺序有可能不是按照实际数组的内部顺序
+3.使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性
+所以for in更适合遍历对象，不要使用for in遍历数组。
+
+
+
+slice 选出已有数据的值（start，end）end值取不到，所以end要+1
+
+8种遍历方法
+https://www.cnblogs.com/ihboy/p/6878427.html
+
+this定义
+在函数中this指向不是在定义的时候确定的，而是在真正运行此函数时确定的
+
+
+JSON.parse(JSON.stringify(data.data,['id','name','pid','children']))
+可以对树状数组中抽取出指定的属性， 例如data.data是树状数组，‘id’，‘name’是其中的属性，
+
+
+
+科学计数法
+num.toExponential(2)   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

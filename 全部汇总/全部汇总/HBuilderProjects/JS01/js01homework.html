@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js_01作业</title>
+	</head>
+	<style type="text/css">
+		#light{
+			width: 200px;
+			height: 200px;
+			background: url(img/pic_bulboff.gif) no-repeat;
+		}
+		.square{
+			margin-top: 50px;
+			width: 200px;
+			height: 200px;
+			background-color: lightcyan;
+		}
+	</style>
+	<body>
+		<!--第一题-->
+		
+		<input type="number" name="" id="weight" value="" placeholder="行李的重量"/>
+		<button>行李托运价格</button>
+		<p></p>
+		
+		<script type="text/javascript">
+			/*1.输入行李重量, 计算价格. 铁路托运行李规定：行李重不超过50公斤的，托运费按0.15元每公斤计算，如果超过50公斤，超出部分每公斤加收0.1元。*/
+			var btn = document.getElementsByTagName('button')[0];
+			btn.onclick = function(){
+				var weight = document.getElementById("weight").value - 0;
+				var price = 1;
+				if(weight <= 50){
+					price = weight*0.15;
+				}else{
+					price = weight*0.15 + (weight - 50)*0.1;
+				}
+				document.getElementsByTagName('p')[0].innerHTML = ("托运费为:" + price);
+			}
+			
+		</script>
+		<!--第二题-->
+		
+		<input type="number" name="x" id="x" value="" placeholder="x的值"/>
+		<button>计算</button>
+		<p></p>
+		
+		<script type="text/javascript">
+			//2.函数：x<1的时候，y = x；1<=x<10的时候，y=2x-1；x>=10的时候，y=3x-11。写一段程序，输入x，输出y值。
+			//if的嵌套
+			document.getElementsByTagName('button')[1].onclick = function(){
+				var x = document.getElementById("x").value - 0;
+				var y;
+				if (x < 1) {
+					y = x;
+				} else if(x < 10){
+					y = 2*x - 1;
+				} else{
+					y = 3*x - 11;
+				}
+				document.getElementsByTagName('p')[1].innerHTML = ("y的计算值为:" + y);
+			}
+		</script>
+		
+		<!--第三题-->
+		
+		<div id="light"></div>
+		<img src="img/pic_bulboff.gif"/>
+		
+		<script type="text/javascript">
+			//实现点击灯泡时打开或关闭这盏灯的效果
+			
+			
+			//bg
+			var light = document.getElementById("light");
+			var flag = false;
+			light.onclick = function(){
+				if(flag){
+					light.style.background = "url(img/pic_bulboff.gif) no-repeat";
+					flag = false;
+				}else{
+					light.style.background = "url(img/pic_bulbon.gif) no-repeat";
+					flag = true;
+				}
+			}
+			
+			
+			//image 
+			var img = document.getElementsByTagName('img')[0];
+			var flag = false;
+			img.onclick = function(){
+				//var flag = false;  这标记不能写在点击事件里面,每重新点击一次,flag都为false,则flag为true时不会运行到.
+				if(flag){
+					img.src = "img/pic_bulboff.gif";
+					flag = !flag;
+				}else{
+					img.src = "img/pic_bulbon.gif";
+					flag = !flag;
+				}
+			}
+		</script>
+		
+		<!--第四题--> 
+		
+		<input type="number" name="deg" id="deg" value="" placeholder="请输入旋转角度"/>
+		<button id="btn2">旋转</button>
+		<div class="square"></div>
+		
+		<script type="text/javascript">
+			var btn2 = document.getElementById("btn2");
+			btn2.onclick = function(){
+				var deg = document.getElementsByTagName('input')[2].value -0;
+				console.log(deg);
+				document.getElementsByClassName('square')[0].style.transform = "rotateZ(" + deg + "deg)";
+			}
+		</script>
+	</body>
+</html>

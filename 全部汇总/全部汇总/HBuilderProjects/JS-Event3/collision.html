@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>碰撞检测</title>
+		<style type="text/css">
+			#d1{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			#d2{
+				position: absolute;
+				top: 300px;
+				left: 300px;
+				width: 100px;
+				height: 100px;
+				background: green;
+			}
+			#ball1,#ball2{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+			}
+			#ball1{
+				background: orange;
+				top: 200px;
+			}
+			#ball2{
+				background: lightblue;
+				top: 400px;
+				left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>矩形碰撞检测</h1>
+		<div id="d1"></div>
+		<div id="d2"></div>
+		<script type="text/javascript">
+			var d1=document.getElementById("d1");
+			var d2=document.getElementById("d2");
+			d1.onmousedown = function(e) {
+				var eve =window.event || e;
+				var x=eve.clientX - d1.offsetLeft;
+				var y=eve.clientY - d1.offsetTop;
+				document.onmousemove = function(e) {
+					var eve= window.event || e;
+					d1.style.left = eve.clientX - x + "px";
+					d1.style.top=eve.clientY- y + "px";
+					//碰撞检测: 获取物体上下左右边界值,判断位置关系
+					var l1 = d1.offsetLeft;          //d1的左边界
+					var r1 = l1 + d1.offsetWidth;    //d1的右边界
+					var t1 = d1.offsetTop;           //d1的上边界
+					var b1 = t1 + d1.offsetHeight;	//d1的下边界
+					
+					var l2 = d2.offsetLeft;			//d2的左边界
+					var r2 = l2 + d2.offsetWidth;	//d2的右边界
+					var t2 = d2.offsetTop;			//d2的上边界
+					var b2 = t2 + d2.offsetHeight;	//d2的下边界
+					if(r1 < l2 || l1 > r2 || t1 > b2 || b1 < t2 ) {
+						//没有碰撞
+						d2.style.background = "green";
+					}else{
+						//碰撞
+						d2.style.background = "gold";
+					}
+				}
+				document.onmouseup = function() {
+					document.onmousemove = null;
+				}
+			}
+			
+		</script>
+		<h1>圆形碰撞检测</h1>
+		<div id="ball1"></div>
+		<div id="ball2"></div>
+		<script type="text/javascript">
+			//判断两圆的圆心距 与 两圆的半径之和的关系
+			var ball1 = document.getElementById("ball1");
+			var ball2 = document.getElementById("ball2");
+			ball1.onmousedown  = function(e){
+				var eve = event || e;
+				var x = eve.clientX - ball1.offsetLeft;
+				var y = eve.clientY - ball1.offsetTop;
+				document.onmousemove = function(e){
+					var eve = event || e;
+					ball1.style.left = eve.clientX -x + 'px';
+					ball1.style.top = eve.clientY -y + 'px';
+					if(isCrash(ball1, ball2)){
+						ball2.style.background = 'purple';
+					}else{
+						ball2.style.background = 'gold';
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+					}
+				}
+				
+			}
+			function isCrash(obj1, obj2){
+				//安全判断: 物体1 和 物体2 都存在的情况下进行判断
+				if(obj1 && obj2){
+					//圆心位置
+					var x1 = obj1.offsetLeft + obj1.offsetWidth/2;
+					var y1 = obj1.offsetTop + obj1.offsetHeight/2;
+					var x2 = obj2.offsetLeft + obj2.offsetWidth/2;
+					var y2 = obj2.offsetTop + obj2.offsetHeight/2;
+					//计算圆心距
+					var ds = Math.sqrt(Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2));
+					if(ds <= (obj1.offsetWidth/2+ obj2.offsetWidth/2)){
+						//相碰
+						return true;
+					}else{
+						//没有相碰
+						return false;
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

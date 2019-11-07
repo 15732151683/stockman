@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "即将热映",
+  "usingComponents": {
+    "movie-grid": "/components/movie-grid/movie-grid"
+  }
+}

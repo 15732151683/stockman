@@ -1,0 +1,42 @@
+<extend name="Public/common/views/base.html" />
+
+<block name="title">
+  <title>注册</title>
+</block>
+
+<block name="mainCss">
+  <css href="/BookStore/Public/css/register.css" />
+</block>
+
+<block name="body">
+  <div class="main">
+    <h1>注册</h1>
+    <input type="text" placeholder="用户名" class="username" />
+    <br />
+    <input type="password" placeholder="密码" class="password" />
+    <br />
+    <input type="button" class="btn" value="注册" class="btn" />
+  </div>
+</block>
+
+<block name="script">
+  <script>
+    $(function() {
+
+      $('.main input:button').click(function(){
+        $.post('/BookStore/home/user/register', {
+          'username': $('.main input:text').val(),
+          'password': $('.main input:password').val()
+        }, function(res){
+          if(res.succeed){
+            alert('注册成功，赶紧去登录吧！');
+            location.href = "/BookStore/home/index/index"
+          }else {
+            alert(res.message);
+          }
+        }, 'json')
+      })
+
+    })
+  </script>
+</block>

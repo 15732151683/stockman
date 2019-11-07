@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				margin-top: 100px;
+			}
+			span{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				border: 3px solid red;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 50%;
+				color: red;
+			}
+			#last{
+				border-color: deepskyblue;
+				color: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--第一题-->
+		<script type="text/javascript">
+			//创建一个数组, 10个元素, 随机为元素赋值, 取值范围[66, 99], 求最大值和最小值, 及其所在的下标
+			var arr = [];
+			var max = Number.NEGATIVE_INFINITY;
+			var min = Number.POSITIVE_INFINITY;
+			var maxIndex, minIndex;
+			for (var i = 0; i < 10; i++) {
+				arr[i] = Math.floor(Math.random()*(99-66+1)+66);
+				if(arr[i] > max){
+					max = arr[i];
+					maxIndex = i;
+				}
+				if(arr[i] < min){
+					min = arr[i];
+					minIndex = i
+				}
+			}
+			console.log(arr);
+			console.log("最大值是:" + max,"对应下标为:"+maxIndex,"最小值是:" + min,"对应下标为:"+minIndex);
+			//???????????????????????????????????????
+			/*
+			var xArr = arr.filter(function(item,i){
+				return max = item - max > 0? item : max;
+				a = i
+			});
+			document.write("最大值是:" + xArr[0],"对应下标为:" + a);
+			var nArr = arr.filter(function(item,t){
+				min = item - min > 0? min : item;
+			});
+			document.write("最小值是:" + nArr[0],"对应下标为:" + i);*/
+		</script>
+		
+		<!--第二题-->
+		<script type="text/javascript">
+			//创建一个数组，随机20个元素，范围[20， 100]，将数组元素升序排序后输出
+			var arr1 = [];
+			for(var a = 0; a < 20; a++){
+				arr1[a] = Math.floor(Math.random()*(100-20+1)+20);
+			}
+			console.log(arr1);
+			var sorted = arr1.sort(function(a,b){return a - b;});
+			console.log(sorted);
+		</script>
+		
+		<!--第三题-->
+		<input type="date" name="" id="date" value="" />
+		<button id="btn">提交</button>
+		<script type="text/javascript">
+			//给定某年某月某日,输出其为这一年的第几天(提示: 使用数组)
+			var btn = document.getElementById("btn");
+			var arr2 = [31,28,31,30,31,30,31,31,30,31,30,31];
+			var sum = 0;
+			btn.onclick = function(){
+				var date = document.getElementById("date").value;
+				var year  = date.substr(0,4) - 0;
+				var month  = date.substr(5,2) - 0;
+				var day  = date.substr(8,2) -  0;
+				if(year%400 == 0||(year%4==0&&year%100 !=0)){
+					if(month > 2)
+					sum+=1;
+				}
+				while(month > 1){
+					sum +=arr2[month - 2];
+					month--;
+				}
+				sum +=day;
+				console.log("为这一年的第"+sum+"天");
+				sum = 0;
+			}
+			//问题: 不刷新页面,重新选日期,重新提交,结果不对!   <------------因为再一次点击事件后,sum并没有初始化.为上次的计算结果
+		</script>
+		
+		<!--第四题-->
+		<div class="wrap">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span id="last"></span>
+			<br />
+			<button id="shake">摇一摇</button>
+		</div>
+		<script type="text/javascript">
+			//制作双色球机选效果
+			var cirs = document.getElementsByClassName("wrap")[0].getElementsByTagName("span");
+			var btn = document.getElementById("shake");
+			//随机数
+			function randomNum(a,b) {
+				return Math.floor(Math.random()*(b - a + 1) + a);
+			}
+			btn.onclick = function() {
+				var arr3 = [];
+				while(arr3.length < 6){
+					var num = randomNum(1,33);
+					var flag = false;          //标记两数大小不一样
+					//遍历数组查重
+					for(var i = 0; i < arr3.length; i++){
+						if(arr3[i] == num){
+							flag = true;
+							continue;
+						}
+					}
+					if(flag == false){
+						arr3.push(num);
+					}
+				}
+				//.sort(); 会直接改变原函数
+				arr3.sort(function(m, n){return m - n;});
+				console.log(arr3);
+				var num2 = randomNum(1, 16);
+				arr3.push(num2);
+				for (var j = 0; j < arr3.length; j++) {
+					if( arr3[j] < 10){
+						arr3[j] = '0' + arr3[j];
+					}
+				}
+				for (var k = 0; k < cirs.length; k++) {
+					cirs[k].innerHTML = arr3[k];
+				}
+			}
+		</script>
+	</body>
+</html>

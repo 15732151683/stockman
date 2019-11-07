@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 408px;
+				height: 150px;
+				border: 1px solid #D3D4D3;
+			}
+			#top{
+				overflow: hidden;
+			}
+			span{
+				float: left;
+				width: 100px;
+				height: 30px;
+				border: 1px solid #D3D4D3;
+				text-align: center;
+				line-height: 30px;
+				background: linear-gradient(white 40%, pink);
+				cursor: pointer;
+			}
+			#top>span.click{
+				border: none;
+				background: white;
+			}
+			#con>div{
+				padding: 10px;
+				display: none;
+			}
+			#con>div.cur{
+				padding: 10px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div id="top">
+				<span class="click">许嵩</span>
+				<span>周杰伦</span>
+				<span>林俊杰</span>
+				<span>陈奕迅</span>
+			</div>
+			<div id="con">
+				<div class="cur">许嵩许嵩许嵩许嵩</div>
+				<div>周杰伦周杰伦周杰伦</div>
+				<div>林俊杰林俊杰林俊杰</div>
+				<div>陈奕迅陈奕迅陈奕迅</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var btns = document.getElementById("top").getElementsByTagName('span');
+			var divs = document.getElementById("con").getElementsByTagName('div');
+			
+			for (var i = 0; i < btns.length; i++) {
+				btns[i].index = i;
+				btns[i].onmouseover = function(){	
+					//关于按钮本身
+					for (var j = 0; j < btns.length; j++) {
+						btns[j].className = '';
+					}
+					this.className = 'click';
+					//关于下面的内容的切换
+					for (var m = 0; m < divs.length; m++) {
+						divs[m].className = '';
+					}
+					divs[this.index].className = 'cur';
+				}
+			}
+		</script>
+	</body>
+</html>

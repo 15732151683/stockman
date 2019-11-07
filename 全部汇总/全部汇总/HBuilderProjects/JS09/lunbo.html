@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tween.js版的轮播图</title>
+		<style type="text/css">
+			.wrap{
+				/*position: relative;*/
+				width: 500px;
+				height: 600px;
+				margin: 50px auto;
+				overflow: hidden;
+				/*border: 5px solid red;*/
+			}
+			.con{
+				position: relative;
+				left: 0;
+				width: 3000px;
+			}
+			/*一般由内容撑起,不设宽高*/
+			.slide{
+				float: left;
+				width: 500px;
+				height: 600px;
+			}
+			.slide img{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--显示区-->
+		<div class="wrap">
+			<!--内容区-->
+			<div class="con">
+				<!--内容区里面的内容-->
+				<div class="slide"><img src="img/10.jpeg" alt="" /></div>
+				<div class="slide"><img src="img/6.jpeg" alt="" /></div>
+				<div class="slide"><img src="img/7.jpeg" alt="" /></div>
+				<div class="slide"><img src="img/8.jpeg" alt="" /></div>
+				<div class="slide"><img src="img/2.jpeg" alt="" /></div>
+				<div class="slide"><img src="img/10.jpeg" alt="" /></div>
+			</div>
+		</div>
+		
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var conDiv = document.getElementsByClassName('con')[0];
+			var i = 0;                     //记录当前是第几张图片
+			var timer;
+			setInterval(autoplay, 2000);    //自动轮播 
+			function autoplay(){
+				i++;                    //切换到下一张   i=1;2;   初始为0;先 i++ 然后才play, 
+				//代表切换到了最后一张后面多放的第一张内容,此时修改内容区的偏移量回到初始值0,  
+				if(i == 6){
+					i = 1;
+					conDiv.style.left = 0; 
+				}
+				//轮播一张的功能
+				play();
+			}
+			//实现当前图片的轮播效果
+			function play(){
+				var t = 0;
+				/*offsetLeft 获取元素定位的left值       基于父级定的位*/
+				var b = (i-1)*(-500);//var b = conDiv.offsetLeft;    
+				var c = (-500)*i - b;
+				var d = 10;
+				//再添加之前,先清除上次的计时器
+				clearInterval(timer);
+				timer = setInterval(function(){
+					t++;
+					if(t == d){
+						clearInterval(timer);
+					}
+					conDiv.style.left = Tween.Quad.easeOut(t,b,c,d) +'px';
+					}, 50);
+				}
+			
+		</script>
+	</body>
+</html>

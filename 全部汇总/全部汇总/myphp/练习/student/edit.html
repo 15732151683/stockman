@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--编辑界面-->
+		<form action="register.php" method="post" enctype="multipart/form-data" name="regfrm">
+			姓名:<input type="text" name="name"/><br />
+			性别:<input type="radio" name="gender" value="male"/>男
+				<input type="radio" name="gender" value="female"/>女<br />
+			院系:
+			<select name="college">
+				<option value="ms">美术学院</option>
+				<option value="yy">音乐学院</option>
+				<option value="wd">物电</option>
+				<option value="wgy">外国语</option>
+				<option value="shh">生化</option>
+			</select><br /> 
+			城市:
+			<select name="city">
+				<option value="bj">北京</option>
+				<option value="sh">上海</option>
+				<option value="wh">武汉</option>
+				<option value="js">江苏</option>
+				<option value="zj">浙江</option>
+			</select><br /> 
+			年龄: <input type="text" name="age" /><br />
+			上传头像: <input type="file" name="file" value="" /><br />
+			<!--提交按钮类型改成button,  不能是submit-->
+			<input type="button" value="注册学生信息"/> 
+		</form>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			//获取id值
+			var str = location.search;
+			console.log(str);
+		</script>
+	</body>
+</html>

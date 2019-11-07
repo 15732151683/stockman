@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增的表单元素和表单属性</title>
+	</head>
+	<body>
+		<form action="" <!--novalidate-->>
+		<!--email 邮箱 自带简单的邮箱验证-->
+			邮箱:<input type="email"  />
+			<input type="submit" name="" id="" value="提交" /><br />
+		<!--url 网址 自带简单的网址格式验证-->
+			网址:<input type="url" name="" id="" value="" />
+			<input type="submit" name="" id="" value="提交" /><br />
+		<!--number 数字 只支持输入数字-->
+		<!--step 属性 递增间隔,每次的变化量-->
+			年龄:<input type="number" step="5"/>
+			<input type="submit" name="" id="" value="提交" /><br />
+		<!--color 颜色面板-->
+			颜色: <input type="color" name="" id="" value="" /><br />
+		<!--search  搜索-->
+			Baidu: <input type="search" name="" id="" value="" /><br />
+		<!--range 范围 以滑杆的形式显示
+			min 指定最小值
+			max 指定最大值
+			value 当前值
+		-->
+			<input type="range" min="0" max="1000" value="500"><br />
+		<!--date 日期 年/月/日-->
+			<input type="date"><br />
+		<!--month 年/月-->
+			<input type="month" /><br />
+		<!--week -->
+			<input type="week"><br />
+		<!--time 时间-->
+			<input type="time"><br />
+		<!--datetime-->
+			<input type="datetime" /><br />
+			<input type="datetime-local" /><br />
+		<!--表单中新增的比较重要的属性:
+			autofocus 自动聚焦 优化用户体验
+			required 必填项  被required修饰的,必须填写
+			在form标签里面写 novalidate  所有的提示都没有了
+		-->
+			<input type="text" autofocus required/><br />
+		
+		<!--这一条不是新增的 datalist 自带模糊搜索效果-->
+		<!--结合input的list属性和datalist的id值保持一致,搭配option使用-->
+			<input type="text" list="dd"/>
+			<datalist id="dd">
+				<option value="我">你想咋地</option>
+				<option value="要"></option>
+				<option value="吃鸡腿pizza"></option>
+			</datalist>
+			<input type="submit" name="" id="" value="提交" /><br />
+		</form>
+	</body>
+</html>

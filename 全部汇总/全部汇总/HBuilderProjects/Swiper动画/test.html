@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.l1{
+				position: absolute;
+				left: 0;
+				top: 50%;
+				-webkit-animation: toRB 1s linear infinite alternate;
+				-o-animation: toRB 1s linear infinite alternate;
+				animation: toRB 1s linear infinite alternate;
+			}
+			@-webkit-keyframes toRB {
+				from {left: 0;}
+				to {right: 0;}
+			}
+			@keyframes toRB {
+				from { left: 0;}
+				to {right: 0;}
+			}
+			.l2{
+				position: absolute;
+				right: 0;
+				top: 30%;
+				-webkit-animation: toLT 1s linear infinite alternate;
+				-o-animation: toLT 1s linear infinite alternate;
+				animation: toLT 1s linear infinite alternate;
+			}
+			.l3{
+				position: absolute;
+				right: 0;
+				bottom: 30%;
+				-webkit-animation: toRT 1s linear infinite alternate;
+				-o-animation: toRT 1s linear infinite alternate;
+				animation: toRT 1s linear infinite alternate;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<img class="l1" src="img/pageone/l1.png"/>
+			<img class="l2" src="img/pageone/l2.png"/>
+			<img class="l3" src="img/pageone/l3.png"/>
+		</div>
+	</body>
+</html>

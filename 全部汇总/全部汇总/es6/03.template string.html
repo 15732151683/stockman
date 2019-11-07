@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    /*模板字符串
+    1、允许在字符串中直接输出表达式（${}）
+    2、字符串的多行输出
+    3、模板字符串的定义"``"
+    * */
+
+    /*输出表达式*/
+    let [x,y] = [10,20];
+    var str = `${x}+${y} = ${x+y}`;//10+20=30
+    console.log(str);
+    console.log(`${x} - ${y} = ${x-y}`);
+    console.log(`${x} * ${y} = ${x*y}`);
+    console.log(`${x} / ${y} = ${x/y}`);
+
+//    字符的多行输出
+    var str = `
+   Today
+    is
+    Thursday
+    `
+    console.log(str);
+
+
+
+</script>
+</html>

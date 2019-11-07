@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表</title>
+		<style type="text/css">
+			ul{
+				list-style: none;
+			}
+			a:visited{
+				color: blue;
+			}
+			ul li:before{
+				content: "";
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				vertical-align: middle;
+			}
+			ul li:nth-child(-n+8):before{
+				background: url(img/icon_img.gif);
+			}
+			ul li:first-child:before{
+				background: url(img/icons.png) -361px -192px;
+			}
+			ul li:nth-child(2):before{
+				background: url(img/icons.png) -336px -192px;
+			}
+			ul li:nth-child(3):before{
+				background: url(img/icons.png) -313px -192px;
+			}
+			ul li:nth-last-child(3):before{
+				background: url(img/icons.png) -385px -192px;
+			}
+			ul li:nth-child(4):before{
+				background: url(img/icon_rar.gif);
+			}
+			ul li:last-child:before,li:nth-last-child(2):before{
+				background: url(img/window.gif);
+			}
+			.film th,.film td{
+				border: 1px solid #CBCCCB;
+				padding-left: 12px;
+				text-align: left;
+			}
+			.film{
+				border-collapse: collapse;
+			}
+			tr td:nth-child(2){
+				width: 384px;
+				height: 42px;
+			}
+			tr td:first-child,tr th:first-child{
+				width: 67px;
+				height: 42px;
+			}
+			tr td:last-child{
+				width: 139px;
+				height: 42px;
+			}
+			thead{
+				background-color: #DAE9F8;
+			}
+			tbody tr:hover{
+				background-color: #FAF6E8;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><a href="">PDF文件</a></li>
+			<li><a href="">PPT文件</a></li>
+			<li><a href="">XLS文件</a></li>
+			<li><a href="http://www.baidu.com/name.rar">RAR文件</a></li>
+			<li><a href="">GIF文件</a></li>
+			<li><a href="">JPG文件</a></li>
+			<li><a href="">PNG文件</a></li>
+			<li><a href="">TXT文件</a></li>
+			<li><a href="">#锚点超链接</a></li>
+			<li><a href="">http://www.baidu.com/</a></li>
+		</ul>
+		<div >
+			<table class="film">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>豆瓣排名前5的电影</th>
+						<th>年份</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>肖生克的救赎</td>
+						<td>1994</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>这个杀手不太冷</td>
+						<td>1994</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>霸王别姬</td>
+						<td>1993</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>阿甘正传</td>
+						<td>1994</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>美丽人生</td>
+						<td>1997</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

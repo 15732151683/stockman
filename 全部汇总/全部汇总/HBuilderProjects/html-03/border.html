@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用boder做的各种效果</title>
+		<style type="text/css">
+			.d1{
+				width: 200px;
+				height: 100px;
+				border: 10px groove orange;
+			}
+			.d2{
+				width: 200px;
+				height: 200px;
+				border-top: 20px solid black;
+				border-right: 20px solid blue;
+				border-bottom: 20px solid red;
+				border-left: 20px solid yellow;
+			}
+			.d3{
+				width: 0;
+				height: 0;
+				border-top: 20px solid black;
+				border-right: 20px solid transparent;
+				border-bottom: 20px solid red;
+				border-left: 20px solid yellow;
+				border-radius: 20px;
+			}
+			.circle{
+				width: 100px;
+				height: 100px;
+				background-color: gold;
+				border-radius: 50%;
+			}
+			.circle1{
+				width: 50px;
+				height: 50px;
+				border: 50px solid blue;
+				background-color: transparent;
+				border-radius: 50%;
+			}
+			.rect{
+				width: 100px;
+				height: 60px;
+				background-color: cyan;
+				border-radius: 10px;
+			}
+			.ellipse{
+				width: 200px;
+				height: 100px;
+				border-radius: 100%;
+				background-color: gray;
+			}
+			.pill{
+				width: 200px;
+				height: 50px;
+				background-color: orange;
+				border-radius: 50px;
+			}
+			.half1{
+				width: 100px;
+				height: 200px;
+			/*!!!!!!边框圆角分为4个角的圆角弧度*/
+				border-top-right-radius: 100px;
+				border-bottom-right-radius: 100px;
+				background-color: red;
+			}
+			.cir{
+				width: 15px;
+				height: 10px;
+				border-radius: 100%;
+				background-color: black;
+			}
+			.sector{
+				width: 200px;
+				height: 200px;
+				border-top-right-radius: 200px;
+				background-color: rosybrown;
+			}
+			.d4{
+				width: 200px;
+				height: 100px;
+				border: 20px solid blue;
+				border-radius: 20px;
+			}
+			.d5{
+				width: 50px;
+				height: 50px;
+				border: 50px solid goldenrod;
+				border-radius: 50px;
+			}
+			.fan{
+				width: 120px;
+				height: 50px;
+				background-color: green;
+				border-top-left-radius: 50px;
+				border-bottom-right-radius: 50px;
+			}
+			.fan>p{
+				float: right
+			}
+			.d9{
+				width: 200px;
+				height: 100px;
+				/*box-shadow: 
+				 1.inset(内阴影)  默认外阴影
+				 2.横向偏移量
+				 3.纵向偏移量
+				 4.模糊距离
+				 5.扩散距离
+				 6.阴影颜色*/
+				box-shadow: 10px -20px 30px gray;
+			}
+			.d10{
+				width: 100px;
+				height: 100px;
+				box-shadow: 10px 0 5px 5px red;
+			}
+			.d11{
+				width: 100px;
+				height: 100px;
+				box-shadow: 0 0 20px red;
+			}
+			.d12{
+				width: 100px;
+				height: 100px;
+				box-shadow: 5px 5px 10px red,0 0 30px green,0 0 30px blue; 
+			}
+			.test{
+				width: 300px;
+				height: 200px;
+				border-width: 30px;
+			/*边框图片*/
+				border-image-source: url(img/border.png);
+				/*边框图片的切割,上右下左,顺时针方向,把图片分成"九宫格",1,3,5,7部分分别作为边框角的位置,2,4,6,8分别去填充上右下左,4个方向的边框,填充的模式是由border-image-repeat决定*/
+				border-image-slice: 27;
+				/*设置边框图片的宽度*/
+				/*border-image-width: 27px;*/
+				/*border-image-repeat:
+				 stretch: 拉伸
+				 round: 平铺,填充的图片按整数个出现,位置不够会压缩
+				 repeat: 重复从边框线的中间开始填充,向左右平铺,位置不够多余部分切除*/
+				border-image-repeat: round;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="d1"></div>
+		<div class="d2"></div>
+		<div class="d3"></div>
+		<h2>边框圆角: border-radius</h2>
+		<p>圆形:①宽高相等 ②border-radius>=宽高值的一半</p>
+		<div class="circle"></div>
+		<div class="circle1"></div>
+		<p>圆角矩形: </p>
+		<div class="rect"></div>
+		<p>胶囊状: border-radius: 与较小值相等;</p>
+		<div class="pill"></div>
+		<p>椭圆: ①宽高比1:2或者2:1②border-radius: 100%;即:长轴半径,短轴半径>=一半值 boder-radius: 横向半径/纵向半径;</p>
+		<div class="ellipse"></div>
+		<p>半圆:  宽高比1:2,border-radius: 等于两者中的较小值;</p>
+		<div class="half1" >
+			<div class="cir"></div>
+			<div class="cir" style="position: relative;"></div>
+			<div class="cir"></div>
+			<div class="cir"></div>
+			<div class="cir"></div>
+			<div class="cir"></div><div class="cir"></div>
+		</div>
+		<p>1/4圆:  扇形</p>
+		<div class="sector"></div>
+		<p>内边直角矩形: border-radius: 等于border-width;</p>
+		<div class="d4"></div>
+		<p>铜板</p>
+		<div class="d5"></div>
+		<p>扇叶:</p>
+		<div class="fan"><p>gifdhsiuafi</p>d</div>
+		
+		<h2>边框阴影: box-shadow</h2>
+		<div class="d9"></div>
+		<p>单侧无阴影效果:模糊距离=扩散距离,但是不能超过偏移量</p>
+		<div class="d10"></div>
+		<p>四边阴影效果: 偏移量不设置,只设置模糊半径,也可设扩散距离</p>
+		<div class="d11"></div>
+		<p>多层阴影效果,每组之间逗号间隔</p>
+		<div class="d12"></div>
+		
+		<h2>边框图片: border-image</h2>
+		<p>可以把图片作为边框,IE11+ 以及标准浏览器下支持    </p>
+		<div class="test"></div>
+	</body>
+</html>

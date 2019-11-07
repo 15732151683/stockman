@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>classname</title>
+		<style type="text/css">
+			.d1{
+			display: none;
+		}
+			.show{
+				width: 300px;
+				height: 200px;
+				background-color: red;
+				display: block;
+			}
+		</style>
+		<link id="link" rel="stylesheet" type="text/css" href="css/style1.css"/>
+		
+	</head>
+	<body>
+		<button id="btn">显隐</button>
+		 <div class="d1"></div>
+		 <button id="change">一键切换</button>
+		 
+		 
+		 
+		 
+		 
+		 <script type="text/javascript">
+		 	var btn  = document.getElementById("btn");
+		 	var div1 = document.getElementsByClassName("d1")[0];
+		 	//鼠标移入出现
+		 	btn.onmouseover = function(){
+		 		div1.className = "show";
+		 	}
+		 	btn.onmouseout = function(){
+		 		div1.className = "d1";
+		 	}
+		 	document.getElementById("change").onclick = function(){
+		 		//获取link标签
+		 		var lk = 
+		 		document.getElementById("link");
+		 		//更改href属性
+		 		lk.href = "css/style2.css";
+		 	};
+		 	/*className: 操作元素的类型属性
+		 	 *class是系统的保留字(ES6中用来定义类),不能使用它来操作类型,系统提供 className属性来代替他操作元素的类名来实现,让对应元素加载对应类选择器中的样式*/
+		 </script>
+	</body>
+</html>

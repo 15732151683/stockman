@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>旋转木马</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background-color: #000;
+			}
+			.box{
+				position: relative;
+				width: 320px;
+				height: 400px;
+				margin: 200px auto;
+				border: 1px solid white;
+				transform-style: preserve-3d;
+				transform: rotateX(-15deg);
+				animation: play 5s infinite linear;
+			}
+			@keyframes play{
+				from{
+					transform: rotateX(-15deg) rotateY(0deg) ;
+				}
+				to{
+					transform: rotateX(-15deg) rotateY(360deg) ;
+				}
+			}
+			.box>img{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 320px;
+				height: 400px;
+				/*倒影*/
+				-webkit-box-reflect: below 30px linear-gradient(to top,red 30%,transparent 30%,transparent);
+			}
+			.box>img:nth-child(1){
+				transform: translateZ(400px);
+			}
+			.box>img:nth-child(2){
+				transform: rotateY(60deg) translateZ(400px);
+			}
+			.box>img:nth-child(3){
+				transform: rotateY(120deg) translateZ(400px);
+			}
+			.box>img:nth-child(4){
+				transform: rotateY(180deg) translateZ(400px);
+			}
+			.box>img:nth-child(5){
+				transform: rotateY(240deg) translateZ(400px);
+			}
+			.box>img:nth-child(6){
+				transform: rotateY(300deg) translateZ(400px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<img src="img/m1.jpeg" alt="" />
+			<img src="img/m2.jpeg" alt="" />
+			<img src="img/m3.jpeg" alt="" />
+			<img src="img/m4.jpeg" alt="" />
+			<img src="img/m5.jpeg" alt="" />
+			<img src="img/m6.jpeg" alt="" />
+		</div>
+	</body>
+</html>

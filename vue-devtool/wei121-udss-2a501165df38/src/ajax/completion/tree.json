@@ -1,0 +1,1172 @@
+[
+  {
+    "id": 0,
+    "level": 1,
+    "name": "Student",
+    "completion": 0,
+    "parent": null,
+    "children": [
+      {
+        "id": 6,
+        "level": 2,
+        "name": "Student Size",
+        "completion": 0,
+        "parent": 0,
+        "children": [
+          {
+            "id": 29,
+            "level": 3,
+            "name": "Total Number of Students",
+            "parent": 6,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 30,
+            "level": 3,
+            "name": "Number of Undergraduate Students",
+            "parent": 6,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 31,
+            "level": 3,
+            "name": "Number of Master’s Students",
+            "parent": 6,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 32,
+            "level": 3,
+            "name": "Number of Doctoral Students",
+            "parent": 6,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "level": 2,
+        "name": "Student Structure",
+        "completion": 0,
+        "parent": 0,
+        "children": [
+          {
+            "id": 33,
+            "level": 3,
+            "name": "Percentage of Graduate Students",
+            "parent": 7,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "level": 1,
+    "name": "Faculty",
+    "completion": 0,
+    "parent": null,
+    "children": [
+      {
+        "id": 8,
+        "level": 2,
+        "name": "Faculty Size",
+        "completion": 0,
+        "parent": 1,
+        "children": [
+          {
+            "id": 34,
+            "level": 3,
+            "name": "Total Number of Academic Staff",
+            "parent": 8,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 35,
+            "level": 3,
+            "name": "Ratio of Academic Staff to Students",
+            "parent": 8,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "level": 2,
+        "name": "Faculty Structure",
+        "completion": 0,
+        "parent": 1,
+        "children": [
+          {
+            "id": 36,
+            "level": 3,
+            "name": "Percentage of Professors",
+            "parent": 9,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 37,
+            "level": 3,
+            "name": "Percentage of Associate Professors",
+            "parent": 9,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 38,
+            "level": 3,
+            "name": "Percentage of Assistant Professors",
+            "parent": 9,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "level": 2,
+        "name": "Educational Background",
+        "completion": 0,
+        "parent": 1,
+        "children": [
+          {
+            "id": 39,
+            "level": 3,
+            "name": "Number of Academic Staff with a Doctoral Degree",
+            "parent": 10,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 40,
+            "level": 3,
+            "name": "Percentage of Academic Teaching Staff with a Doctoral Degree",
+            "parent": 10,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 41,
+            "level": 3,
+            "name": "Percentage of Academic Research Staff with a Doctoral Degree",
+            "parent": 10,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 42,
+            "level": 3,
+            "name": "Percentage of Academic Staff with a Doctoral Degree from ARWU Top 100 Universities",
+            "parent": 10,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 43,
+            "level": 3,
+            "name": "Percentage of Academic Staff with a Doctoral Degree from ARWU Top 20 Universities",
+            "parent": 10,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "level": 2,
+        "name": "Top Talents",
+        "completion": 0,
+        "parent": 1,
+        "children": [
+          {
+            "id": 44,
+            "level": 3,
+            "name": "Number of Full-Time Staff winning Significant Academic Awards",
+            "parent": 11,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 45,
+            "level": 3,
+            "name": "Editional Board Members in Top Journals of an Academic Subject",
+            "parent": 11,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 46,
+            "level": 3,
+            "name": "Speakers in Top-Tier International Conference",
+            "parent": 11,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "level": 1,
+    "name": "Teaching",
+    "completion": 0,
+    "parent": null,
+    "children": [
+      {
+        "id": 12,
+        "level": 2,
+        "name": "Quality of Teaching",
+        "completion": 0,
+        "parent": 2,
+        "children": [
+          {
+            "id": 47,
+            "level": 3,
+            "name": "Academic-Staff-to-Student Ratio",
+            "parent": 12,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 48,
+            "level": 3,
+            "name": "Number of Undergraduate Courses offered",
+            "parent": 12,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 49,
+            "level": 3,
+            "name": "Number of Graduate Courses offered",
+            "parent": 12,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "level": 2,
+        "name": "Learning Outcomes",
+        "completion": 0,
+        "parent": 2,
+        "children": [
+          {
+            "id": 50,
+            "level": 3,
+            "name": "Bachelors' Graduation Rate",
+            "parent": 13,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 51,
+            "level": 3,
+            "name": "Master's Graduation Rate",
+            "parent": 13,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 52,
+            "level": 3,
+            "name": "Number of Doctoral Degree awarded",
+            "parent": 13,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "level": 2,
+        "name": "Labour Market Outcomes",
+        "completion": 0,
+        "parent": 2,
+        "children": [
+          {
+            "id": 53,
+            "level": 3,
+            "name": "Employment Rate of Bachelor Degree Recipients",
+            "parent": 14,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 54,
+            "level": 3,
+            "name": "Employment Rate of Master’s Degree Recipients",
+            "parent": 14,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 55,
+            "level": 3,
+            "name": "Employment Rate of Doctoral Degree Recipients",
+            "parent": 14,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "level": 2,
+        "name": "Distinguished Alumni",
+        "completion": 0,
+        "parent": 2,
+        "children": [
+          {
+            "id": 56,
+            "level": 3,
+            "name": "Number of Alumni winning Significant Academic Awards",
+            "parent": 15,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "level": 1,
+    "name": "Research",
+    "completion": 21,
+    "parent": null,
+    "children": [
+      {
+        "id": 16,
+        "level": 2,
+        "name": "Research Output",
+        "completion": 46,
+        "parent": 3,
+        "children": [
+          {
+            "id": 57,
+            "level": 3,
+            "name": "Number of Papers indexed in Scopus",
+            "parent": 16,
+            "data": 910,
+            "target": 1000,
+            "completion": 91
+          },
+          {
+            "id": 58,
+            "level": 3,
+            "name": "Number of Papers indexed in Web of Science",
+            "parent": 16,
+            "data": 660,
+            "target": 700,
+            "completion": 94
+          },
+          {
+            "id": 59,
+            "level": 3,
+            "name": "Books",
+            "parent": 16,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 60,
+            "level": 3,
+            "name": "Conferences",
+            "parent": 16,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "level": 2,
+        "name": "Research Productivity",
+        "completion": 0,
+        "parent": 3,
+        "children": [
+          {
+            "id": 61,
+            "level": 3,
+            "name": "Scopus Papers per Academic Staff",
+            "parent": 17,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 62,
+            "level": 3,
+            "name": "Web of Science Papers per Academic Staff",
+            "parent": 17,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "level": 2,
+        "name": "Research Influence",
+        "completion": 0,
+        "parent": 3,
+        "children": [
+          {
+            "id": 63,
+            "level": 3,
+            "name": "Number of Citations (Self-Citation Included)",
+            "parent": 18,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 64,
+            "level": 3,
+            "name": "Citations per Paper (Self-Citation Included)",
+            "parent": 18,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 65,
+            "level": 3,
+            "name": "CNCI",
+            "parent": 18,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 66,
+            "level": 3,
+            "name": "H-Index",
+            "parent": 18,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "level": 2,
+        "name": "Top Research Outcomes",
+        "completion": 81,
+        "parent": 3,
+        "children": [
+          {
+            "id": 67,
+            "level": 3,
+            "name": "Number of Papers Published in Top Journals",
+            "parent": 19,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 68,
+            "level": 3,
+            "name": "Number of Highly Cited Papers indexed in Scopus (Top 1% Most Cited)",
+            "parent": 19,
+            "data": 97,
+            "target": 100,
+            "completion": 97
+          },
+          {
+            "id": 69,
+            "level": 3,
+            "name": "Number of Highly Cited Papers indexed in Web of Science (Top 1% Most Cited)",
+            "parent": 19,
+            "data": 60,
+            "target": 50,
+            "completion": 120
+          },
+          {
+            "id": 70,
+            "level": 3,
+            "name": "Number of Highly Cited Papers indexed in Scopus (Top 10% Most Cited)",
+            "parent": 19,
+            "data": 299,
+            "target": 350,
+            "completion": 85
+          },
+          {
+            "id": 71,
+            "level": 3,
+            "name": "Number of Highly Cited Papers indexed in Web of Science (Top 10% Most Cited)",
+            "parent": 19,
+            "data": 208,
+            "target": 200,
+            "completion": 104
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "level": 2,
+        "name": "Research Income",
+        "completion": 0,
+        "parent": 3,
+        "children": [
+          {
+            "id": 72,
+            "level": 3,
+            "name": "Total Amount of Research Income",
+            "parent": 20,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 73,
+            "level": 3,
+            "name": "Research Income per Academic Staff",
+            "parent": 20,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 74,
+            "level": 3,
+            "name": "Research Income from Public Sectors",
+            "parent": 20,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 75,
+            "level": 3,
+            "name": "Research Income from Industry",
+            "parent": 20,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 76,
+            "level": 3,
+            "name": "Percentage of Research Income from Public Sectors",
+            "parent": 20,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "level": 2,
+        "name": "Knowledge Transfer",
+        "completion": 0,
+        "parent": 3,
+        "children": [
+          {
+            "id": 77,
+            "level": 3,
+            "name": "Co-Publications with Industrial Partners",
+            "parent": 21,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 78,
+            "level": 3,
+            "name": "Patents awarded",
+            "parent": 21,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 79,
+            "level": 3,
+            "name": "Patents awarded per Academic Staff",
+            "parent": 21,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 80,
+            "level": 3,
+            "name": "Industry Co-Patents",
+            "parent": 21,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 81,
+            "level": 3,
+            "name": "Spin-offs",
+            "parent": 21,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 82,
+            "level": 3,
+            "name": "Publications cted in Patents",
+            "parent": 21,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "level": 1,
+    "name": "Internationalisation",
+    "completion": 22,
+    "parent": null,
+    "children": [
+      {
+        "id": 22,
+        "level": 2,
+        "name": "Faculty",
+        "completion": 0,
+        "parent": 4,
+        "children": [
+          {
+            "id": 83,
+            "level": 3,
+            "name": "Percentage of International Academic Teaching Staff",
+            "parent": 22,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 84,
+            "level": 3,
+            "name": "Percentage of International Academic Research Staff",
+            "parent": 22,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "level": 2,
+        "name": "Student",
+        "completion": 0,
+        "parent": 4,
+        "children": [
+          {
+            "id": 85,
+            "level": 3,
+            "name": "Percentage of International Students",
+            "parent": 23,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 86,
+            "level": 3,
+            "name": "Percentage of International Undergraduate Students",
+            "parent": 23,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 87,
+            "level": 3,
+            "name": "Percentage of International Master’s Students",
+            "parent": 23,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 88,
+            "level": 3,
+            "name": "Percentage of International Doctoral Students",
+            "parent": 23,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "level": 2,
+        "name": "Research",
+        "completion": 67,
+        "parent": 4,
+        "children": [
+          {
+            "id": 89,
+            "level": 3,
+            "name": "Number of Internationally Collaborated Papers indexed in Scopus ",
+            "parent": 24,
+            "data": 829,
+            "target": 800,
+            "completion": 104
+          },
+          {
+            "id": 90,
+            "level": 3,
+            "name": "Number of Internationally Collaborated Papers indexed in Web of Science",
+            "parent": 24,
+            "data": 585,
+            "target": 600,
+            "completion": 98
+          },
+          {
+            "id": 91,
+            "level": 3,
+            "name": "Percentage of Internationally Collaborated Papers",
+            "parent": 24,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "level": 1,
+    "name": "Ranking",
+    "completion": 0,
+    "parent": null,
+    "children": [
+      {
+        "id": 25,
+        "level": 2,
+        "name": "ARWU",
+        "completion": 0,
+        "parent": 5,
+        "children": [
+          {
+            "id": 92,
+            "level": 3,
+            "name": "Number of Alumni winning Nobel Prizes and Fields Medals",
+            "parent": 25,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 93,
+            "level": 3,
+            "name": "Number of Full-Time Staff winning Nobel Prizes and Fields Medals",
+            "parent": 25,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 94,
+            "level": 3,
+            "name": "Clarivate Analytics Highly Cited Researchers",
+            "parent": 25,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 95,
+            "level": 3,
+            "name": "Number of Papers published in Nature and Science ",
+            "parent": 25,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 96,
+            "level": 3,
+            "name": "Number of Papers indexed in SCIE and SSCI",
+            "parent": 25,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 97,
+            "level": 3,
+            "name": "Weighted Score of the Five ARWU Indicators divided by the Number of FTE Academic Staff",
+            "parent": 25,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "level": 2,
+        "name": "THE",
+        "completion": 0,
+        "parent": 5,
+        "children": [
+          {
+            "id": 98,
+            "level": 3,
+            "name": "Teaching Reputation Score",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 99,
+            "level": 3,
+            "name": "Academic-Staff-to-Student Ratio",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 100,
+            "level": 3,
+            "name": "Doctorate-to-Bachelor's Ratio",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 101,
+            "level": 3,
+            "name": "Doctorates-awarded-to-Academic-Staff Ratio",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 102,
+            "level": 3,
+            "name": "Institutional Income",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 103,
+            "level": 3,
+            "name": "Research Reputation Score",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 104,
+            "level": 3,
+            "name": "Research Income",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 105,
+            "level": 3,
+            "name": "Research Productivity (Scopus Papers per Academic Staff)",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 106,
+            "level": 3,
+            "name": "Citations (FWCI)",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 107,
+            "level": 3,
+            "name": "International-to-Domestic-Student Ratio",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 108,
+            "level": 3,
+            "name": "International-to-Domestic-Staff Ratio",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 109,
+            "level": 3,
+            "name": "International Collaboration (Percentage of Internationally Collaborated Scopus Papers)",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 110,
+            "level": 3,
+            "name": "Research Income from Industry",
+            "parent": 26,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "level": 2,
+        "name": "QS",
+        "completion": 0,
+        "parent": 5,
+        "children": [
+          {
+            "id": 111,
+            "level": 3,
+            "name": "Academic Reputation Score",
+            "parent": 27,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 112,
+            "level": 3,
+            "name": "Employer Reputation Score",
+            "parent": 27,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 113,
+            "level": 3,
+            "name": "Academic-Staff-to-Student Ratio",
+            "parent": 27,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 114,
+            "level": 3,
+            "name": "Citations per Faculty (NTCC per Faculty)",
+            "parent": 27,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 115,
+            "level": 3,
+            "name": "International Faculty Ratio",
+            "parent": 27,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 116,
+            "level": 3,
+            "name": "International Student Ratio",
+            "parent": 27,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "level": 2,
+        "name": "U.S. News",
+        "completion": 0,
+        "parent": 5,
+        "children": [
+          {
+            "id": 117,
+            "level": 3,
+            "name": "Global Research Reputation (indicator ranking position #)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 118,
+            "level": 3,
+            "name": "Regional Research Reputation (indicator ranking position #)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 119,
+            "level": 3,
+            "name": "Publications (Number of Papers indexed in Web of Science, including reviews, articles and notes)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 120,
+            "level": 3,
+            "name": "Books",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 121,
+            "level": 3,
+            "name": "Conferences",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 122,
+            "level": 3,
+            "name": "Normalized Citation Impact (CNCI)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 123,
+            "level": 3,
+            "name": "Number of Citations",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 124,
+            "level": 3,
+            "name": "Number of Highly Cited Papers (Top 10% Most Cited)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 125,
+            "level": 3,
+            "name": "Percentage of Highly Cited Papers (Top 10% Most Cited)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 126,
+            "level": 3,
+            "name": "International Collaboration (Percentage of Institution's Publications with International Collaboration divided by Percentage of Publications with International Collaboration for the Country that the Institution is in)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 127,
+            "level": 3,
+            "name": "Percentage of Total Publications with International Collaboration",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 128,
+            "level": 3,
+            "name": "Number of Highly Cited Papers (Top 1% Most Cited)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          },
+          {
+            "id": 129,
+            "level": 3,
+            "name": "Percentage of Highly Cited Papers (Top 1% Most Cited)",
+            "parent": 28,
+            "data": null,
+            "target": null,
+            "completion": 0
+          }
+        ]
+      }
+    ]
+  }
+]

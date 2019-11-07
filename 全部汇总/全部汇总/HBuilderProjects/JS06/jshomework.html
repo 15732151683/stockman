@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.login{
+				width: 500px;
+				height: 274px;
+				padding: 35px 31px 0 35px;
+				border-radius: 7px;
+				background: #f1f1f1;
+				font-size: 20px;
+			}
+			input{
+				margin-left: 21px;
+				padding-left: 17px;
+				width: 375px;
+				height: 57px;
+				outline: none;
+				border-radius: 4px;
+				background: #FFFFFF;
+				border: none;
+				font-size: 20px;
+			}
+			#fp{
+				width: 180px;
+				margin-top: 18px;
+				margin-bottom: 35px;
+			}
+			#time{
+				height: 57px;
+				width: 181px;
+				background: #e46561;
+				border-radius: 4px;
+				margin-top: 18px;
+				vertical-align: top;
+				line-height: 57px;
+				text-align: center;
+				color: white;
+			}
+			#btn{
+				background: #e46561;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="clock"></div>
+		<!--A作业从第4题开始写-->
+		<script type="text/javascript">
+			//写倒计时 距离2019年还有 多少天多少小时多少分钟多少秒
+			newyear();
+			setInterval(function(){
+				newyear();
+			},1000);
+			
+			
+			function newyear(){
+			var that = new Date(2019,0,1,0,0,0);
+			var now = new Date();
+			var s = (that - now)/1000;
+			var day = s/60/60/24;
+			var zday = Math.floor(day);
+			var h = (day- zday)*24;
+			var zh = Math.floor(h);
+			var min = (h - zh)*60;
+			var zmin =  Math.floor(min);
+			var secon = (min-zmin)*60;
+			var zsecon = Math.floor(secon);
+			if(zsecon<10)zsecon = "0"+zsecon;
+			if(zmin<10)zmin = "0"+zmin;
+			if(zh<10)zh = "0"+zh;
+			if(zday<10)zday = "0"+zday;
+			document.getElementById("clock").innerHTML = "距离2019年还有<br>"+zday+"天"+zh+":"+zmin+":"+zsecon;
+			//document.getElementById("clock").innerHTML ="ueihgfieohofgerh9whruehgjke";
+			//document.write("距离开始"+zday+"天"+zh+":"+zmin+":"+zsecon);
+			}
+			/*注意: 1.document.write计时器没重复一次,body的内容就多一次,之前写的还在
+			 *      2.    .innerHTML =    自上而下解析,谁写在下面,显示谁,而且,之前重复的内容都会被覆盖
+			 * */
+		</script>
+		
+		<!--B作业-->
+		<hr />
+		<div class="login">
+			<form action="" method="post">
+				<label for="pnum">手机号:</label>
+				<input type="text" value="" id="pnum" placeholder="输入手机号码"/>
+				<br />
+				<label for="fp">验证码:</label>
+				<input type="text" value="" id="fp" placeholder="输入验证码"/>
+				<input type="button" id="time" value="获取验证码"></input>
+				<input type="button"  id="btn" value="提交" />
+			</form>
+		</div>
+		<script type="text/javascript">
+			//实现验证码倒计时效果
+			var time = document.getElementById('time');
+			var num = 60;
+			var a;
+			time.onclick = function(){
+				
+				time.style.background = "#b2b2b2";
+				time.disabled = true;               //button 对象
+				time.value = num+"秒";
+				a = setInterval(function(){
+					times();                       //用到调用函数  就要注意全局变量的问题,在 onclick事件里面var定义变量,是有一定的作用域的, 出了{},就报错
+				},1000);
+			}
+
+			function times(){
+				if(num>0){
+					num--;
+					time.value = num+"秒";
+				}else{
+					time.value ="请重新获取验证码";
+					time.style.background = "#e46561";
+					time.disabled = false;
+					clearInterval(a);
+					num = 60;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

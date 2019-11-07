@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+			}
+			body{
+				background: #F2F2F2;
+				overflow-y: hidden;
+			}
+			.header{
+				position: fixed;
+				z-index: 999;
+				top: 0;
+				width: 100%;
+				height: 64px;
+				background: red;
+			}
+			.title{
+				text-align: center;
+				font-size: 24px;
+				font-weight: 300;
+				line-height: 64px;
+				/*font: 24px/64px lighter "arial, helvetica, sans-serif";*/
+				color: white;
+			}
+			.wrap,.con{
+				width: 100%;
+				height: 100%;
+			}
+			.con{
+				padding-top: 64px;	
+				padding-bottom: 49px;
+				overflow: scroll;
+			}
+			.page{
+				width: 100%;
+				height: 1000px;
+				display: none;
+			}
+			.page1{
+				display: block;
+				background: gold;
+			}
+			.page2{
+				background: lavenderblush;
+			}
+			.page3{
+				background: lavender;
+			}
+			.page4{
+				background: papayawhip;
+			}
+			.tab-bar{
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 49px;
+				background: white;
+				display: flex;
+				justify-content: space-around;
+			}
+			.tab-item{
+				flex-grow: 1;
+				color: grey;
+				line-height: 40px;
+				font-size: 14px;
+				text-align: center;
+			}
+			/*?*/
+			.tab-item.active{   
+				color: orangered;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="header">
+				<nav><h1 class="title">今日</h1></nav>
+			</header>
+			<div class="con">
+				<div class="page page1">页面1</div>
+				<div class="page page2">页面2</div>
+				<div class="page page3">页面3</div>
+				<div class="page page4">页面4</div>
+			</div>
+			<div class="tab-bar">
+				<div class="tab-item active">今日</div>
+				<div class="tab-item">品牌</div>
+				<div class="tab-item">预告</div>
+				<div class="tab-item">我的</div>
+			</div>
+		</div>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Zepto(function(){
+				$(".tab-item").tap(function(){
+					$(".title").text($(this).text());
+					$(".page").eq($(this).index()).show().siblings().hide();
+					$(this).addClass("active").siblings().removeClass("active")
+				});
+				$(".page").swipeLeft(function(){
+					var i = $(this).index();
+					if(i == 3) return;
+					$(this).hide().next().show();
+					$(".tab-item").eq(i+1).addClass("active").siblings().removeClass("active");	
+					$(".title").text($(".tab-item").eq(i+1).text());
+				}).swipeRight(function(){
+					var i = $(this).index();
+					if(i==0) return;
+					$(this).hide().prev().show();
+					$(".tab-item").eq(i-1).addClass("active").siblings().removeClass("active");
+					$(".title").text($(".tab-item").eq(i-1).text());
+				});
+			});
+		</script>
+	</body>
+</html>

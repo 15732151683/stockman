@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>案例</title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				background: #f2f2f2;
+			}
+			
+			.listview {
+				padding: 0;
+				list-style: none;
+			}
+			
+			.listview li {
+				margin: 0;
+				padding: 0 10px;
+				height: 60px;
+				line-height: 60px;
+				border-bottom: 1px solid gray;
+			}
+			
+			.delete {
+				float: right;
+				height: 60px;
+				padding: 0 10px;
+				color: white;
+				background: red;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="listview">
+			<li>001<span class="delete">删除</span></li>
+			<li>002<span class="delete">删除</span></li>
+			<li>003<span class="delete">删除</span></li>
+			<li>004<span class="delete">删除</span></li>
+		</ul>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//touch 触摸
+			/*tap 轻拍
+			 *singleTap 单击
+			 * doubleTap 双击
+			 * longTap 长按
+			 * 
+			 * swipe 轻扫
+			 * swipeLeft 左滑
+			 * swipeRight 右滑
+			 * swipeUp 上滑
+			 * swipeDown 下滑
+			 * */
+			Zepto(function() {
+				//左滑出现删除按钮
+				$(".listview li").swipeLeft(function() {
+					$(this).find(".delete").show();
+				});
+				//右滑隐藏删除效果
+				$(".listview li").swipeRight(function() {
+					$(this).find(".delete").hide();
+				});
+				//点击删除该行
+				$(".delete").tap(function() {
+					$(this).parent().remove();
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>圆形碰撞检测</title>
+	</head>
+
+	<body>
+		<canvas id="canvas11" width="500" height="300" style="border: 1px solid;"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas11");
+			var ctx = canvas.getContext("2d");
+			/*构造函数*/
+			function Ball(x, y, r, color) {
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				this.color = color;
+				//横向纵向速度  随机
+				this.vx = Math.floor(Math.random() * (5 - 3 + 1) + 3);
+				this.vy = Math.floor(Math.random() * (4 - 2 + 1) + 2);
+				this.draw = function() {
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+					ctx.fillStyle = this.color;
+					ctx.fill();
+				}
+			}
+			//原型追加方法
+			Ball.prototype.positions = function() {
+				this.x += this.vx;
+				this.y += this.vy;
+				//边界判断
+				if(this.x < this.r || this.x > canvas.width - this.r) {
+					this.vx *= -1;
+				}
+				if(this.y < this.r || this.y > canvas.height - this.r) {
+					this.vy *= -1;
+				}
+			}
+			var ball1 = new Ball(50, 50, 10, "red");
+			var ball2 = new Ball(100, 50, 10, "blue");
+			setInterval(function() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ball1.draw();
+				ball1.positions();
+				ball2.draw();
+				ball2.positions();
+				if(isPeng(ball1,ball2)){
+					ball1.vx *= -1;
+					ball1.vy *= -1;
+					ball2.vx *= -1;
+					ball2.vy *= -1;
+				}
+			}, 30);
+			
+			function isPeng(obj1,obj2){
+				//计算两圆的圆心距
+				var ds = Math.sqrt(Math.pow(obj1.x-obj2.x, 2) + Math.pow(obj1.y-obj2.y, 2));
+				return ds<=(obj1.r+obj2.r);
+			}
+		</script>
+	</body>
+
+</html>

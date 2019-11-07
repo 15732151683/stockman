@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="game" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("game");
+			var ctx = canvas.getContext("2d");
+			document.onkeydown = keyDown;
+			setInterval(gameBegin, 200);
+			//移动速度
+			var xv = 0,
+				yv = 0;
+			//蛇头的位置
+			var px = 10,
+				py = 10;
+			//食物的初始位置
+			var ax = 15,
+				ay = 15;
+			//界面的大小
+			var gSize = 20;
+			//界面列数
+			var totalC = 20;
+			//默认蛇的长度
+			var len = 5;
+			//存储蛇身
+			var sArr = [];
+
+			function gameBegin() {
+				px += xv;
+				py += yv;
+				//边界限制
+				if(px < 0) px = totalC - 1;
+				if(px > totalC - 1) px = 0;
+				if(py < 0) py = totalC - 1;
+				if(py > totalC - 1) py = 0;
+				//存储蛇的位置
+				sArr.push({
+					x: px,
+					y: py
+				});
+				//限制蛇的长度
+				while(sArr.length > len) {
+					sArr.shift();
+				}
+				//绘制游戏背景
+				ctx.fillStyle = "aliceblue";
+				ctx.fillRect(0, 0, 400, 400);
+				ctx.fillStyle = "aquamarine";
+				for(var i = 0; i < sArr.length; i++) {
+					ctx.fillRect(sArr[i].x * gSize, sArr[i].y * gSize, 18, 18);
+				}
+				//移动过程中是否遇到食物
+				if(ax == px && ay == py) {
+//					len++;  //如果吃掉食物之后蛇身不变,不要len++就可以了
+					//随机下一个食物的位置
+					ax = Math.floor(Math.random() * totalC);
+					ay = Math.floor(Math.random() * totalC);
+				}
+				//绘制食物
+				ctx.fillStyle = "red";
+				ctx.fillRect(ax * gSize, ay * gSize, gSize, gSize);
+			}
+
+			function keyDown(e) {
+				var eve = window.event || e;
+				switch(eve.keyCode) {
+					case 37:
+						xv = -1;
+						yv = 0;
+						break;
+					case 38:
+						xv = 0;
+						yv = -1;
+						break;
+					case 39:
+						xv = 1;
+						yv = 0;
+						break;
+					case 40:
+						xv = 0;
+						yv = 1;
+						break;
+					default:
+						break;
+				}
+			}
+		</script>
+	</body>
+
+</html>

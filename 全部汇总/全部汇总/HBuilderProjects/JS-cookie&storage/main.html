@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<style type="text/css">
+			#btn{
+				float: right;
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>首页</h3>
+		<button id="btn">个人中心</button>
+		<script type="text/javascript">
+			document.getElementById("btn").onclick = function(){
+				//判断是否已经登录
+				if(localStorage.hasOwnProperty("flag")){
+					location.href = "person.html";
+				}else{
+					location.href = "loginweb.html";
+				}
+			}
+		</script>
+	</body>
+</html>

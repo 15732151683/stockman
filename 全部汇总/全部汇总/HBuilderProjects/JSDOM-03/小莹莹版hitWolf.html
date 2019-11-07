@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>游戏锅打灰太狼</title>
+		<style type="text/css">
+			.wrap{
+				width: 600px;
+				height: 600px;
+				border: 1px solid;
+			}
+			.cover{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: lightblue;
+				color: white;
+				display: none;
+			}
+			.game{
+				width: 320px;
+				height: 480px;
+				margin: 0 auto;
+			}
+			.load{}
+			.main{
+				position: relative;
+				height: 480px;
+				background: url(img/game_bg.jpg);
+			}
+			.startMenu{
+				position: absolute;
+				top: 0;
+				z-index: 2;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.3);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#begin{
+				width: 100px;
+				height: 30px;
+				background: orangered;
+				color: white;
+				font-size: 20px;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			#begin:hover{
+				background: white;
+				color: orangered;
+			}
+			#score{
+				position: absolute;
+				top: 10px;
+				left: 60px;
+				color: white;
+			}
+			#time{
+				position: absolute;
+				top: 66px;
+				left: 63px;
+				width: 180px;
+				height: 16px;
+				background: url(img/progress.png);
+			}
+			#wolf{
+				position: absolute;
+				width: 108px;
+				height: 101px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>锅打灰太狼</h2>
+		<div class="wrap">
+			<div class="cover">
+				<p>灰太狼在来的路上.........</p>
+			</div>
+			<div class="game">
+				<!--加载界面-->
+				<div id="loading"></div>
+				<div class="main">
+					<!--开始页面/引导-->
+					<div class="startMenu">
+						<div id="begin">开始游戏</div>
+					</div>
+					<!--游戏页面-->
+					<div class="content">
+						<!--得分-->
+						<div id="score">0</div>
+						<!--时间-->
+						<div id="time"></div>
+						<!--灰太狼-->
+						<div id="wolf"></div>
+					</div>
+				</div>
+				<!--游戏结束界面得分榜-->
+				<div id="rank"></div>
+				<!--<audio src="img/countdown.wav" preload></audio>-->
+			</div>
+		</div>
+		<script type="text/javascript">
+			var coverDiv = document.querySelector(".cover");
+			var menuDiv = document.querySelector(".startMenu");
+			var beginBtn = document.getElementById("begin");
+			var scoreDiv = document.getElementById("score");
+			var timeDiv = document.getElementById("time");
+			var wolf = document.getElementById("wolf");
+			//创建音频对象
+			var timeBGM = new Audio();
+			//当音频/视频资源加载完毕时
+			//timeBGM.onloadedmetadata = function () {}
+			timeBGM.src = "img/countdown.wav";
+			beginBtn.onclick = function(){
+				//游戏开始
+				gameBegin();
+			}
+			function gameBegin(){
+				//开始界面隐藏,进入游戏页
+				menuDiv.style.display = 'none';
+				//开启倒计时
+				timeReduce();
+				//随机出现灰太狼或者小灰灰
+				showWolf();
+			}
+			function timeReduce() {
+				var w = timeDiv.offsetWidth;
+				var t = setInterval(function(){
+					w -= 0.6;
+					timeDiv.style.width = w + 'px';
+					if(w <= 60) {
+						timeBGM.play();
+					}
+					//时间用完,游戏结束
+					if(w <= 0){
+						clearInterval(t);
+						gameOver();
+					}
+				}, 100);
+			}
+			//存储可能出现的位置
+			var pos = [[98, 115],[17, 160],[15, 220],[30, 293],[122, 273],[207, 295],[200, 211],[187, 141],[100, 185]];
+			//狼狼们的图片数组
+			var hImgs = [];
+			var xImgs = [];
+			for(var i = 0; i < 10; i++){
+				var imgPath = 'img/h'+i+'.png';
+				hImgs.push(imgPath);
+			}
+			for(var i = 0; i < 10; i++){
+				var imgPath = 'img/x'+i+'.png';
+				xImgs.push(imgPath);
+			}
+			/*随机出现灰太狼或者小灰灰*/
+			function showWolf() {
+				setInterval(function(){
+					//随机位置出现
+					var i = rand(0,pos.length-1);
+					wolf.style.left = pos[i][0] + 'px';
+					wolf.style.top = pos[i][1] +'px';
+					//小灰灰OR灰太狼
+					var flag = rand(0,1);
+					var wolfArr = flag==0? hImgs:xImgs;
+					wolfAppear(wolf,wolfArr)
+					
+				}, 1000);
+			}
+			function rand(x,y){
+				return Math.floor(Math.random()*(y-x+1)+x);
+			}
+			//狼狼们出现消失
+			function wolfAppear(a,b) {
+				//下标
+				var index = 0;
+				//正向或反向
+				var m = 1;
+				a.timer = setInterval(function() {
+					var imgPath = b[index];
+					a.style.backgroundImage = "url(" + imgPath + ")"; 
+					if(index == 5) {
+						m = -m;
+					}
+					if(index < 0) {
+						a.style.backgroundImage = ""; 
+						clearInterval(a.timer); 
+					}
+					index += m;
+				}, 50);
+			}
+		</script>
+	</body>
+</html>

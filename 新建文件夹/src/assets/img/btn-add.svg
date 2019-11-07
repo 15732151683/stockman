@@ -1,0 +1,17 @@
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="add-01" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="add-02" transform="translate(-1783.000000, -402.000000)">
+            <g id="add-03" transform="translate(267.000000, 392.000000)">
+                <g id="icon_pres_added" transform="translate(1516.000000, 7.000000)">
+                    <rect id="add-04" stroke="#BFBFBF" stroke-width="1" fill="#FDFDFD" fill-rule="nonzero" x="0.5" y="3.5" width="19" height="19" rx="2"></rect>
+                    <text id="+" font-family="PingFangSC-Semibold, PingFang SC" font-size="16" font-weight="500" fill="#BFBFBF">
+                        <tspan x="4" y="18">+</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

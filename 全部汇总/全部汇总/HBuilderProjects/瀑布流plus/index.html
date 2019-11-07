@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wateflow{
+				position: relative;
+				margin: 0 auto;
+			}
+			#loading{
+				text-align: center;
+			}
+			.item{
+				position: absolute;
+				-webkit-transition: all 1s;
+				-moz-transition: all 1s;
+				-ms-transition: all 1s;
+				-o-transition: all 1s;
+				transition: all 1s;
+			}
+			.item img{
+				vertical-align: bottom;
+			}
+		</style>
+	</head>
+	<body>
+		<!--容器: 放瀑布流的-->
+		<div id="wateflow">
+			<p id="loading">正在加载中.....</p>
+		</div>
+	</body>
+		<script type="text/javascript">
+			var conDiv = document.getElementById("wateflow");    //取到容器
+			var loading = document.getElementById("loading");
+			
+			//预加载
+			//存储加载成功的图片
+			var imgObjs = [];
+			var num = 0;//检测图片加载的时机
+			for (var i = 0; i < 16; i++) {
+				var img = new Image();
+				imgObjs.push(img);                     //1.注意: 创建了Image对象就push进去,push进去再加载上图片(src)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				img.onload = function (){
+					num++;
+					if(num == 16){
+						//已全部预加载完毕
+						success();
+					}
+				}
+				img.src = 'img/P_0'+i+'.jpg';
+			}
+			function success(){
+				loading.style.display = 'none';
+				showItems(16,false);                      //2
+			}
+			/*参数1: 想要加载的数量
+			 参数2: 布尔值标记 调整窗口的时候 是new 还是仅仅调整位置
+			 false: 表示不再存在哦 所展现的内容为第一次出现,需要新建
+			 true: 表示已经存在的,仅仅调整位置*/
+			var itemsArr = [];    //存储每个内容元素,到时候找到元素内容只要调整位置就好了
+			var topArr = [];       //存储每个内容元素的高度值
+			var w = 192;            //瀑布流的定宽  
+			var margin = 10;
+			function showItems(count, flag){
+				var vw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+				var col = Math.floor(vw*0.9/(w+margin));
+				conDiv.style.width = (col*(w+margin) - margin)+'px';    //容器的宽度  容器的最右边不需要margin的值
+				//存储每列高度的数组
+				var hArr = [];
+				for (var i = 0; i < col; i++) {
+					hArr[i] = 0;
+				}
+				for (var i = 0; i < count; i++) {
+					var div = itemsArr[i] || document.createElement('div');
+					div.style.width = w+'px';
+					div.className = 'item';
+					var h = topArr[i] || imgObjs[i].height*w/imgObjs[i].width;
+					div.style.height = h+'px';
+					//设了div的宽高 里面放图片
+					div.appendChild(imgObjs[i]);
+					if(flag == false){
+						itemsArr.push(div);
+						topArr.push(h);
+					}
+					//找到高度最矮的那一列
+					var minIndex = 0;
+					var minH = hArr[0];
+					for (var j = 0; j < hArr.length; j++) {
+						if(hArr[j] < minH){
+							minIndex = j;
+							minH = hArr[j];
+						}
+					}
+					//根据下标设置元素定位的位置
+					div.style.left = minIndex*(w+margin)+'px';
+					div.style.top = minH+'px';
+					console.log('最小的高度是'+minH+'对应的下标是'+minIndex);
+					flag == false && conDiv.appendChild(div);
+					//每次添加完该元素至最矮列时,这一列的高度即发生了变化,需更新该列的列高
+					hArr[minIndex] += (h + margin);
+					//存储最高列的下标  用于给容器设置高度
+					var maxH = hArr[0];
+					for (var j = 0; j < hArr.length; j++){
+						if(hArr[j] > maxH){
+							maxH = hArr[j];
+						}
+					}
+					//由于使用定位,脱离文档流,所以要确定容器的固定高
+					conDiv.style.height = maxH +'px';			
+				}
+			}
+			window.onresize  = function(){
+				showItems(16, true);
+			}
+		</script>
+</html>

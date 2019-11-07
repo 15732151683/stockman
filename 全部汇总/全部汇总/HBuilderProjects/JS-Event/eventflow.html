@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件流</title>
+		<style type="text/css">
+			.d1{
+				height: 400px;
+				background: blue;
+			}
+			.d2{
+				width: 500px;
+				height: 300px;
+				background: red;
+			}
+			.d3{
+				width: 300px;
+				height: 200px;
+				background: gold;
+			}
+			#box{
+				height: 100px;
+				background: gold;
+			}
+			#btn{
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<!--事件流: 当事件被触发时所经历的过程
+			当事件触发时,会经历3个阶段:
+			true 捕获阶段: 从document开始执行捕获,即事件会从document开始一级一级向下查找.在查找的过程当中,若某一级节点绑定过捕获型事件函数,该事件函数就会执行;会继续向下查找,直到查找到目标元素
+			处于目标阶段: 查找到该目标元素(若绑定了处理函数则会执行)
+			false 冒泡阶段: 从目标源对象开始向上一级将事件进行传递,这个向上传递的过程叫做冒泡,若传递过程中,某一级节点绑定过冒泡型事件,则会执行对应的事件处理函数,直到document为止
+		-->
+		给d1(d1为最外层)绑定了点击事件,捕获阶段,现在点击d3,d1会事件触发么?   会,如上解析,在找目标源的捕获阶段,d1有捕获型事件,所以会触发. 当然,不管是捕获阶段还是冒泡阶段,只有绑定了事件才会有效果
+		<div class="d1">
+			<div class="d2">
+				<div class="d3"></div>
+			</div>
+		</div>
+		<hr />
+		<div id="box">
+			<button id="btn">详情</button>
+		</div>
+		<script type="text/javascript">
+			var d1 = document.querySelector(".d1");
+			var d2 = document.querySelector(".d2");
+			var d3 = document.querySelector(".d3");
+			//d3.addEventListener('click', fn, true);
+			d3.addEventListener('click', fn, false);
+			//d3.addEventListener('mouseenter', fn, false);
+			//d2.addEventListener('click', fn, true);
+			//d2.addEventListener('click', fn, false);
+			//d2.addEventListener('mouseenter', fn, false);
+			//d1.addEventListener('click', fn, true);
+			//d1.addEventListener('click', fn, false);
+			//d1.addEventListener('mouseenter', fn, false);
+			function fn(){
+				alert(this.className);
+			}
+			document.body.addEventListener('click', function(){
+				alert('这是body');
+			})
+			
+			/*通过 on方式绑定的事件,只有冒泡阶段,没有捕获阶段,事件在冒泡阶段执行
+			 * IE下只有事件冒泡,没有捕获
+			 * 大部分事件类型默认都是冒泡型事件,事件捕获很少用.
+			 * mouseenter/mouseleave不支持冒泡                ???怎么测试
+			 **/
+			
+			//如何取消冒泡(阻止事件向上传递);
+			/**IE下:
+			 * 标准下: event.stopPropagation()  meaning: 传播
+			 * IE下: event.cancelBubble = true;
+			 */
+			var box = document.getElementById("box");
+			var btn = document.getElementById("btn");
+			box.onclick = function (){
+				alert('进入二级页面');
+			}
+			btn.onclick = function(e){
+				alert('查看详情');
+				var eve = event || e;
+				//取消事件冒泡
+				eve.stopPropagation();
+				eve.cancelBubble = true;
+			}
+			
+		</script>
+	</body>
+</html>

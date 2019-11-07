@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas2{
+				border: 1px solid;
+				display: block;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas2" width="400" height="400">请升级后再使用</canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas2");
+			var ctx = canvas.getContext("2d");
+			
+			/*变换: 支持平移, 旋转, 缩放
+			 *canvas自带坐标体系,默认以左上角为坐标原点(0,0),水平向右为x轴,垂直向下为y轴
+			 * 所有的变换,都是改变的canvas自身参考的坐标体系
+			 * */
+			ctx.fillRect(0,0,100,50);
+			//保存
+			ctx.save();
+			
+			//平移变换 translate(x,y) 原点横向0移到x处,纵向0移到y处
+			ctx.translate(100,100);
+			
+			ctx.fillStyle = "red";
+			ctx.fillRect(0,0,100,50);
+			
+			//旋转 rotate(deg) 单位以弧度制记 正值顺时针 负值逆时针
+			ctx.rotate(Math.PI/4);
+			ctx.fillStyle = "forestgreen";
+			ctx.fillRect(0,0,100,50);
+			
+			//缩放 scale(x轴比例,y轴比例) 数值>1,放大 数值<1,缩小  放大缩小坐标系,放大相当于单位坐标值变小了,放大比例
+			ctx.scale(2,1);
+			ctx.fillStyle = "gold";
+			ctx.fillRect(50,50,100,50);
+			
+			//当canvas放生变换后,由于所标体系放生了改变,所以会影响后面图形的绘制
+			//状态的保存和提取
+			/*save() 保存绘制的状态
+			 *restore() 提取出之前保存的状态,
+			 * 匹配使用,restore提取的是最近保存的状态
+			 * save()和restore() 最好成对出现,而且restore<=save,可以取完档之后,立即存档,
+			 * */
+			
+			//提取
+			ctx.restore();
+			ctx.fillStyle = "gray";
+			ctx.fillRect(300,0,100,50);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+.wrap{
+	width: 920px;
+	margin: 0 auto;
+}
+.header{
+	height: 120px;
+	background: red;
+}
+.main{
+	background: gold;
+}
+.ads{
+	height: 400px;
+	background: blue;
+}
+.content{
+	height: 800px;
+	background: pink;
+}
+.content>aside{
+	height: 800px;
+	float: left;
+	margin-left: 20;
+	background: red;
+	width: 200px;
+}
+.content>article{
+	height: 800px;
+	float: right;
+	background: green;
+	width: 700px;
+}
+.footer{
+	height: 60px;
+	border: 1px solid;
+	
+}

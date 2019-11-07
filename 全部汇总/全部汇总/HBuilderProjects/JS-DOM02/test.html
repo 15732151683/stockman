@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单版瀑布流</title>
+		<style type="text/css">
+			.wrap{
+				width: 1050px;
+				overflow: hidden;
+			}
+			.col{
+				float: left;
+				margin: 5px;
+				width: 192px;
+			}
+			.col>div{
+				margin-top: 5px;
+			}
+			#goTop{
+				width: 50px;
+				height: 30px;
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+				background: rgba(0,0,0,0.3);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div id="toTop">goToTop⬆</div>
+		<script type="text/javascript">
+			var cols = document.querySelectorAll(".col");  //数组
+			for (var i = 0; i < 15; i++) {
+				addItem(i);
+			}
+			function addItem(n) {
+				//给文档里面添加内容
+				var item = document.createElement('div');
+				var img = document.createElement('img');
+				img.src = 'img/P_0'+n+'.jpg';
+				var index = 0;    //存储列高最矮的列标
+				//获取列高最矮列,动态创建新内容
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				item.appendChild(img);
+				cols[index].appendChild(item);
+			}
+		</script>
+	</body>
+</html>
+  

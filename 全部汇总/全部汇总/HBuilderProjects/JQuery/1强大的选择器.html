@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>强大的选择器</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+	<p>今天天气真好</p>
+	<p>美美哒</p>
+	<p>好好学习,天天向上</p>
+	<input type="text"/>
+	<input type="text" disabled/>
+	<input type="checkbox" checked/>
+	<select>
+		<option value="">html</option>
+		<option value="">css</option>
+		<option value="" selected>JS</option>
+	</select>
+	<p></p>
+	<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*基本
+			#id
+			element
+			.class
+			*
+			selector1,selector2,selectorN多个选择器逗号间隔
+		*层级
+			ancestor descendant
+			parent > child
+			prev + next      紧跟着的
+			prev ~ siblings  所有
+		*基本筛选器
+			:first   获取第一个
+			:last
+			:eq(index)
+			:gt(index)   匹配所有大于给定索引值的元素 从 0 开始计数
+			:lt(index)   匹配所有小于给定索引值的元素  从 0 开始计数
+			:even  获取索引值为偶数的元素 下标索引从0开始
+			:odd   获取索引值为奇数的元素 下标索引从0开始
+			:not(selector)  不是某个选择器匹配的其他元素
+			:lang    1.9+
+			:header     匹配如 h1, h2, h3之类的标题元素
+			:animated   匹配所有正在执行动画效果的元素
+			:focus      匹配当前获取焦点的元素。
+			:root    1.9+
+			:target  1.9+
+		*内容
+			:contains(text)  匹配包含给定文本的元素
+			:empty           获取空元素(不能有回车换行的)
+			:has(selector)   匹配含有选择器所匹配的元素的元素
+			:parent          获取含有子元素或内容的元素
+		*可见性
+			:hidden     获取隐藏的元素  设置过display: none;这样的
+			:visible     获取可见的元素
+		*属性
+			[attribute]
+			[attribute=value]
+			[attribute!=value]
+			[attribute^=value]   匹配给定的属性是以某些值开始的元素
+			[attribute$=value]   匹配给定的属性是以某些值结尾的元素
+			[attribute*=value]   匹配给定的属性是以包含某些值的元素
+			[attrSel1][attrSel2][attrSelN]     复合属性选择器，需要同时满足多个条件时使用。
+		*子元素
+			:first-child     获取第一个子元素
+			:first-of-type 1.9+    
+			:last-child       获取最后一个子元素
+			:last-of-type  1.9+
+			:nth-child()
+			:nth-last-child()1.9+
+			:nth-last-of-type()1.9+
+			:nth-of-type()1.9+
+			:only-child
+			:only-of-type1.9+
+		*表单
+			:input    匹配所有input,textarea,select和button元素
+			:text      匹配所有的单行文本框
+			:password
+			:radio
+			:checkbox
+			:submit
+			:image
+			:reset
+			:button
+			:file
+		*表单对象属性
+			:enabled
+			:disabled
+			:checked
+			:selected
+			混淆选择器
+			$.escapeSelector(selector) 3.0+
+		 * */
+		$(function(){
+			$("ul li").css("background",'gold');
+			$("ul li:even").css("background", "red");
+			$("ul li:odd").css("color", "blue");
+			//获取对应下标索引的元素 从0开始
+			$("ul li:eq(0)").css("color", "green");
+			//获取对应下标大于索引的元素 从0开始 
+			$("ul li:gt(1)").css("fontSize", "20px");
+			//包含某内容 是内容啊 内容 的元素
+			$("p:contains('好')").css("color", "aliceblue");
+			$("li:parent").css("border", "1px solid");
+			$("ul li:first-child").css("textAlign","center");
+			$("ul li:nth-child(1)").css("backgroundColor", "blueviolet");
+			$(":text").css("border", "1px solid red");
+			$(":disabled").css("background", "gray");
+		});
+	</script>
+</body>
+</html>

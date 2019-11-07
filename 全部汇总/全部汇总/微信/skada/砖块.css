@@ -1,0 +1,385 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+
+body,html,#start{
+	width: 100%;
+	height: 100%;
+}
+#start{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: block;
+	opacity: 1;
+	background-image: url(img/主页背景.png);
+	background-repeat: no-repeat;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	
+}
+
+#simg1{
+	width: 36%;
+    height: 6%;
+    position: absolute;
+    top: 46%;
+    left: 12%;
+}
+#simg2{
+	width: 42%;
+    height: 14%;
+    position: absolute;
+    top: 38%;
+    left: 51%;
+}
+#simg3{
+	width: 51%;
+    height: 8%;
+    position: absolute;
+    top: 53%;
+    left: 35%;
+}
+
+#sexp{
+	width: 80%;
+	height: 10%;
+	position: absolute;
+	top:64%;
+	left: 10%;
+	font-family: "微软雅黑";
+	/*font-weight: bold;*/
+	color: #fff;
+	font-size: 0.8em;
+	letter-spacing: 0.05em;
+	margin: 0 auto;
+	
+}
+
+#sexp2{
+	font-family: "微软雅黑";
+	color: rgb(232,254,5);
+    font-size: 0.8em;
+	position: absolute;
+	top: 80%;
+	left: 10%;
+	letter-spacing: 0.05em;
+}
+
+#explain{
+	position: relative;
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+	display: block;
+	opacity: 1;
+	position: absolute;
+	left:0;
+	top: 0;
+
+	
+}
+#bo{
+	display:block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+#bo2{
+  display:block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+   background:-webkit-gradient(linear, 100% 0, 100% 100%, from(rgb(118,183,11)), to(rgb(18,70,3)));
+}
+#wrape{
+	position: absolute;
+    left: 5%;
+    top: 17%;
+    z-index: 2;
+    width: 90%;
+    height: 53%;
+	background-color: opacity;
+	background-image: url(img/规则背景.png);
+	background-repeat: no-repeat;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	
+}
+#gexb{
+	width: 30%;
+	height: 5%;
+	margin: 0 auto;
+	margin-top: 2%;
+}
+#gex{
+	text-align: center;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	font-size: 1.2em;
+	color: rgb(229,250,52);
+	
+}
+#rule{
+	width: 76%;
+	height: 20%;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	position:absolute;
+	left: 12%;
+	top: 14%;
+	color:rgb(16,60,3);
+}
+#rule2{
+	width: 30%;
+	height: 10%;
+	color: rgb(255,114,6);
+	font-size: 0.95em;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	position:absolute;
+	left: 12%;
+	top: 70%;
+}
+#rule3{
+	width: 76%;
+	height: 20%;
+	font-size: 0.9em;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	position:absolute;
+	left: 12%;
+	top: 79%;
+	color:rgb(48,136,22);
+}
+#button2{
+	width: 18em;
+	height: 3.2em;
+	margin: 0 auto;
+}
+#gamestart2{
+	width: 50%;
+	height: 10%;;
+	color: #eee;
+	font-size: 1.4em;
+	font-weight: bold;
+	background-color: #bcd;
+	font-family: "微软雅黑";
+	border-radius: 10px;
+	margin-top: 5%;
+    background-image: url(a.jpg);
+	-webkit-background-size: 0.6em 0.6em;
+	background-size: 1.9em 1.9em;
+	background-repeat: no-repeat;
+	background-position: 1em 0.3em;
+	position: absolute;
+	bottom: 20%;
+
+	}
+#game{
+	margin:0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	opacity: 0;
+	
+}
+
+#score{
+	margin:0;
+	padding: 0;
+	width: 99%;
+	height: 101.5%;
+	display: none;
+	opacity: 0;
+}
+#wraps{
+	width: 100%;
+	height: 100%;
+    margin:0 auto;
+    position: relative;
+}
+
+#gamestart{
+	border: none;
+	width: 69%;
+	height: 7%;
+	color: #eee;
+	font-size: 1.2em;
+    background-color: rgb(255,139,2);
+	font-family: "微软雅黑";
+    position: absolute;
+	bottom: 5%;
+	left: 15%;
+	border-radius: 0.3em;
+    background-image: url(img/开始按钮.png);
+	-webkit-background-size: 0.6em 0.6em;
+	background-size: 1.3em 1.1em;
+	background-repeat: no-repeat;
+	background-position: 22% 50%;
+
+	}
+
+
+#share{
+	border: none;
+	width: 68%;
+	height: 6.5%;
+	color: #eee;
+	font-size: 1.2em;
+    background-color: rgb(255,139,2);
+	font-family: "微软雅黑";
+    position: absolute;
+	bottom: 16%;
+	left: 16%;
+	border-radius: 0.3em;
+    background-image: url(img/分享图标.png);
+	-webkit-background-size: 0.6em 0.6em;
+	background-size: 1.1em 1.1em;
+	background-repeat: no-repeat;
+	background-position: 22% 50%;
+	text-indent: 10%;
+
+	}
+ 
+   
+ #res{
+	border: none;
+	width: 69%;
+	height: 6.5%;
+	color: #eee;
+	font-size: 1.2em;
+    background-color: rgb(255,139,2);
+	font-family: "微软雅黑";
+    position: absolute;
+	bottom: 7.5%;
+	left: 16%;
+	border-radius: 0.3em;
+    background-image: url(img/再玩一次图标.png);
+	-webkit-background-size: 0.6em 0.6em;
+	background-size: 1.1em 1.2em;
+	background-repeat: no-repeat;
+	background-position: 22% 50%;
+
+	}
+  
+	#timer{
+    width: 37%;
+    height: 6%;
+    border-radius: 1.5em;
+    background-color: rgb(250,219,6);
+    margin: 0 auto;
+    position: relative;
+    top: 3%;
+
+	}
+
+	#time{
+		font-family: "微软雅黑";
+		text-align: center;
+		font-size: 1em;
+		font-weight: bold;
+		position: relative;
+		top: 10%;
+		color: rgb(40,134,13);
+	}
+
+	#time span{
+		font-family: "微软雅黑";
+		font-size: 1.2em;
+		color: rgb(243,0,0);
+	}
+
+	#isc{
+		text-align: center;
+		font-size: 1em;
+		font-family: "微软雅黑";
+		font-weight: bold;
+		position: relative;
+		top: 37%;
+			}
+    
+    #isc span{
+    	font-family: "微软雅黑";
+		font-size: 2.5em;
+		color: rgb(229,250,52);
+		margin: 5px;
+    }
+     #cxl{
+     	width: 3.5em;
+     	height: 1.2em;
+         }
+     #fz{
+     	width: 2.5em;
+     	height: 1.2em;
+     }
+    
+    #isc2{
+    	font-family: "微软雅黑";
+		font-size:1em;
+		color: white;
+		text-align: center;
+		position: relative;
+	    top: 37%;
+    }
+#score{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+
+  
+#endswrap{
+	width: 100%;
+	height: 100%;
+	background-image: url(img/结束背景.png);
+	background-repeat: no-repeat;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+}
+
+
+#cj{
+	font-weight: bold;
+	text-align: center;
+	position: relative;
+    top: 43%;
+	font-size: 1em;
+	color: rgb(229,250,52);
+
+}
+#jpwrap{
+	width: 74%;
+	height: 20%;
+	position: absolute;
+	left: 13%;
+	top: 61%;
+	line-height: 1.25em;
+}
+#jpwrap p{
+	text-align: left;
+	font-size: 0.85em;
+	color: #fff;
+	font-weight: bold;
+
+}
+.jpr{
+	position: absolute;
+	left: 80%;
+
+}

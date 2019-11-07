@@ -1,0 +1,17 @@
+<template name="movie-star">
+  <view class="star-container">
+    <view class='stars'>
+
+      <image wx:for="{{starsArr}}" wx:key="{{index}}" class="star" src='{{item?"/images/icon/star.png":"/images/icon/none-star.png"}}'></image>
+   
+      <!-- <image class="star" src='/images/icon/star.png'></image>
+      
+      <image class="star" src='/images/icon/star.png'></image>
+      
+      <image class="star"     src='/images/icon/none-star.png'></image>
+      
+      <image  class="star" src='/images/icon/none-star.png'></image> -->
+    </view>
+    <text class="score">{{score}}分</text>
+  </view>
+</template>

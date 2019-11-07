@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//navigator 用于检查浏览器和操作系统的信息
+			console.log(navigator);
+			
+			//userAgent 存储当前浏览器的名称和版本号,通过完整的字符串"Chrome, Firefox, Safari, IE, Opera, Mobile"这些;浏览器名称的关键字进行判断当前所处的浏览器,即浏览器嗅探,可结合字符串函数indexOf判断是否包含对应的名称关键字,(indexOf返回对应字符串的下标,若有则返回下标,若无则返回-1)
+			//常用于判断所处的浏览器并且处理浏览器兼容
+			//浏览器嗅探
+			console.log(navigator.userAgent);
+			
+			var browser = navigator.userAgent;  //返回一大串包含信息的字符串
+			if(browser.indexOf('Chrome') != -1){
+				alert('当前在谷歌浏览器下');
+			}else if(browser.indexOf('Firefox') != -1){
+				alert('当前在火狐浏览器下');
+			}else if(browser.indexOf('IE') != -1){
+				alert('当前在IE浏览器下');
+			}else if(browser.indexOf('Safari') != -1){
+				alert('当前在Safari浏览器下');
+			}
+			
+			//通过判断是否含有"Mobile"关键字来判断用户是否在移动端打开
+			if(browser.indexOf('Mobile') != -1){
+				alert('移动端打开');
+			}else{
+				alert('PC端打开');
+			}
+			
+			/*screen 屏幕显示器的信息*/
+			console.log(screen);
+			console.log(screen.width);
+			console.log(screen.height);
+			//提供给浏览器显示的宽高   应为还有工具栏占着位置
+			console.log(screen.availWidth);
+			console.log(screen.availHeight);
+		</script>
+	</body>
+</html>

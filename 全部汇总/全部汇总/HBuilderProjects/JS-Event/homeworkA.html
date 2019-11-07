@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#order{
+				width: 60px;
+				height: 60px;
+				margin-top: 30px;
+				margin-bottom: 30px;
+				border: 1px solid red;
+				font-size: 30px;
+				line-height: 60px;
+				text-align: center;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="number" />
+		<!--button相比较submit而言  不会自动提交-->
+		<input type="button" value="创建"/><br />
+		<input type="color" />
+		<input type="number" class="color" placeholder="R"/>
+		<input type="number" class="color" placeholder="G"/>
+		<input type="number" class="color" placeholder="B"/>
+		<div id="order"></div>
+		<hr />
+	</body>
+	<script type="text/javascript">
+		var num = document.querySelector("input[type=number]");  //这种选择器的第一个
+		var btn = document.querySelector("input[type=button]");
+		var color = document.querySelector("input[type=color]")
+		var inputs = document.querySelectorAll(".color");
+		var order = document.getElementById("order");
+		var justitem;
+		//
+		btn.onclick = function(){
+			var count = num.value - 0;
+			//获取浏览器窗口的宽高 不包括工具栏
+			var maxW = document.documentElement.clientWidth;
+			var maxH = document.documentElement.clientHeight;
+			for(var i = 0; i < count; i++){
+				//动态创建  样式 内容 位置
+				var item = document.createElement('div');
+				var size = randFn(20,40);
+				item.style.width = size + 'px';
+				item.style.height = size + 'px';
+				item.style.borderRadius = '50%';
+				item.style.lineHeight = size + 'px';
+				item.style.textAlign = 'center';
+				item.innerHTML = i + 1;
+				item.style.background = 'rgb('+randFn(0,255)+','+randFn(0,255)+','+randFn(0,255)+')';
+				item.style.position = 'absolute';
+				item.style.left = randFn(0, maxW) + 'px';
+				item.style.top = randFn(188, maxH) + 'px';
+				item.onclick = function(){
+				 	justitem = this;
+				 	order.innerHTML = this.innerText;
+				 	console.log(justitem);
+				}
+				document.body.appendChild(item);   //body可以直接这样获取到
+			}
+		}
+		console.log(justitem);
+		/*justitem.onclick = function(){
+			order.innerHTML = this.innerText;
+		}*/
+		//给input color绑定事件
+		color.oninput = function (){
+			justitem.style.background = color.value;
+		}
+		//根据手动rgb来给换颜色 数值改变一点点颜色就会发生变化  所以keyup
+		for (var i = 0; i < inputs.length; i++) {
+			inputs[i].onkeyup = function(){
+				justitem.style.background = 'rgb('+ inputs[0].value+','+inputs[1].value+','+inputs[2].value+')';
+			}
+		}
+		function randFn(m,n){
+			return Math.floor(Math.random()*(n - m + 1) + m);
+		}
+	</script>
+</html>

@@ -1,0 +1,104 @@
+@import "../../../template/movie-star/movie-star";
+/* pages/movies/movies-detail/movies-detail.wxss */
+.detail-head{
+  position: relative;
+  height: 200rpx;
+  padding: 60rpx 40rpx;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.det-cover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: blur(10px);
+}
+.mov-name{
+  font-size: 38rpx;
+  letter-spacing: 5rpx;
+  width: 500rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mov-year{
+  font-size: 28rpx;
+  font-weight: 200;
+}
+.mov-curr{
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: gray;
+  width: 350rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.mov-curr text{
+  color: red;
+}
+.head-img{
+  width: 173rpx;
+  height: 240rpx;
+  background: gray;
+  position: absolute;
+  top: 180rpx;
+  right: 30rpx;
+}
+.head-img image{
+  width: 100%;
+  height: 100%;
+}
+/*电影信息  */
+.mov-info{
+  padding: 40rpx;
+  border-bottom: 2px solid gainsboro;
+  font-size: 23rpx;
+  color: rgb(192, 192, 192);
+  font-weight: 200;
+}
+.mov-title{
+  color: gray;
+  font-weight: 400;
+  margin-bottom: 30rpx;
+  width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mov-li view{
+  line-height: 46rpx;
+  display: flex;
+}
+.mov-li text{
+  color: rgb(136, 136, 136);
+  margin-left: 35rpx;
+}
+.mov-synopsis{
+  margin-top: 20rpx;
+  color: rgb(136, 136, 136);
+  line-height: 35rpx;
+  letter-spacing: 5rpx;
+}
+.mov-info-imgs{
+  display: flex;
+}
+.mov-info-img{
+  margin-top: 40rpx;
+  width: 170rpx;
+  height: 235rpx;
+  background: gainsboro;
+  margin-right: 40rpx;
+}
+.mov-info-img image{
+  width: 100%;
+  height: 100%;
+}
+.mov-star{
+  margin-left: 35rpx;
+}

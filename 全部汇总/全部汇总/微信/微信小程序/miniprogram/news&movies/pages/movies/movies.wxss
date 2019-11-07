@@ -1,0 +1,36 @@
+/* pages/movies/movies.wxss */
+
+.body{
+    background-color: #f2f2f2;
+    margin-top: 20rpx;
+}
+
+.search-container{
+    background-color: #f2f2f2;
+    height: 80rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.icon{
+    height:26rpx;
+    width: 26rpx;
+    margin-left: 20rpx;
+    vertical-align: middle;
+}
+.input{
+    height: 100%;
+    width: 600rpx;
+    font-size: 28rpx;
+    margin-left: 20rpx;
+}
+.placeholder{
+    font-size: 16px;
+    color: #d1d1d1;
+    margin-left: 20rpx;
+}
+.close{
+    height: 30rpx;
+    width: 30rpx;
+    margin-left: 10rpx;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>灌篮高手</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				float: left;
+				position: relative;
+				width: 150px;
+				list-style: none;
+				background: bisque;
+			}
+			li{
+				position: relative;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+			}
+			li>p{
+				position: relative;            /*只要写position 就能提升层级了, left值top值不用写的*/
+				color: white;
+			}
+			li>span{
+				position: absolute;
+				left: 0;
+				top: 0;   
+				/*z-index: -1; */        /*文字被遮盖了,span基于li定位,span的层级提高了,会遮盖右边的字,减低层级那么就被ul遮盖了会完全看不见,此时需要给文字通过定位来提升层级*/
+				display: inline-block;
+				width: 5px;
+				height: 50px;
+				background: red;
+				transition: width 1s;
+			}
+			li>span.cur{
+				width: 100%;
+			}
+			ul>li:nth-child(2) span{
+				background: orange;
+			}
+			ul>li:nth-child(3) span{
+				background: green;
+			}
+			ul>li:nth-child(4) span{
+				background: deepskyblue;
+			}
+			ul>li:nth-child(5) span{
+				background: palevioletred;
+			}
+			.right{
+				float: left;
+				width: 500px;
+				height: 250px;
+				background: url(img/1.jpg);              /*如果下面的js中只改变url的值那么最好分开写,简写也是可以的,但是在js中不变的一些样式也要加上,否则相当于没有设置过哦   嘤嘤嘤*/
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left">
+				<ul>
+					<li>
+						<span class="cur"></span>
+						<p>第1张图</p>
+					</li>
+					<li>
+						<span></span>
+						<p>第2张图</p>
+					</li>
+					<li>
+						<span></span>
+						<p>第3张图</p>
+					</li>
+					<li>
+						<span></span>
+						<p>第4张图</p>
+					</li>
+					<li>
+						<span></span>
+						<p>第5张图</p>
+					</li>
+				</ul>
+			</div>
+			<div class="right"></div>
+		</div>
+		
+		<script type="text/javascript">
+			var lis = document.getElementsByTagName('li');
+			var spans = document.getElementsByTagName('span');
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].index = i;
+				lis[i].onmouseover = function(){
+					//有关left的问题
+					for (var j = 0; j < spans.length; j++) {
+						spans[j].className = '';
+					}
+					spans[this.index].className = 'cur';
+					document.getElementsByClassName('right')[0].style.backgroundImage = "url(img/"+(this.index + 1)+".jpg)";
+				}
+			}
+		</script>
+	</body>
+</html>

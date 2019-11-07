@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>丰富的插件库</title>
+		<link rel="stylesheet" type="text/css" href="css/star-rating-svg.css" />
+	</head>
+
+	<body>
+		<div class="my-rating"></div>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.star-rating-svg.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".my-rating").starRating({
+					starSize: 50,
+					totalStars: 10,
+					initialRating: 2,
+					emptyColor: "pink",
+					hoverColor: "red",
+					activeColor: "lightblue",
+					strokeColor: "white",
+					callback: function(currentRating, $el) {
+						// make a server call here
+						alert(currentRating);
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

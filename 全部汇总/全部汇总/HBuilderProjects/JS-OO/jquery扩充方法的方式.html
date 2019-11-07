@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//为jQuery扩充函数的2种方式: 
+			/*$.extend()  为jQuery!!!!对象!!!!!!扩充方法,即核心对象(jQuery对象)
+			 *$.fn.插件名 为元素(JQ对象实例,也就是标签们)扩充方法
+			 * 
+			 * */
+			//方式1:
+			$.extend({
+				//实现具体功能的方法
+				sayHi: function(){
+					alert("给jQuery扩充一个打招呼的方法");
+				}
+			});
+			$.sayHi();
+			//方式2: 
+			$.fn.change = function(color){
+				return this.each(function(){
+					$(this).css("color",color)
+				});
+			}
+			$("#d1").change("red").text("hahhahahhah");
+		</script>
+	</body>
+</html>

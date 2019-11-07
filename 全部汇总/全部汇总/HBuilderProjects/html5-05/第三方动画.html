@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第三方动画</title>
+		<!--引入第三方的动画库-->
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+		<style type="text/css">
+			.d1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.d2{
+				width: 200px;
+				height: 100px;
+				background-color: blue;
+				/*方式2*/
+				animation: rotateIn 2s infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<!--使用方式
+			 方式1:   在类名里面写
+			 方式2:   在CSS样式里面写
+		-->
+		<!--
+			1.下载或在线CDN
+			2.在项目文件中引入
+			3.使用
+				①添加类名 必须添加animated类名
+				和对应动画效果的类名,e.g.bounce跳动,flash闪现,shake抖动;默认执行一次,若需无穷次,添加infinite!!!!!!!!!!!!
+		-->
+		<div class="d1 animated bounce infinite"></div>
+		<div class="d2"></div>
+	</body>
+</html>

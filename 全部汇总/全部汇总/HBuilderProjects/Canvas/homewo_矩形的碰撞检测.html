@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>矩形的碰撞检测</title>
+	</head>
+	<body>
+		<canvas id="square" width="600" height="600" style="border: 1px solid;"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("square");
+			var ctx = canvas.getContext("2d");
+			//square能出现一个矩形  position能改变矩形的位置(速度大小和方向)
+			/*x,y:起点,w,h:宽高*/
+			function Square(x,y,w,h,color){
+				this.x = x;
+				this.y = y;
+				this.w = w;
+				this.h = h;
+				this.color = color;
+				this.vx = Math.floor(Math.random()*(25-10+1)+10);
+				this.vy = Math.floor(Math.random()*(30-10+1)+10);
+				this.draw = function(){
+					ctx.beginPath();
+					ctx.fillStyle = color;
+					ctx.fillRect(this.x,this.y,this.w,this.h);
+				}
+			}
+		    Square.prototype.positions = function(){
+		    		this.x+=this.vx;
+		    		this.y+=this.vy;
+		    		//边界判断
+		    		if(this.x<=0 || this.x+this.w>=canvas.width || this.y<=0 || this.y+this.h>=canvas.height){
+		    			this.vx *= -1;
+		    			this.vy *= -1;
+		    		}
+		    }
+		    function isPeng(obj1,obj2){
+		    		if(obj1.x+obj1.w<obj2.x || obj1.y>obj2.y+obj2.h || obj1.x>obj2.x+obj2.w || obj1.y+obj1.h<obj2.y){
+		    			return false;
+		    		}else{
+		    			return true;
+		    		}
+		    }
+		    var s1 = new Square(50,50,50,50,"red");
+			var s2 = new Square(160,80,55,60,"blue");
+		    setInterval(function(){
+		    		//清除画布
+		    		ctx.clearRect(0,0,canvas.width,canvas.height);
+		    		s1.draw();
+		    		s1.positions();
+		    		s2.draw();
+		    		s2.positions();
+		    		if(isPeng(s1,s2)){
+		    			s1.vx *= -1;
+		    			s1.vy *= -1;
+		    			s2.vx *= -1;
+		    			s2.vy *= -1;
+		    		}
+		    },100);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+.wrap {
+	margin: 50px auto;
+	width: 1000px;
+	text-align: center;
+}
+
+.wrap .list {
+	border: 3px solid #eee8e3;
+}
+
+.wrap .list table {
+	margin: 10px auto 50px;
+	width: 950px;
+}
+
+.wrap .list tr th:first-child {
+	width: 200px;
+}
+
+.wrap .list tr th:nth-child(2) {
+	width: 300px;
+}
+
+.wrap .list tr td img {
+	width: 70px;
+}
+
+.wrap .list button {
+	padding: 1px 7px 2px;
+}
+
+.wrap table .cur {
+	border-color: red;
+}

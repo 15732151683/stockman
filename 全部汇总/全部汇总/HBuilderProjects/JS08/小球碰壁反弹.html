@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小球碰壁反弹</title>
+		<style type="text/css">
+			#box{
+				width: 600px;
+				height: 400px;
+				border: 1px solid;
+				position: relative;
+			}
+			#ball{
+				position: absolute;
+				top:0;
+				left: 0;
+				width: 30px;
+				height: 30px;
+				background: red;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="ball"></div>
+		</div>
+		
+		<script type="text/javascript">
+			  setInterval(move, 20);
+			var ball = document.getElementById("ball");
+			var l = 0;      //记录小球的位置  横向
+			var t = 0;		//纵向
+			var vx = 3, vy = 5; //定义移动的速度
+			function move(){
+				l +=vx;
+				t +=vy;
+				//判断是否到达边界
+				//水平方向
+				if(l >=570 || l<= 0){
+					vx *= -1;
+				}
+				//垂直方向
+				if(t >= 370|| t <= 0){
+					vy *= -1;
+				}
+				
+				ball.style.left = l + 'px';
+				ball.style.top = t + 'px';
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数调用</title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				height: 200px;
+				background: gold;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="test();">按钮</button>
+		<button id="btn">点击</button>
+		<div id="d1"></div>
+		<script type="text/javascript">
+			/*函数内的代码何时会执行?
+			 *1. 函数名()
+			 * 2.由事件触发
+			 * 3.
+			 * */
+			
+			function test(){
+				alert('hi');
+			}
+			//test();
+			
+			document.getElementById("btn").onclick = function(){
+				alert('111');
+			}
+			
+			//函数名也可作为变量,用于赋值,  赋值的话,后面不能加()
+			document.onclick = fn;//document代表网页,Window代表窗口 
+			function fn() {
+				document.body.style.background = "gold";
+			}
+			//fn();
+			
+			
+			//计时器中函数()的问题
+			setInterval(move, 20);//2.setInterval("move()", 1000);------>这种书写方式可以传参
+			var div = document.getElementById("d1");
+			var x = 0;
+			function move() {
+				x+=10;
+				if(x == 600){
+					x = 0;
+				}
+				div.style.transform = "translateX("+x+"px)"
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

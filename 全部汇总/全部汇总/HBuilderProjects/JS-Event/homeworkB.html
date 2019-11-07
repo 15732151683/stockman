@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义右键</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+			}
+			ul{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 120px;
+				height: 120px;
+				background: lightgray;
+				list-style: none;
+				display: none;
+			}
+			li{
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				list-style: none;
+			}
+			li:hover{
+				background: blue;
+			}
+			li:hover a{
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>	<a href="https://www.baidu.com">百度一下</a></li>
+			<li><a href="https://mail.163.com/">网易邮箱</a></li>
+			<li><a href="https://mail.163.com/">新浪微博</a></li>
+		</ul>
+		<script type="text/javascript">
+			var menu = document.querySelector("ul");
+			document.oncontextmenu = function(e){
+				var eve = event || e;
+				eve.preventDefault();
+				menu.style.left = eve.clientX + 'px';
+				menu.style.top = eve.clientY + 'px';
+				menu.style.display = 'block';
+				
+			}
+			document.onclick = function(){
+				menu.style.display = 'none';
+			}
+		</script>
+	</body>
+</html>

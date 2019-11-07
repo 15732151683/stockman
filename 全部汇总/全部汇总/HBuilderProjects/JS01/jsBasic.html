@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js基本语法注意: js更改的是style里的行间样式!!!!</title>
+		<style type="text/css">
+			#d1{
+				width: 300px;
+				height: 200px;
+				border: 1px solid;
+				transition: all 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<p>the first p</p>
+			<p>the second p</p>
+		</div>
+		<p>第二个调用方法</p>
+		
+		
+		<script type="text/javascript">
+			//注释   给开发人员看,方便维护,减少沟通成本
+			//单行注释
+			/*
+			 多行注释
+			 * */
+			//语句: 最基本的单元
+			/*一般一个语句分号结尾;js中分号不是必须的,一旦换行就是一个语句,只有当一行书写多个语句时,每个语句后必须分号结尾.之后压缩代码会出错
+			 * 规范: 语句后以分号结尾
+			 */
+			/*常用的测试方法
+			 */
+			/*1.弹框: 
+			 alert  警告提示框
+			 confirm 确认提示框
+			 prompt  消息提示框
+			 * */
+			alert(111);
+			/*2.控制台打印输出*/
+			console.log(123);
+			console.log('hello');
+			/*3.向网页文档写入内容*/
+			//document 指代网页文档对象    并不会覆盖之前写的内容
+			document.write('hello');
+			document.write("<a>添加一段话</a>")           //标签的类型和内容都可以写进去,只不过之前写在body里面的直接整个都拉到document.write()里面;
+			
+			//4.格式化输出
+			//格式化占位符: %i,%d(整型数值)  %s字符串 %f浮点型小数 %o对象
+			console.log("今年%d岁",23);
+			
+			//5.异常捕获 用于调试
+			/*对可能出错的代码进行异常捕获*/
+			try{
+				//书写可能出现异常的代码
+				console.log(a);
+			}catch(e){
+				//TODO handle the exception
+				//代码出错后的处理方式
+				console.log(e.message);
+			}
+			/* 常量: 程序运行期间不变的量
+			 * 变量:程序运行期间会变的量
+			 * */
+			//定义变量: var 变量名 = 初值;
+			/*var 系统关键字 表示在申明或定义变量
+			 * 变量名:命名规则
+			 * ①由字母,数字,下划线,$组成  
+			 * ②数字不能开头 
+			 * ③区分大小写
+			 * ④不能和系统关键字以及保留重名  随便取
+			 *命名规范: 
+			     见名知意
+			     驼峰命名法(多个单词 从第二个单词开始首字母大写)或匈牙利命名法(但凡遇到单词首字母都大写) 
+			     = 赋值运算符  用于给变量赋值
+			     初始值 
+			 * */
+			//定义变量
+			var a = 1;
+			var A = 1;
+			//声明变量(未赋初始值)  默认值是undefined
+			var b;
+			var appleCount = 10; 
+			var age = 10;
+			console.log(a);
+			//变量在使用前要先声明或定义
+			console.log(b);
+			//js同名不会报错,会取代之前的变量
+			var a = 3;
+			//js的变量属于弱类型:js 中的变量类型取决于赋的值的类型        !!!!!!!!!!!
+			var c = 5;
+			c = 7.5;
+			c = "abc";
+			console.log(c);
+			
+			//声明前置问题: 若在变量定义之前使用该变量,变量会把声明部分(var d;)提前到!!!!!!!当前作用域!!!!!最前面
+			console.log(d);
+			var d = 1;
+			
+			//定义变量时 按规范加var修饰;若省略var,该变量会变成全局的
+			e = 2;
+			console.log(e);
+			// 支持同行定义多个变量,多个变量名之间逗号间隔
+			var x = 1,y = 2;
+			var x,y = 1;
+			//数据类型:
+			/*基本数据类型: number 数值类型
+			    			string 字符串类型
+			    			boolean 布尔类型
+			    			null 空值
+			    			undefind 未定义
+			复杂类型: 
+						Array 数组
+						object 对象*/
+			var m = 1;
+			var n = 2.5;
+			var p = 2e3; 
+			//typeof()  查看变量的数据类型
+			console.log(typeof(m));
+			//string
+			m = "abc";
+			console.log(typeof(m));
+			//js中被引号引着的都是字符串,单引号双引号都可以!!!!!!!  important
+			m = 'abc';
+			m = "古人云the old saying goes,'think over'";
+			console.log(m);
+			//boolean反应真假
+			//只有俩个值: true真/false假
+			var f = true;
+			console.log(typeof f);
+			//特殊的类型: 
+			/*null  表示空值
+			 undefined 表示未定义*/
+			var h = null;
+			
+			//array 数组
+			var arr = [1, 2.5, "abc", true]
+			//object对象
+			var girl = {
+				//键值对
+				//特征---属性
+				name: "菜菜", 
+				age: 18,
+				gender: "else",
+				//行为---方法
+				eat: function(){
+					alert("一起吃吃吃");
+				}
+			};
+			girl.eat();
+			
+			//数据类型的转换:
+			//显示转换(强制转换)
+			//数值->字符串
+			var s = 123;
+			var t = String(s);
+			console.log(typeof(t), t);
+			//字符串-->数值
+			var n = Number("123");
+			console.log(typeof(n));
+			//隐式转换
+			//数字转成字符串
+			var s1 = 123;
+			//当加号运算符两侧至少一侧是字符串时,则 + 做的是字符串拼接 :变量+带引号字符串,变为字符串
+			var t1 = s1 + "";
+			var a = "12" + 1-"1";
+			console.log(a);  
+			console.log(typeof(a));
+			//字符串-->数值
+			//当- * /一侧是字符串,一侧是数字,则做的是数学运算  所以减法的类型都是number
+			var num = "123" - 0;
+			console.log(typeof(num), num); 
+			
+			//运算符: 
+			/*算数运算符:
+			 + - * / % ++ --
+			 */
+			var x = 1, y = 3;
+			x + y;
+			x - y;
+			x * y;
+			x / y;
+			console.log(x / y);
+			x % y;
+			//自增 ++
+			/*若++x: 先自增,再做其他运算(赋值啦,return啦, 和别人进行运算啦);
+			 * 若x++:先做其他运算(赋值啦,return啦, 和别人进行运算啦),再自增*/
+			console.log(x++);
+			console.log(x);
+			//自减--
+			//在自身的基础上减1,若--在前,先自减,再做其他运算;若--在后,先做其他运算,再自减
+			var k = y--;
+			var w = --y;
+			console.log(w, y);
+			 
+			//获取元素
+			//1.document.getElementById("")  通过id名获取对应的标签元素
+			//返回对应id名的标签对象
+			//只能document对象调用
+			
+			/*2.getElementsByTagName() 通过节点名(标签名)获取对应所有标签名的元素对象   注意是同一级的,如果要取到子代元素,还必须要通过进一步的  .getElementsByTagName()或者.getElementsByClassName()来获取
+			 返回的是存储所有标签元素的数组
+			 调用对象可以是document里的元素*/
+			
+			
+			/*3.getElementsByClassName() 通过类名(标签名)获取对应所有类名的元素对象
+			 返回的是存储所有标签元素的数组
+			 调用对象可以是document里的元素*/
+			var div1 = document.getElementById("d1");
+			//绑定点击事件 click点击
+			div1.onclick = function(){
+				//js通过标签元素的style属性操作元素的行间样式  值以字符串的形式给 否则会以为是 某一个变量  然而并不存在
+				//当操作复合属性的子属性时,需用驼峰法  如:backgroundColor
+				div1.style.backgroundColor = "gold";
+				div1.style.color = "red";
+				div1.style.width = "500px";
+				div1.style.transform = "rotate(45deg)";
+			};
+			//返回值是数组,如果要获取某一个元素,通过数组名[下标]方式获取对应第几个元素
+			//下标从0开始,下标不要越界
+			//document调用,则是获取页面中所有的对应标签
+			var allp = document.getElementsByTagName("p");
+			console.log(allp);
+			//获取其中的第一个p
+			allp[0].style.fontSize = "30px";
+			
+			//调用者也可以是其他元素,获取对应元素内的对应标签    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			var ps =  div1.getElementsByTagName("p");        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			console.log(ps);
+			
+			/*
+			 事件名: 
+			 click   鼠标点击事件
+			 mouseover 鼠标移入事件
+			 mouseout  鼠标移出事件
+			 * */
+			div1.onmouseover = function(){
+				div1.style.backgroundColor = "gold";
+			}
+			div1.onmouseout = function(){
+				div1.style.backgroundColor = "green";
+			}
+		</script>
+	</body>
+</html>

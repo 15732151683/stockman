@@ -1,0 +1,34 @@
+.wrap {
+	width: 800px;
+	margin: 100px auto;
+	overflow: hidden;
+}
+
+.wrap h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.wrap .addBook tr td {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.wrap .addBook tr td:first-child {
+	width: 150px;
+	text-align: right;
+}
+
+.wrap .addBook td input[type=text] {
+	width: 550px;
+	height: 30px;
+	border: 1px solid #e1e2e1;
+	border-radius: 5px;
+	font-size: 16px;
+	margin: 10px 20px;
+	padding-left: 20px;
+}
+
+.wrap .addBook td input[type=file] {
+	margin: 10px 20px;
+}

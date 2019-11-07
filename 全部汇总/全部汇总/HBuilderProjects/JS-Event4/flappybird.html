@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>飞翔的小鸟游戏</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width: 343px;
+				height: 480px;
+				margin: auto;
+			}
+			.beginPage,.game{
+				position: relative;
+				height: 100%;
+				background: url(img/imgA/bg.jpg) center no-repeat;
+				overflow: hidden;
+			}
+			.game{
+				display: none;
+			}
+			/*beginPage{
+				position: absolute;
+				一旦定位宽高由内容撑起 要写宽高
+				width: 100%;
+				height: 100%;
+			}*/
+			#menu{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -118px;
+				margin-top: -150px;
+				width: 236px;
+				height: 300px;
+			}
+			#head{
+				position: relative;
+				height: 77px;
+				background: url(img/imgA/head.jpg);
+				-webkit-animation: updown .5s linear infinite alternate;
+				-o-animation: updown .5s linear infinite alternate;
+				animation: updown .5s linear infinite alternate;
+			}
+			@-webkit-keyframes updown {
+				from {top: 0;}
+				to {top: 30px;}
+			}
+			@keyframes updown {
+				from {top: 0;}
+				to {top: 30px;}
+			}
+			.bird0{
+				position: absolute;
+				right: 0;
+				top: 25px;
+				width: 40px;
+				height: 26px;
+				background: url(img/imgA/bird0.png) no-repeat;
+				-webkit-animation: fly .5s infinite;
+				-o-animation: fly .5s infinite;
+				animation: fly .5s infinite;
+			}
+			@-webkit-keyframes fly {
+				from {
+					background-image: url(img/imgA/bird0.png);
+				}
+				to {
+					background-image: url(img/imgA/bird1.png);
+				}
+			}
+			@keyframes fly {
+				from {
+					background-image: url(img/imgA/bird0.png);
+				}
+				to {
+					background-image: url(img/imgA/bird1.png);
+				}
+			}
+			#start{
+				position: absolute;
+				bottom: 50px;
+				/*左右居中*/
+				left: 0;
+				right: 0;
+				margin: auto;
+				width: 85px;
+				height: 29px;
+				background: url(img/imgA/start.jpg);
+				margin: 50px auto;
+				cursor: pointer;
+			}
+			#bird{
+				position: absolute;
+				top: 200px;
+				left: 50px;
+			}
+			#score{
+				/*图片定位后会有层级问题的,注意修改   (ˉ▽￣～)*/
+				position: relative;
+				z-index: 100;
+				text-align: center;
+			}
+			.grass{
+				position: absolute;
+				top: 423px;
+				left: 0;
+				width: 200%;
+				animation: move 1s linear infinite;
+				-webkit-animation: move 1s linear infinite;
+				
+			}
+			@-webkit-keyframes move {
+				from {left: 0;}
+				to {left: -100%;}
+			}
+			@keyframes move {
+				from {left: 0;}
+				to {left: -100%;}
+			}
+			.grass>img{
+				float: left;
+			}
+			.pipe{
+				position: absolute;
+				top: 0;
+				left: 120%;
+				width: 62px;
+				height: 423px;
+			}
+			.pipe-top{
+				position: absolute;
+				width: 100%;
+				top: 0;
+				/*height: 100px;*/
+				background: url(img/imgA/up_pipe.png)  left bottom no-repeat,url(img/imgA/up_mod.png);
+			}
+			.pipe-bottom{
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				/*height: 150px;*/
+				background: url(img/imgA/down_pipe.png) left top no-repeat, url(img/imgA/down_mod.png);
+			}
+			.gameo{
+				position: relative;
+				z-index: 999;
+				width: 90%;
+				/*height: 70%;*/
+				margin: 20% auto;
+				border: 1px solid;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				/*align-items: around;*/
+			}
+			#score1{
+				position: absolute;
+				right: 19%;
+				top: 39%;
+				color: white;
+			}
+			#score2{
+				position: absolute;
+				right: 20%;
+				top: 59%;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<!--启动页-->
+			<div class="beginPage">
+				<div id="menu">
+					<div id="head">
+						<div class ="bird0"></div>
+					</div>
+					<div id="start"></div>
+				</div>
+			</div>
+			<!--游戏界面-->
+			<div class="game">
+				<img src="img/imgA/bird0.png" id="bird"/>
+				<!--分数-->
+				<div id="score">
+					<img src="img/imgA/0.jpg"/>
+				</div>
+				<!--管道-->
+				<!--管道由js自动添加,在哪里添加,大概长什么样,可以用HTML+css做出效果,保留css,在js中添加上类名,适当修改css,删除HTML中的标签-->
+				<!--<div class="pipe">
+					<div class="pipe-top"></div>
+					<div class="pipe-bottom"></div>
+				</div>-->
+				<!--滚动的草坪-->
+				<div class="grass">
+					<img src="img/imgA/banner.jpg"/>
+					<img src="img/imgA/banner.jpg"/>	
+				</div>
+				<!--结束页面-->
+				<div class="gameo">
+					<img src="img/imgA/game_over.jpg"/>
+					<img src="img/imgA/message.jpg"/>
+					<img src="img/imgA/ok.jpg" id="restart">
+					<span id="score1"></span>
+					<span id="score2"></span>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			window.onload = function (){       //备注  ㄟ( ▔, ▔ )ㄏ  因为有些元素完全是由图片做成的所以一定要等图片加载完成之后才能做一定的操作,也就是放在onload中
+				var startBtn = document.getElementById("start");
+				var beginDiv = document.querySelector(".beginPage");
+				var gameDiv = document.querySelector(".game");
+				var bird = document.getElementById("bird");
+				var scoreDiv = document.getElementById("score");
+				var grassDiv = document.querySelector(".grass");
+				var gameo = document.querySelector(".gameo"); 
+				startBtn.onclick = gameBegin;
+				//游戏开始
+				function gameBegin(){
+					beginDiv.style.display = 'none';
+//					gameo.style.display = "none";   //在js里面设置display none block 会影响在css中的弹性布局 恰好此处是图片可以用opacity 处理   别的方法呢???????????????????????????????????   ㄟ( ▔, ▔ )ㄏ
+//					gameo.style.opacity = '0';
+gameo.style.visibility = 'hidden';
+					gameDiv.style.display =' block';
+					//播放游戏音效
+					var aaudio = document.createElement('audio');
+					aaudio.src = 'img/imgA/bullet.mp3';
+					document.body.appendChild(aaudio);
+					//小鸟飞翔
+					birdFly();
+					//出现管道
+					showPipe();
+				}
+				
+				var t1;
+				function birdFly(){
+					//速度
+					bird.speed = 2;
+					t1 = setInterval(function(){
+						bird.speed++;  //备注  ㄟ( ▔, ▔ )ㄏ
+						if(bird.speed >= 5) bird.speed = 5;
+						bird.style.top = bird.offsetTop + bird.speed + 'px';
+						if( bird.offsetTop >= 423 - bird.offsetHeight){
+							//代表小鸟落地
+							bird.style.top = 423- bird.offsetHeight + 'px';
+							//游戏结束 清除计时器
+							clearInterval(t1);
+							gameEnd();
+						}
+						if(bird.offsetTop <= 0){
+							bird.style.top = 0;
+						}
+					},50);
+				}
+				//点击时  往上飞
+				gameDiv.onclick = function(){
+					bird.speed = -8;
+				}
+				var t2;
+				function showPipe(){
+					t2 = setInterval(function(){
+						var pipe = document.createElement('div');
+						pipe.className = 'pipe';
+						//上管道
+						var pipeTop = document.createElement('div');
+						pipeTop.className = 'pipe-top';
+						//随机高度
+						var ht = rand(100, 180);
+						
+						pipeTop.style.height = ht + 'px';
+						pipe.appendChild(pipeTop);
+						//随机间距
+						var m = rand(80,120);
+						//下管道
+						var pipeBot = document.createElement('div');
+						pipeBot.className = 'pipe-bottom';
+						//随机高度
+						var hb = 423 - ht -m;
+						pipeBot.style.height = hb + 'px';
+						pipe.appendChild(pipeBot);
+						gameDiv.appendChild(pipe);
+						//移动
+						var sx = 1;//速度
+						var timer = setInterval(function(){
+							var l = pipe.offsetLeft - sx;
+							
+							pipe.style.left = l + 'px';
+							if(l <= -62){
+								//管道已经完全移出界面 移除div(管道)  清除计时器 
+								gameDiv.removeChild(pipe);
+								clearInterval(timer);
+							}
+							//代表小鸟已经通过该管道 小鸟的定位left值为50  得分
+							if(l == -12){
+								//得分
+								getNum();
+							}
+							//检测小鸟和管道的位置  碰撞检测
+							if(isPeng(pipeTop) || isPeng(pipeBot)){
+								//游戏结束
+								gameEnd();
+							}
+						}, 10);
+					}, 2500);
+				}
+			
+				function gameEnd(){
+					//清除所有计时器
+					var a = setInterval(function(){}, 100);
+					for(var i = a; i > 0; i--){  //有些浏览器是从1开始计数,有些是从2开始计数的
+						clearInterval(i);
+					}
+					grassDiv.style.animationPlayState = 'paused';//停止css动画
+					//出现结束菜单
+//					gameo.style.display = "block";
+					gameo.style.className = "gameo";
+					//gameo.style.opacity = "1";
+					gameo.style.visibility = "visible";
+					document.getElementById("score1").innerHTML = num;
+					/*
+					 if(！window.localStorage){
+            alert("浏览器支持localstorage");
+            return false;
+        }else{
+            //主逻辑业务
+        }
+					 * */
+					if(num>localStorage.max) localStorage.max = num;
+					document.getElementById("score2").innerHTML = localStorage.max;
+					document.getElementById("restart").onclick = function(){
+						window.location.reload();
+					}
+					
+				}
+				//得分
+				var num = 0;
+				function getNum(){
+					//在加之前先移除之前的图片
+					scoreDiv.innerHTML = '';
+					num++; //123
+					var nStr = num +''; //'123'字符串可看成是一维数组
+					for (var i = 0; i < nStr.length; i++) {
+						var img = new Image();
+						img.src = "img/imgA/"+nStr[i]+".jpg";
+						scoreDiv.appendChild(img);
+					}
+				}
+			}
+				
+			function isPeng(obj){
+				var l1 = bird.offsetLeft;
+				var r1 = bird.offsetWidth+l1;
+				var t1 = bird.offsetTop;
+				var b1 = bird.offsetHeight + t1;
+					
+				var l2 = obj.parentElement.offsetLeft;
+				var r2 = obj.offsetWidth + l2;
+				var t2 = obj.offsetTop;
+				var b2 = obj.offsetHeight + t2;
+				if(l1>r2||r1<l2||b1<t2||t1>b2){
+						//碰到了
+						return false;
+						console.log('111');
+					}else{
+						//没碰到
+						return true;
+						console.log('222');
+					}
+				}
+			function rand(m,n){
+				return Math.floor(Math.random()*(n-m+1)+m);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>date日期对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*Date: js中提供的处理时间和日期相关的对象*/
+			//创建日期对象  获取当前时间
+ 			var now = new Date();
+ 			console.log(typeof now);
+ 			
+ 			/*获取年份: getFullYear();*/
+ 			var y = now.getFullYear();
+ 			console.log(y);
+ 			/*获取月份: 0~11 分别表示一年中的1月份到12月份
+ 			 * getMonth()*/
+ 			console.log(now.getMonth());
+ 			
+ 			/*获取今天是几号:  getDate*/
+ 			console.log(now.getDate());
+ 			
+ 			/*获取今天是周几: 0~6 周日到周六
+ 			 * getDay*/
+ 			console.log(now.getDay());
+ 			/*获取小时:  0~23: 24小时制
+ 			 *getHours();
+ 			 *获取分钟: getMinutes(); 0~59
+ 			 *获取秒: getSeconds();  0~59
+ 			 * 获取毫秒数: getMilliseconds();    0~999 1000毫秒 = 1s
+ 			 * */
+ 			console.log(now.getHours());
+ 			console.log(now.getMinutes());
+ 			console.log(now.getSeconds());
+ 			console.log(now.getMilliseconds());
+ 			
+ 			
+ 			/*获取1970.1.1年至今的毫秒数
+ 			 getTime()*/
+ 			console.log(now.getTime());
+ 			//获取昨天是几号
+ 			console.log(now.getDate() - 1);
+ 			//时间间隔 距离2018.2.9 18:00:00:00还有多长时间
+ 			//创建指定时间的日期对象   注意: 设置月份时要减1
+ 			var t = new Date(2018, 1, 9, 18, 0, 0);
+ 			console.log(t);
+ 			
+ 			
+ 			//算时间间隔 两个时间点  可以直接减  加         
+ 			//获取两个时间点的间隔  以毫秒为单位计算的
+ 			var i = t - now;
+ 			//间隔的天数
+ 			var d = Math.floor((i/1000)/60/60/24);
+ 			console.log(d);
+ 			//间隔的小时
+ 			var h = Math.floor((i - d*1000*60*60*24)/1000/60/60);
+ 			console.log(h);
+ 			//间隔的分钟
+ 			
+		</script>
+	</body>
+</html>

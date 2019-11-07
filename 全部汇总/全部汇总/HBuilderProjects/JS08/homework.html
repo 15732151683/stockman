@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>背景大图切换效果</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width: 100%;
+				position: relative;
+			}
+			img{
+				width: 100%;
+			}
+			.arrow{
+				color: white;
+				position: absolute;
+				bottom: 15px;
+				right: 50px;
+			}
+			span{
+				padding: 5px 10px;
+				border-radius: 50%;
+				border: 3px solid white;
+				background: rgba(0,0,0,0.5);
+				cursor: pointer;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<img src="img/1.jpg"/>
+			<div class="arrow">
+				<span id="left">&lt;</span>
+				<span id="right">&gt;</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var pic = ["img/1.jpg", "img/2.jpg", "img/3.jpg"]
+			//实现如下背景大图切换效果 ：参考效果 http://mail.163.com/
+			var imgs = document.getElementsByTagName('img')[0];
+			var r = document.getElementById("right");
+			var l = document.getElementById("left");
+			var index = 0;
+			//
+			r.onclick = function () {
+				index++;
+				if(index == 3){
+					index = 0;
+				}
+				imgs.src = pic[index];   /*1️⃣注意不要把数组名字取为关键字   src  调用时会出现问题的 嘤嘤嘤
+									2️⃣判断条件最好写在js动画(改变某一css属性之前),因为有规律的变量体现在最后一句中,一般变量更有规律, 否则接下来的相关的js不好写,  或者会出现bug, 调试很麻烦的*/
+				console.log(index);
+			}
+//
+			l.onclick = function(){
+				index--;
+				if(index == -1){
+					index = 2;
+				}
+				imgs.src = pic[index];
+				console.log(index);
+			}
+			
+		</script>
+	</body>
+	
+</html>

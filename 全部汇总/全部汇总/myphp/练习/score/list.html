@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				display: flex;
+			}
+			.title{
+				height: auto;
+				margin: 0;
+			}
+			.title li{
+				height: 50px;
+			}
+			li {
+				list-style: none;
+				width: 100px;
+				height: 100px;
+				border-top: 1px solid;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>学生成绩列表</h3>
+		<div class="stu">
+			<ul class="title">
+				<li>学号</li>
+				<li>js</li>
+				<li>php</li>
+				<li>java</li>
+				<li>python</li>
+				<li>c++</li>
+				<li>操作</li>
+			</ul>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"list.php",
+					async:true,
+					data:"pageIndex=1",
+					dataType:"json",
+					success:function(data){
+						var data = data.data;
+						console.log(data);
+						//创建节点
+						var len = data.length;
+						var lis = "";
+						//数组的话,for in 也很好用的 foreach 
+						for(var i = 0; i < len; i++) {
+							lis += `<ul id="${data[i].id}">
+									<li>${data[i].id}</li>
+									<li>${data[i].js}</li>
+									<li>${data[i].php}</li>
+									<li>${data[i].java}</li>
+									<li>${data[i].python}</li>
+									<li>${data[i].c}</li>
+									<li><a href="edit.html?id=${data[i].id}">编辑</a>
+									<a href="javascript:del(${data[i].id})">删除</a></li>
+								</ul>`;
+						}
+						$(".stu").append(lis);
+						function del(){
+					
+						}
+						$.ajax({
+							type:"get",
+							url:"del.php",
+							async:true,
+							data:{id:idNum},
+							success:function(data){
+								console.log(data);
+								$("body").append($("<h3></h3>").text(data));
+							}
+						});	
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

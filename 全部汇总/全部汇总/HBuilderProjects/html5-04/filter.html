@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>filter</title>
+		<style>
+			.blur{
+				-webkit-filter: blur(10px);
+				filter: blur(10px);
+				
+			}
+			.brightness{
+				-webkit-filter: brightness(70%);
+				filter: brightness(70%);
+			}
+			.grayscale{
+				-webkit-filter: grayscale(50%);
+				filter: grayscale(50%);
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/dog1.jpeg" alt="" />
+		<p>filter 进行图片的滤镜效果处理</p>
+		<p>高斯模糊:blur(像素值)数值越大越模糊</p>
+		<p>亮度处理: brightness(百分比);100%:全亮;0%: 全黑;超过100%也可以,会更亮</p>
+		<img src="img/dog1.jpeg" alt="" class="blur" />
+		<img src="img/dog1.jpeg" alt="" class="brightness" />
+		<img src="img/dog1.jpeg" alt="" class="grayscale" />
+	</body>
+</html>

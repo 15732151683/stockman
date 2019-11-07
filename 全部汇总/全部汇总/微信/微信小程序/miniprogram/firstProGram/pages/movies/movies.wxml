@@ -1,0 +1,21 @@
+<!--pages/movies/movies.wxml-->
+<view>
+  <!--搜索  -->
+  <view class='search'>
+    <icon class='icon' type='search' size='14' color='#405f80'></icon>
+    <input class='input' placeholder='芳华、妖猫传' placeholder-class='placeholder' bindfocus='beginSearch' bindblur='result'></input>
+    <image wx:if="{{isSearching}}" class='close' src='/images/xx.png' bindtap='stopSearch'></image>
+  </view>
+  <!--主体  -->
+  <view wx:if="{{!isSearching}}" class='mov-con'>
+    <view>
+      <movie-group movieGroup="{{in_theaters}}"></movie-group>
+      <movie-group movieGroup="{{coming_soon}}"></movie-group>
+      <movie-group movieGroup="{{top250}}"></movie-group>
+    </view>
+  </view>
+  <!--搜索列表  -->
+  <view  wx:if="{{isSearching}}" class='search-list'>
+    
+  </view>
+</view>

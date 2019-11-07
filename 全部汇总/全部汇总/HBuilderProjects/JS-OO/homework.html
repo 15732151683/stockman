@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*** 统计指定字符出现的次数 ***/
+			String.prototype.Occurs = function(ch) {
+				return this.split(ch).length - 1;
+			}
+			/** 比较两个字符串是否相等，不区分大小写 **/
+			String.prototype.equalIgnoreCase = function(str) {
+				var temp1 = this.toLowerCase();
+				var temp2 = str.toLowerCase();
+				return temp1.equal(temp2);
+			}
+			String.prototype.equal = function(str){
+//				if(this==str){
+//					return true;
+//				}else{
+//					return false;
+//				}
+				return this == str;   //这种能直接返回运算结果呢 布尔类型
+			}
+			/** 判断字符串是否数字串 **/
+			String.prototype.isAllNumber = function() {
+				for(var i = 0; i < this.length; i++) {
+					if(this.charAt(i) < '0' || this.charAt(i) > '9') {
+						return false;
+					}
+				}
+				return true;
+			}
+			var s1 = "a";
+			var s2 = "a";
+			console.log(s1.equalIgnoreCase(s2));
+			function a(b){
+				var a = 3;
+				return this == b;
+			}
+			
+			console.log(a(5));
+		</script>
+	</body>
+
+</html>

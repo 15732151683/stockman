@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物网站的放大</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#left{
+				position: relative;
+				width: 450px;
+				height: 450px;
+				border: 1px solid gainsboro;
+			}
+			#zoom{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 225px;
+				height: 225px;
+				background: rgba(249,238,173,0.5);
+				cursor: move;
+				display: none;
+			}
+			#right{
+				position: absolute;
+				left: 450px;
+				top: 0;
+				width: 500px;
+				height: 500px;
+				border: 1px solid gainsboro;
+				overflow: hidden;
+				display: none;
+			}
+			ul,li{
+				list-style: none;
+			}
+			img{
+				vertical-align: top;
+			}
+			ul{
+				width: 450px;
+				margin-top: 20px;
+				display: flex;
+				justify-content: space-around;
+			}
+			li{
+				border: 3px solid;
+				border-color: transparent;
+			}
+			.liborder2{
+				border: 3px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="left">
+			<img src="img/hw1.jpg"/>
+			<div id="zoom"></div>
+		</div>
+		<div id="right">
+			<img src="img/hw1.2.jpg"/>
+		</div>
+		<ul calss="menu">
+			<li class="liborder2"><img src="img/hw1.1.jpg" alt="" /></li>
+			<li><img src="img/hw2.1.jpg" alt="" /></li>
+			<li><img src="img/hw3.1.jpg" alt="" /></li>
+			<li><img src="img/hw4.1.jpg" alt="" /></li>
+			<li><img src="img/hw5.1.jpg" alt="" /></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var leftDiv = document.getElementById("left");
+		var zoomDiv = document.getElementById("zoom");
+		var rightDiv = document.getElementById("right");
+		var	img = document.querySelectorAll("img");
+		var lis = document.querySelectorAll("li");
+		for (var i = 0; i < lis.length; i++) {
+			lis[i].index = i;
+			lis[i].onclick = function(){
+				for (var j = 0; j < lis.length; j++) {
+					lis[j].style.borderColor = 'transparent';
+				}
+				this.style.borderColor = 'red';
+				img[0].src = 'img/hw'+ (this.index+1) +'.jpg';
+				img[1].src = 'img/hw'+ (this.index+1) +'.2.jpg';
+			}
+		}
+		leftDiv.onmouseover =function(){
+			zoomDiv.style.display = 'block';
+			//不断移动的过程
+			leftDiv.onmousemove = function(e){  //拖拽是移动(move)的过程不是over
+				var eve = event || e;
+				var x = eve.clientX - zoomDiv.offsetWidth/2;
+				var y = eve.clientY -  zoomDiv.offsetHeight/2;
+				var maxX = leftDiv.offsetWidth - zoomDiv.offsetWidth;
+				var maxY = leftDiv.offsetHeight - zoomDiv.offsetHeight;
+				if(x < 0) x = 0;
+				if(x > maxX) x = maxX;
+				if(y < 0) y = 0;
+				if(y > maxY) y= maxY;
+				zoomDiv.style.left = x + 'px';
+				zoomDiv.style.top = y + 'px';      
+				//右侧出现放大图
+				rightDiv.style.display = 'block';
+				img[1].style.position = 'absolute';
+				img[1].style.left = -x/maxX*(img[1].offsetWidth - rightDiv.offsetWidth) + 'px';
+				img[1].style.top = -y/maxY*(img[1].offsetHeight - rightDiv.offsetHeight) + 'px';
+			}
+		}
+		leftDiv.onmouseout = function(){
+			zoomDiv.style.display = 'none';
+			rightDiv.style.display = 'none';
+		}
+		
+	</script>
+</html>

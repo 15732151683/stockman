@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery插件开发</title>
+		<link rel="stylesheet" type="text/css" href="css/jquery.tab.css"/>
+	</head>
+	<body>
+		<div class="tab-container">
+			<div class="tab-nav">
+				<a href="" class="tab-item">菜菜1</a>
+				<a href="" class="tab-item">菜菜2</a>
+				<a href="" class="tab-item">菜菜3</a>
+				<a href="" class="tab-item">菜菜4</a>
+			</div>
+			<div class="tab-con">
+				<div class="tab-page">页面1</div>
+				<div class="tab-page">页面2</div>
+				<div class="tab-page">页面3</div>
+				<div class="tab-page">页面4</div>
+			</div>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/jquery.tab.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">	
+			$(".tab-container").tab({
+				type: "mouseover",
+				effect: "fade",
+				titleColor: "red",
+				titleColorActive: "blue",
+				initial: 1,
+				titles: ["NBA","CBA","WNC","caicai"]
+			});
+		</script>
+	</body>
+</html>

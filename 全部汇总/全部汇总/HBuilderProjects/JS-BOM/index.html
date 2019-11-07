@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 3000px;
+			}
+			#d1{
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 5px;
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<button id='open'>打开新窗口</button>
+		<button id='close'>关闭窗口</button>
+		<button id="scroll">滚动窗口到</button>
+		<a href="https://www.sina.com" target='aaa'>新浪</a>
+		<div id="d1"></div>
+		<!--1.window-->
+		<!--BOM: 浏览器对象模型
+			由一系列的对象组成,每个对象都有属性和方法,用于进行窗口之间的通讯.
+			window是BOM中最核心的对象,所有对象都是window的子对象(通过window衍生出来的),比如:
+			document  文档对象
+			history   历史记录对象
+			location  网页的地址信息
+			navigator 浏览器信息
+			screen	  屏幕对象(屏幕宽度,高度)
+			frames    框架对象 获取当前窗口含有多少个内联框架
+		-->
+	</body>
+	<script type="text/javascript">
+		//window 浏览器窗口对象
+		console.log(window);
+		//window特性:
+		//1.全局变量或函数,都会自动成为window的属性或方法  window的属性和方法使用时,window一般可以省略
+		var a = 1;
+		console.log(a);
+		console.log(window.a);
+		function aFn(){
+			console.log('全局函数');
+		}
+		window.aFn();
+		aFn();
+		//2.使用window的子对象时,window一般也可以省略不写
+		window.document;
+		document;
+		//3.this: 在函数中使用,指代当前函数的调用者  
+		//a.在普通函数中使用this,this指代的是window
+		function atest(){
+			console.log(this);
+		}
+		atest();//window.atest();  全局函数 所以为window
+		//b.在元素的事件处理函数中使用this,this指代的是触发当前事件的该元素对象
+		document.onclick = function(){
+			console.log(this);
+		}
+		//c.在对象的方法中使用this,this指代的是该对象
+		//对象是属性和方法的集合  键值对形式,逗号间隔
+		var per = {
+			//属性--特征
+			name: 'Mia',
+			age: 22,
+			//方法--行为
+			sayHi: function(){
+				console.log(this);
+				console.log('我是'+this.name+',今年'+this.age+'岁');
+			}
+		}
+		per.sayHi();
+		//d.其他地方使用this,指代的是window
+		console.log(this);
+		//4.self 只代表window 当前浏览器窗口它自己
+		console.log(self);
+		
+		
+		//window的方法:
+		//open(url, name, feature) 打开新窗口
+		/*直接使用,大多浏览器都会拦截(IE不会拦截,但是会有提示信息)
+		 *如果由事件触发调用,所有浏览器都不会拦截
+		 * 参数1 url: 窗口打开的网址
+		 *参数2: 窗口的名称  在哪一个窗口打开页面,默认是_blank,即新的空白页面,结合a的target属性实现在指定窗口打开页面. 形同名称的窗口只能打开一个
+		 *参数3: 窗口的特性  e.g.:窗口的位置,大小,是否显示工具栏,滚动条等等*/
+		window.open('https://www.baidu.com');
+		open();
+		var win;
+		document.getElementById('open').onclick = function(){
+			win = window.open('https://www.baidu.com', 'aaa', 'left = 0, top = 0, width = 300, height = 500');//窗口的名字叫aaa,那别的a链接在target='aaa'窗口打开内容,就会找到这个aaa窗口啦
+		}
+		//关闭窗口
+		//close() 关闭当前窗口
+		//只能关闭通过脚本打开的窗口(在脚本里面关闭由脚本打开的窗口)
+		
+		document.getElementById("close").onclick  = function (){
+			win.close();
+		}
+		//scrollTo(x,y) 滚动窗口到某个位置
+		document.getElementById("scroll").onclick  = function (){
+			window.scrollTo(0, 1500);
+		}
+		
+		//计时器
+		var a = setInterval(function(){}, 500);
+		var b = setTimeout(function(){}, 1000);
+		console.log(a, b);//浏览器的不同,火狐从2开始计数,所以清除计时器,用变量比较好
+		//清除计时器
+		clearInterval(a);
+		var c = setInterval(function(){}, 100);
+		console.log(c);
+		
+		//弹框: 
+		/*alert() 警示框
+		 *confirm() 确认框
+		 *prompt() 消息提示框*/
+		//alert('hello');
+		//\n转义字符 表示换行符
+		//alert('hello \n 你好');
+		
+		//confirm() 返回值为布尔类型 点击确定,返回值为true, 点击取消,返回值为false
+		var res = confirm('你确定吗?');
+		if (res) {
+			console.log('点击了确定');
+		} else{
+			console.log('点击了取消');
+		}
+		
+		
+		//prompt(msg, default)  //default:系统默认值
+		/*参数1: 提示问题信息
+		 *参数2: 输入框默认值
+		 * 点击确定则返回输入框中输入的值,点击取消则无返回值*/
+		var msg = prompt('输入你的名称','啦啦');
+		//若返回值不为空,表示点击了确定
+		if(msg && msg != ''){                //???有返回值并且返回值不为空,注意没有返回值,则 msg = null,null也不等于空,会出现 你好null 这样的打印
+			console.log('你好'+msg);
+		}else{
+			
+		}
+		/*弹框会阻断js代码的执行*/
+		
+		/*requestAnimationFrame 属于window的一个方法. 请求动画
+		 可用来实现动画的一个循环方法
+		 借助浏览器默认的刷新频率重复执行 1000/60 1秒60次*/
+		/*实现动画时,优先考虑使用css动画(效率和性能比js要好),其次考虑使用js动画,尽量少用计时器,可以选用requestAnimationFrame
+		 *setInterval和requestAnimationFrame区别:
+		 *requestAnimationFrame不需要设置时间,默认按浏览器刷新频率
+		 *requestAnimationFrame当页面处于非活跃状态时会暂停动画,等回到活跃状态时继续执行动画;优化效率,节省浏览器的消耗. 而setInterval只要页面打开,动画就会一直执行*/
+		var w = 0;
+		var d1 = document.getElementById("d1");
+		function move(){
+			w++;
+			d1.style.width = w + '%';
+			if(w < 100){
+				//请求动画
+				requestAnimationFrame(move);
+			}
+		}
+		move();  //需要初次调用一次,然后执行动画的函数
+	</script>
+</html>

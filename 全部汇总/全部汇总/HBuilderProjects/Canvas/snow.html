@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>下雪啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</title>
+	</head>
+
+	<body>
+		<canvas id="snow" width="600" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("snow");
+			var ctx = canvas.getContext("2d");
+			var cw = canvas.width;
+			var ch = canvas.height;
+			var arr =[];
+			//学对象 属性和出现+下落的方法
+			//不断地背景 出现雪 雪下落 
+			function Snow() {
+				this.x = rand(0,cw);
+				this.y = 0;
+				this.r = rand(5,20);
+				this.speed = rand(5,10);
+			}
+			Snow.prototype.draw = function() {
+				ctx.beginPath();
+				ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+				ctx.fillStyle = "white";
+				ctx.fill();
+			}
+			Snow.prototype.down = function(){
+				this.y +=this.speed;	
+			}
+			function snowing(){
+				//清除画布
+				ctx.clearRect(0,0,cw,ch);
+				ctx.beginPath();
+				ctx.fillStyle = "black";
+				ctx.fillRect(0,0,cw,ch);
+				//
+				if(arr.length<40){
+					arr.push(new Snow());
+				}
+				//for in 遍历数组
+				for(var i in arr){
+					arr[i].draw();
+					arr[i].down();
+					if(arr[i].y>=ch){
+						arr[i] = new Snow();
+					}
+				}
+				window.requestAnimationFrame(snowing);
+			}
+			window.requestAnimationFrame(snowing);
+			function rand(m,n){
+				return Math.floor(Math.random() * (n - m + 1) + m);
+			}
+		</script>
+	</body>
+
+</html>

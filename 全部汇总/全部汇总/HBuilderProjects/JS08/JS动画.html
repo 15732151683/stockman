@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>JS动画</title>
+		<style type="text/css">
+			#d1{
+				position: relative;
+				left: 0;
+				width: 100px;
+				height: 50px;
+				background: cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--JS动画的实现原理
+			借助循环方法(如: 计时器),每隔一定时间修改元素的某种css属性,实现对应的动画效果
+		-->
+		<div id="d1"></div>
+		<script type="text/javascript">
+			//div来回来回
+			var d1 = document.getElementById("d1");
+			setInterval(move, 30);
+			var dx = 0;
+			var dir = true;
+			function move(){
+				dir ? dx+=10 : dx-=10;
+//				if(dir){
+//					dx +=10;
+//				}else{
+//					dx -=10;
+//				}
+				if(dx ==50||dx ==0){
+					dir = !dir;
+				}
+//				if(dx ==0){
+//					dir=!dir;
+//				}
+				d1.style.left = dx + "px";
+			}
+		</script>
+			
+		
+	</body>
+</html>

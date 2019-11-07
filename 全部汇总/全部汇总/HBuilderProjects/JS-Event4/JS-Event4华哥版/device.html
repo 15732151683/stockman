@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设备事件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#p1 {
+				color: red;
+				font-size: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!--设备事件:  必须依赖硬件设备的支持. 该类型事件都是给window绑定的
+		屏幕旋转
+		onorientationchange:当设备朝向发生变化时
+		重力感应(陀螺仪)
+		ondevicemotion:
+		磁力感应(设备朝向)
+		ondeviceorientation
+
+		常见的效果: 摇一摇 屏幕旋转 指南针-->
+
+		<p id="p1"></p>
+
+		<script type="text/javascript">
+			//摇一摇: 当两次陀螺仪加速计记录的值差距较大时,就认为用户在摇晃手机
+			//记录摇晃前的加速计的值
+			var current = {x: 0, y:0, z:0};
+			//记录摇晃后的加速计的值
+			var later = {x: 0, y:0, z:0};
+			//定义晃动事件的加速度的差值
+			var min = 20;
+			//当设备陀螺仪发生移动时触发
+			window.ondevicemotion = function(e) {
+				var eve = event || e;
+				//获取加速计对象
+				var acce =  eve.accelerationIncludingGravity;
+				//获取三个轴方向的加速度
+				current.x = acce.x;
+				current.y = acce.y;
+				current.z = acce.z;
+				//判断两次加速度值, 若超出预定最小差值,则认为在摇一摇
+				if(Math.abs(current.x-later.x)>min || Math.abs(current.y-later.y)>min || Math.abs(current.z-later.z)>min) {
+					//实现摇一摇功能
+					document.body.style.background = randColor();
+					//记录到摇晃后的值
+					later.x = current.x;
+					later.y = current.y;
+					later.z = current.z;
+				}
+			}
+
+			function randColor() {
+				return "rgb("+ rand(0,255) +","+ rand(0,255) +","+ rand(0,255) +")";
+			}
+			function rand(x, y) {
+				return Math.floor(Math.random()*(y-x+1)+x);
+			}
+
+		</script>
+
+		<script type="text/javascript">
+			var p = document.getElementById("p1");
+			//屏幕旋转:
+			/*window.orientation 设备朝向
+			 *0 竖屏
+			 *90 左旋横屏
+			 *-90 右旋横屏
+			 *180 倒立
+			 * */
+			window.onorientationchange = function() {
+				switch (window.orientation){
+					case 0:
+					p.innerHTML = "竖屏";
+						break;
+					case 90:
+					p.innerHTML = "左旋横屏";
+						break;
+					case -90:
+					p.innerHTML = "右旋横屏";
+						break;
+					case 180:
+					p.innerHTML = "倒立";
+						break;
+					default:
+						break;
+				}
+
+			}
+
+		</script>
+	</body>
+</html>

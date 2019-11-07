@@ -1,0 +1,63 @@
+创建请求用 axios文档，   ajax文件夹 
+
+项目过程    先构思主页，然后再配置路由，配置好路由后，根据功能需求，渲染出来，用手打的方式实现  /***       然后剩下的用vue写或者vuex写
+
+创建项目  终端下进入文件夹  然后 vue init webpack projectName     VUE cli 2.9.6版本下 用左边的方法
+Use Eslint to lint your code  选no  其他选yes
+
+
+
+store  vm   
+
+state  data
+
+mutation  methods
+
+getters    computed
+
+ vuex 核心仓库是store（state,mutations,actions,getter,modules）。
+
+一.什么是actions？
+背景：在mutation中我们讲到，mutation中是存放处理数据的方法的集合，我们使用的时候需要commit。但是commit是同步函数，而且只能是同步执行。那我们想异步操作怎么办？
+作用：在actions中提交mutation，并且可以包含任何的异步操作。actions可以理解为通过将mutations里面处里数据的方法变成可异步的处理数据的方法，简单的说就是异步操作数据（但是还是通过mutation来操作，因为只有它能操作）
+
+action 提交mutation,而不是直接更改状态
+action 可以包括异步操作，mutation只能同步
+modules  将store分割成模块（modules）,每个模块拥有自己的(state,mutations,actions,getter);方便维护
+store 改变状态时通过 （commit） mutations
+
+
+ mutations: {
+        // 加1
+        INCREMENT(state) {
+            state.count++;
+        },
+        // 减1
+        DECREMENT(state) {
+            state.count--
+        }
+    },
+    actions: {
+        increment(context) {
+            context.commit("INCREMENT");
+        },
+        decrement(context) {
+            context.commit("DECREMENT");
+        }
+    }
+
+简写上的actions   （无穿参数，可以用简写，有参数的应该不可以）
+actions: {
+        increment({commit}){
+            commit("INCREMENT")
+        },
+        decrement({commit}){
+            commit("DECREMENT")
+        }
+    }
+
+
+Vue.js 提供了一个方法 watch，它用于观察Vue实例上的数据变动。对应一个对象，键是观察表达式，值是对应回调。值也可以是方法名，或者是对象，包含选项。具体的用法可以直接看下面的示例，简单直接。
+
+筛选：根据v-model：(a)    watch(){     a(val){  值改变执行 this. $refs.(ref=的那个名字).filter(val)        }       }          tree 中的ref=tree    :filter-node-method="filterNode"
+在methods写上filterNode函数 ，

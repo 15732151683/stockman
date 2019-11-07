@@ -1,0 +1,27 @@
+/* components/movie-group/movie-group.wxss */
+@import "/template/movie-item/movie-item.wxss";
+.movies-list{
+  display: flex;
+  justify-content: space-around;
+}
+.mov-reyi{
+  margin-bottom: 30rpx;
+}
+.mov-reyi{
+  background: white;
+}
+.reyi-head{
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  font-size: 23rpx;
+  font-weight: 200;
+  color: gray;
+}
+.reyi-head .reyi-more{
+  color: blue;
+  margin-right: 25rpx;
+}
+/* .mov-item{
+  margin-right: 55rpx;
+} */

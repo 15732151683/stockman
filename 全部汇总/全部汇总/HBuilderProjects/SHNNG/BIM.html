@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>BIM</title>
+		<style type="text/css">
+			p{
+				font-size: 18px;
+			}
+			#title{
+				display: inline-block;
+				width: 355px;
+				padding: 8px;
+				font-size: 18px;
+				color: #606160;
+				margin-bottom: 30px;
+				background-color: #CFDB00;
+			}
+			.part{
+				padding-left: 15%;
+			}
+			.part1{
+				padding-top: 15%;
+				background: url(img/BIM-bg1.png) no-repeat;
+				background-size: cover;
+			}
+			.left{
+				float: left;
+			}
+			.left>img{
+				margin-top: 30px;
+				width: 33%;
+			}
+			.left2>img{
+				width: 47%;
+			}
+			.right>img{
+				width: 100%;
+			}
+			.right{
+				float: left;
+			}
+			.part1 .p1right{
+				position: relative;
+				left: 6%;
+			}
+			.part2{
+				background: url(img/BIM-bg2.png) no-repeat;
+				background-image: cover;
+			}
+			.part2 .p2left{
+				padding-top: 25%;
+			}
+			.part3{
+				padding-left: 5%;
+				background: url(img/BIM-bg3.png) no-repeat;
+				background-size: cover;
+				padding-top: 17%;
+			}
+			.part3 .p3right img{
+				position: relative;
+				left: -13%;
+			}
+			.part3 .p3left{
+				position: relative;
+				left: -12%;
+				top: 100px;
+			}
+			.part4{
+				position: relative;
+				padding-left: 5%;
+				background: url(img/BIM-bg4.png) no-repeat;
+				background-size: cover;
+			}
+			.p3img{
+				float: right;
+			}
+			.part4 .p4left{
+				position: absolute;
+				left: 25%;
+				top: 25%;
+			}
+			.part4 .p42right{
+				position: absolute;
+				right: -10%;
+			}
+			.part5{
+				padding-top: 50%;
+				padding-bottom: 40%;
+				position: relative;
+				background: url(img/BIM-bg5.png) no-repeat;
+				background-size: cover;
+			}
+			.part5 .p5right{
+				position: absolute;
+				top: 10%;
+				right: -3%;
+			}
+			#toTop{
+				text-align: center;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+	<body>
+		<div class="container-fluid">
+			<div class="row nav">
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<img src="img/shininglogo.png"/>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="About.html">About</a></li>
+						<li><a href="renderings.html">Renderings</a></li>
+						<li><a href="BIM.html">BIM</a></li>
+						<li><a href="">3D&nbsp;Animat</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+			</div>
+		</div>
+		
+		<!--分割栏-->
+		<div class="container">
+			<div class="row">
+				<div id="fenyelan" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<span class="fenyelan"></span>
+					<h1 class="fenyetitle">OUR SERVICE</h1>
+					<span class="fenyelan"></span>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="container-fluid">
+			<div class="row part1 part">
+				<div class="left p1left col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p id="title">1. MODEL COMPLETION</p>
+					<p>Establishing and creating the visible and multi-dimension Architecture, Structural and MEP model.</p>
+					<img src="img/BIM-p1-1.png"/><img src="img/BIM-p1-2.png"/><img src="img/BIM-p1-3.png"/>
+				</div>
+				<div class="right p1right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<img src="img/building1-half-t.png"/>
+				</div>
+			</div>
+		</div>
+		<!---->
+		<div class="container-fluid">
+			<div class="row part2 part">
+				<div class="left p2left col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p id="title">2. CLASH DETECTION</p>
+					<p>Completing the clash detection among various design parties,engineers and even different organisations in con struction drawings.</p>
+					<img src="img/BIM-p2-1.jpg"/>
+					<img src="img/BIM-p2-2.jpg"/>
+				</div>
+				<div class="right p2right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<img src="img/building1-half-b.png"/>
+				</div>
+			</div>
+		</div>
+		<!---->
+		<div class="container-fluid">
+			<div class="row part3 part">
+				<div class="right p3right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<img src="img/building2-half-t.png"/>
+				</div>
+				<div class="left left2 p3left col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p id="title">3. MEP INTEGRATION</p>
+					<p>Profoundly completing the pipeline integration, design coordination and intra-organisational cooperation between Plumbing, HVAC and Electrical engineering.</p>
+					<img src="img/BIM-p3-1.jpg"/>
+					<img class="p3img" src="img/BIM-p3-2.jpg"/>
+				</div>
+				
+			</div>
+		</div>
+		<!---->
+		<div class="container-fluid">
+			<div class="row part4 part">
+				<div class="right p41right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<img src="img/building2-half-b.png"/>
+				</div>
+				<div class="left p4left left2 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p id="title">4. CURTAIN WALL REMEDYING</p>
+					<p>Creating the abnormity wall based on parametric design tools, and completing detailed curtain wall nodes visibly.</p>
+					<img src="img/BIM-p4-1.jpg"/>
+					<br />
+					<img src="img/BIM-p4-2.jpg"/>
+				</div>
+				<div class="right p42right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<img src="img/building3-half-t.png"/>
+				</div>
+			</div>
+		</div>
+		<!---->
+		<div class="container-fluid">
+			<div class="row part5 part">
+				<div class="left left2 p5left col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p id="title">5. BIM CONSULTING</p>
+					<p>To help you to precisely know what is BIM? How BIM use? When and who is suitably to implement BIM?</p>
+				</div>
+				<div class="right p5right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<img src="img/building3-half-b.png"/>
+				</div>
+			</div>
+		</div>
+		<div id="toTop"><img src="img/top.png"/></div>
+		
+		<div class="footercon">
+			<!--分割栏-->
+			<div class="container">
+				<div class="row">
+					<div id="fenyelan" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<span class="fenyelan"></span>
+						<h1 class="fenyetitle">CONTACT US</h1>
+						<span class="fenyelan"></span>
+					</div>
+				</div>
+			</div>
+			<p>Email：eric@shining365.com</p>
+			<p>Mobile Phone：86 138 1690 3400</p>
+			<p>Tel：+86 21 6598 6866-304+86 21 6598 3188-304</p>
+		</div>
+		<div class="footer2">
+				<p>Copyright © 1998-2015 shining Group</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var toTop = document.getElementById("toTop");
+		var timer;
+		toTop.onclick = function(){
+			//有兼容性问题的  别忘了 
+			var t = document.body.scrollTop || document.documentElement.scrollTop;
+			//console.log(document.documentElement.scrollTop);
+			/*方法一: 
+			 * function move(){
+				t -=10;
+				document.body.scrollTop = document.documentElement.scrollTop = t;
+				if(t >= 0){
+					console.log(t);
+					requestAnimationFrame(move);
+				}
+			}*/                   //????????????????????????????????????????????
+			/*方法二: 
+			 * clearInterval(timer);
+			timer = setInterval(function(){
+				t -=100;
+				document.body.scrollTop = document.documentElement.scrollTop = t;
+				if(t ==0){
+					clearInterval(timer);
+				}
+			}, 10);*/
+			scrollTo(0,0);
+		}
+	</script>
+</html>

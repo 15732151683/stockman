@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ball{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin:10px 0;
+        }
+    </style>
+</head>
+<body>
+<div style="background:red;" class="ball"></div>
+<div style="background:green;"  class="ball"></div>
+<div style="background:yellow;"  class="ball"></div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    /*
+    * window下新增的Promise构造函数
+    * 作用：解决回调地狱，增强代码的阅读性和可维护性
+    * promise对象：会将一个异步的结果暂存在promise对象的内部
+    * 异步的成功结果通过resolve()导出，然后通过promise的then方法接收
+    * 异步的失败方法通过reject()导出，然后通过then的第二参数或者catch方法接收
+    * */
+
+    var ball1 = $(".ball").eq(0);
+    var ball2 = $(".ball").eq(1);
+    var ball3 = $(".ball").eq(2);
+    // ball1.animate({marginLeft:300},1000,function () {
+    //     ball2.animate({marginLeft:300},1000,function () {
+    //         ball3.animate({marginLeft:300},1000,function () {
+    //             alert("动画结束");
+    //         })
+    //     })
+    // })
+
+
+    // console.dir(Promise);
+
+    // var p1 = new Promise(function (resolve, reject) {
+    //     var r = Math.random()*10;
+    //     setTimeout(function () {
+    //         if(r>5){
+    //         //    成功的操作
+    //             resolve();
+    //         }else{
+    //         //    失败的操作
+    //             reject();
+    //         }
+    //     },2000)
+    // })
+    // /*promise对象具备单个状态：pending(准备状态) resolve(成功),reject(失败)*/
+    // // console.log(p1);
+    // p1.then(function () {
+    //     //接收promise对象内部的异步操作的成功结果
+    //     alert("成功了");
+    // },function () {
+    //     //接收promise对象内部的异步操作的失败结果
+    //     alert("失败了");
+    // })
+
+    /*推送并接收异步操作的内容*/
+    // var p1 = new Promise(function (resolve, reject) {
+    //     var r = Math.random()*10;
+    //     console.log(1);
+    //     setTimeout(function () {
+    //         if(r>5){
+    //             //成功的结果作为resolve的参数
+    //             resolve(r);
+    //             console.log(2);
+    //         }else{
+    //             //    失败的结果作为reject的参数
+    //             var err = new Error(`值小于5，值为${r}`);
+    //             reject(err);
+    //         }
+    //     },2000)
+    // })
+
+    // p1.then(function (data) {
+    // //   此函数的参数就是接收到的异步的成功结果
+    //     console.log(data);
+    // },function (err) {
+    //     // 此函数的参数就是接收到的异步的错误信息
+    //     console.error(err);
+    // })
+    // console.log(3);
+
+    /*通过catch接收异步的失败信息,then可以循环往下推送
+    * catch接收以上所有的错误信息
+    * */
+    // p1.then(function (data) {
+    //     // console.log(data);
+    //     console.log(a);
+    //     return {data:data};
+    // }).then(function (obj) {
+    //     console.log(obj);
+    // }).catch(function (err) {
+    //     console.error(err);
+    // })
+
+    // function move(ball,dis) {
+    //     return new Promise(function (resolve, reject) {
+    //         ball.animate({marginLeft:dis},1000,function () {
+    //             resolve();
+    //         })
+    //
+    //     })
+    // }
+    // move(ball1,300).then(function () {
+    // //    第一个小球动画完成
+    //     return move(ball2,300);
+    // }).then(function () {
+    // //    第二个小球的动画完成
+    //     return move(ball3,300);
+    // }).then(function () {
+    // //    第三个小球动画完成
+    //     return move(ball3,100);
+    // }).then(function () {
+    //     alert("动画结束");
+    // })
+    //
+
+//    作业一：将XMLHTTPRequest异步请求封装Promise，最终获得的数据是一个后台响应的对象
+
+    /*
+    * all方法：同时执行多个promise，最后一个promise完成时，同时将所有异步操作的结果集返回
+    * race方法：同时处理多个promise任务，只要有一个率先完成，就将第一个的结果，作为所有任务的返回结果
+    * */
+
+    // var p1 = new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //         resolve('第一个promise任务的结果');
+    //     },100)
+    // })
+    // var p2 = new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //         resolve('第二个promise任务的结果');
+    //     },3000)
+    // })
+    // var p3 = new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //         resolve('第三个promise任务的结果');
+    //     },1000)
+    // })
+    //
+    // Promise.all([p1,p2,p3])
+    //     .then(function (data) {
+    //         console.log(data);
+    //     })
+    //     .catch(function (err) {
+    //         console.error(err);
+    //     })
+    // Promise.race([p1,p2,p3])
+    //     .then(function (data) {
+    //         console.log(data);
+    //     })
+    //     .catch(function (err) {
+    //         console.error(err);
+    //     })
+
+
+
+
+
+
+</script>
+</html>

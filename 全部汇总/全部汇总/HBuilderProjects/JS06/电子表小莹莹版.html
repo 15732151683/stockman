@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>电子表小莹莹版</title>
+		<style type="text/css">
+			#clock{
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="clock"></div>
+		<script type="text/javascript">
+			getNow();                    //为了消除1秒的停顿,先获取这一个的时间,一秒后继续
+			setInterval(getNow, 1000);    //1秒后, 调用getNow函数, 也就是开始显示时间
+			
+			//获取这一刻的时间
+			function getNow(){
+				var now = new Date();
+				var h = toBeforeZero(now.getHours());
+				var mins = toBeforeZero(now.getMinutes());
+				var sec = toBeforeZero(now.getSeconds());
+				
+				document.getElementById("clock").innerHTML = h+":"+mins+":"+sec;
+			}
+				
+			//如果是一位数的话,在以为是前面添一个'0',变为两位数
+			function toBeforeZero(a){
+				if(a < 10){
+				return '0'+ a; //或者  a = '0'+a;
+				}
+				return a;      //不管是一位数还是两位数 都是要有返回的  传进去一个实参, 分两种情况 一种怎样, 另一种怎样.
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义(服务器端)字体</title>
+		<link rel="stylesheet" href="font/iconfont.css" />
+		<!--<style type="text/css">
+			@font-face {
+				/*为字体起一个名字*/
+				/*名字是多个英文单词或中文是最好加上引号*/
+				font-family: pony cheung;
+				src: url(font/hyliangpinxianj.ttf), 
+					 url(font/hyliangpinxianj.eot),
+					  url(font/hyliangpinxianj.woff),
+					  url(font/hyliangpinxianj.svg);
+			}
+			.p1{
+				font-family: pony cheung;
+				font-size: 50px;
+				color: darkcyan;
+			}
+		</style>-->
+	</head>
+	<body>
+		<p>为了适应字体的多样性,美化网页,有时我们不使用通用字体,而是使用自定义的特殊字体</p>
+		<p>常用的字体格式: .ttf,.eot,.woff,.svg,为了兼容,一种字体要设置成4种文件格式</p>
+		<p>使用方法:</p>
+		<ol>
+			<li>获取字体包(字体文件)</li>
+			<li>将字体文件拖放到工程项目中</li>
+			<li>在CSS中使用@font-face设置字体的名称和字体文件路径</li>
+			<li>在对应标签中使用</li>
+		</ol>
+		<p class="p1">好了,我不想吃鸡腿了,我要去泡个面</p>
+		
+		<h2>图标字体:</h2>
+		<p>通常把一些常用的小图标,不使用图片展示,而是把图标作为文本内容呈现,以此来优化效率,减少图片请求时占用的带宽.</p>
+		<p>知名的几个图标字体库: Font Awesome,阿里巴巴矢量</p>
+		
+		
+		
+		<ul>方法:
+			<li>1.下载好</li>
+			<li>2.把 .eot .svg .woff .ttf和css文件拖到同一个文件夹下</li>
+			<li>link引入CSS文件</li>
+			<li>打开类名和编码示例的文件,可用两种引入方法来实现</li>
+		</ul>
+		<!--使用方法: 方式1: 根据图标编码值呈现-->
+		<i class="iconfont">&#xe63f;购物车</i>
+		<em class="iconfont">&#xe651;</em>
+		<!--方式2: 设置对应的类名-->
+		<i  class="iconfont icon-sousuo"></i>
+		<i  class="iconfont icon-wancheng"></i>
+	</body>
+</html>

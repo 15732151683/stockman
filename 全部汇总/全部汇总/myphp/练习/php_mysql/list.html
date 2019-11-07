@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#refresh{
+				width: 100px;
+				text-align: center;
+				border: 1px solid;
+				padding: 10px;
+				cursor: pointer;
+			}
+			ul{
+				padding: 0;
+			}
+			li{
+				width: 60%;
+				list-style: none;
+				border: 1px solid;
+				height: 40px;
+				display: flex;
+				justify-content: space-around;
+			}
+			span{
+				width: 33%;
+				line-height: 40px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="refresh">刷新</div>
+		<ul class="uul">
+			<li>
+				<span>id</span>
+				<span>女神姓名</span>
+				<span>女神年龄</span>
+			</li>
+		</ul>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#refresh").click(function(){
+					$.ajax({
+						type:"post",
+						url:"http://localhost/myphp/%E7%BB%83%E4%B9%A0/php_mysql/list.php",
+						dataType:"jsonp",
+						async:true,
+						success:function(data){
+							console.log(data);
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

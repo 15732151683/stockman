@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    * 箭头的函数的特点
+    * 1、省略function的声明
+    * 2、省略return 关键字
+    * 3、this指向，指向于定义箭头函数时所处的对象，而不是指向调用该方法时的对象
+    * 4、定义之后的箭头函数的this指向不能改变
+    * 5、不能通过new关键字作为构造函数使用
+    * */
+    let fn = x => x++;
+    // function fn(x) {
+    //     return x++;
+    // }
+    // console.log(fn(10));//10
+    let fn2 = x => x+1;
+    // function fn2(x) {
+    //     return x+1;
+    // }
+    console.log(fn2(10));//11
+    //无参
+    let fn3 = () => console.log('hello world');
+    fn3();
+//    多参
+//     let fn4 = (x,y,z) => x+y+z;
+    //     console.log(fn4(1,2,4));//7
+
+//    右边多行代码
+    let fn5 = (x,y,z) => {
+        let temp = x+y;
+        temp *= z;
+        console.log(temp);
+    }
+    fn5(1,2,4);//12
+
+    var name = 'lisi';
+    // let person = {
+    //     name:'zhangsan',
+    //     age:18,
+    //     say:function () {
+    //         setTimeout(function () {
+    //             //window
+    //             console.log(this.name);
+    //         },10)
+    //     }
+    // }
+    // person.say();//
+
+    //通过bind()改变this指向
+    // let person = {
+    //     name:'zhangsan',
+    //     age:18,
+    //     say:function () {
+
+    //         setTimeout(function () {
+    //             //person
+    //             console.log(this.name);
+    //         }.bind(this),10)
+    //     }
+    // }
+    // person.say();//zhangsan
+    /*Es6箭头函数*/
+    // let person = {
+    //     name:'zhangsan',
+    //     age:18,
+    //     say:function () {
+    //         //person
+    //         setTimeout(()=>{
+    //             //person
+    //             console.log(this.name)
+    //         },10)
+    //     }
+    // }
+    // person.say();//zhangsan
+
+    // let person = {
+    //     name:'zhangsan',
+    //     age:18,
+    //     say:() => {
+    //         //window
+    //         console.log(this.name);
+    //     }
+    // }
+    // person.say();//lisi
+
+//    箭头函数内部的this指向无法改变
+//
+//     let person = {
+//         name:'zhangsan',
+//         age:18,
+//         say:function () {
+//
+//             var fn = () => {
+//                 console.log(this.name);
+//             }
+//             // fn();
+//             var b = {
+//                 name:'wangwu'
+//             }
+//             fn.call(b);
+//
+//         }
+//     }
+//     person.say();//zhangsan
+
+
+
+    // let person = {
+    //     name:'zhangsan',
+    //     age:18,
+    //     say:function () {
+    //         //{name:'王五'}
+    //         var fn = () => {
+    //             console.log(this.name);
+    //         }
+    //         fn();
+    //
+    //
+    //     }
+    // }
+    // person.say.call({name:'王五'});//王五
+
+    //箭头函数的嵌套，只需看最外层所处环境
+    // let person = {
+    //     name:'zhangsan',
+    //     age:18,
+    //     say:function () {
+    //
+    //         var fn = () => {
+    //             setTimeout(() => {
+    //                 var fn2 = () => console.log(this.name);
+    //                 fn2();
+    //             },10)
+    //         }
+    //         // fn();
+    //
+    //
+    //     }
+    // }
+    // person.say();//zhangsan
+
+    var val = 1;
+    var obj = {
+        val:2,
+        fn:function () {
+            this.val *= 2;
+            val *= 2;
+            console.log(val);
+            console.log(this.val);
+        }
+    }
+    obj.fn();//2,4
+    var fn10 = obj.fn;
+    window.fn10();//8,8
+
+
+
+</script>
+</html>

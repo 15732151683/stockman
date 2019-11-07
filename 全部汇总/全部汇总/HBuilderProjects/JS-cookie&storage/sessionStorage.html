@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>next</title>
+	</head>
+	<body>
+		<!--sessionStorage
+			也是一种数据持久化的方式;但是保存到sessionStorage中的数据,当页面关闭后会自动清空 
+			用法和 localStorage 一样
+			
+			使用场景: 
+			1.前一个页面向后一个页面传值
+		-->
+		<input type="text" name="" id="" value="" />
+		<button id="btn">传值</button>
+		<script type="text/javascript">
+			var input1 = document.querySelector("input");
+			document.getElementById("btn").onclick = function (){
+				sessionStorage.setItem("color",input1.value);
+				//location.assign("next.html");
+				//location.href = "next.html";
+				location.replace("next.html");
+				
+			}
+		</script>
+	</body>
+</html>

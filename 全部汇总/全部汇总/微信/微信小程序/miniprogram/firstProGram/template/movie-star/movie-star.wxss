@@ -1,0 +1,9 @@
+.mov-star{
+  display: flex;
+  align-items: center;
+}
+.mov-star image{
+  width: 15rpx;
+  height: 15rpx;
+  margin: 0 2rpx;
+}

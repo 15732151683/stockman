@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2D/3D变换</title>
+		<style type="text/css">
+			.d1{
+				width: 100px;
+				height: 50px;
+				background-color: red;
+				/*动画*/
+				animation: move 2s infinite alternate;
+			}
+			@keyframes move{
+				from{
+					transform:translateX(0);
+				}
+				to{
+					transform: translateX(400px);
+				}
+			}
+			.d2{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				transform: rotate(-60deg); 
+				/*transform-origin:;修改变化的基准点.所有的变换的基准点默认为中心点,旋转之后,坐标轴方向也会跟着变  
+				 形式: ①left right top bottom center,可组合使用②像素值*/
+				transform-origin: 	right center;
+				animation: zhuan 1s infinite;
+			}
+			@keyframes zhuan{
+				from{
+					transform: rotateZ(0deg)/* translateX(0)*/;
+				}
+				to{
+					transform: rotateZ(360deg) /*translateX(300px)*/;
+				}
+			}
+			.d3{
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				transform: scale(-2);
+				margin: 50px;
+			}
+			.d4{
+				width: 200px;
+				height: 100px;
+				background-color: cyan;
+				transform: skew(30deg);
+			}
+			.cube{
+				margin: 100px;
+				position: relative;
+				width: 200px;
+				height: 200px;
+				/*景深: 设置3D效果元素与视图的距离,只对3D有用*/
+				perspective: 100;
+				-webkit-perspective: 100;
+				-moz-perspective: 100;
+				/*做三维立体一定要改变 变形的维度*/
+				transform-style: preserve-3d;
+				transform: rotateX(30deg) rotateY(30deg);
+				
+			}
+			.cube>div{
+				position: absolute;
+				left: 0;
+				right: 0;
+				width: 200px;
+				height: 200px;
+				font-size: 40px;
+				text-align: center;
+				border: 1px solid;
+				line-height: 200px;
+				/*opacity: 0.5;*/
+			}
+			/*正面*/
+			.cube>div:nth-child(1){
+				transform: translateZ(100px);
+			}
+			/*右侧面*/
+			.cube>div:nth-child(2){
+				transform: rotateY(90deg) translateZ(100px);
+			}
+			/*背面*/
+			.cube>div:nth-child(3){
+				transform: rotateY(180deg) translateZ(100px);
+			}
+			/*左面*/
+			.cube>div:nth-child(4){
+				transform: rotateY(-90deg) translateZ(100px);
+			}
+			/*上面*/
+			.cube>div:nth-child(5){
+				transform: rotateX(90deg) translateZ(100px);
+			}
+			/*下面*/
+			.cube>div:nth-child(6){
+				transform: rotateX(-90deg) translateZ(100px);
+			}
+		</style>
+	</head>
+	<body>
+		<p>transform: 支持2D和3D变换(平移,旋转,缩放,倾斜),移动端优先选用transform再选择定位</p>
+		<p>浏览器支持: 支持IE10+和标准浏览器,若要兼容IE9需要加前缀 -ms-</p>
+		<p>2D平移</p>
+		<ul>
+			<li>translate(x,y)</li>
+			<li>translateX()沿x轴旋转</li>
+			<li>translateY()沿y轴旋转</li>
+			<li>x: 表示水平移动量;y: 表示垂直移动量</li>
+		</ul>
+		<div class="d1"></div>
+		<p>2D旋转</p>
+		<ul>
+			<li>rotat(deg)</li>
+			<li>旋转角度,单位deg</li>
+			<li>正值表示顺时针转;负值,表示逆时针</li>
+		</ul>
+		<div class="d2">旋转</div>
+		<ul>
+			<li>scale(x,y)</li>
+			<li>scale(x)</li>
+			<li>scale(y)</li>
+			<li>x,y分别表示横向和纵向的缩放比. 数值大于1,放大.数值大于0小于1,缩小;数值小于0,先翻转再缩放. 等于1,为原尺寸</li>
+		</ul>
+		<div class="d3">缩放</div>
+		<p>2D倾斜:</p>
+		<ul>
+			<li>skew(x-deg,y-deg)</li>
+			<li>skewX(x-deg)</li>
+			<li>skewY(y-deg)</li>
+			<li>参数分别表示横向和纵向的倾斜</li>
+		</ul>
+		<div class="d4"></div>
+		<h2>3D变换:</h2>
+		<p>若要产生三维效果,需设置 transform-style属性,修改变形的维度</p>
+		<ul>transform-style
+			<li>flat: 二维平面效果</li>
+			<li>presever-3d: 三维立体</li>
+		</ul>
+		<div class="cube">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+		<ul>transform-origin:;修改变化的基准点.
+				
+			<li>所有的变换的基准点默认为中心点,旋转之后,坐标轴方向也会跟着变  </li>
+			<li>形式: ①left right top bottom center,可组合使用</li>
+			<li> ②像素值</li>
+		</ul>
+	</body>
+</html>

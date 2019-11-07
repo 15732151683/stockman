@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>message_board</title>
+		<style type="text/css">
+			.wrap{
+				width: 550px;
+				height: 300px;
+				border: 3px solid;
+				padding: 15px;
+			}
+			#deliver{
+				width: 100px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 15px;
+			    background: rgba(218,112,59,1);
+			    color: white;
+			    border: none;
+			}
+			.newclass{
+				width: 350px;
+				height: 100px;
+				border-radius: 30px;;
+				background: rgba(0,0,0,0.3)
+			}
+			.close{
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				background: #D7D8DA;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<textarea id="txt" rows="20" cols="50"></textarea>
+			<br />
+			<button id="deliver" class="">deliver</button>
+		</div>
+		<!--<div class="newclass"></div>-->
+		<script type="text/javascript">
+			var wrap = document.querySelector("wrap");
+			var txt = document.querySelector("#txt");
+			var btn = document.querySelector("#deliver");
+			btn.onclick = function(){
+				if(txt.value == ''){
+					btn.disabled = true;
+					btn.style.opacity = "0.5";
+				}else{
+					btn.disabled = false;
+					btn.style.opacity = "1";
+					var divs = document.createElement('div');
+					var close = document.createElement('span');
+					divs.setAttribute('class', 'newclass');
+					close.setAttribute('class', 'close');
+					divs.innerHTML = txt.value;
+					close.innerHTML = 'X';
+					close.onclick = function(){
+						wrap.removeChild(divs);
+					}
+					divs.appendChild(close);
+					wrap.appendChild(divs);
+					txt.value = '';
+				}	
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<extend name="Public/common/views/base.html" />
+
+<block name="title">
+  <title>首页</title>
+</block>
+
+<block name="mainCss">
+    <css href="/BookStore/Public/css/index.css" />
+</block>
+
+<block name="body">
+  <div class="main">
+    <div class="left">
+      <div class="intro">
+          <h1>我的书城</h1>
+          <h3>这里拥有世界各地的书籍，只有你想不到，没有我们这里没有的图书。</h3>
+          <img src="/BookStore/Public/images/1.jpeg" alt="我的书城">
+      </div>
+    </div>
+    <div class="right">
+      <?php
+        if(empty($_SESSION)){
+      ?>
+        <p>快速登录</p>
+        <form>
+            <input type="text" class="size" name="username" placeholder="用户名"><br>
+            <input type="password" class="size" name="password" placeholder="密码"><br>
+            <input type="button" class="btn" value="登录">
+            <input type="button" class="btn" value="注册">
+        </form>
+      <?php
+        } else {
+      ?>
+          <p>欢迎<?=$_SESSION['user']['username']?>访问网站</p>
+      <?php
+        }
+      ?>
+    </div>
+  </div>
+</block>
+
+<block name="script">
+  <script>
+    $(function(){
+      $('.btn:first').click(function(){
+        $.post('/BookStore/home/user/login', {
+          'username': $('.main .right form input:text').val(),
+          'password': $('.main .right form input:password').val(),
+        }, function(res) {
+          if(res.succeed){
+            alert(res.message)
+            $('.main .right').html("<p>欢迎" + res.info + "访问网站</p>")
+          }else {
+            alert(res.message)
+          }
+        }, 'json')
+      })
+
+      $('.btn:last').click(function(){
+        location.href = "register"
+      })
+    })
+  </script>
+</block>

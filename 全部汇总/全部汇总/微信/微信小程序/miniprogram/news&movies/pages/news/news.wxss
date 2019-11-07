@@ -1,0 +1,16 @@
+/* pages/news/news.wxss */
+ @import "./news-item/news-item-template.wxss"; 
+page{
+  background-color: #f5f5f5;
+}
+.swiper-container{
+  width: 750rpx;
+  height: 580rpx;
+}
+.banner-img{
+  width: 750rpx;
+  height: 580rpx;
+}
+.news-list{
+  margin-top:20rpx;
+}

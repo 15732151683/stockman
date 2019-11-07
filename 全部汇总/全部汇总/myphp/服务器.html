@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		服务器的硬件: 在网络上为其他终端或者客户端提供网络资源的电脑,每个人的电脑也可以作为一台服务器
+		服务器分类: 服务器有很多种版本,比如: web服务器,git服务器,SVN服务器,mail服务器.......取决于服务器硬件上安装了什么服务器软件,同一个服务器硬件可以配置多种服务器服务
+		web服务器: 存放网页文件,提供动态网页支持能力(读取数据库,上传文件),存放网页文件的路径称为web目录
+		web服务器的软件:
+		lamp: linux(操作系统)  Apache(web服务器软件) mysql(数据库服务器软件)  php(一种动态脚本语言)
+		wamp: w-windows 
+		在mac电脑上: xampp(一键式安装包)--在应用程序目录下
+		其中在etc中 httpd.conf - apache的配置文件,在这个配置文件里面可以配置网站的目录路径  
+		php.ini  - php运行环境配置,比如上传文件大小限制
+		这两个配置文件可以使用任何文本编辑器打开
+		httpd.conf:DocumentRoot  网站根目录路径 DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs"
+		(http://localhost)表示访问的是👆的路径文件夹,也就是 htdocs
+		(http://localhost/文件名)
+		(http://localhost/myphp/文件名)
+		绝对路径与相对路径:
+		网页文件的绝对路径是指相对于网站根目录的路径
+		相对路径: 相对某个页面的位置的路径
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图像处理2</title>
+	</head>
+	<body>
+		<canvas id="canvas5" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas5");
+			var ctx = canvas.getContext("2d");
+			/*createPattern(repeat|repeat-x|repeat-y)  创建模式 指定在对应方向上重复绘制对应元素*/
+			var img = new Image();
+			img.src = "img/c1.png";
+			img.onload = function(){
+				var pat = ctx.createPattern(this, "repeat");
+				ctx.fillStyle = pat;
+				ctx.fillRect(0,0,500,500);
+			}
+		</script>
+	</body>
+</html>

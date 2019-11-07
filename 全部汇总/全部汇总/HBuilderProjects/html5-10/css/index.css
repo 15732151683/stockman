@@ -1,0 +1,82 @@
+body{
+	background-color: #F7F8F7;
+}
+.header{
+	background-color: #fff;
+	padding: 15px 20px 30px;
+}
+.poster{
+	padding-bottom: 10px;
+}
+.sec-top{
+	margin-top: 20px;
+	line-height: 1.5;
+	font-weight: lighter;
+}
+.sec-top .title{
+	margin-top: 0;
+	font-size: 20px;
+	color: #9A989B;
+}
+.sec-top .more{
+	text-decoration: none;
+	font-size: 12px;
+	color: #F52D7F;
+}
+.sec-top .more:hover{
+	text-decoration: underline;
+	color: lightskyblue;
+}
+.pic{
+	position: relative;
+	overflow: hidden;
+}
+.pic img{
+	width: 100%;
+}
+.sub-info{
+	position: absolute;
+	bottom: -55px;
+	left: 0;
+	width: 100%;
+	color: white;
+	font-size: 12px;
+	font-weight: 300;
+	background-color: grey;
+	padding: 15px;
+	line-height: 20px;
+	text-align: center;
+}
+.pic:hover .sub-info{
+	bottom: 0;
+	-webkit-transition: bottom .5s;
+	-moz-transition: bottom .5s;
+	-ms-transition: bottom .5s;
+	-o-transition: bottom .5s;
+	transition: bottom .5s;
+}
+.pic .label{
+	margin-right: 5px;
+}
+.des{
+	font-weight: 300;
+}
+.des p{
+	margin: 0;
+	line-height: 2;
+}
+.btn-default{
+	background-color: #f70052;
+	color: white;
+	margin: 30px 0;
+	padding-bottom: 9px;
+	padding-top: 9px;
+	font-size: 12px;
+	height: 30px;
+	border: none;
+	border-radius: 0;
+}
+.btn-default:hover{
+	color: #333;
+	background-color: #f70052;
+}

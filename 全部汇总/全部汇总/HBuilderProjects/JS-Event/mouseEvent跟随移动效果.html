@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跟随移动效果</title>
+		<style type="text/css">
+			#d1{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<script type="text/javascript">
+			var d1 = document.getElementById("d1");
+			document.onmousemove = function(e){
+				var eve = event || e;
+				d1.style.left = eve.clientX - d1.offsetWidth/2 + 'px';
+				d1.style.top = eve.clientY - d1.offsetHeight/2 + 'px';
+			}
+			
+			
+		</script>
+	</body>
+</html>

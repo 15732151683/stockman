@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象编程</title>
+	</head>
+	<body>
+		面向对象: 重在设计对象,考虑对象应该具备的功能,调用对象的方法执行具体的任务即可
+		<script type="text/javascript">
+			/*顾客类*/
+			function  Customer(name, tel){
+				this.name = name;
+				this.tel = tel;
+				this.order = function(){
+					
+				}
+				this.pay = function(){
+					
+				}
+				this.review = function(){}
+			};
+			/*商家类*/
+			function Shops(name,menu){
+				this.name = name;
+				this.menu = menu;
+				this.cook = function(){
+					
+				}
+				this.send = function(){};
+			};
+			/*配送员类*/
+			function Delivery(name){
+				this.name = name;
+				this.deliver = function(){}
+			};
+			//顾客
+			var me = new Customer("菜菜","15555555555");
+			//商家
+			var s = new Shops("菜菜的私房菜","蛋包饭balabala");
+			//配送员
+			var sender = new Delivery("菜菜家的骡子");
+			me.order();
+			s.cook();
+			s.send();
+			sender.deliver();
+			me.pay();
+			me.review();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>贪吃蛇小游戏</title>
+		<style type="text/css">
+			.game {
+				margin: 0 auto;
+				text-align: center;
+			}
+			.ctrls button {
+				width: 80px;
+				height: 30px;
+				border-radius: 5px;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				color: white;
+			}
+			#start {
+				background: #44b7fc;
+			}
+			#pause {
+				background: orange;
+			}
+			#hs {
+				background: green;
+			}
+			#ms {
+				background: gold;
+			}
+			#ls {
+				background: gray;
+			}
+			#map {
+				margin: 20px auto;
+			}
+			.grid {
+				float: left;
+				width: 20px;
+				height: 20px;
+				background: #44b7fc;
+				border: 1px solid white;
+				box-sizing: border-box;
+			}
+			.snake {
+				background: red;
+			}
+			.food {
+				background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="game">
+			<h1>Snake</h1>
+			<p class="board">score: <span id="score">0</span></p>
+			<div class="ctrls">
+				<button id="start">开始</button>
+				<button id="pause">暂停</button>
+				<button id="hs">高速</button>
+				<button id="ms">中速</button>
+				<button id="ls">低速</button>
+			</div>
+			<div id="map"></div>
+		</div>
+
+		<script type="text/javascript">
+
+			var mapDiv =  document.getElementById("map");
+
+			var rows = 20, cols = 30;
+			var gs = 20;
+			//存储每个方格的二维数组
+			var allgrids = [];
+
+			drawMap();
+
+			//绘制游戏地图
+			function drawMap() {
+				mapDiv.style.width = cols*gs + "px";
+				mapDiv.style.height = rows*gs + "px";
+				//绘制
+				for (var i = 0; i < rows; i++) {
+					//存储该行的方格
+					var rowArr = [];
+					allgrids.push(rowArr);
+					//绘制行
+					var rowDiv = document.createElement("div");
+					for (var j = 0; j < cols; j++) {
+						//绘制每行的每个方格
+						var grid = document.createElement("div");
+						rowArr.push(grid);
+						grid.className = "grid";
+						//将该行的方格存储在对应行中
+						rowDiv.appendChild(grid);
+					}
+					//将每行存储到游戏地图中
+					mapDiv.appendChild(rowDiv);
+				}
+			}
+
+			//绘制蛇
+			/*len:表示蛇的长度
+			 */
+			function drawSnake(len) {
+				for (var i = 0; i < len; i++) {
+					allgrids[0][i].className = "grid snake";
+					snakeBody.push(allgrids[0][i]);
+				}
+			}
+			//默认蛇头位置
+			var headX = 3, headY = 0;
+			//记录移动方向
+			var dir = "右";
+			var timer;
+			//存储蛇身的数组
+			var snakeBody = [];
+
+			//蛇移动
+			function move(s) {
+				clearInterval(timer);
+				timer = setInterval(function(){
+					switch (dir){
+						case "上":
+							headY--;
+							break;
+						case "下":
+							headY++;
+							break;
+						case "左":
+							headX--;
+							break;
+						case "右":
+						    headX++;
+							break;
+						default:
+							break;
+					}
+					isChange = false;
+					//限制贪吃蛇在游戏地图内移动
+					if(headX<0 || headX>=cols || headY<0 || headY>=rows || allgrids[headY][headX].className == "grid snake") {
+						//代表碰到游戏边界 游戏结束
+						alert("游戏结束");
+						clearInterval(timer);
+						return;
+					}
+					//在正常范围内移动
+					//遇到食物,吃掉,身体变大
+					if(headX==foodX && headY==foodY) {
+						//同一位置,说明蛇头碰到了食物
+						allgrids[headY][headX].className = "grid snake";
+						snakeBody.push(allgrids[headY][headX]);
+						//再随机下一个食物出现
+						showFood();
+						//得分
+
+					} else {
+					//没有遇到食物,正常移动
+					//将原来的蛇尾从数组中删除并还原为方格的样式
+					snakeBody[0].className = "grid";
+					snakeBody.shift();
+					//下一个位置的方格变为蛇身的一部分
+					allgrids[headY][headX].className = "grid snake";
+					snakeBody.push(allgrids[headY][headX]);
+					}
+
+				},s);
+			}
+
+			//键盘事件控制蛇的移动
+			//记录是否变向 false不需要 true需要
+			var isChange = false;
+			//当按下键盘按键时
+			document.onkeydown = function(e){
+				//是否需要改变移动方向
+				if(isChange) {
+					return;
+				}
+				//事件对象: 存储对应事件的各种信息
+				var eve = window.event || e;
+				//避免移动的方向和键盘方向操作冲突
+		if(eve.keyCode==37&&dir=="右") {
+					return;
+				}
+				if(eve.keyCode==38&&dir=="下") {
+					return;
+				}
+				if(eve.keyCode==39&&dir=="左") {
+					return;
+				}
+				if(eve.keyCode==40&&dir=="上") {
+					return;
+				}
+
+				//keyCode: 对应按键的键码值
+				switch (eve.keyCode){
+					//左方向键
+					case 37:
+					dir = "左";
+						break;
+					//上方向键
+					case 38:
+					dir = "上";
+						break;
+					//右方向键
+					case 39:
+					dir = "右";
+						break;
+					//下方向键
+					case 40:
+					dir = "下";
+						break;
+					default:
+						break;
+				}
+				//需要改变方向 置反
+				isChange = true;
+			}
+			//存储食物的随机位置
+			var foodX, foodY;
+			//生成食物
+			function showFood() {
+				foodX = rand(0, cols-1);
+				foodY = rand(0, rows-1);
+				//若食物的位置正好是蛇身一部分,则重新生成食物
+				if(allgrids[foodY][foodX].className == "grid snake") {
+					showFood();
+				} else {
+					allgrids[foodY][foodX].className = "grid food";
+				}
+
+			}
+			function rand(m,n) {
+				return Math.floor(Math.random()*(n-m+1)+m);
+			}
+
+
+			//出现蛇 (默认在左上角)
+			drawSnake(4);
+			//出现食物
+			showFood();
+			//游戏开始
+document.getElementById("start").onclick = function() {
+				//开始移动
+				move(300);
+			}
+			//游戏暂停
+			document.getElementById("pause").onclick = function(){
+				clearInterval(timer);
+			}
+			document.getElementById("hs").onclick = function(){
+				move(100);
+			}
+			document.getElementById("ms").onclick = function(){
+				move(300);
+			}
+			document.getElementById("ls").onclick = function(){
+				move(500);
+			}
+
+
+
+		</script>
+	</body>
+</html>

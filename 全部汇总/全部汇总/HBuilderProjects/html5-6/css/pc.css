@@ -1,0 +1,13 @@
+.nav{
+	width: 100%;
+	height: 70px;
+}
+.nav ul{
+	width: 58%;
+}
+article,.con{
+	width: 63%;
+}
+.intro{
+	width: 31%;
+}

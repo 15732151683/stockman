@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+</body>
+<script>
+
+    /*[Symbol.iterator]:可迭代对象，可以通过for of迭代*/
+    // var arr = [1,2,3];
+    // var obj = {
+    //     name:'xxx',
+    //     age:1
+    // }
+
+    // // console.log(arr);
+    // console.log(obj);
+    // for(var {k,v} of obj){
+    //     console.log(k);
+    // }
+
+
+    // var m = new Map([['name','lisi'],['age',18]]);
+    // //Map的值的迭代器
+    // console.log(m.values().next());//lisi,false
+    // console.log(m.values().next());//18,false
+    // console.log(m.values().next());//undefined,true
+
+    /*
+    * 在每一个迭代器内部都会有一个指针
+    * 每一个迭代器都有一个对象，具备一个next方法
+    * next对象每次都会输出，当前指针所代表的value，以及表示未完成的值为false的done
+    * 一旦迭代完成，done变为false
+    * */
+
+    // function createIterator(arr) {
+    //     //迭代的指针，指向下一次要输出的值
+    //     var nextIndex = 0;
+    //     return {
+    //         next () {
+    //             if(nextIndex < arr.length){
+    //             //    未完成迭代
+    //                 return {value:arr[nextIndex++],done:false}
+    //             }else{
+    //             //    迭代已完成
+    //                 return {done:true}
+    //             }
+    //         }
+    //     }
+    // }
+    // var arr = ["吃饭",'睡觉','打豆豆'];
+    // //实例一个迭代器
+    // var it = createIterator(arr);
+    // console.log(it.next());
+    // // console.log(`首先：${it.next().value}`);
+    // // console.log(`其次：${it.next().value}`);
+    // // console.log(`再次：${it.next().value}`);
+    // // console.log(`最后：${it.next().done}`);
+
+    /*如何将普通对象变成一个可迭代的对象:一个可迭代对象必须包含一个迭代器方法：[Symbol.iterator]:*/
+
+
+    var obj = {
+        name:"zhangsan",
+        age:18,
+        [Symbol.iterator](){
+            //迭代的指针
+            var nextIndex = 0;
+            //通过Object.keys获得key的列表
+            var arr = Object.keys(obj);
+            return {
+                next(){
+                    if(nextIndex < arr.length){
+                        return {
+                            value:{
+                                k:arr[nextIndex],
+                                v:obj[arr[nextIndex++]],
+                            },
+                            done:false
+                        }
+                    }else{
+                        return {done:true}
+                    }
+                }
+            }
+        }
+    }
+    // console.log(Object.keys(obj));
+    // console.log(Object.values(obj));
+    // console.log(Object.entries(obj));
+    //调用obj上的迭代器
+    // var it = obj[Symbol.iterator]();
+    // console.log(it.next().value);
+    // console.log(it.next().value);
+    // console.log(it.next().done);
+
+//    通过for of
+//     for (var result of obj){
+//         console.log(result);
+//     }
+//     for(var {k,v} of obj){
+//         console.log(`${k} => ${v}`);
+//     }
+
+    /*在js中的可迭代对象，arr,string,set,map,*/
+    // let m = new Map(Object.entries(obj));
+    // //默认使用的是m.entries()迭代器
+    // // for(var res of m){
+    // //     console.log(res);
+    // // }
+    //
+    // var it = m.entries();
+    // console.log(it.next().value);
+    // console.log(it.next().value);
+    // console.log(it.next().done);
+
+    /*生成器：通过generator返回迭代器对象
+    生成器是一个声明比较特殊，使用function *
+    生成器内部有yield关键字，作用等同于return,但是可以多次使用
+    yield返回结果作为迭代器的每次触发的节点
+    * */
+
+    // function * createIterator (arr) {
+    //     for (var i=0; i<arr.length; i++){
+    //         yield arr[i];
+    //     }
+    // }
+    //
+    // var it = createIterator(['吃饭','睡觉','打豆豆']);
+    //
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+
+    // function *test() {
+    //     var x = 1;
+    //     yield x++;//x=2 1
+    //     yield ++x;//x = 3,3
+    //     var y = 10;
+    //     yield y+=x;13
+    // }
+    // var it = test();
+    // console.log(it.next().value);
+    // console.log(it.next().value);
+    // console.log(it.next().value);
+
+
+//    生成器的用途：配合Promise将异步操作转成同步的写法
+
+    function *async() {
+        var url = "https://movie.douban.com/j/search_subjects?type=tv&tag=%E7%83%AD%E9%97%A8&page_limit=50&page_start=0";
+    //    通过fetch请求数据
+       yield result = fetch("cy.html");
+       console.log('哈哈哈哈');
+       alert("我是请求之后的");
+    }
+    var it = async();
+    var result = it.next().value;
+    result.then(function (res) {
+        return res.text();
+    }).then(function (data) {
+        console.log(data);
+        //继续生成器代码的执行
+        it.next();
+    }).catch(function (err) {
+        console.error(err);
+    })
+
+
+
+
+</script>
+</html>

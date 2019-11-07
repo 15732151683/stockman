@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>页面C</h1>
+		<button>返回页面A</button>
+		<script type="text/javascript">
+			document.querySelector("button").onclick = function (){
+				history.go(-2);
+			}
+		</script>
+	</body>
+</html>

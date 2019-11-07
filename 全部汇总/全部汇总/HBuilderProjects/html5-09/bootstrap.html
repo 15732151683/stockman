@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Bootstrap基本功能</title>
+		<!--引入bootstrap.css-->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    		<!--[if lt IE 9]>
+        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    	    <![endif]-->
+    	    <style type="text/css">
+    	    		div[class^=col]{
+    	    			border: 1px solid;
+    	    		}
+    	    		.glyphicon-heart{
+    	    			font-size: 32px;
+    	    			color: orange;
+    	    		}
+    	    		body{
+    	    			padding-top: 50px;
+    	    		}
+    	    		.navbar{
+    	    			background-color: orange;
+    	    			height: 80px;
+    	    		}
+    	    		.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    	    			background-color: blue;
+    	    		}
+    	    </style>
+	</head>
+	<body>
+		<!--1.布局容器 
+			.container 用于固定布宽度且有响应式效果的布局   且自动居中
+			.container-fluid 用于自适应布局且宽度会占满视窗的宽 
+		-->
+		<!--2.栅格系统
+			随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列
+			注意:1.“行（row）”必须包含在 .container （固定宽度）或 .container-fluid （100% 宽度）中
+				2.只有“列（column）”可以作为行（row）”的直接子元素
+				3.你的内容应当放置于“列（column）”内
+				col-xs-*		超小屏 <768
+				col-sm-*		小屏		>=768
+				col-sm-*		小屏		
+				col-md-*		中等屏幕
+				col-lg-*		大屏幕
+				可以同时混合使用
+				
+				列偏移: col-*-offset-*
+		-->
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 col-md-3">001</div>
+				<div class="col-xs-6 col-md-3">002</div>
+				<div class="col-xs-6 col-md-3">003</div>
+				<div class="col-xs-6 col-md-3">004</div>
+				<div class="row">
+					<h1 class="text-center">大标题<small>副标题</small></h1>
+				</div>
+			</div>
+		</div>
+		
+		<!--2.表格
+		.table
+		.table-border 带有边框线
+		.table-striped 带有斑马线效果
+		.table-hover  鼠标悬停效果
+		.table-responsive
+		
+		关于单元格td或tr的效果
+		.active	鼠标悬停在行或单元格上时所设置的颜色
+		.success	标识成功或积极的动作
+		.info	标识普通的提示信息或动作
+		.warning	标识警告或需要用户注意
+		.danger	标识危险或潜在的带来负面影响的动作
+		-->
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 table-responsive">
+					<table class="table table-bordered table-striped table-hover">
+						<tr class="success">
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr />
+			<!--表单元素-->
+			<div class="row">
+				<div class="col-xs-12">
+					<form>
+						  <div class="form-group">
+						    <label for="exampleInputEmail1">Email address</label>
+						    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">Password</label>
+						    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputFile">File input</label>
+						    <input type="file" id="exampleInputFile">
+						    <p class="help-block">Example block-level help text here.</p>
+						  </div>
+						  <div class="checkbox">
+						    <label>
+						      <input type="checkbox"> Check me out
+						    </label>
+						  </div>
+						  <button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+			
+			<!--按钮
+				为 <a>、<button> 或 <input> 元素添加按钮类（button class）即可使用 Bootstrap 提供的样式。
+				.btn		按钮样式
+				.btn-default 默认按钮外观
+				.btn-block   可以将其拉伸至父元素100%的宽度，而且按钮也变为了块级（block）元素。
+				.btn-lg	大按钮
+				.btn-sm	小按钮
+				.btn-xs	超小尺寸
+			-->
+			
+			<!--浮动:注意 源代码中有  !important
+					.pull-left 左浮动
+					.pull-right 有浮动
+				清浮动: 	.clearfix
+				块元素居中: .center-block
+			-->
+			<div class="row">
+				<div class="col-xs-12">
+					<a href="#" class="btn btn-default">按钮</a>
+					<button class="btn btn-success">按钮</button>
+					<input type="button" class="btn btn-warning" id="" value="按钮" />
+					<a href="#" class="btn btn-default btn-block">按钮</a>
+				</div>
+				
+				<!--图片-->
+				<img src="img/qq.jpeg" alt="" class="img-rounded" />
+				<img src="img/qq.jpeg" alt="" class="img-circle" />
+				<img src="img/qq.jpeg" alt="" class="img-thumbnail" />
+			</div>
+		</div>
+		<div class="container">
+			<h2>组件</h2>
+			<h3>图标字体</h3>
+			<span class="glyphicon glyphicon-th"></span>
+			<i class="glyphicon glyphicon-heart"></i>
+		
+			<h3>下拉菜单</h3>
+			<!--
+				.dropdown菜单向下弹出
+				.dropup  菜单向上弹出
+				.dropdown-header 菜单标题
+				.disabled  禁用状态
+			-->
+			<div class="dropdown">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div>
+			
+			<div class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			        <!--Dropdown 菜单内容-->
+			        更多产品
+			        <!--下拉箭头-->
+			        <span class="caret"></span>
+			     </button>
+			     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			     	<li class="dropdown-header">菜单一</li>
+			        <li><a href=" ">Action</a ></li>
+			        <li><a href="#">Another action</a ></li>
+			        <li><a href="#">Something else here</a ></li>
+			        <!--分组-->
+			        
+			        <li role="separator" class="divider"></li>
+			        <li class="dropdown-header">菜单二</li>
+			        <li><a href="#">Separated link</a ></li>
+			     </ul>
+  		 	</div>
+			
+			
+			
+			<h3>导航</h3>
+			<!--
+				.nav-tabs 选项卡效果
+				.nav-pills 胶囊状效果
+				.nav90justified 分布对齐
+			-->
+			<nav role="navigation">
+				<ul class="nav nac-pills nav-tabs">
+					<li role="presentation"><a href="">吃吃吃</a></li>
+					<li role="presentation"><a href="">呵呵呵呵呵</a></li>
+					<li role="presentation"><a href="">呵呵呵呵呵呵呵呵呵呵呵呵</a></li>
+				</ul>
+			</nav>
+			
+			<h3>导航条</h3>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+		        <div class="container-fluid">
+		          <div class="navbar-header">
+		          <!--响应式 收齐模式-->
+		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		              <span class="sr-only">Toggle navigation</span>
+		              <span class="icon-bar"></span>
+		              <span class="icon-bar"></span>
+		              <span class="icon-bar"></span>
+		            </button>
+		            <a class="navbar-brand" href="#">Project name</a>
+		          </div>
+		         <!--下拉收起的菜单-->
+		          <div id="navbar" class="navbar-collapse collapse">
+		            <ul class="nav navbar-nav">
+		              <li class="active"><a href="#">Home</a></li>
+		              <li><a href="#">About</a></li>
+		              <li><a href="#">Contact</a></li>
+		             <!--dropdown 下拉子菜单-->
+		              <li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="#">Action</a></li>
+		                  <li><a href="#">Another action</a></li>
+		                  <li><a href="#">Something else here</a></li>
+		                  <li role="separator" class="divider"></li>
+		                  <li class="dropdown-header">Nav header</li>
+		                  <li><a href="#">Separated link</a></li>
+		                  <li><a href="#">One more separated link</a></li>
+		                </ul>
+		              </li>
+		            </ul>
+		            <ul class="nav navbar-nav navbar-right">
+		              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+		              <li><a href="../navbar-static-top/">Static top</a></li>
+		              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+		            </ul>
+		          </div><!--/.nav-collapse -->
+		        </div><!--/.container-fluid -->
+		     </nav>
+		</div>
+		
+		
+		
+		
+		
+		<nav class="navbar navbar-default">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">Brand</a>
+		    </div>
+		
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+		        <li><a href="#">Link</a></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">Link</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		<!--bootshtrap中的js插件jQuery,必须引用在前面-->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<!--引入bootstrap.js-->
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</body>	
+</html>

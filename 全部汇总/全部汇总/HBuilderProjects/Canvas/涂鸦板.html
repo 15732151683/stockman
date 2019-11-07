@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>涂鸦板</title>
+	</head>
+	<body>
+		<canvas id="board" width="600" height="600"></canvas>
+		<button id="draw">画画</button>
+		<button id="clear">橡皮擦</button>
+		<script type="text/javascript">
+			var canvas = document.getElementById("board");
+			var ctx = canvas.getContext("2d");
+			ctx.beginPath();
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			canvas.onmousedown = function(e){
+				var eve =window.event || e;
+				var sx = eve.clientX - canvas.offsetLeft;
+				var sy = eve.clientY - canvas.offsetTop;
+				canvas.onmousemove = function(e){
+					var evt = window.event || e;
+					var endx = evt.clientX - canvas.offsetLeft;
+					var endy = evt.clientY - canvas.offsetTop;
+					ctx.beginPath();
+					ctx.moveTo(sx,sy);
+					ctx.lineTo(endx,endy);
+					ctx.strokeStyle ="white";
+					ctx.lineWidth = 5;
+					ctx.lineCap ="round";
+					ctx.stroke();
+					sx = endx;
+					sy = endy;
+				}
+				document.onmouseup = function(){
+					canvas.onmousemove = null;
+				}
+				clear.onclick = function(){
+					canvas.onmousemove = function(e){
+						var eve = window.event || e;
+						var mx = eve.clientX - canvas.offsetLeft;
+						var my = eve.clientY - canvas.offsetTop;
+						ctx.beginPath();
+						ctx.fillRect(mx-15,my-15,30,30);
+					}
+				}
+			}
+			var draw = document.getElementById("draw");
+			var clear = document.getElementById("clear");
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<extend name="Public/common/views/base.html" />
+
+<block name="title">
+  <title>图书展示</title>
+</block>
+
+<block name="mainCss">
+  <css href="/BookStore/Public/common/css/bootstrap.css" />
+  <css href="/BookStore/Public/css/bookList.css" />
+</block>
+
+<block name="body">
+  <div class="wrap">
+    <ul class="booklist">
+      <volist name="data" id="item" key="i">
+        <li class="bookitem">
+          <a href="/BookStore/home/book/bookDetails?id={$item.id}">
+            <img src="{$item.imgUrl}" />
+          </a>
+          <h2>{$item.bookName}</h2>
+          <p>
+            <span>价格:￥{$item.price}</span>
+            <a href="javascript:void(0)" index={$item.id}>加入购物车</a>
+          </p>
+        </li>
+      </volist>
+    </ul>
+
+    <ul class="pagination">
+      {$page}
+    </ul>
+  </div>
+</block>
+
+<block name="script">
+  <script src="/BookStore/Public/common/js/add.js"></script>
+  <script>
+    $(".wrap .bookitem p a").click(function(){
+      add($(this).attr('index'))
+    })
+  </script>
+</block>

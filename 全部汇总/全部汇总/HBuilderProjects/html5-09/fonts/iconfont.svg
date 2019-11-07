@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20120731 at Mon Jun 26 16:37:24 2017
+ By admin
+</metadata>
+<defs>
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face 
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    panose-1="2 0 6 3 0 0 0 0 0 0"
+    ascent="896"
+    descent="-128"
+    x-height="792"
+    bbox="1.72727 -212 1021 832"
+    underline-thickness="0"
+    underline-position="0"
+    unicode-range="U+0078-E6AE"
+  />
+<missing-glyph 
+ />
+    <glyph glyph-name=".notdef" 
+ />
+    <glyph glyph-name=".notdef" 
+ />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="341" 
+ />
+    <glyph glyph-name="x" unicode="x" horiz-adv-x="1001" 
+d="M281 543q-27 -1 -53 -1h-83q-18 0 -36.5 -6t-32.5 -18.5t-23 -32t-9 -45.5v-76h912v41q0 16 -0.5 30t-0.5 18q0 13 -5 29t-17 29.5t-31.5 22.5t-49.5 9h-133v-97h-438v97zM955 310v-52q0 -23 0.5 -52t0.5 -58t-10.5 -47.5t-26 -30t-33 -16t-31.5 -4.5q-14 -1 -29.5 -0.5
+t-29.5 0.5h-32l-45 128h-439l-44 -128h-29h-34q-20 0 -45 1q-25 0 -41 9.5t-25.5 23t-13.5 29.5t-4 30v167h911zM163 247q-12 0 -21 -8.5t-9 -21.5t9 -21.5t21 -8.5q13 0 22 8.5t9 21.5t-9 21.5t-22 8.5zM316 123q-8 -26 -14 -48q-5 -19 -10.5 -37t-7.5 -25t-3 -15t1 -14.5
+t9.5 -10.5t21.5 -4h37h67h81h80h64h36q23 0 34 12t2 38q-5 13 -9.5 30.5t-9.5 34.5q-5 19 -11 39h-368zM336 498v228q0 11 2.5 23t10 21.5t20.5 15.5t34 6h188q31 0 51.5 -14.5t20.5 -52.5v-227h-327z" />
+    <glyph glyph-name="facebook" unicode="&#xe6ae;" 
+d="M736 742v-132h-79q-43 0 -58 -18t-15 -54v-94h146l-19 -148h-127v-380h-153v380h-127v148h127v108q0 94 52 145t139 51q73 0 114 -6z" />
+    <glyph glyph-name="yinhao" unicode="&#xe61d;" 
+d="M2 -212v439q-3 95 27 179q30 83 84.5 146t130.5 105q77 42 165 53v-190q-109 -37 -149 -110t-40 -180h189v-442h-407v0zM613 -212v439q-3 95 28 179q30 83 84 146q55 63 131 105t165 53v-190q-109 -37 -149 -110t-40 -180h189v-442h-408v0z" />
+    <glyph glyph-name="jiantouxia" unicode="&#xe641;" 
+d="M731 179l-22 23q-12 11 -23 0l-141 -141v739q0 6 -5 11t-11 5h-32q-7 0 -11.5 -5t-4.5 -11v-739l-142 142q-11 11 -22 0l-23 -23q-12 -12 0 -23l201 -201q8 -9 19 -2q10 -4 17 3l200 200q12 11 0 22z" />
+    <glyph glyph-name="instagram" unicode="&#xe663;" 
+d="M64 503v-440q0 -53 37 -90t89 -37h644q52 0 89 37t37 90v440h-207q28 -56 28 -119q0 -111 -79 -190t-190 -79t-190 79t-79 190q0 63 28 119h-207zM512 384zM303 384q0 87 61 148t148 61t148 -61t61 -148t-61 -148t-148 -61t-148 61t-61 148zM876 832h-573v-179h-30v179
+h-30v-179h-30v179h-30v-179h-29v179h-6q-35 0 -59.5 -24.5t-24.5 -59.5v-185h248q37 42 89 66t111 24t111 -24t89 -66h248v185q0 35 -24.5 59.5t-59.5 24.5zM870 644q0 -9 -6 -15t-14 -6h-108q-8 0 -14.5 6t-6.5 15v108q0 8 6 14t15 6h108q8 0 14 -6t6 -14v-108z" />
+  </font>
+</defs></svg>

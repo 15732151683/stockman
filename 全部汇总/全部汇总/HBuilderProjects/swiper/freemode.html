@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>freemode</title>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html,body {
+				width: 100%;
+				height: 100%;
+			}
+			#top{
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 999;
+				width: 100%;
+				height: 40px;
+				background: #fdfdfc;
+				font-size: 14px;
+				line-height: 40px;
+				box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+				overflow: hidden;
+			}
+			#topline{
+				width: 100%;
+				height: 5px;
+				background: linear-gradient(to right,#31A6E9,#51C643,#31A6E9);
+			}
+			#top .swiper-slide{
+				padding: 0 20px;
+				/*一定要设宽度 否则看不见内容的呢 ㄟ( ▔, ▔ )ㄏ*/
+				width: auto;    
+			}
+			#lunbo{
+				width: 100%;
+				height: 30%;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+				vertical-align: top;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#tab li{
+				text-align: center;
+				width: 50px;
+				height: 100%;
+			}
+			#tab a{
+				color: #2B70BE;
+				font-size: 14px;
+				line-height: 30px;
+			}
+			#tab{
+				width: 100%;
+				height: 30px;
+				background: #EDF2F8;
+				display: flex;
+				justify-content: flex-start;
+			}
+			#tab .selected{
+				background: white;
+			}
+			#tab .selected>a{
+				color: red;
+			}
+			#items li{
+				height: 30px;
+				line-height: 30px;
+				border-bottom: 1px solid #F9FAFB;
+				padding-left: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="top">
+			<div id="topline"></div>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">新闻</div>
+				<div class="swiper-slide">财经</div>
+				<div class="swiper-slide">娱乐</div>
+				<div class="swiper-slide">体育</div>
+				<div class="swiper-slide">订阅</div>
+				<div class="swiper-slide">微博</div>
+				<div class="swiper-slide">空间</div>
+				<div class="swiper-slide">书城</div>
+			</div>
+		</div>
+		<div id="lunbo">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="img/a1.jpg"/></div>
+				<div class="swiper-slide"><img src="img/a2.jpg"/></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<ul id="tab">
+			<li class="selected"><a href="">新闻</a></li>
+			<li><a href="">社会</a></li>
+			<li><a href="">娱乐</a></li>
+		</ul>
+		<div id="items" class="swiper-wrapper">
+			<div class="swiper-slide">
+				<ul class="newslist">
+					<li>111111111</li>
+					<li>2222222222</li>
+					<li>3333333333</li>
+					<li>4444444444</li>
+					<li>5555555555</li>
+					<li>666666666</li>
+					<li>7777777777</li>
+					<li>888888888</li>
+					<li>9999999</li>
+					<li>1010101010110</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul class="newslist">
+					<li>hahahhahhahhahhah</li>
+					<li>2222222222</li>
+					<li>3333333333</li>
+					<li>4444444444</li>
+					<li>5555555555</li>
+					<li>666666666</li>
+					<li>7777777777</li>
+					<li>888888888</li>
+					<li>9999999</li>
+					<li>1010101010110</li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul class="newslist">
+					<li>❀❀❀❀❀</li>
+					<li>2222222222</li>
+					<li>3333333333</li>
+					<li>4444444444</li>
+					<li>5555555555</li>
+					<li>666666666</li>
+					<li>7777777777</li>
+					<li>888888888</li>
+					<li>9999999</li>
+					<li>1010101010110</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var top = new Swiper ('#top', {
+				    direction: 'horizontal',
+				    freeMode : true,
+				    //设置slider容器能够同时显示的slides数量(carousel模式)。
+				    slidesPerView: 'auto',
+				    freeModeSticky: true,
+				  });
+				var lunbo = new Swiper("#lunbo",{
+					irection: 'horizontal',
+					loop: true,
+					autoplay: true,
+					//分页器
+					pagination: {
+						el: '.swiper-pagination',
+						clickable :true,
+					},
+				});
+				var tabs = new Swiper("items");
+				$('#tab a').click(function(e){
+					e.preventDefault();
+					$(this).parent().addClass("selected").siblings().removeClass("selected");
+				    items.slideTo($(this).index());
+				});
+			}
+		</script>
+	</body>
+
+</html>

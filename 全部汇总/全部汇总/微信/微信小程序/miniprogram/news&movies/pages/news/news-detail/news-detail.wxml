@@ -1,0 +1,30 @@
+<!--pages/news/news-detail/news-detail.wxml-->
+<view>
+    <view class='imgCon'>
+        <image class='logoImg' src='{{news.headImgSrc}}'></image>
+        <image class='musicImg' src='{{isPlaying?"/images/music/music-stop.png":"/images/music/music-start.png"}}' bindtap='changeMusic'></image>
+    </view>
+    <view class='newsContainer'>
+        <view class='header'>
+            <image class='headerImg' src='{{news.avatar}}'></image>
+            <text class='username'>{{news.author}}</text>
+            <text>{{news.dateTime}}</text>
+        </view>
+        <view class='newsTitle'>
+            <text>{{news.title}}</text>
+
+    
+        <!--已收藏的高亮按钮  -->
+            <image wx:if="{{collected}}" class='favImg' src='/images/icon/collection.png' catchtap='changeCollect'></image>
+            <!--未收藏的灰色按钮  -->
+            <image wx:else  class='favImg' src='/images/icon/collection-anti.png' catchtap='changeCollect'></image>
+
+
+
+            <image class='shareImg' src='/images/icon/share.png'></image>
+        </view>
+        <view class='newsDetail'>
+                <text>{{news.detail}}</text>
+        </view>
+    </view>
+</view> 

@@ -1,0 +1,32 @@
+[
+  {
+    "col": 5,
+    "rankCol": 11,
+    "name": "Research"
+  },
+  {
+    "col": 6,
+    "rankCol": 12,
+    "name": "Student"
+  },
+  {
+    "col": 7,
+    "rankCol": 13,
+    "name": "Faculty"
+  },
+  {
+    "col": 8,
+    "rankCol": 14,
+    "name": "Teaching"
+  },
+  {
+    "col": 9,
+    "rankCol": 15,
+    "name": "Internationalisation"
+  },
+  {
+    "col": 10,
+    "rankCol": 16,
+    "name": "Ranking"
+  }
+]

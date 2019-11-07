@@ -1,0 +1,11 @@
+<!--components/movie-grid/movie-grid.wxml-->
+<import src="/template/movie-item/movie-item"/>
+
+<view class='movie-list'>
+  <view wx:for="{{movieGroup.movies}}" wx:key="{{item.movieId}}">
+  <navigator url='../../../pages/movies/movies-detail/movies-detail?id={{item.movieId}}'>
+  <template is="movie-item" data="{{...item}}"></template>
+  </navigator>
+  </view>
+</view>  
+

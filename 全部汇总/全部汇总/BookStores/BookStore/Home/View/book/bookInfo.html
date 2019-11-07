@@ -1,0 +1,36 @@
+<extend name="Public/common/views/base.html" />
+
+<block name="title">
+  <title>《{$data.b_name}》图书详情</title>
+</block>
+
+<block name="mainCss">
+  <css href="/BookStore/Public/css/bookInfo.css" />
+</block>
+
+<block name="body">
+    <div class="wrap">
+        <img src="{$data.b_imgpath}" alt="" />
+        <div class="bookInfo">
+          <h2>{$data.b_name}</h2>
+          <p>{$data.b_intro}</p>
+          <ul class="intro">
+            <li>作者：<span>{$data.b_author}</span></li>
+            <li>出版社：<span>{$data.b_press}</span></li>
+            <li>出版时间：<span>{$data.b_publicationdate}</span></li>
+            <li>国际标准书号ISBN：<span>{$data.b_isbn}</span></li>
+            <li>友情价格：<span>{$data.b_price}</span></li>
+          </ul>
+          <a href="javascript:void(0)">加入购物车</a>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+  <script src="/BookStore/Public/common/js/add.js"></script>
+  <script>
+    $('.bookInfo>a').click(function(){
+      add({$data.b_id})
+    })
+  </script>
+</block>

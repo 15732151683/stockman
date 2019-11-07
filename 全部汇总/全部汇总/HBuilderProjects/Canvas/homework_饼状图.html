@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>饼状图</title>
+		<style type="text/css">
+			#pie{
+				box-shadow: 2px 2px 5px #8F908F;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="pie" width="400" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("pie");
+			var ctx = canvas.getContext("2d");
+			ctx.translate(200,200);
+			function pie(a,b,color){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.arc(0,0,170,a,b);
+				ctx.fillStyle = color;
+				ctx.fill();
+				ctx.strokeStyle = "white";
+				ctx.lineWidth = 2;
+				ctx.stroke();
+			}
+			pie(Math.PI/2,Math.PI,"#A8A8A7");
+			pie(Math.PI,Math.PI*1.2,"#52FFFF");
+			pie(Math.PI*1.2,Math.PI*3/2,"#FCD602");
+			pie(Math.PI*3/2,0,"#FFFD02");
+			pie(0,Math.PI/12,"red");
+			pie((Math.PI/12),Math.PI*3/24,"#258000");
+			pie((Math.PI*3/24),Math.PI/4,"#031AFF");
+			pie(Math.PI/4,(Math.PI*0.5),"#52FD00");
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

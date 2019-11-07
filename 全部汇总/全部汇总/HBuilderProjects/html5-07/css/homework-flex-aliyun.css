@@ -1,0 +1,28 @@
+ul,li{
+	list-style: none;
+}
+p{
+	margin: 0;
+}
+.aliyun{
+	width: 1240px;
+	height: 400px;
+	display: flex;
+	flex-wrap: wrap;
+}
+li{
+	text-align: center;
+	width: 20%;
+	margin: 20px 0;
+}
+li a{
+	text-decoration: none;
+	color: #373D41;
+}
+a:hover{
+	color: #3CC1DE;
+}
+img{
+	width: 80px;
+	height: 80px;
+}

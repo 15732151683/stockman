@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<title>Document</title>
+	<link rel="stylesheet" href="砖块.css">
+	<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.stone{
+	background-color: rgb(188,223,68);
+  border: 2px solid rgb(74,168,46);
+}
+#wrap{
+	width: 100%;
+	height: 100%;
+    margin:0 auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+  overflow: hidden;
+}
+
+
+#stone1{
+width: 11%;
+height: 28%;
+position: absolute;
+top: 40%;
+left: 10%;
+margin-left: 0;
+}
+#stone2{
+width: 18%;
+height: 9%;
+position: absolute;
+top: 22%;
+left: 55%;
+}
+#stone3{
+width: 18%;
+height: 15%;
+position: absolute;
+left: 75%;
+top: 41%;
+}
+#stone4{
+	width: 42%;
+height: 13%;
+position: absolute;
+top: 61%;
+left: 31%;
+}
+
+#box{
+  z-index: 1;
+	width: 17%;
+	height: 17%;
+	position: absolute;
+	left: 20%;
+	top: 30%;
+  background-color: opacity;
+  background-image: url(img/小汽车.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+
+}
+
+
+	</style>
+</head>
+<div id="start" >
+	<div id="wraps">
+    <img src="img/持久力.png" id="simg1" alt="">
+    <img src="img/爆炸.png" id="simg2" alt="">
+    <img src="img/大挑战.png" id="simg3" alt="">
+    <div id="sexp">参与持久力大挑战，有机会赢Iphone6(</br>共1台)、充电宝（共10台）、话费卡（共20张）、品牌T恤（共50件）等精美礼品哦!</div>
+    <p id="sexp2">活动时间:2014年10月27日-11月15日</p>
+	<div id="button"><input type="button" id="gamestart" value="开始游戏"></input></div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div id="game" data-role="page">
+  <div id="explain" >
+    <div id="bo"></div>
+
+<div id="wrape">
+  
+  <div id="gexb"><p id="gex">游戏说明</p></div>
+  <div id="rule">操纵您的金色座驾躲避路障的夹击，碰到路障或者屏幕边缘则算失败。</div>
+  <div id="rule2">计分规则：</div>
+  <div id="rule3">以上单位为虚拟时间，现实中1秒钟即为游戏虚拟的1分钟</div>
+
+</div>
+
+</div>
+	<div id="wrap">
+  <div id="bo2"></div>
+	<div id="stone1" class="stone"></div>
+	<div id="stone2" class="stone"></div>
+	<div id="stone3" class="stone"></div>
+	<div id="stone4" class="stone"></div>
+	<div id="box"></div>
+	<div id="timer"><p id="time"><span>0</span>分钟</p></div>
+	</div>
+</div>
+
+
+<div id="score" data-role="page">
+  <div id="endswrap">
+	  <p id="isc">
+      <img src="img/持续了.png" id="cxl" alt="">
+      <span></span>
+      <img src="img/分钟.png" id="fz" alt="">
+    </p>
+    <p id="isc2">在全国持久力测试中排名第9887位</p>
+    <p id="cj">达到指定成绩即可抽奖!</p>
+    <div id="jpwrap">
+    <p><span >Iphone（共一台）</span><span class="jpr">35分钟</span></p>
+    <p><span >移动充电宝（共十台）</span><span class="jpr">20分钟</span></p>
+    <p><span >30元手机话费卡（共20张）</span><span class="jpr">10分钟</span></p>
+    <p><span >品牌T恤（共50件）</span><span class="jpr">1分钟</span></p>
+    </div>
+    <div id="button3"><input type="button" id="share" value="分享给好友"></input></div>
+    <div id="button4"><input type="button" id="res" value="重玩一次"></input></div>
+   </div>
+</div>
+</body>
+<script type="text/javascript" src="touch.js"></script>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+
+
+
+<script type="text/javascript">
+var timer;
+var speedx=[2,4,2,4];
+var speedy=[2,4,2,4];
+var bol=true;
+var bolx=[1,1,1,1];
+var boly=[1,1,1,1];
+var bolb=false;
+var s=0;
+var ms=0;
+var ss=0;
+var bolt=true;
+var dx=[];
+var dy=[];
+
+
+
+
+function rand(max,min){
+   return	parseInt(Math.random()*(max-min)+min);
+  }
+
+//拖拽
+
+
+function fnTouchMove(ev){
+   if (bol==true) {
+var oEvent=ev||window.event;
+    var x=oEvent.touches[0].pageX-disx;
+    var y=oEvent.touches[0].pageY-disy;
+  $("#box").css({
+        left:x,
+        top:y
+            })
+      }
+
+}
+$("#box").get(0).addEventListener("touchstart", function (ev){
+     game();
+     bol=true;
+    var oEvent=ev||window.event;
+    if (oEvent.touches.length==1){
+
+    disx=oEvent.touches[0].pageX-$("#box").offset().left;
+    disy=oEvent.touches[0].pageY-$("#box").offset().top;
+
+      $("#box").get(0).addEventListener("touchmove",fnTouchMove,false);
+    }
+  }, false);
+
+
+
+
+
+$("#box").get(0).addEventListener("touchsend", function (ev){
+  bol=false
+$("#box").css({
+        left:$("#box").offset().left,
+        top:$("#box").offset().top
+    })
+
+ });   
+
+
+
+
+
+//碰壁反弹
+
+function game(){
+$("#box").get(0).addEventListener('touchstart',function(){
+// $("#box").mousedown(function(){
+	clearInterval(timer);
+timer=setInterval(function(){
+	for (var i = 0; i < $(".stone").length; i++) {
+	$(".stone").eq(i).css({
+	left:$(".stone").eq(i).offset().left+(speedx[i]*bolx[i]),
+	top:$(".stone").eq(i).offset().top+(speedy[i]*boly[i]),
+
+   });	
+if ($(".stone").eq(i).offset().left<=$("#wrap").offset().left) {
+	        speedx[i]=speedx[i]+rand(-2,2)*0.3;
+	        speedy[i]=speedy[i]+rand(-2,2)*0.3;
+            bolx[i]=1;
+    }
+if ($(".stone").eq(i).offset().left>=$("#wrap").width()-$(".stone").eq(i).width()+$("#wrap").offset().left) {
+	        speedx[i]=speedx[i]+rand(-2,2)*0.3;
+	        speedy[i]=speedy[i]+rand(-2,2)*0.3;
+            bolx[i]=-1;
+          }
+       if ($(".stone").eq(i).offset().top<=8) {
+            boly[i]=1;
+    	  }
+      if ($(".stone").eq(i).offset().top>=$("#wrap").height()-$(".stone").eq(i).height()+$("#wrap").offset().top) {
+            boly[i]=-1;
+      };
+  };
+
+//碰撞
+
+for (var i = 0; i < $(".stone").length; i++) {
+
+
+	     if ($("#box").offset().left>=$(".stone").eq(i).offset().left-$("#box").width()&&$("#box").offset().left<=$(".stone").eq(i).offset().left+$(".stone").eq(i).width()&&$("#box").offset().top<=$(".stone").eq(i).offset().top+$(".stone").eq(i).height()&&$("#box").offset().top>=$(".stone").eq(i).offset().top-$("#box").height()||$("#box").offset().left<=$("#wrap").offset().left||$("#box").offset().left>=$("#wrap").offset().left+$("#wrap").width()-$("#box").width()||$("#box").offset().top>=$("#wrap").offset().top+$("#wrap").height()-$("#box").height()||$("#box").offset().top<=$("#wrap").offset().top) {
+
+                 bol=false;
+                 	clearInterval(timer);
+                    var a=ss;
+                    clearInterval(timer1);
+               	 $("#box").animate({opacity:0}, 300,function(){
+               	 $("#box").animate({opacity:1}, 300,function(){
+               	 	$("#box").animate({opacity:0},300,function(){
+               	 		$("#box").animate({opacity:1},300,function(){
+               	            trans("#game","#score");
+                            $("#isc>span").html(a);
+               	 		});
+               	 	});
+               	 });
+               });
+              
+              
+               
+               
+               break;
+                                                }
+        
+ 
+
+          } 
+
+       }, 30)	
+   })
+
+}
+
+game();
+
+function trans (from,to) {
+	$(from).animate({
+	opacity:0
+},300,function(){
+     $(from).css("display","none");
+     $(to).css("display","block")
+      })
+     $(to).animate({
+     	opacity:1
+     },300)
+};
+
+
+
+
+$("#gamestart").click(function(){
+
+ 
+	trans("#start","#game");
+
+     $("#box").css({
+     	left:"40%",
+     	top:"40%"
+     })
+
+});
+var timer1;
+var bold=true;
+$("#box").mousedown(function(){ 
+	
+		clearInterval(timer1);
+
+if (bold==true) {
+  bold=false;
+  for (var i = 0; i < $(".stone").length; i++) {
+    dx[i]=$(".stone").eq(i).offset().left;
+    dy[i]=$(".stone").eq(i).offset().top;
+  }; 
+}
+
+
+	timer1=setInterval(function(){
+   ss++;
+  $("#time>span").html(ss);
+
+      },1000);
+	
+   
+ })
+
+$("#box").get(0).addEventListener("touchstart", function (ev){
+  clearInterval(timer1);
+
+if (bold==true) {
+  bold=false;
+  for (var i = 0; i < $(".stone").length; i++) {
+    dx[i]=$(".stone").eq(i).offset().left;
+    dy[i]=$(".stone").eq(i).offset().top;
+  }; 
+}
+
+
+  timer1=setInterval(function(){
+   ss++;
+  $("#time>span").html(ss);
+
+      },1000);
+})
+
+
+
+
+
+$("#wrape").click(function(){
+  trans("#explain","#game");
+   $("#bo").css("display","none");
+})
+
+
+$("#res").click(function(){
+     
+     trans("#score","#game");
+     ss=0;
+     $("#time>span").html(ss);
+     $("#box").css({
+      left:"30%",
+      top:"40%"
+     })
+        for (var i = 0; i < $(".stone").length; i++) {
+           $(".stone").eq(i).css({
+      left:dx[i],
+       top:dy[i]
+      });
+   };
+   
+   game();
+})
+
+console.log(dx);
+console.log(dy);
+</script>
+</html>

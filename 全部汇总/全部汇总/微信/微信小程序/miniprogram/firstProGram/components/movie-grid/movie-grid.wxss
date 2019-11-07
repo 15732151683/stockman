@@ -1,0 +1,7 @@
+/* components/movie-grid/movie-grid.wxss */
+@import "/template/movie-item/movie-item";
+.mov-item{
+  float: left;
+  padding-left:35rpx;
+  padding-top: 30rpx;
+}

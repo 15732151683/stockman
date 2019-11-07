@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作业</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*1.	使用不同方式创建描述动物类Animal的对象。包含特征：所属科目，品种，名称；行为：捕食。并实例化一个动物对象，调用捕食方法.
+			*/
+			//构造函数
+			function Animal(family, breed, name){
+				this.family = family;
+				this.breed = breed;
+				this.name = name;
+				/*this.predation = function(){
+					console.log("抓个菜菜来吃吃");
+				}*/
+			}
+			Animal.prototype.predation = function(){
+				console.log("在prototype里让抓个菜菜来吃吃");
+			}
+			var caicai = new Animal("动物","哺乳类","菜菜");//每new一个新的对象出来,就会产生新的空间来存储属性和方法.即,此对象中的name,捕食构造函数里面的name.
+			caicai.predation();
+			
+			//直接new一个Object
+			var animal = new Object();
+			animal.family = "动物";
+			animal.breed = "哺乳类";
+			animal.name = "菜菜";
+			animal.predation = function(){
+				console.log ("如果再这种方式new几个菜菜,我就要累死了,ㄟ( ▔, ▔ )ㄏ");
+			}
+			animal.predation();
+			
+			/*function animal(name, gender,age){
+				//原材料
+				var per = new Object();
+				//属性和方法--加工
+				per.name = name;
+				per.gender = gender;
+				per.age = age;
+				per.talk = function(){
+					("我是"+this.name+",今年"+this.age+"岁");
+				}
+				//返回创建好的对象 -- 出厂
+				return per;
+			};
+			var per1 = person("菜菜","ab",30);
+			per1.talk();*/
+			//工厂方式,不就是普通函数咩 啧啧啧
+			function pp(family, breed, name){
+				var aa = new Object();
+				aa.family = family;
+				aa.breed = breed;
+				aa.name = name;
+				aa.predation = function(){
+					console.log("科科,"+this.name);
+				}
+				return aa;
+			};
+			var p1 = pp("动物","哺乳类","菜菜");
+			p1.predation();
+			
+				
+				
+				
+				
+				
+				
+				
+					
+			
+			
+			
+		</script>
+	</body>
+</html>

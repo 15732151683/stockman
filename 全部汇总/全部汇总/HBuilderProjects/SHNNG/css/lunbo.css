@@ -1,0 +1,62 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.slide-wrap{
+	position: relative;
+	overflow: hidden;
+	width: 80%;
+	height: 400px;
+	margin: 50px auto;
+}
+.slide-con{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 600%;
+}
+.slide-item{
+	float: left;
+	width: 16.6%;
+	height: 400px;
+}
+.slide-item img{
+	width: 100%;
+	height: 100%;
+}
+.page{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 20px;
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 20px;
+	background: rgba(244,244,244,0.6);
+}
+.page span{
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin: 5px;
+	border-radius: 50%;
+	background: white;
+}
+.page .cur{
+	background: #fb3808;
+}
+.slide-btn{
+	position: absolute;
+	top: 50%;
+	width: 25px;
+	height: 50px;
+	margin-top: -25px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	background: rgba(0,0,0,0.4);
+	cursor: pointer;
+	display: none;
+}

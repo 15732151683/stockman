@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.radio{
+				display: inline-block;
+				padding-left: 20px;
+				background: url(img/ico.png) no-repeat;
+			}
+			.checked{
+				background-position: 0 -32px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>模拟单选</h1>
+		<a class="radio" href="javascript:;">男</a>
+		<a class="radio" href="javascript:;">女</a>
+		<a class="radio" href="javascript:;">未知</a>
+		
+		<script type="text/javascript">
+			var radios = document.getElementsByClassName("radio");     //类名可以相同的,获取元素的时候,那就同时得到了好多个,就是一个数组了,用遍历的方法
+			//触发每一个时,checked的样式先全部的清掉,  同时点击的这一个加上类名,添加上不同的样式
+			/*radios[0].onclick = function(){
+				radios[0].className = "radio checked";
+				radios[1].className = "radio";
+				radios[2].className = "radio";
+			}
+			radios[1].onclick = function(){
+				radios[1].className = "radio checked";
+				radios[0].className = "radio";
+				radios[2].className = "radio";
+			}
+			radios[2].onclick = function(){
+				radios[2].className = "radio checked";
+				radios[0].className = "radio";
+				radios[1].className = "radio";
+			}*/
+			//借助for循环 去遍历元素的数组,借助循环变量,充当数组的下标来获取对应下标的元素
+			//for循环优化 重复事件为: 为每一个元素去绑定点击事件,所以这就是循环体,一次性都绑定上了  执行对应的功能;简化代码
+			//arr.length 数组的长度
+			for(var i = 0; i < radios.length; i++){
+				//循环为每一个元素添加点击事件
+				radios[i].onclick = function(){
+					//this: 系统关键字,只能用在函数中.在事件处理函数中使用this,this指代触发当前事件的元素,的元素,的元素,的元素!!!!!!!!!!!!!!!!!
+					//先去除所有元素 对应的类名
+					for(var j = 0; j < radios.length; j++){
+						radios[j].className = "radio";
+					}
+					//让当前元素添加对应类名 切换选中效果
+					this.className = "radio checked";
+					
+				}
+			}
+		</script>
+	</body>
+</html>

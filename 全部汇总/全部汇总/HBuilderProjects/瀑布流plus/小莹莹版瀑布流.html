@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小莹莹版瀑布流</title>
+		<style type="text/css">
+			#wrap{
+				position: relative;
+				margin: 0 auto;
+				border: 1px solid;
+			}
+			p{
+				text-align: center;
+				font-size: 20px;
+			}
+			.item{
+				position: absolute;
+				-webkit-transition: all 1s;
+				-moz-transition: all 1s;
+				-ms-transition: all 1s;
+				-o-transition: all 1s;
+				transition: all 1s;
+			}
+			.item img{
+				vertical-align: bottom;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<p>美美的图片马上就到啦O(∩_∩)O~~~~</p>
+		</div>
+		<script type="text/javascript">
+			var wrap = document.getElementById("wrap");
+			var loading = document.querySelector("#wrap>p");
+			var imgsArr = [];
+			var num = 0;
+			for (var i = 0; i < 16; i++) {
+				var img = new Image();
+				imgsArr.push(img);
+				num++;
+				img.onload = function (){
+					//如果全部加载好了
+					if(num == 16 ){
+						loading.style.display = 'none';
+						showItems(16, false);
+					}
+				}
+				img.src = "img/P_0"+i+".jpg";
+			}
+			var itemsArr = []; //储存所有的div们
+			var hArr  = [];  //存放各个div们的高度
+			//参数1: 要展示几张图;参数2: 布尔值 false为图片本身不存在,需要new;true表示存在,只需确定定位置即可;
+			function showItems(count, flag){
+				var w = 192;
+				var margin = 10;
+				var vw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+				var col = parseInt(vw*0.8/(w+margin));
+				wrap.style.width = (col*(w+margin) - margin) + 'px';
+				//存储每列的top值, 来决定图片们的position
+				var topArr = [];
+				//初始化,用于后面加等
+				for(var i = 0; i < col; i++){
+					topArr[i] = 0;
+				}
+				//新建div们
+				for(var i = 0; i < count; i++){
+					var div = itemsArr[i] || document.createElement('div');
+					div.className = 'item';
+					div.style.width = w +'px';
+					var h = (hArr[i] || imgsArr[i].clientHeight*w/imgsArr[i].clientWidth);
+					div.style.height = h +'px';
+					div.style.border = '1px solid red';
+					div.appendChild(imgsArr[i]);
+					if(flag == false){
+						itemsArr.push(div);    //如果新建了就把div存进去
+						hArr.push(h);    //如果新建了就把高度存进去
+						wrap.appendChild(div);
+					}
+					//下面一系列操作主要是为了定位
+					//找最小列高
+					var minH = topArr[0];
+					var minIndex = 0;
+					for (var j = 0; j < topArr.length; j++) {
+						if(topArr[j] < minH){
+							minH = topArr[j];
+							minIndex = j;
+						}
+					}
+					div.style.left  = minIndex*(w + margin) +'px';
+					div.style.top = minH +'px';
+					/*flag == false && wrap.appendChild(div);    只有在flag == false时,才新建,要求同时成立;如果flag为true,就不新建,而且在上两行代码中改变了元素的位置 */
+					topArr[minIndex] += (h +margin);
+					//想获得最大高度,  就是wrap 高度
+					var maxH = topArr[0];
+					for(var k = 0; k < topArr.length; k++){
+						if(topArr[k] > maxH){
+							maxH = topArr[k] - margin;
+						}
+					}
+					wrap.style.height = maxH +'px';
+				}
+			}
+			window.onresize = function () {
+				showItems(16, true);
+			}
+			
+		</script>
+	</body>
+</html>

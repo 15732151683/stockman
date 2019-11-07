@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>网页换肤</title>
+		<style type="text/css">
+			ul {
+				list-style: none;
+				padding: 0;
+				width: 300px;
+				border: 1px solid #CBCCCB;
+				overflow: hidden;
+			}
+			
+			li {
+				float: left;
+				width: 15px;
+				height: 15px;
+				margin: 5px;
+				cursor: pointer;
+				background-image: url(img/theme.gif);
+			}
+			
+			.s1 {
+				background-position: 0 0;
+			}
+			
+			.select {
+				background-position-y: -15px;
+			}
+			
+			.s2 {
+				background-position: -20px 0;
+			}
+			
+			.s3 {
+				background-position: -40px 0;
+			}
+			
+			.s4 {
+				background-position: -60px 0;
+			}
+			
+			.s5 {
+				background-position: -80px 0;
+			}
+			
+			.s6 {
+				background-position: -100px 0;
+			}
+			
+			#times,
+			#amuse {
+				float: left;
+				width: 100px;
+				height: 40px;
+				background: gray;
+				color: white;
+				line-height: 40px;
+				text-align: center;
+			}
+			
+			#amuse {
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul>
+			<li class="s1 select">️</li>
+			<li class="s2"></li>
+			<li class="s3"></li>
+			<li class="s4"></li>
+			<li class="s5"></li>
+			<li class="s6"></li>
+		</ul>
+		<div id="times">时事新闻</div>
+		<div id="amuse">娱乐新闻</div>
+
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var arr = ["gray", "#B0D400", "orange", "#3CC1CF", "red", "purple"];
+				$("li").each(function(i) {
+					$(this).click(function() {
+						$("div").css("background", arr[i]),
+						$(this).css("backgroundPositionY", "-15px").siblings().css("backgroundPositionY", "0"),
+						$.cookie("index", i, {
+							expires: 3,
+							path: "/"
+						})
+					});
+					var xiabiao = $.cookie("index");
+					if(xiabiao){   //当然不是放在点击事件里面啦 
+						console.log(xiabiao);
+						//这个选择器放在引号里面 如果有变量 一定不要忘记拼接哦  科科
+						$("ul li:eq("+xiabiao+")").css("backgroundPositionY", "-15px").siblings().css("backgroundPositionY", "0");
+						$("div").css("background", arr[xiabiao]);
+					}
+				});
+				//华哥版：更改link的href来更改背景颜色；href中的变量就是存在cookie里的li的id值(拼接)；另一方面把含有id的li类名变一变完成选择的样式	
+								//		if($.cookie("theme")) {
+								//			var the = $.cookie("theme");
+								//		}
+								//		$("#list li").addClass("selected");
+								//		$("#list li").siblings().removeClass("selected");
+								//		$("#csslink").attr("href", "css/"+(("#list li") .attr("id"))+".css");
+										//添加cookie
+								//		$.cookie("theme", $(this).attr("id"), {expires: 7, path: '/'});
+				//cookie不要太简单哦，就是把要用的东西存一存，下次(保质期内)自动拿出来用就阔以啦  科科ㄟ( ▔, ▔ )ㄏ
+			});
+		</script>
+	</body>
+
+</html>

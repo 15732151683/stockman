@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>太极</title>
+	</head>
+	<body>
+		<canvas id="taiji" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("taiji");
+		var c = canvas.getContext("2d");
+		
+		c.beginPath();
+		c.arc(250,250,200,0,Math.PI*2);
+		c.stroke();
+		
+		c.beginPath();
+		c.moveTo(250,0);
+		c.arc(250,350,100,-Math.PI*0.5,Math.PI*0.5);
+		c.closePath();
+		c.fill();
+	</script>
+</html>

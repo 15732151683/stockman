@@ -1,0 +1,113 @@
+<extend name="Public/common/views/base.html" />
+
+<block name="title">
+  <title>添加图书</title>
+</block>
+
+<block name="mainCss">
+  <css href="/BookStore/Public/css/addBook.css" />
+</block>
+
+<block name="body">
+  <div class="wrap">
+    <h1>添加图书</h1>
+    <div>
+      <table class="addBook" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>书名:</td>
+          <td>
+            <input type="text" name="bookName" placeholder="书名" />
+          </td>
+        </tr>
+        <tr>
+          <td>简介:</td>
+          <td>
+            <input type="text" name="bookIntro" placeholder="简介" />
+          </td>
+        </tr>
+        <tr>
+          <td>作者:</td>
+          <td>
+            <input type="text" name="author" placeholder="作者" />
+          </td>
+        </tr>
+        <tr>
+          <td>出版社:</td>
+          <td>
+            <input type="text" name="publisher" placeholder="出版社" />
+          </td>
+        </tr>
+        <tr>
+          <td>出版日期:</td>
+          <td>
+            <input type="text" name="publicationDate" placeholder="出版日期" />
+          </td>
+        </tr>
+        <tr>
+          <td>价格:</td>
+          <td>
+            <input type="text" name="price" placeholder="价格" />
+          </td>
+        </tr>
+        <tr>
+          <td>ISBN:</td>
+          <td>
+            <input type="text" name="ISBN" placeholder="ISBN" />
+          </td>
+        </tr>
+        <tr>
+          <td>书籍图片:</td>
+          <td>
+            <input type="file" name="pic" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="button" value="添加" style="margin: 10px 20px;width: 60px;font-size: 20px;">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</block>
+
+<block name="script">
+  <script>
+    $(function(){
+      let arr = ['bookName', 'bookIntro', 'author', 'publisher', 'publicationDate', 'price', 'ISBN']
+
+      $('.wrap .addBook td input[type=button]').click(function(){
+        let tmp = {}
+        $('.wrap .addBook td input[type=text]').each(function(i, item){
+          let val = $(item).val()
+          tmp[arr[i]] = val ? val : '暂无信息'
+        })
+        let val = $('.wrap .addBook td input[type=file]')[0].files[0]
+        tmp['file'] = val ? val : ''
+        let formData = new FormData();
+        for (item in tmp) {
+          formData.append(item, tmp[item])
+        }
+
+        $.ajax('/BookStore/home/book/addBook', {
+          async: true,
+          type: 'post',
+          dataType: 'json',
+          processData: false,
+          contentType: false,
+          data: formData,
+          success: function (res) {
+            if(res.succeed){
+              alert(res.message)
+            }else {
+              alert(res.message)
+            }
+          }
+        })
+      });
+
+
+    })
+  </script>
+</block>

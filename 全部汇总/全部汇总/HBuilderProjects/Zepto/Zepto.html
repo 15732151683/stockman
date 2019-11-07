@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.div1{
+				height: 50px;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<!--Zepto是一个轻量级的针对现代高级浏览器的JavaScript库， 它与jquery有着类似的api。 如果你会用jquery，那么你也会用zepto。
+			Zepto的设计目的是提供 jQuery 的类似的API，但并不是100%覆盖 jQuery 。Zepto设计的目的是有一个5-10k的通用库、下载并快速执行、有一个熟悉通用的API，所以你能把你主要的精力放到应用开发上。
+			开发移动端项目或移动端的应用时选用JS类库时建议使用Zepto。
+			默认构建包含以下模块：Core, Ajax, Event, Form, IE。根据项目的需求自定义模块：比如，如果想使用animate动画效果，需要添加模块fx，如果想使用触摸事件，需要添加touch模块
+-->
+	<script src="js/zepto.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//文当加载完毕时，为了和jQuery区分开，这样写最好
+		Zepto(function($){
+			$("div");
+			$("#d1");
+			$("<div></div>");
+			$("<div>",{
+				class: "div1",
+				id: "d1",
+				css: {
+					color: "red"
+				}
+			}).text("科科，这是Zepto").appendTo($("body"));
+		});
+		//$.parseJSON(string)   ⇒ object   原生JSON.parse方法的别名。
+		//接受一个标准格式的 JSON 字符串，并返回解析后的 JavaScript 对象.
+		/*JSON解析：
+		 *从事先规定好的格式中提取数据
+		 * */
+		//常用的2中数据格式： JSON/XML
+		//👇是JSON字符串
+		var jsonStr = '{"status": "ok","data": [{"title": "要闻", "msg": "这是要闻内容..."},{"title": "国际","msg": "这是国际内容..."},{"title": "社会","msg": "这是社会内容..."}]}';
+		//解析后返回的JS对象
+		var obj = $.parseJSON(jsonStr);
+		$.each(obj.data, function(i,item){
+			var dl = $("<dl></dl>");
+			dl.html("<dt>"+item.title+"</dt><dd>"+item.msg+"</dd>").appendTo($("body"));
+		});
+		//touch 触摸
+		/*tap 轻拍
+		 *singleTap 单击
+		 * doubleTap 双击
+		 * longTap 长按
+		 * 
+		 * swipe 轻扫
+		 * swipeLeft 左滑
+		 * swipeRight 右滑
+		 * swipeUp 上滑
+		 * swipeDown 下滑
+		 * */
+	</script>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+
+2018 . 9 .7
+slice（1,0）  从数组中拿出（起始位置，终止位置）
+
+2018.9.10
+两个axios同时并发  
+axios.all([
+      axios({
+        method: 'GET',
+        url: '/v1/rank/?year=2018'
+      }),
+      axios({
+        method: 'POST',
+        url: '/v1/composite',
+        data: params
+      })
+    ]).then((userResp) => {
+      cb(userResp)
+    })
+vuex里边
+ajax.getRanks((data) => {
+      data[0].data.code === 200
+        ? commit('getRank',data[0].data.data)
+        : Message({
+          message: `data error`,
+          type: 'error'
+        })
+      data[1].data.code === 200
+        ? commit('getTop',data[1].data)
+        : Message({
+          message: `data error`,
+          type: 'error'})
+    })
+
+2018.9.18
+对象转为数组
+Object.entries(val)
+
+2018.10.10
+练习 父传子 子传父组件
+
+2018.11.6  拷贝 拷贝出来的对象不受vue双向数据绑定的影响
+JSON.parse(JSON.stringify(this.userDetail[index]))
+
+2018.11.16 org_ids.split(',').map(e => e+0) 
+
+2018.11.19 
+this.colleges.forEach(item => {
+                  let index = id.indexOf(item.id)
+                  console.log(index)
+                  if (index > -1) {
+                    item.make_part = true
+                  } else {
+                    item.make_part = false
+                  }
+                })  
+查找首次出现的位置 let index = id.indexOf(item.id) 
+
+var m = [{'id': 3, 'name': '16'}, {'id': 2, 'name': '12'}, {'id': 1, 'name': 'aaaa'}]
+      var n = [{'id': 3, 'name': '1'}, {'id': 2, 'name': '2'}]
+      var mn = m.filter(on => {
+        var ind = n.some((item, index, arr) => {
+          console.log(arr)
+         return item.id === on.id
+        })
+        if (ind === true) {
+          return on
+        }
+      })
+查找
+var h = [{name: 'da', id: 1}, {name: 'aw', id: 2}, {name: 'er', id: 3}]
+ var s = [{name: 'rrr', id: 1}, {name: 'ttt', id: 2}]
+  let data = h.filter(node => {
+       return s.findIndex(child => child.id === node.id) > -1
+   })
+
+
+降维数组
+jiangwei (tree) {
+      const flatten = function (tree) {
+        return tree.reduce((arr, current) => {
+          arr.push(current)
+          if (current.children && current.children.length) {
+            flatten(current.children).forEach(node => {
+              arr.push(node)
+            })
+          }
+          return arr
+        }, [])
+      }
+      return flatten(tree)
+    },

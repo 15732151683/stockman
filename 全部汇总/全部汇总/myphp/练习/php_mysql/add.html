@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		使用ajax实现全部的功能
+		add.html  -->  add.php
+		list.html -->  list.php, del.php
+		edit.html--->   edit.php
+		<hr />
+		<!--提交: 增加新的女神,传给后台,并添加到数据库中-->
+		<form action="" method="get" name="form1">
+			女神姓名:<input type="text" name="name" id="name" value="" /><br />
+			女神年龄: <input type="text" name="age" id="age"/><br />
+			<input type="submit" id="submit" value="提交"/>
+		</form>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var formData =  new FormData(document.form1);
+				$("#submit").click(function(){
+					$.ajax({
+						type:"post",
+						data:formData,
+						url:"add.php",
+						async:true,
+						dataType:"json",//那跨域问题呢？？
+						data:{
+								ns_name:$("#name").val(),
+								ns_age:$("#age").val()
+						}
+					});
+				});
+				
+			});
+		</script>
+	</body>
+</html>

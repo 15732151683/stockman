@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>接金币游戏</title>
+		<style type="text/css">
+			#wrap{
+				position: relative;
+			}	
+		</style>
+	</head>
+	<body>
+		<div id="wrap"></div>
+	</body>
+	<script type="text/javascript">
+		var num = randNum(10,50);
+		for (var i = 0; i < num; i++) {
+			var img = new Image();
+			var div = docuemnt.createElement('div');
+			img.onload = function (){}
+			img.src="img/jin.png";
+			div.appendChild(img);
+			div.style.position = 'absolute';
+			div.style.top = 0 + 'px';
+			var l = randNum(0, screenX);
+			div.style.left = l + 'px';
+			setInterval(function(){
+				
+			}, 1000);
+		}
+		
+		function randNum(a, b){
+			return Math.floor(Math.random()*(b - a +1) + a);
+		}
+	</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>常见的tab切换效果</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			a{
+				text-decoration: none;
+			}
+			.wrap{
+				width: 400px;
+				margin: 30px auto;
+				border: 1px solid;
+			}
+			.tab-bar{
+				height: 50px;
+				display: flex;
+				justify-content: space-around;
+				align-items: center; 
+			}
+			.tab-bar>a{
+				text-align: center;
+				flex-grow: 1;
+				line-height: 50px;
+				color: red;
+			}
+			.tab-bar>a.active{
+				color: darkgreen;
+			}
+			.tab-con{
+				height: 400px;
+			}
+			.tab-con>div{
+				display: none;
+				
+			}
+			.tab-con>div.cur{
+				display: block;
+				height: 400px;
+				text-align: center;
+				font-size: 30px;
+				background: gold;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="tab-bar">
+				<a class="active" href="">图书</a>
+				<a href="">软件</a>
+				<a href="">游戏</a>
+			</div>
+			<div class="tab-con">
+				<div class="cur">内容1</div>
+				<div>内容2</div>
+				<div>内容3</div>
+			</div>
+		</div>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".tab-bar>a").mouseover(function(){
+					//a的下标就是想要的div的下标 用方法获取
+					$(".tab-con>div").eq($(this).index()).addClass("cur").show().siblings().hide();
+					$(this).addClass("active").siblings().removeClass("active");
+				});
+			});
+		</script>
+	</body>
+</html>

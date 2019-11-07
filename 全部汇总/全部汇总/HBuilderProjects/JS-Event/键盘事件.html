@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘事件类型</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 *keydown  按下键盘按键   当长按时会连续触发
+			 * keyup   抬起
+			 * keypress 按下输入型按键  部分按键不识别,只能识别输入型,常用keydown去识别按键行为
+			 * */
+			
+			document.onkeydown = function(e){
+				console.log('按下键盘按键');
+				var eve = window.event || e;
+				console.log(eve);
+				/*keyCode 键码值
+				 */
+				console.log(eve.keyCode);
+				//key 按键的内容
+				console.log(eve.key);
+				/*altKey 是否按下alt键
+				 *ctrlKey是否按下Ctrl键
+				 *shiftKey  是否按下shift键
+				 * 返回值为布尔值 boolen
+				 * 如果按了相应的按键 为true  否则为false 返回值为boolen*/
+				console.log(eve.altKey);
+				console.log(eve.ctrlKey);
+				console.log(eve.shiftKey);
+			}
+			document.onkeyup = function(){
+				console.log('抬起按键');
+			}
+			document.onkeypress = function(){
+				console.log('按下输入型按键');
+			}
+		</script>
+	</body>
+</html>

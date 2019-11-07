@@ -1,0 +1,21 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+/*OOP CSS*/
+
+.blank20 {
+	height: 20px;
+}
+
+.blank20 {
+	width: auto;
+	display: block;
+	overflow: hidden;
+	font-size: 0px;
+	line-height: 0px;
+	text-indent: -99999px;
+}
+

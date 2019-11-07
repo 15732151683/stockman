@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>homework</title>
+		<style type="text/css">
+			div.active{
+				display: block;
+				width: 300px;
+				height: 300px;
+				margin-top: 20px;
+				background: cornflowerblue;
+			}
+			.con{display: none;}
+		</style>
+	</head>
+	<body>
+		<!--灯泡亮灭问题-->
+		
+		<img id="bulb" src="img/pic_bulboff.gif"/><br />
+		
+		<script type="text/javascript">
+			var bulb = document.getElementById("bulb");
+			console.log(bulb);
+			var oper = 0;//标记不能放在点击事件里面
+			bulb.onclick = function(){
+				if(oper == 0){
+					bulb.src = "img/pic_bulbon.gif";
+					oper = 1;
+				} else{
+					bulb.src = "img/pic_bulboff.gif";
+					oper = 0;
+				}
+			}
+		</script>
+		<!--年月日问题-->
+		<input type="date" name="" id="date" value="" placeholder="请选择日期"/>
+		<button>确定</button>
+		<p></p>
+		
+		<script type="text/javascript">
+			var btn = document.getElementsByTagName('button')[0];	
+			var p = document.getElementsByTagName('p')[0];
+			btn.onclick = function(){
+				var date = document.getElementById("date").value;
+				var year = date.substr(0,4) - 0;
+				var month = date.substr(5,2) - 0;
+				var day = date.substr(8,2) - 0;
+				var monArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+				var sum = 0;
+				for (var i = 1; i < month; i++) {
+					sum+=monArr[i - 1];
+				}
+				if(year%400==0 || (year%4==0 && year.value%100!=0)){
+				sum++;
+			  }
+				p.innerHTML = "第"+sum+day+"天";
+			}
+		</script>
+			
+		<!--显隐问题-->
+		
+		<button>显示</button>
+		<div class="con"></div>
+		
+		<script type="text/javascript">
+			var flag = false;
+			var div = document.getElementsByTagName('div')[0];
+			var but = document.getElementsByTagName('button')[1];
+			but.onclick =function(){
+				if(flag){
+					div.className = "con";
+					but.innerHTML = "显示";
+					flag = !flag;
+				} else{
+					div.className = "active";
+					flag = !flag;
+					but.innerHTML = "隐藏";
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<p class="p1">哈哈哈哈</p>
+		<p class="p1">啦啦啦啦啦</p>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//css(属性名,属性值|函数) 设置元素的对应CSS样式
+				//添加一个样式属性时
+				$("#d1").css("width", "500px");
+				//同时可添加多个样式属性,以对象形式书写
+				$("#d1").css({
+					height: "100px",
+					background: "red"
+				});
+				//css(属性名) 获取对应的样式属性值
+				console.log($("#d1").css("width"));
+				//若是设置,则对匹配到的所有元素都有效
+				$(".p1").css("color", "red");
+				//若是获取,则只能获取匹配到的第一个元素
+				console.log($(".p1").css("color"));
+				$(".p1").css("border","1px solid").css("font-size","20px").css("textAlign","center").click(function(){
+					$(".p1").css("color", "blue");
+				}).mouseover(function(){
+					$(this).css("background", "#BC8F8F");
+				}).mouseout(function(){
+					$(this).css("background", "gold");
+				});
+				
+				
+			});
+		</script>
+	</body>
+</html>

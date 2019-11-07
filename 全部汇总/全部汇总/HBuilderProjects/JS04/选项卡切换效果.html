@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>选项卡切换效果</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			a{
+				text-decoration: none;
+			}
+			.wrap{
+				width: 400px;
+				margin: 30px auto;
+				border: 1px solid;
+			}
+			.tab-bar{
+				height: 50px;
+				display: flex;
+				justify-content: space-around;
+				align-items: center; 
+			}
+			.tab-bar>a{
+				text-align: center;
+				flex-grow: 1;
+				line-height: 50px;
+				color: red;
+			}
+			.tab-bar>a.active{
+				color: darkgreen;
+			}
+			.tab-con{
+				height: 400px;
+			}
+			.tab-con>div{
+				display: none;
+				
+			}
+			.tab-con>div.cur{
+				display: block;
+				height: 400px;
+				text-align: center;
+				font-size: 30px;
+				background: gold;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="tab-bar">
+				<a class="active" href="">图书</a>
+				<a href="">软件</a>
+				<a href="">游戏</a>
+			</div>
+			<div class="tab-con">
+				<div class="cur">内容1</div>
+				<div>内容2</div>
+				<div>内容3</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			//获取元素
+			var btns = document.getElementsByClassName("tab-bar")[0].getElementsByTagName("a");
+			var divs = document.getElementsByClassName("tab-con")[0].getElementsByTagName("div");
+			
+			for (var i = 0; i < btns.length; i++) {
+				//添加自定义属性(为了识别第几个下标,关联divs,没法直接获取),标识对应的a    第一个a  编号index0<---(i)
+				btns[i].index = i;
+				btns[i].onmouseover = function(){
+					//先除去所有按钮的活跃状态样式
+					for(var k = 0;k < btns.length;k++){
+						btns[k].className = "";
+					}
+					//让当前的按钮切换到活跃状态的样式
+					this.className = "active";
+					//1.先让所有的div都隐藏
+					for(var j = 0;j < divs.length;j++){
+						divs[j].className = "";
+					}
+					//alert(this.caicai);
+					//2.根据按钮的下标属性获取对应下标位置的div元素  让当前对应的div出现  取到与按钮对应的div
+					divs[this.index].className = "cur";
+				}
+			}
+		</script>
+	</body>
+</html>

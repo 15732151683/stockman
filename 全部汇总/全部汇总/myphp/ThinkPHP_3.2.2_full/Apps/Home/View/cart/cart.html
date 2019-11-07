@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>商品名称</th>
+				<th>购买数量</th>
+				<th>单价</th>
+			</tr>
+			<volist name="students" id="vo" key="k">
+				<tr>
+					<td>{$vo.name}</td>
+					<td>{$_SESSION['cart'][$vo['stu_id']]}</td>
+					<td>{$vo.sex}</td>
+				</tr>
+			</volist>
+		</table>
+	</body>
+</html>

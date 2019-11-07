@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				height: 100px;
+				background: red;
+			}
+			.d2{
+				border-radius: 50%;
+				border: 2px solid rosybrown;
+			}
+			.d3{
+				color: gold;
+			}
+			.d4{
+				font-size: 20px;
+				text-align: center;
+			}
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+			}
+			.bb{
+				border-radius: 50%;
+			}
+			.p1{
+				color: blue;
+			}
+			.p2{
+				color: red;
+			}
+			.p3{
+				color: gold;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">cocococo</div>
+		<hr />
+		<button>切换</button>
+		<div class="box"></div>
+		<p>很简单</p>
+		<p>很简单</p>
+		<p>很简单</p>
+		
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*addClass() 添加类名  在原有类名的基础上 添加对应的类名
+			 *removeClass() 删除类名
+			 * toggleClass()  切换类名 若类名不存在,则是添加;若存在则是删除
+			 * 
+			 * 参数可以是函数也可以是字符串
+			 * */
+			$(document).ready(function(){
+				$("#d1").click(function(){          //通过$()选择器获取到的都是数组,包括选择器是id
+					//addClass("类名")
+					//在原有的基础上添加新的类名
+					//$("#d1").addClass("d2");
+					//支持同时添加多个类名,  多个类名之间!!!空格!!!间隔
+					//$("#d1").addClass("d3 d4");
+					//removeClass("类名")
+					//$("#d1").removeClass("d3");
+					//若未给参数,则删除匹配到的元素的所有类名  支持同时删除多个类名,  多个类名之间空格间隔
+//					$("#d1").removeClass();
+					
+					//特殊用法: toggleClass();
+					$("#d1").toggleClass("d2");  //添加上了
+				});
+				
+				
+				$("button:eq(0)").click(function(){
+					$(".box:first").toggleClass("bb");
+				});
+				//对匹配到的所有元素都会起效
+				$("p").addClass("p1");
+				//参数也可是函数
+				//该函数有2个参数: 参数1表示当前这个元素所在集合中的下标索引,参数2表示原有的类名值;  必须返回一个或多个(空格间隔)类名
+				$("p").addClass(function(index, val){
+					console.log(index, val);
+					return "p"+ (index+1);    //函数以return方式 执行
+					
+					
+//					//这三个方法,参数也可是函数
+//					var arr=["用户名","密码","手机号"];
+//					$("input").value(function(index))
+				});
+				
+			});
+		</script>
+	</body>
+</html>

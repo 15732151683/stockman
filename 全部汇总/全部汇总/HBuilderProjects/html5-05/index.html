@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.box{
+				width: 600px;
+				height: 100px;
+				border: 1px solid;
+				margin: 50px auto;
+			/*景深*/
+				perspective: 200px;
+				transform-style: preserve-3d;
+			}
+			.dok{
+				width: 500px;
+				height: 100px;
+				background-image: linear-gradient(to top,#f2f2f2,white);
+			/*旋转后,看到的效果是正视图的效果,为了看到3D的效果,可用景深,perspective,但是要给他的父级设置*/
+				-webkit-transform: rotateX(30deg);
+				-moz-transform: rotateX(30deg);
+				-ms-transform: rotateX(30deg);
+				-o-transform: rotateX(30deg);
+				transform: rotateX(30deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="dok"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>特效动画</title>
+		<style type="text/css">
+			#d1,#d2,#d3{
+				width: 100px;
+				height: 50px;
+			}
+			#d1{
+				background: red;
+				display: none;
+			}
+			#d2{background: gold;}
+			#d3{background: lightblue;}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<div id="d2">今天是植树节哦^_^</div>
+		<div id="d3"></div>
+		<button id="btn1">出现</button>
+		<button id="btn2">隐藏</button>
+		<button id="btn3">显示或隐藏</button>
+		<button id="c1">自定义动画1</button>
+		<button id="c2">自定义动画2</button>
+		<button id="c3">自定义动画3</button>
+		<button id="stop">暂停</button>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*支持:基本动画,滑动动画,淡入淡出,以及自定义动画*/
+			//show(时长,函数) 出现
+			/*参数1: 设置动画时长
+			 *      形式: a.slow,normal,fast  字符串形式
+  			 * 			  b.毫秒为单位的时长
+			 * 参数2: 动画执行完毕时的回调函数   动画执行结束后再执行函数里面的代码块
+			 * 
+			 * */
+			$(function(){
+				$("#btn1").click(function(){
+					//$("#d1").show("slow");
+					//$("#d1").show(5000);
+					/*$("#d1").show(1000,function(){
+						$(this).text("动画执行完毕ㄟ( ▔, ▔ )ㄏ");
+					});*/
+					//$("#d1").slideDown();
+					$("#d1").fadeIn(5000);
+				});
+				//hide() 隐藏
+				$("#btn2").click(function(){
+					/*$("#d2").hide("fast",function(){
+						$("#d3").text("d2消失啦");
+					});*/
+					$("#d2").fadeOut(5000);
+				});
+				//toggle(时长,函数)若元素出现则隐藏;若隐藏则出现
+				$("#btn3").click(function(){
+					//$("#d3").toggle();
+					//$("#d3").toggle(500);
+					//$("#d3").toggle(500,function(){});
+					//$("#d3").slideToggle();
+					$("#d3").fadeTo(1000,0.1);
+				});
+				//滑动动画:
+				/*slideUp()  上滑收起
+				 * slideDown() 下滑出现
+				 * slideToggle() 滑动收起/出现
+				 * */
+				/*淡入淡出动画:
+				 *fadeIn()  淡入
+				 * fadeOut()  淡出
+				 * fadeToggle() 淡入或淡出
+				 * fadeTo()
+				 * */
+				
+				//animate()  自定义动画
+				//!!!!!!!jQuery核心库中色彩相关的动画不支持,如backgroundColor;若想要色彩动画,需要下载colorAnimate插件
+				//参数1:规定动画的属性以及对应的值对象形式书写.若属性是符合属性,需要驼峰法书写,如: font-size--->  fontSize
+				//方式1: 
+				$("#c1").click(function(){
+					$("#d2").animate({
+						width: "200",
+						height: "100",
+						fontSize: "20",
+						borderRadius: "50%"
+					},1000);
+				});
+				//方式2:支持基于当前值进行增减
+				$("#c2").click(function(){
+					$("#d2").animate({
+						width: "+=50",//可以用复合运算 +=  -=
+						height: "-=10"
+					});
+				});
+				//方式3:支持队列动画
+				$("#c3").click(function(){
+					$("#d3").animate({width: 200},500);
+					$("#d3").animate({height: 200},1500);
+					$("#d3").animate({borderRadius: "50%"},3000);
+				});
+				$("#c3").click(function(){
+					$("#d3").animate({width: 200},500,function(){
+						$("#d3").text("队列1动画");}
+					);
+					$("#d3").animate({height: 200},1500,function(){
+						$("#d3").text("队列2动画");}
+					);
+					$("#d3").animate({borderRadius: "50%"},3000,function(){
+						$("#d3").text("队列3动画");}
+					);
+				});
+				
+				//暂停动画
+				/*stop()
+				 *参数1: 布尔值 是否清除队列中的动画,默认为false
+				 * 参数2: 布尔值 是否直接完成动画  默认false  直接完成当前动画并且清掉其后面的所有动画
+				 * */
+				$("#stop").click(function(){
+					//$("#d3").stop(false,true);   //不清除所有的动画,直接完成触发stop当前的队列动画
+					$("#d3").finish();
+				});
+				//finish() 和 stop() 用法相同,并且finish()无参数;区别是stop(true,true);会清除队列中的动画,并且当前动画直接跳为终止值;而finish会让队列中的所有动画直接变为终止值
+				//延迟动画: delay()
+				$("#d1").delay(1000).show(500).delay(1000).slideUp(5000);
+			});
+				
+				
+		</script>
+	</body>
+</html>

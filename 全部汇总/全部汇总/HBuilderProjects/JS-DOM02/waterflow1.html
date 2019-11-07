@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单版瀑布流</title>
+		<style type="text/css">
+			.wrap{
+				width: 1050px;
+				overflow: hidden;
+			}
+			.col{
+				float: left;
+				margin: 5px;
+				width: 200px;
+			}
+			.col>div{
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--瀑布流: 多列,每列宽度一致,每块高度不一致呈现的参差不齐的排版的效果
+			原理: 查找所有列中,列高最矮的那一列,放下一个新的内容
+		-->
+		<!--比较倾向于用 ul>li-->
+		<div class="wrap">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<script type="text/javascript">
+			var cols = document.querySelectorAll(".col");  //数组
+			
+			for (var i = 0; i < 100; i++) {
+				addItem();
+			}
+			function addItem() {
+				//给文档里面添加内容
+				var item = document.createElement('div');
+				//设置所添内容的样式
+			 	item.style.height = randNum(120,300) + 'px';
+			 	//'rgb(r,g,b)';
+				item.style.background = 'rgb('+randNum(0,255)+','+randNum(0,255)+','+randNum(0,255)+')';
+				
+				var index = 0;    //存储列高最矮的列标
+				//获取列高最矮列,动态创建新内容
+				for (var i = 0; i < cols.length; i++) {
+					if(cols[i].offsetHeight < cols[index].offsetHeight){
+						index = i;
+					}
+				}
+				cols[index].appendChild(item);
+			}
+			
+			function randNum(x,y){
+				return Math.floor(Math.random()*(y - x + 1) + x);
+			}
+			
+			 
+		</script>
+	</body>
+</html>
+  

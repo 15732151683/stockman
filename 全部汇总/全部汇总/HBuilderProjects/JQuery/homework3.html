@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画</title>
+		<style type="text/css">
+			p{
+				margin: 0;
+			}
+			body{
+				background: black;
+			}
+			ul{
+				margin: 0 auto;
+			}
+			ul,li{
+				list-style: none;
+				width: 460px;
+				color: white;
+				font-size: 25px;
+				line-height: 60px;
+			}
+			.l1,.l2,.l3{
+				padding-left: 20px;
+				height: 60px;
+				border: 1px solid #B95C4D;
+				background: #D6656A;
+				display: none;
+			}
+			.l4{
+				padding-left: 20px;
+				height: 60px;
+				border: 1px solid #B95C4D;
+				background: #F48B64;
+				display: none;
+			}
+			.header{
+				text-align: center;
+				width: 480px;
+				background: #3F3B3A;
+				letter-spacing: 6px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="list">
+			<li class="header"><img src="img/logo.png"/><p>购买清单</p></li>
+			<li class="l1">蔬菜</li>
+			<li class="l2">松子</li>
+			<li class="l3">蜂蜜</li>
+			<li class="l4">苹果醋</li>
+		</ul>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".l1").fadeIn(500);
+				$(".l2").delay(500).fadeIn(500);
+				$(".l3").delay(1000).fadeIn(500);
+				$(".l4").delay(1500).fadeIn(500);
+				$("li").map(function(){
+					$(this).click(function(){$(this).fadeOut();
+					});
+				});
+			});
+			
+		</script>
+	</body>
+</html>

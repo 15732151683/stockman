@@ -1,0 +1,1926 @@
+[
+  {
+    "row": 2,
+    "name": "Department of Chemistry",
+    "abridge": "Dept Chem",
+    "completion": 0.777915178571429,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 821
+      },
+      {
+        "id": 58,
+        "value": 528
+      },
+      {
+        "id": 68,
+        "value": 755
+      },
+      {
+        "id": 69,
+        "value": 420
+      },
+      {
+        "id": 70,
+        "value": 374
+      },
+      {
+        "id": 71,
+        "value": 114
+      },
+      {
+        "id": 89,
+        "value": 102
+      },
+      {
+        "id": 90,
+        "value": 27
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 1000
+      },
+      {
+        "id": 58,
+        "value": 800
+      },
+      {
+        "id": 68,
+        "value": 800
+      },
+      {
+        "id": 69,
+        "value": 700
+      },
+      {
+        "id": 70,
+        "value": 350
+      },
+      {
+        "id": 71,
+        "value": 200
+      },
+      {
+        "id": 89,
+        "value": 100
+      },
+      {
+        "id": 90,
+        "value": 50
+      }
+    ]
+  },
+  {
+    "row": 3,
+    "name": "Department of Mathematics",
+    "abridge": "Dept Math",
+    "completion": 0.991049107142857,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 910
+      },
+      {
+        "id": 58,
+        "value": 660
+      },
+      {
+        "id": 68,
+        "value": 829
+      },
+      {
+        "id": 69,
+        "value": 585
+      },
+      {
+        "id": 70,
+        "value": 299
+      },
+      {
+        "id": 71,
+        "value": 208
+      },
+      {
+        "id": 89,
+        "value": 97
+      },
+      {
+        "id": 90,
+        "value": 60
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 1000
+      },
+      {
+        "id": 58,
+        "value": 700
+      },
+      {
+        "id": 68,
+        "value": 800
+      },
+      {
+        "id": 69,
+        "value": 600
+      },
+      {
+        "id": 70,
+        "value": 350
+      },
+      {
+        "id": 71,
+        "value": 200
+      },
+      {
+        "id": 89,
+        "value": 100
+      },
+      {
+        "id": 90,
+        "value": 50
+      }
+    ]
+  },
+  {
+    "row": 4,
+    "name": "Faculty of Engineering",
+    "abridge": "Fac Engn",
+    "completion": 0.917535714285714,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 946
+      },
+      {
+        "id": 58,
+        "value": 328
+      },
+      {
+        "id": 68,
+        "value": 806
+      },
+      {
+        "id": 69,
+        "value": 264
+      },
+      {
+        "id": 70,
+        "value": 326
+      },
+      {
+        "id": 71,
+        "value": 80
+      },
+      {
+        "id": 89,
+        "value": 79
+      },
+      {
+        "id": 90,
+        "value": 21
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 800
+      },
+      {
+        "id": 58,
+        "value": 600
+      },
+      {
+        "id": 68,
+        "value": 500
+      },
+      {
+        "id": 69,
+        "value": 350
+      },
+      {
+        "id": 70,
+        "value": 250
+      },
+      {
+        "id": 71,
+        "value": 150
+      },
+      {
+        "id": 89,
+        "value": 80
+      },
+      {
+        "id": 90,
+        "value": 50
+      }
+    ]
+  },
+  {
+    "row": 5,
+    "name": "Department of Physics",
+    "abridge": "Dept Phys",
+    "completion": 0.704816964285714,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 575
+      },
+      {
+        "id": 58,
+        "value": 256
+      },
+      {
+        "id": 68,
+        "value": 541
+      },
+      {
+        "id": 69,
+        "value": 215
+      },
+      {
+        "id": 70,
+        "value": 259
+      },
+      {
+        "id": 71,
+        "value": 51
+      },
+      {
+        "id": 89,
+        "value": 79
+      },
+      {
+        "id": 90,
+        "value": 13
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 800
+      },
+      {
+        "id": 58,
+        "value": 600
+      },
+      {
+        "id": 68,
+        "value": 500
+      },
+      {
+        "id": 69,
+        "value": 350
+      },
+      {
+        "id": 70,
+        "value": 250
+      },
+      {
+        "id": 71,
+        "value": 150
+      },
+      {
+        "id": 89,
+        "value": 80
+      },
+      {
+        "id": 90,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "row": 6,
+    "name": "Faculty of Computing and Information Technology",
+    "abridge": "Fac Comp & Informat Technol",
+    "completion": 0.344520833333333,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 338
+      },
+      {
+        "id": 58,
+        "value": 78
+      },
+      {
+        "id": 68,
+        "value": 276
+      },
+      {
+        "id": 69,
+        "value": 71
+      },
+      {
+        "id": 70,
+        "value": 129
+      },
+      {
+        "id": 71,
+        "value": 17
+      },
+      {
+        "id": 89,
+        "value": 44
+      },
+      {
+        "id": 90,
+        "value": 2
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 600
+      },
+      {
+        "id": 58,
+        "value": 500
+      },
+      {
+        "id": 68,
+        "value": 450
+      },
+      {
+        "id": 69,
+        "value": 400
+      },
+      {
+        "id": 70,
+        "value": 250
+      },
+      {
+        "id": 71,
+        "value": 150
+      },
+      {
+        "id": 89,
+        "value": 80
+      },
+      {
+        "id": 90,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "row": 7,
+    "name": "Faculty of Environmental Designs",
+    "abridge": "Fac Environm Design",
+    "completion": 0.282107142857143,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 275
+      },
+      {
+        "id": 58,
+        "value": 61
+      },
+      {
+        "id": 68,
+        "value": 219
+      },
+      {
+        "id": 69,
+        "value": 50
+      },
+      {
+        "id": 70,
+        "value": 96
+      },
+      {
+        "id": 71,
+        "value": 7
+      },
+      {
+        "id": 89,
+        "value": 32
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 500
+      },
+      {
+        "id": 58,
+        "value": 400
+      },
+      {
+        "id": 68,
+        "value": 400
+      },
+      {
+        "id": 69,
+        "value": 350
+      },
+      {
+        "id": 70,
+        "value": 250
+      },
+      {
+        "id": 71,
+        "value": 150
+      },
+      {
+        "id": 89,
+        "value": 80
+      },
+      {
+        "id": 90,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "row": 8,
+    "name": "Faculty of Meteorology, Environment and Arid Land Agriculture",
+    "abridge": "Fac Meteorol Environm & Arid Land Agr",
+    "completion": 0.495833333333333,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 322
+      },
+      {
+        "id": 58,
+        "value": 63
+      },
+      {
+        "id": 68,
+        "value": 275
+      },
+      {
+        "id": 69,
+        "value": 38
+      },
+      {
+        "id": 70,
+        "value": 86
+      },
+      {
+        "id": 71,
+        "value": 6
+      },
+      {
+        "id": 89,
+        "value": 15
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 300
+      },
+      {
+        "id": 58,
+        "value": 300
+      },
+      {
+        "id": 68,
+        "value": 250
+      },
+      {
+        "id": 69,
+        "value": 150
+      },
+      {
+        "id": 70,
+        "value": 100
+      },
+      {
+        "id": 71,
+        "value": 50
+      },
+      {
+        "id": 89,
+        "value": 50
+      },
+      {
+        "id": 90,
+        "value": 20
+      }
+    ]
+  },
+  {
+    "row": 9,
+    "name": "Faculty of Medicine",
+    "abridge": "Fac Med",
+    "completion": 0.503666666666667,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 181
+      },
+      {
+        "id": 58,
+        "value": 216
+      },
+      {
+        "id": 68,
+        "value": 144
+      },
+      {
+        "id": 69,
+        "value": 135
+      },
+      {
+        "id": 70,
+        "value": 40
+      },
+      {
+        "id": 71,
+        "value": 12
+      },
+      {
+        "id": 89,
+        "value": 9
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 300
+      },
+      {
+        "id": 58,
+        "value": 200
+      },
+      {
+        "id": 68,
+        "value": 250
+      },
+      {
+        "id": 69,
+        "value": 150
+      },
+      {
+        "id": 70,
+        "value": 100
+      },
+      {
+        "id": 71,
+        "value": 50
+      },
+      {
+        "id": 89,
+        "value": 50
+      },
+      {
+        "id": 90,
+        "value": 20
+      }
+    ]
+  },
+  {
+    "row": 10,
+    "name": "Faculty of Pharmacy",
+    "abridge": "Fac Pharm",
+    "completion": 0.522083333333333,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 283
+      },
+      {
+        "id": 58,
+        "value": 110
+      },
+      {
+        "id": 68,
+        "value": 255
+      },
+      {
+        "id": 69,
+        "value": 101
+      },
+      {
+        "id": 70,
+        "value": 69
+      },
+      {
+        "id": 71,
+        "value": 5
+      },
+      {
+        "id": 89,
+        "value": 10
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 300
+      },
+      {
+        "id": 58,
+        "value": 200
+      },
+      {
+        "id": 68,
+        "value": 250
+      },
+      {
+        "id": 69,
+        "value": 150
+      },
+      {
+        "id": 70,
+        "value": 100
+      },
+      {
+        "id": 71,
+        "value": 50
+      },
+      {
+        "id": 89,
+        "value": 50
+      },
+      {
+        "id": 90,
+        "value": 20
+      }
+    ]
+  },
+  {
+    "row": 11,
+    "name": "Faculty of Earth Sciences",
+    "abridge": "Fac Earth Sci",
+    "completion": 0.426666666666667,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 186
+      },
+      {
+        "id": 58,
+        "value": 28
+      },
+      {
+        "id": 68,
+        "value": 139
+      },
+      {
+        "id": 69,
+        "value": 22
+      },
+      {
+        "id": 70,
+        "value": 40
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 7
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 200
+      },
+      {
+        "id": 58,
+        "value": 150
+      },
+      {
+        "id": 68,
+        "value": 150
+      },
+      {
+        "id": 69,
+        "value": 100
+      },
+      {
+        "id": 70,
+        "value": 50
+      },
+      {
+        "id": 71,
+        "value": 40
+      },
+      {
+        "id": 89,
+        "value": 20
+      },
+      {
+        "id": 90,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "row": 12,
+    "name": "Faculty of Marine Sciences",
+    "abridge": "Fac Marine Sc",
+    "completion": 0.197916666666667,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 60
+      },
+      {
+        "id": 58,
+        "value": 43
+      },
+      {
+        "id": 68,
+        "value": 45
+      },
+      {
+        "id": 69,
+        "value": 32
+      },
+      {
+        "id": 70,
+        "value": 8
+      },
+      {
+        "id": 71,
+        "value": 2
+      },
+      {
+        "id": 89,
+        "value": 2
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 200
+      },
+      {
+        "id": 58,
+        "value": 150
+      },
+      {
+        "id": 68,
+        "value": 150
+      },
+      {
+        "id": 69,
+        "value": 100
+      },
+      {
+        "id": 70,
+        "value": 50
+      },
+      {
+        "id": 71,
+        "value": 40
+      },
+      {
+        "id": 89,
+        "value": 20
+      },
+      {
+        "id": 90,
+        "value": 15
+      }
+    ]
+  },
+  {
+    "row": 13,
+    "name": "Faculty of Applied Medical Sciences",
+    "abridge": "Fac Appl Med Sci",
+    "completion": 0.403020833333333,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 67
+      },
+      {
+        "id": 58,
+        "value": 62
+      },
+      {
+        "id": 68,
+        "value": 49
+      },
+      {
+        "id": 69,
+        "value": 43
+      },
+      {
+        "id": 70,
+        "value": 10
+      },
+      {
+        "id": 71,
+        "value": 3
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 100
+      },
+      {
+        "id": 58,
+        "value": 80
+      },
+      {
+        "id": 68,
+        "value": 80
+      },
+      {
+        "id": 69,
+        "value": 60
+      },
+      {
+        "id": 70,
+        "value": 40
+      },
+      {
+        "id": 71,
+        "value": 40
+      },
+      {
+        "id": 89,
+        "value": 10
+      },
+      {
+        "id": 90,
+        "value": 8
+      }
+    ]
+  },
+  {
+    "row": 14,
+    "name": "Faculty of Dentistry",
+    "abridge": "Fac Dent",
+    "completion": 0.333854166666667,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 50
+      },
+      {
+        "id": 58,
+        "value": 61
+      },
+      {
+        "id": 68,
+        "value": 38
+      },
+      {
+        "id": 69,
+        "value": 53
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 100
+      },
+      {
+        "id": 58,
+        "value": 80
+      },
+      {
+        "id": 68,
+        "value": 80
+      },
+      {
+        "id": 69,
+        "value": 60
+      },
+      {
+        "id": 70,
+        "value": 40
+      },
+      {
+        "id": 71,
+        "value": 40
+      },
+      {
+        "id": 89,
+        "value": 10
+      },
+      {
+        "id": 90,
+        "value": 8
+      }
+    ]
+  },
+  {
+    "row": 15,
+    "name": "Faculty of Art & Humanities",
+    "abridge": "Fac Arts & Humanities",
+    "completion": 0.241354166666667,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 41
+      },
+      {
+        "id": 58,
+        "value": 22
+      },
+      {
+        "id": 68,
+        "value": 29
+      },
+      {
+        "id": 69,
+        "value": 17
+      },
+      {
+        "id": 70,
+        "value": 8
+      },
+      {
+        "id": 71,
+        "value": 4
+      },
+      {
+        "id": 89,
+        "value": 3
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 100
+      },
+      {
+        "id": 58,
+        "value": 80
+      },
+      {
+        "id": 68,
+        "value": 80
+      },
+      {
+        "id": 69,
+        "value": 60
+      },
+      {
+        "id": 70,
+        "value": 40
+      },
+      {
+        "id": 71,
+        "value": 40
+      },
+      {
+        "id": 89,
+        "value": 10
+      },
+      {
+        "id": 90,
+        "value": 8
+      }
+    ]
+  },
+  {
+    "row": 16,
+    "name": "Faculty of Nursing",
+    "abridge": "Fac Nursing",
+    "completion": 0.37625,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 42
+      },
+      {
+        "id": 58,
+        "value": 1
+      },
+      {
+        "id": 68,
+        "value": 41
+      },
+      {
+        "id": 69,
+        "value": 1
+      },
+      {
+        "id": 70,
+        "value": 11
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 50
+      },
+      {
+        "id": 58,
+        "value": 50
+      },
+      {
+        "id": 68,
+        "value": 40
+      },
+      {
+        "id": 69,
+        "value": 40
+      },
+      {
+        "id": 70,
+        "value": 10
+      },
+      {
+        "id": 71,
+        "value": 10
+      },
+      {
+        "id": 89,
+        "value": 5
+      },
+      {
+        "id": 90,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "row": 17,
+    "name": "Faculty of Economics and Administration",
+    "abridge": "Fac Econ & Adm",
+    "completion": 0.36875,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 26
+      },
+      {
+        "id": 58,
+        "value": 24
+      },
+      {
+        "id": 68,
+        "value": 22
+      },
+      {
+        "id": 69,
+        "value": 20
+      },
+      {
+        "id": 70,
+        "value": 7
+      },
+      {
+        "id": 71,
+        "value": 2
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 50
+      },
+      {
+        "id": 58,
+        "value": 50
+      },
+      {
+        "id": 68,
+        "value": 40
+      },
+      {
+        "id": 69,
+        "value": 40
+      },
+      {
+        "id": 70,
+        "value": 10
+      },
+      {
+        "id": 71,
+        "value": 10
+      },
+      {
+        "id": 89,
+        "value": 5
+      },
+      {
+        "id": 90,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "row": 18,
+    "name": "Jeddah Community Collage",
+    "abridge": "Jeddah Community Coll",
+    "completion": 0.10125,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 10
+      },
+      {
+        "id": 58,
+        "value": 8
+      },
+      {
+        "id": 68,
+        "value": 10
+      },
+      {
+        "id": 69,
+        "value": 8
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 50
+      },
+      {
+        "id": 58,
+        "value": 50
+      },
+      {
+        "id": 68,
+        "value": 40
+      },
+      {
+        "id": 69,
+        "value": 40
+      },
+      {
+        "id": 70,
+        "value": 10
+      },
+      {
+        "id": 71,
+        "value": 10
+      },
+      {
+        "id": 89,
+        "value": 5
+      },
+      {
+        "id": 90,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "row": 19,
+    "name": "Faculty of Law",
+    "abridge": "Fac Law",
+    "completion": 0.2625,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 11
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 8
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 10
+      },
+      {
+        "id": 58,
+        "value": 10
+      },
+      {
+        "id": 68,
+        "value": 8
+      },
+      {
+        "id": 69,
+        "value": 8
+      },
+      {
+        "id": 70,
+        "value": 5
+      },
+      {
+        "id": 71,
+        "value": 5
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 20,
+    "name": "Faculty of Maritime Studies",
+    "abridge": "Fac Maritime Studies",
+    "completion": 0.30625,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 6
+      },
+      {
+        "id": 58,
+        "value": 9
+      },
+      {
+        "id": 68,
+        "value": 2
+      },
+      {
+        "id": 69,
+        "value": 4
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 10
+      },
+      {
+        "id": 58,
+        "value": 10
+      },
+      {
+        "id": 68,
+        "value": 8
+      },
+      {
+        "id": 69,
+        "value": 8
+      },
+      {
+        "id": 70,
+        "value": 5
+      },
+      {
+        "id": 71,
+        "value": 5
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 21,
+    "name": "Faculty of Communication and Media",
+    "abridge": "Fac Communication & Media",
+    "completion": 0.06875,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 3
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 2
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 10
+      },
+      {
+        "id": 58,
+        "value": 10
+      },
+      {
+        "id": 68,
+        "value": 8
+      },
+      {
+        "id": 69,
+        "value": 8
+      },
+      {
+        "id": 70,
+        "value": 5
+      },
+      {
+        "id": 71,
+        "value": 5
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 22,
+    "name": "Faculty of Home Economics",
+    "abridge": "Home Econ",
+    "completion": 0.41875,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 5
+      },
+      {
+        "id": 58,
+        "value": 3
+      },
+      {
+        "id": 68,
+        "value": 4
+      },
+      {
+        "id": 69,
+        "value": 3
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 5
+      },
+      {
+        "id": 58,
+        "value": 5
+      },
+      {
+        "id": 68,
+        "value": 4
+      },
+      {
+        "id": 69,
+        "value": 4
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 23,
+    "name": "Islamic Economics Institute",
+    "abridge": "Islamic Econ Dept",
+    "completion": 0.13125,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 4
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 1
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 5
+      },
+      {
+        "id": 58,
+        "value": 5
+      },
+      {
+        "id": 68,
+        "value": 4
+      },
+      {
+        "id": 69,
+        "value": 4
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 24,
+    "name": "English Language Institute",
+    "abridge": "English Language Inst",
+    "completion": 0.10625,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 3
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 1
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 5
+      },
+      {
+        "id": 58,
+        "value": 5
+      },
+      {
+        "id": 68,
+        "value": 4
+      },
+      {
+        "id": 69,
+        "value": 4
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 25,
+    "name": "Faculty Tourism",
+    "abridge": "Fac Tourism",
+    "completion": 0,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 0
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 0
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 1
+      },
+      {
+        "id": 58,
+        "value": 1
+      },
+      {
+        "id": 68,
+        "value": 1
+      },
+      {
+        "id": 69,
+        "value": 1
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 26,
+    "name": "Institute of Educational Graduate Studies",
+    "abridge": "Educ Grad Studies",
+    "completion": 0.125,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 1
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 0
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 1
+      },
+      {
+        "id": 58,
+        "value": 1
+      },
+      {
+        "id": 68,
+        "value": 1
+      },
+      {
+        "id": 69,
+        "value": 1
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  },
+  {
+    "row": 27,
+    "name": "The Arabic Language Institute for Speakers of Other Languages",
+    "abridge": "Arabic Language Inst",
+    "completion": 0,
+    "researchData": [
+      {
+        "id": 57,
+        "value": 0
+      },
+      {
+        "id": 58,
+        "value": 0
+      },
+      {
+        "id": 68,
+        "value": 0
+      },
+      {
+        "id": 69,
+        "value": 0
+      },
+      {
+        "id": 70,
+        "value": 0
+      },
+      {
+        "id": 71,
+        "value": 0
+      },
+      {
+        "id": 89,
+        "value": 0
+      },
+      {
+        "id": 90,
+        "value": 0
+      }
+    ],
+    "researchTarget": [
+      {
+        "id": 57,
+        "value": 1
+      },
+      {
+        "id": 58,
+        "value": 1
+      },
+      {
+        "id": 68,
+        "value": 1
+      },
+      {
+        "id": 69,
+        "value": 1
+      },
+      {
+        "id": 70,
+        "value": 1
+      },
+      {
+        "id": 71,
+        "value": 1
+      },
+      {
+        "id": 89,
+        "value": 1
+      },
+      {
+        "id": 90,
+        "value": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.container{
+				width: 5rem;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--固定屏幕宽度为10rem？？？？---- 10* 根字体大小 ---- 动态改变根字体大小？？  设置屏幕宽度/10 -->
+		<div class="container">
+			测试数据
+		</div>
+	</body>
+	<script>
+		//动态设置根字体大小为宽度的1/10
+		function setFontSize(){
+			var cw = 	document.getElementsByTagName("html")[0].clientWidth;
+//	console.log(cw);
+//设置根字体大小
+	document.getElementsByTagName('html')[0].style.fontSize = cw/10+"px";
+	console.log(document.getElementsByTagName('html')[0].style.fontSize);
+	document.getElementsByTagName('body')[0].style.fontSize = "16px";
+		}
+		window.addEventListener("DOMContentLoaded",setFontSize,false);
+	
+	</script>
+</html>

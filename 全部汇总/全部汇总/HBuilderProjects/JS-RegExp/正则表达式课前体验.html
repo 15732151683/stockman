@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>正则表达式</title>
+	</head>
+	<body>
+		<!--判断是否含有数字-->
+		<input type="text" id="txt"/>
+		<input type="button" id="btn" value="判断"/>
+		<script type="text/javascript">
+			var txt = document.getElementById("txt");
+			var btn =document.getElementById("btn");
+			btn.onclick = function(){
+				/*var reg = /\d/;
+				reg.test(txt.value);
+				console.log(reg.test(txt.value));
+				if (reg.test(txt.value)) {
+					console.log("有数字");
+				} else{
+					console.log("木有数字");
+				}*/
+				var flag = false;//假定木有
+				for (var i = 0; i < txt.value.length; i++) {
+					if(txt.value[i]>"0"&&txt.value[i]<"9"){
+						flag = true;
+						alert("有数字");
+						break;
+					}else{
+						var flag = false;
+						alert("没有数字");
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

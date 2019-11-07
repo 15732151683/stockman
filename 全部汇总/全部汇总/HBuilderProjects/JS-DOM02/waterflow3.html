@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>响应式瀑布流</title>
+		<style type="text/css">
+			.wrap{
+				position: relative;
+				margin: 0 auto;
+				border: 5px solid;
+			}
+			.item{
+				position: absolute;
+				width: 200px;
+				-webkit-transition: 1s;
+				-moz-transition: 1s;
+				-ms-transition: 1s;
+				-o-transition: 1s;
+				transition: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		
+		<script type="text/javascript">
+			var wrap = document.querySelector(".wrap");
+			//存储所有的元素的数组
+			var itemsArr = [];
+			//存储定位的top
+			var topArr = [];
+			/*参数:
+			 1.创建的元素的数量
+			 2.判断创建元素还是修改已存在元素的位置 true表示元素不存在,需要新建,false表示元素已经存在,只需调整位置*/
+			function createItems(count,flag){
+				//获取当前窗口的可视范围宽度
+				var vw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+				//计算最多能呈现的列数
+				var w = 200;
+				var margin  = 10;
+				var col = parseInt(vw/(w + margin));
+				//指定wrap容器的宽度
+				wrap.style.width= col*(w + margin) +'px';
+				//定义数组,存储每一列高度
+				var hArr = [];
+				//初始化数组,为了之后的加等
+				for (var i = 0; i < col; i++) {
+					hArr[i] = 0;
+				}
+				//创建对应数量的元素
+				for (var i = 0; i < count; i++) {
+					var item  = itemsArr[i] || document.createElement('div');        //666
+					item.className = 'item';
+					var h = topArr[i] || randNum(120,300);
+					if(flag){
+						topArr.push(h);
+						item.style.background = 'rgb('+randNum(0,255)+','+randNum(0,255)+','+randNum(0,255)+')';
+					}
+					item.style.height = h + 'px';
+					
+					//查找最矮列,获取最矮列下标
+					//记录当前最矮列高度
+					var minH = hArr[0];
+					//记录最矮列的下标
+					var minIndex = 0;
+					for (var j = 0; j < hArr.length; j++) {
+						if(hArr[j] < minH){
+							minIndex = j;
+							minH = hArr[j];
+						}
+					}
+					//设置当前元素的位置
+					item.style.left = minIndex * (w + margin) +'px';
+					item.style.top = hArr[minIndex] + 'px';
+					//更新数组中的累计列高,将新元素的高度值添加到最小高度上去
+					hArr[minIndex] += (h + margin);
+					//将该元素存到容器中
+					 if(flag){
+					 	itemsArr.push(item);
+					 	wrap.appendChild(item);
+					 }
+				}
+			}
+			
+			function randNum(x,y){
+				return Math.floor(Math.random()*(y - x + 1) + x);
+			}
+			createItems(50, true);
+			/*onresize 当调整窗口尺寸时*/
+			window.onresize = function(){
+				createItems(50, false);
+			}
+		</script>
+	</body>
+</html>

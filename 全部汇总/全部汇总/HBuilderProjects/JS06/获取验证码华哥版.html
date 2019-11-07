@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取验证码</title>
+		<style type="text/css">
+			.btn{
+				width: 100px;
+				height: 40px;
+				outline: none;
+				border: none;
+				border-radius: 5px;
+				color: white;
+				cursor: pointer;
+			}
+			.btn-normal{
+				background: #c54747;
+			}
+			.btn-disabled{
+				background: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn" class="btn btn-normal">获取验证码</button>
+		<script type="text/javascript">
+			
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				var time  = 60;
+				//disabled 表示表单元素是否可用  true 不可用,false 可用
+				btn.disabled = true;
+				btn.className = "btn btn-disabled"
+				var t = setInterval(function(){
+					time --;
+					btn.innerHTML = time + "秒";
+					if(time == 0){
+					//清除计时器
+					clearInterval(t);
+					btn.className = "btn btn-normal"
+					btn.innerHTML = "请重新获取验证码";
+					btn.disabled = false;
+					//time = 60;  内部变量不用重置
+				}
+				},1000);
+			}
+		</script>
+	</body>
+</html>

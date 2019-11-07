@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				height: 100px;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<!--绑定事件的方式: 事件本身就是存在的-->
+		
+		<!--方式1: 在html中添加事件属性
+			弊端: 会造成标签内容过多,可读性差,后期维护和处理bug时会很困难. 不建议使用
+		-->
+		<!--""内部是字符串,所以要加括号()"-->
+		<button onclick="fn()">按钮</button>
+		<div id="d1"></div>
+		<script type="text/javascript">
+			function fn(){
+				alert('morning');
+			}
+			//方式2: 在js中为元素添加事件属性
+			//形式: on + 事件名
+			var d1 = document.getElementById("d1");
+			/*该方式绑定事件时,同一种类型的事件(比如现在都是onclick)只能绑定一个事件处理函数;若绑定多个,后面的会覆盖前面的*/
+			d1.onclick = function (){
+				this.style.backgroundColor = 'pink';
+			}
+			//直接附上一个已经写好的函数
+			d1.onclick = fn;
+			d1.onmousemove = function (){
+				this.style.backgroundColor = 'pink';
+			}
+			
+			//这种绑定方式下如何移除事件绑定: 事件属性置为null,覆盖前面所有的
+			d1.onclick = null;
+			
+			//方式3:添加事件监听 addEventListener:针对标准浏览器和IE9+, IE6~8不支持该方式而是用attachEvent()方法
+			/* .addEventListener('type', fn, bollen)
+			 * 参数1: 事件名 (显然木有on)
+			 * 参数2: 事件处理函数
+			 * 参数3: 布尔值,是否捕获 true: 捕获 false: 冒泡; 默认值是false*/
+			/*可以在同一个类型的事件中,绑定多个事件处理函数;按绑定的顺序依次执行对应的事件处理函数*/
+			//d1.addEventListener('click', fn, true);
+			d1.addEventListener('click', fn);   //弹框会阻止js
+			d1.addEventListener('click', fn1);
+			d1.addEventListener('mouseout', function(){
+				this.style.backgroundColor = 'red';
+			}, false);
+			function fn1(){
+				this.style.backgroundColor = 'gold';
+			}
+			//移除事件绑定:
+			//对应这种方式移除事件监听 removeEventListener('type', fn, bollen);
+			d1.removeEventListener('click', fn);
+			//若绑定的事件处理函数是匿名函数,则无法移除
+			/*IE6~8使用attachEvent()
+			 * 低版本IE添加事件: 
+			 *attachEvent('on事件名', fn事件处理函数);
+			 * 
+			 * 
+			 *移除事件:
+			 * detachEvent('事件名', fn事件处理函数);*/
+			/*兼容版的绑定事件的方法*/
+			function addEvent(ele, type, fn){   //其实这个type的''问题要注意
+				try{
+					/*for 标准浏览器及IE9+*/
+					ele.addEventListener(type, fn, false);
+				}catch(e){
+					//TODO handle the exception
+					ele.attachEvent('on'+type, fn);
+				}
+			}
+			//使用
+			addEvent(d1, 'click', fn2);    //其实这个type的''问题要注意
+			function fn2(){
+				alert('测试,绑定成功');
+			}
+		</script>
+	</body>
+</html>

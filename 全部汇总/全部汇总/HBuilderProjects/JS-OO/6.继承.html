@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>继承</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//当出现一些相同的特征和行为时,找到类与类之间的共性,把公共的属性和方法抽离出来作为父类,而其他的作为子类去继承该父类.目的是精简代码
+			/*父类*/
+			function Person(name,age){
+				this.name = name;
+				this.age = age;
+				this.sayHi = function(){
+					console.log("我是"+this.name);
+				}
+			}
+			//在原型中添加方法
+			Person.prototype.eat = function(){
+				console.log("我是"+this.name+",吃饭啦!!!!!!!!!!");
+			}
+			//原型的继承: 如何继承父类原型中添加的属性或方法
+			//Director.prototype = Person.prototype; //如果直接指向父级的原型,那么子类的原型更改之后,父类的原型也会改变,所以要有一个中间变量
+			var F = function(){};  //建一个空的对象
+			F.prototype = Person.prototype;
+			Director.prototype = new F();
+			Director.prototype.constructor = Director;
+			//constructor 原型对象自身的属性,默认指向对象所引用的构造函数
+			console.log(Director.prototype.constructor);
+			
+			/*导演类*/
+			function Director(name,age){
+				/*this.name = name;
+				this.age = age;
+				this.sayHi = function(){		
+				}*/
+				//借用父类的方法,为子类设置共同的属性和方法  实现子类继承父类中的内容
+				//Person.call(this,name,age);//设置this执行调用者,比如Directo 所以到时候在父类中this指代的就是子类  ?????
+				Person.apply(this,[name,age]); //this 同上
+			}
+			Director.prototype.movie = function(){
+				console.log("我是子类的原型方法action");
+			}
+			
+			/*演员类*/
+			function Actor(name,age,skill){
+//				this.name = name;
+//				this.age = sge;
+				//独有的属性
+				this.skill = skill;
+//				this.sayHi = function(){
+//					
+//				}
+				//继承父类公共的内容
+				Person.call(this,name,age);
+			}
+			Actor.prototype.act = function(){
+				console.log("show time");
+			}
+			/*编剧类*/
+			function Editor(name, age, write){
+				Person.call(this,name,age);
+				this.write = write;
+			}
+			inherit(Editor, Person);
+			var bianji = new Editor("编剧", 23, "xxx");
+			bianji.sayHi();
+			bianji.eat();
+			var dir = new Director("著名导演菜菜", 28);
+			var act = new Actor("奥斯卡最佳女猪脚", 18);
+			dir.sayHi();
+			act.sayHi();
+			dir.movie();
+			act.act();
+			dir.eat();
+			
+			//封装一个原型继承的方法:
+			function inherit(child,parent){
+				var F = function(){};  //建一个空的类
+				F.prototype = parent.prototype;
+				child.prototype = new F();  
+				
+				child.prototype.constructor = child;
+				console.log(child.prototype);
+				console.log(parent.prototype);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas动画</title>
+	</head>
+	<body>
+		<!--canvas动画实现的原理: 利用循环的方法进行重复的绘制和清除的循环过程
+		循环的方法: setInterva()   requestAnimationFrame()-->
+		<canvas id="canvas9" width="400" height="200" style="border: 1px solid;"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas9");
+			var ctx = canvas.getContext("2d");
+			//方式1: 
+			setInterval(move,50);
+			var cx = 20;
+			//速度
+			var vx = 2;
+			function move(){
+				cx+= vx;
+				if(cx>canvas.width - 20 || cx< 20){
+					vx *=-1;
+				}
+				
+				//清除画布
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				//重新绘制
+				ctx. beginPath();
+				ctx.arc(cx,100,20,0,Math.PI*2);
+				ctx.fillStyle = "#8F908F";
+				ctx.fill();
+			}
+			
+			//方式2:  匿名函数是这样用的呢
+			window.requestAF = (function(){
+				return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame() || window.oRequestAnimationFrame() || window.msRequestAnimationFrame() || function(callback){
+					setTimeout(callback, 1000/60);
+				}
+			})();
+			//在外部首次触发一次
+			window.requestAF(run);  //或   run();
+			function run(){
+				cx+=vx;
+				if(cx>canvas.width - 20 || cx< 20){
+					vx *=-1;
+				}
+				//清除画布
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				//重新绘制
+				ctx.beginPath();
+				ctx.arc(cx,150,20,0,Math.PI*2);
+				ctx.fillStyle = "#F52B00";
+				ctx.fill();
+				window.requestAF(run);
+			}
+		</script>
+	</body>
+</html>

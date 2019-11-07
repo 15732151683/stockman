@@ -1,0 +1,19 @@
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="edit-01" transform="translate(-1151.000000, -455.000000)">
+            <g id="edit-02" transform="translate(267.000000, 445.000000)">
+                <g id="icon_pres_modify" transform="translate(884.000000, 10.000000)">
+                    <rect id="edit-03" stroke="#BFBFBF" fill="#FBFBFB" fill-rule="nonzero" x="0.5" y="0.5" width="19" height="19" rx="2"></rect>
+                    <g id="ic_border_color_24px-copy" fill-rule="evenodd" transform="translate(2.857143, 3.214286)">
+                        <path d="M10.2380952,3.90139286 L8.0952381,1.81210714 L2.38095238,7.38353571 L2.38095238,9.47282143 L4.52380952,9.47282143 L10.2380952,3.90139286 Z M11.9295238,2.25225 C12.152381,2.03496429 12.152381,1.68396429 11.9295238,1.46667857 L10.592381,0.162964286 C10.3695238,-0.0543214286 10.0095238,-0.0543214286 9.78666667,0.162964286 L8.66666667,1.25496429 L10.8095238,3.34425 L11.9295238,2.25225 Z" id="Shape" fill="#BFBFBF" fill-rule="nonzero"></path>
+                        <polygon id="Shape" points="3.80952381 3.80952381 17.5238095 3.80952381 17.5238095 17.1809524 3.80952381 17.1809524"></polygon>
+                        <polygon id="edit-04" fill="#BFBFBF" fill-rule="nonzero" points="0 11.4285714 13.7142857 11.4285714 13.7142857 13.6571429 0 13.6571429"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

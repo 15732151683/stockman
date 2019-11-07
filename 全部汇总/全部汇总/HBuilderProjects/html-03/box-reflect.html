@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>倒影属性</title>
+		<style>
+			img{
+				/*box-reflect:
+				 1.倒影的方向 above below left right
+				 2.倒影和元素之间的间距  可设置
+				 3.蒙版(图片或渐变蒙版) 可设置*/
+				-webkit-box-reflect: right 50px linear-gradient(to top,blue, transparent);
+			}
+			.p1{
+				font-size: 50px;
+				color: red;
+				-webkit-box-reflect: below 10px linear-gradient(to top,yellow,transparent); 
+			}
+		</style>
+	</head>
+	<body>
+		<p>box-reflect:  目前只支持文字和图片支持倒影效果,目前只适应webkit内核前缀的浏览器,倒影只是一个映像,不后占空间</p>
+		<p>图片倒影: </p>
+		<img src="img/dob2.jpeg"/>
+		<span>riodsuigorehpjuthr0</span>
+		<p>文字倒影:</p>
+		<div class="p1">我要吃鸡腿</div>
+	</body>
+</html>

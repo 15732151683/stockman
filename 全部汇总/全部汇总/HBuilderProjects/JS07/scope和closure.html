@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作用域scope和闭包closure</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//作用域: 代码(变量,函数)生效范围
+			/*js是函数级的作用域,不是块级作用域*/
+			/*全局变量: 定义在函数外部的变量   任何地方都能访问
+			 局部变量: 定义在函数内部的变量*/
+		
+			//全局变量,在函数外部和内部都可以访问
+			var a = 1;
+			function test(){
+				a++;
+				console.log(a);
+				//局部变量: 只能在函数的{}内访问
+				var b = 2;
+				console.log(b);
+			}
+			console.log(a);  //1
+			a++;				//2
+			test();          //3
+			console.log(a);   //3
+			//b 是局部变量 外部是访问不到内部的
+			//console.log(b);   //报错 b is not defined
+			function f1 () {
+				//就近原则,当局部变量和全局变量同名时,会就近取当前作用域的变量,若当前作用域有,则直接使用,如果没有,则会向上一级作用域查找是否有,直到找到.若没有,就会报错  .....is not defined   [这就是Javascript语言特有的"链式作用域"结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。]
+				var a = 2;
+				console.log(a);
+			}
+			
+			//定义变量时  如果没有加var 修饰 该变量就会自动变成全局变量(凡是全局的变量或者是全局的函数,都会是window对象的属性或方法)
+			function f2(){
+				c = 1;
+			}
+			f2();
+			console.log(c);
+			console.log(window);
+			
+			//变量的声明和函数的定义会提前到当前作用域的最前面
+			function f3(){
+				console.log(a);
+				var a = 5;
+			}
+			f3();
+			
+			//js 没有块级作用域
+			for (var i = 0; i < 2; i++) {
+				
+			}
+			console.log(i);//不在函数里面, for循环  if语句 里面定义的变量是全局变量
+			function f4(){
+				var j = 1;
+			}
+			//console.log(j);//函数里面的是局部变量
+			
+			
+			/*函数内部定义的是局部变量,外部访问不到,若把变量定义为全局变量,该变量在任何地方都可以被访问到,会造成数据可以被任意的修改,所以现在想要数据安全(局部变量),又想要外部能访问的到
+			 * 
+			 * 
+			 * 
+			 * 闭包: 本质上就是匿名函数*/
+			function fn(){
+				var m = 3;
+				//闭包就是在一个函数内部定义的一个匿名函数,通过闭包就可以在外部访问到函数内部的局部变量
+				return (function (){
+					//m = a;
+					//console.log(m);
+					return m;
+				})
+			}
+			var f = fn();
+			console.log(f('abc'));
+			console.log(fn()());
+			/*闭包的缺陷: 通过闭包操作的变量,空间会一直存在,使用过多,会有内存问题;*/
+			/*局部变量: 当函数调用执行完毕时,该变量就会被回收垃圾回收机制（garbage collection）回收。
+			 *全局变量: 只要代码还在执行过程中,空间会一直存在
+			 * */
+		</script>
+	</body>
+</html>

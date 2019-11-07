@@ -1,0 +1,138 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				display: flex;
+			}
+			.title{
+				height: auto;
+				margin: 0;
+			}
+			.title li{
+				height: 50px;
+			}
+			li {
+				list-style: none;
+				width: 100px;
+				height: 50px;
+				border-top: 1px solid;
+				text-align: center;
+				line-height: 50px;
+			}
+			a{
+				text-decoration: none;
+				color: green;
+			}
+			a span{
+				border:1px solid;
+				padding: 5px 10px;
+				margin-right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>学生成绩列表</h3>
+		<div class="stu"></div>
+		<a href="javascript:changePage(-1)" class="pre"><span>←上一页</span></a>
+		<a href="javascript:changePage(1)" class="next"><span>下一页→</span></a>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+//			$(function(){
+				//所有节点加载完才进行功能函数,但是功能代码就是要点一下才加载节点啊
+				var pageIndex = 1;
+				var pageSize;
+				var allpages;
+				getData(1);
+				function changePage(type){
+					pageIndex = pageIndex + type;
+					getData(pageIndex);
+				}
+				$.ajax({
+					type:"get",
+					url:"index.php?m=home&c=score&a=count",
+					async:true,
+					success:function(data){
+						var bts=""
+						for (var m = 0; m < data; m++) {
+							bts+=`<a href="javascript:getData(${m+1})" class="bt${m+1}">
+								<span>${m+1}</span>
+							</a>`;
+						}
+						var cnt = 1;
+						$(".pre").after(bts);
+						$(".bt1").css("background","#F0C040");
+						$(".pre").click(function(){
+							$(".bt"+(cnt-1)).css("background","#F0C040").siblings().css("background","#fff");
+							cnt--;
+							if(cnt==0){
+								$(".pre").prop("href","#");
+							}
+						});
+						$(".next").click(function(){
+							$(".bt"+(cnt+1)).css("background","#F0C040").siblings().css("background","#fff");
+							cnt++;
+							if(cnt==data){
+								$(".next").prop("href","#");
+							}
+						});
+						console.log(cnt);
+					}
+				});
+				$(".pre")
+				function getData(pageIndex) {
+					$.ajax({
+						type:"get",
+						url:"index.php?m=home&c=score&a=show",
+						async:true,
+						data:{
+							p:pageIndex
+						},
+						dataType:"json",
+						success:function(data){
+							console.log(data);
+							//创建节点
+							var len = data.length;
+							var lis = `<ul class="title">
+									<li>学号</li>
+									<li>js</li>
+									<li>php</li>
+									<li>java</li>
+									<li>python</li>
+									<li>c++</li>
+									<li>操作</li>
+								</ul>`;
+							//数组的话,for in 也很好用的 foreach 
+							for(var i = 0; i < len; i++) {
+								lis += `<ul id="${data[i].id}">
+										<li>${data[i].id}</li>
+										<li>${data[i].js}</li>
+										<li>${data[i].php}</li>
+										<li>${data[i].java}</li>
+										<li>${data[i].python}</li>
+										<li>${data[i].c}</li>
+										<li><a href="index.php?m=home&c=score&a=update&id=${data[i].id}">编辑</a>
+										<a href="index.php?m=home&c=score&a=delete&id=${data[i].id}" id="de${i}">删除</a></li>
+									</ul>`;
+							}
+							$(".stu").html(lis);	
+							for(let i = 0; i < len; i++) {
+								$("#de"+i).click(function(){
+									$("#"+(data[i].id)).remove();
+									$.ajax({
+										type:"get",
+										url:"index.php?m=home&c=score&a=delete",
+										data:"id="+i,
+										async:true
+									});
+								});
+							}
+						}
+					});
+				}
+//			});
+		</script>
+	</body>
+</html>

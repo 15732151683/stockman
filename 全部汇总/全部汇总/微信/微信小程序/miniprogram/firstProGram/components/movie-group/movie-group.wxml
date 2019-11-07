@@ -1,0 +1,16 @@
+<!--components/movie-group/movie-group.wxml-->
+<import src="/template/movie-item/movie-item.wxml"/>
+<view class='mov-reyi'>
+  <view class='reyi-head'>
+    <text>{{movieGroup.groupTitle}}</text>
+    <view class='reyi-more'>
+      <text bindtap='goToMore' data-group-key="{{movieGroup.key}}" data-group-title="{{movieGroup.groupTitle}}">更多 ></text>
+      <!-- <image src='/images/arrow-right.png'></image> -->
+    </view>
+  </view>
+  <view class='movies-list'>
+    <view wx:for="{{movieGroup.movies}}" wx:key="{{item.movieId}}" bindtap='goToDetail' data-id="{{item.movieId}}">
+      <template is="movie-item" data="{{...item}}"></template>
+    </view>  
+  </view>
+</view>

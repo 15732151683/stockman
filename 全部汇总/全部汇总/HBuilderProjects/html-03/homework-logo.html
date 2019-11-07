@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>蓝鸥科技</title>
+		<style type="text/css">
+			body{
+				background-color: #000;
+			}
+			p{
+				font:bold 80px helvetica, arial, sans-serif;
+				color: red;
+				text-align: center;
+				text-shadow: 0 0 4px white,0 -5px 4px #fcfb65,2px -10px 6px #ebc92c,-2px -15px 11px #c46d07,-2px -15px 15px #a04701,-2px 0 20px #E75C00,2px -20px 20px #9C1E00,2px -25px 18px #f20;
+			}
+			div{
+				background-color: #F9A600;
+				width: 200px;
+				height: 200px;
+				margin: 60px;
+				float: left;
+			}
+			.p1{
+				border-radius: 50%;
+			}
+			.p2{
+				height: 100px;
+				border-top-right-radius: 100px;
+				border-top-left-radius: 100px;
+			}
+			.p3{
+				width: 100px;
+				border-top-right-radius: 100px;
+				border-bottom-right-radius: 100px;
+			}
+			.p4{
+				height: 100px;
+				border-bottom-right-radius: 100px;
+				border-bottom-left-radius: 100px;
+			}
+			.p5{
+				width: 100px;
+				border-top-left-radius: 100px;
+				border-bottom-left-radius: 100px;
+			}
+			.p6{
+				border-top-left-radius: 100%;
+			}
+			.p7{
+				border-top-right-radius: 100%;
+			}
+			.p8{
+				border-bottom-right-radius: 100%;
+			}
+			.p9{
+				border-bottom-left-radius: 100%;
+			}
+			.p10{
+				height: 100px;
+				border-radius: 100px/50px;
+				border-radius: 50%;
+			}
+			.p11{
+				width: 100px;
+				border-radius: 50px/100px;
+				border-radius: 50%;
+			}
+			.wrap{
+				padding:20px;
+				width: 1028px;
+				height: 224px;
+				background-color: #fff;
+				float: left;
+				text-align: center;
+			}
+			.sosuo{
+				width: 900px;
+				height: 85px;
+				border: 1px solid #A9AAA9;
+				padding: 15px;
+				border-radius: 15px;
+				background-color: #F5F6F5;
+				box-shadow: 1px 0 2px #D7D8D7,-1px 0 2px #D7D8D7,0 11px 11px #C0C1C0,0 11px 1px #868786;
+			}
+			input{
+				width: 650px;
+				height: 80px;
+				padding: 0 15px;
+				outline: none;
+				font-size: 29px;
+				line-height: 80px;
+			}
+			input[type=text]{
+			/*有border的先设置border,再设置border-radius,避免bug*/
+				border-radius: 6px;
+				border: 1px solid #CBCCCB;	
+			}
+			input[type=text]:focus{
+				border: 1px solid #A9AAA9;
+				box-shadow: 0px 1px 3px #A9AAA9 inset;
+			}
+			input[type=submit]{
+				color: white;
+				width: 200px;
+				height: 80px;
+				background-color: #0483a0;
+				border: 1px solid #20738E;
+				border-radius: 6px;
+				cursor: pointer;
+			}
+			input[type=submit]:hover{
+				background-color: #36B2C2;
+			}
+		</style>
+	</head>
+	<body>
+		<p>蓝鸥科技</p>
+		<div class="p1"></div>
+		<div class="p2"></div>
+		<div class="p3"></div>
+		<div class="p4"></div>
+		<div class="p5"></div>
+		<div class="p6"></div>
+		<div class="p7"></div>
+		<div class="p8"></div>
+		<div class="p9"></div>
+		<div class="p10"></div>
+		<div class="p11"></div>
+	</body>
+	<div class="wrap">
+		<form action="" method="get" class="sosuo">
+			<input type="text" name="" id="" placeholder="请输入搜索的内容" required />
+			<input type="submit" value="开始搜索"/>
+		</form>
+	</div>
+</html>

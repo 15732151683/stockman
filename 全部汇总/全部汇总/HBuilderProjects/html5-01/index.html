@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>H5新增元素</title>
+		<style type="text/css">
+			mark{
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<!--H5新特性:
+			1.新增很多新标签
+			2.新增了多媒体元素,video和audio元素
+			3.对本地数据持久化(离线存储)有了更好的支持
+			4.新增了画布 canvas元素
+			5.新增 web应用的API(应用 编程 接口)
+		-->
+		<h2>新增的标签:</h2>
+		<!--mark 用于标记-->
+		<p>该定<mark>外卖</mark>啦</p>
+		
+		<!--meter 用于表示使用量-->
+		<!--
+			min: 设置最小值 默认为0  
+			max: 设置最大值 默认为1
+			value: 当前值   默认为0
+			low: 设置一个最低预警值,   当low大于(max-min)/2时,val值大于high才会有红色报警值
+			high: 设置一个最高预警值
+		当浏览器不支持该标签时,会显示写在标签中的内容;为了防止浏览器不支持,可在标签间写上value值
+		-->
+		内存使用量: <meter min="0" max="100" value="82" low="51" high="80">70</meter><br />
+		
+		<!--progress 进度条 如: 下载进度 播放进度等-->
+		<!--不支持min最小值设置 默认为0
+			max:  设置最大值
+			value: 设置当前进度值
+		-->
+		下载进度: <progress max="100" value="80"></progress><br />
+		
+		<!--ruby 用于起注释
+			rt  写注释的内容
+			rp: 当浏览器不支持时,会显示rp中的内容
+		-->
+		<ruby>
+			邵<rt>shao</rt>
+			<rp>当浏览器不支持时,会显示rp中的内容</rp>
+		</ruby><br />
+		ueshfedhsfdjihsfdisfjdhhdstufdhushgfouhdgiuhfuhbgjifhjgfs
+		
+		<!--wbr 单词内换行-->
+		<!--wbr 比对br更有语气性,适用于  若单词过长,或担心浏览器会在错误的位置换行,那么可以用wbr添加换行时机,对SEO有帮助-->
+		it's a <wbr>beautiful</wbr> day
+		
+		<!--time 用于标记时间-->
+		<!--告诉浏览器其中表示的是时间,具体时间由datetime设置-->
+		快到<time datetime="2018年1月24日">腊八了</time>
+		
+		<!--figure  标记独立内容区域,一般用于给图片等加注释    注释的内容加在figcaption中-->
+		<figure>
+			<img src="img/111.png"/>
+			<figcaption>箭头</figcaption>
+		</figure>
+		<!--details 表示折叠信息 自带折叠效果-->
+		<!--summary 是details的标题
+			其中的折叠内容可自定义
+		-->
+		<details>
+			<summary>电脑的配置</summary>
+			<p>hejshg</p>
+			<p>hgfouidh</p>
+		</details>
+		
+		<!--audio 音频元素-->
+		<!--支持播放音频文件,目前只支持 .mp3,.ogg,.wav这3种格式的音频-->
+		<!--autoplay 设置音频或视频自动播放
+			controls 设置音频或视频显示控制条
+			loop     设置音频或视频是否循环播放
+			muted    设置音频或视频是否静音
+			volume   设置音频或视频的音量
+			preload 预加载:(不能和autoplay 同时用) 
+			 none  页面显示后不加载
+			 metadata 只加载音频源文件 不播放
+			 auto: 默认值 当页面加载时就加载该音频资源
+		-->
+		<!--简单用法: -->
+		<audio src="img/Bruno Mars - Just The Way You Are.mp3" autoplay controls loop muted></audio>
+		<!--完整用法: 为支持不同浏览器支持的音频格式不同,可通过source设置不同格式的资源路径-->
+		<audio>
+			<source scr="img/Bruno Mars - Just The Way You Are.mp3" type="audio/mp3"></source>
+			<source scr="img/Bruno Mars - Just The Way You Are.mp3" type="audio/ogg"></source>
+			<source scr="img/Bruno Mars - Just The Way You Are.mp3" type="audio/wav"></source>
+		</audio>
+		
+		<!--video 视频元素-->
+		<!--支持播放视频 目前只支持 .mp4,.ogg,.webm-->
+		<!--
+			width/height: 设置视频的播放界面的尺寸宽高
+			poster: 设置视频播放之前的占位图
+			autoplay
+			.....还有很多属性和audio是一样的
+		-->
+		<video width="320" height="240" poster="img/dog3.jpeg" controls>
+			<source src="img/201602_0201.mp4" type="video/mp4"></source>
+			<source src="myvideo.ogv" type="video/ogg"></source>
+			<source src="myvideo.webm" type="video/webm"></source>
+			<!--兼容不支持video的浏览器: 使用flash方式播放-->
+			<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+				<param name="movie" value="myvideo.swf" />
+				<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+			</object>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+	<!--语义化的发展:
+		语义化: 根据网页具体的情景选择合适的标签
+		让页面的内容结构化,便于浏览器和搜索引擎解析;有助于SEO;
+		便于阅读代码的结构
+	-->
+	<!--H5中新增的语义化的结构标签
+		header 头部
+		section 表示一个区域
+		article 表示内容相对独立的区域
+		aside   表示侧边栏
+		nav     表示导航区域
+		hgroup  表示标题的分组
+		footer  表示底部
+	-->
+		<header></header>
+		<section></section>
+		<article></article>
+		<aside></aside>
+		<nav></nav>
+		<hgroup></hgroup>
+		<footer></footer>
+	</body>
+</html> 

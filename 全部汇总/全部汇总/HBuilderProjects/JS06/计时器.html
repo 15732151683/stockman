@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>timer计时器</title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				height: 300px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="start">开启计时器</button>
+		<button id="stop">关闭计时器</button>
+		<div id="d1"></div>
+		
+		<script type="text/javascript">
+			/*计时器是js中BOM中提供的window对象的方法(属于window的属性或方法,window一般可省);			 
+			 *js中提供2种计时器: 
+			 * setInterval()  间隔计时器
+			 * setTimeout()  延迟计时器
+			 * */
+			/*setInterval(func, time)
+			 每间隔time毫秒重复执行参数1func对应的功能代码*/
+			var div = document.getElementById("d1");
+			var timer;//存储计时器
+			document.getElementById("start").onclick = function(){
+				//添加一个重复计时器
+				 timer =
+				setInterval(function(){
+				//document.write(1);//向网页中写入什么,body中原先存在所有的标签都木有了  嘤嘤嘤
+				div.style.background = changeBg(); //changeBg();  不能加"",  因为在js中  只要加了""的群是字符串,这样就没有函数该有的作用了
+				}, 1000);
+				console.log(timer);
+			}
+			/*clearInterval() 清除重复计时器     重复执行
+			 *参数可以是数字或计时器的返回值
+			 * 计时器方法都有一个返回值,返回值是数值(表示是当前页面的第几个计时器),并且页面每添加一个计时器,该返回值会递增1,清除第几个计时器,就根据对应的数值,清除对应的计时器
+			 * */
+			document.getElementById("stop").onclick = function (){
+				clearInterval(timer);
+			}
+			//定义一个函数实现随机色
+			function changeBg(){
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				//函数中使用return返回值
+				return "rgb("+r+","+g+","+b+")";
+			}
+			
+			/*setTimeout(func, time)
+			 *延迟time毫秒在执行func对应的功能,!!!只执行1次!!!
+			 * 
+			 * */
+			var a = setTimeout(function(){
+				div.style.width = "400px";
+			}, 1000);
+			console.log(a);
+			/*clearTimeout()清除延迟计时器*/
+			//clearTimeout(a);
+		</script>
+	</body>
+</html>

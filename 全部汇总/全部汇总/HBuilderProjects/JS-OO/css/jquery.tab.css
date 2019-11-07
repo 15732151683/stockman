@@ -1,0 +1,33 @@
+.tab-container{
+	width: 600px;
+	height: 430px;
+}
+.tab-nav{
+	height: 30px;
+	background: goldenrod;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.tab-item{
+	flex-grow: 1;
+	text-decoration: none;
+	color: gray;
+	text-align: center;
+}
+.tab-con{
+	height: 400px;	
+	overflow: hidden;
+}
+.tab-page{
+	/*float: left;*/
+	text-align: center;
+	height: 100%;
+	display: none;
+}
+.tab-con .tab-page:nth-child(1){
+	display: block;
+}
+.tab-page.cur{
+	display: block;
+}

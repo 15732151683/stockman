@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DOM</title>
+		<style type="text/css">
+			#d3{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			#d4{
+				width: 300px;
+				height: 100px;
+				border: 3px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<!--DOM: 文档对象模型  document object model
+			HTML DOM: 提供了所有HTML元素的对象和属性,以及访问元素的方法.允许我们增删改查HTML元素
+			DOM其实就是一个文档结构,当浏览器加载完毕DOM结构后,会将文档结构解析成树形结构.
+			DOM中的所有事物都是节点.节点在DOM中按不同的类型可分为:
+				声明节点
+				文档节点
+				注释节点
+				元素节点
+				文本节点:   换行算是一个文本节点
+				属性节点
+				........		
+		-->
+		<!--按关系分: 
+			父节点
+			子节点
+			兄弟节点
+		-->
+		<!--注释-->
+		<p>上面的p</p>
+		<div id="d1">
+			<!--段落-->
+			<p class="p1">如果风知道,风说海啸来了</p>
+			<p class="p1">海啸说,沙滩上有各种各种各种鱼了,我的大闸蟹</p>
+		</div>
+		<p>下面的p</p>
+		<!--aa = "1"  为自定义属性-->
+		<div id="d2" aa = "1">
+			<div class="p2">大闸蟹大闸蟹大闸蟹大闸蟹</div>
+			<input type="text" name="" id="" value="" />
+		</div>
+		<div id="d3"></div>
+		<div id="d4">
+			<button id="btn">复制</button>
+		</div>
+		<!--特殊节点:-->
+		<script type="text/javascript">
+			//文档节点   document
+			console.log(document);
+			//html节点(根节点)
+			console.log(document.documentElement);
+			//body节点
+			console.log(document.body);
+			//head节点
+			console.log(document.head);
+			//title节点
+			console.log(document.title)
+			//声明节点
+			console.log(document.doctype);
+			
+			//获取节点元素
+			/*document.getElementById("d1");
+			 * .getElementsByTagName('')[];
+			 * 
+			 * 以下适配IE8+及以上
+			 * .getElementsByClassName('')[];
+			 * document.querySelector(); 按标签的顺序获取对应选择器匹配到的第一个元素,  不管嵌套关系的  只能document调用
+			 * document.querySelectorAll();   获取对应选择器匹配到的所有元素 返回的是数组  只能document调用
+			*/
+			var d1 = document.querySelector('#d1');
+			var firstP = document.querySelector('.p1');
+			firstP.style.color = 'cyan';
+			document.querySelector('#d1>p').style.background = 'gold';
+			document.querySelector('#d1 p')
+			var allP = document.querySelectorAll('#d1>p');
+			console.log(allP);
+			
+			//根据关系获取
+			//childNodes  获取子节点
+			console.log(d1.childNodes);
+			//children 获取子元素节点
+			console.log(d1.children);
+			
+			//parentNode  获取父节点
+			console.log(d1.parentNode);
+			//parentElement 获取父元素节点
+			console.log(d1.parentNode);
+			
+			//获取上一个兄弟节点  .previousSibling
+			console.log(d1.previousSibling)
+			///获取上一个兄弟元素节点   .previousElementSibling     IE9+ 
+			console.log(d1.previousElementSibling);
+			
+			//获取下一个兄弟节点
+			d1.nextSibling
+			//获取下一个兄弟元素节点    IE9+	
+			d1.nextElementSibling
+			
+			//获取第一个子节点firstChild  
+			d1.firstChild;
+			//获取第一个子元素节点firstElementChild    IE9+  
+			d1.firstElementChild;
+			//获取最后一个子节点lastChild
+			d1.lastChild;
+			//获取最后一个子元素节点firstChildlastElementChild
+			d1.lastElementChild;
+			
+			//内容的操作: 
+			/*获取修改或设置元素中的所有内容  从开始标签,到结束标签  包括文本节点,属性节点,注释节点,等等, 当元素隐藏(display: none;/opacity: 0;)时,依然可以获取  总体功能是替换
+			 
+			 * innerText 获取或者设置元素中的文本节点
+			 * 使用innerText有兼容问题,低版本的火狐不支持使用innerText,而是使用innerContent
+			 * innerContent 获取或者设置元素中的文本节点
+			 * */
+			console.log(d1.innerHTML);
+			console.log(d1.innerText);
+			console.log(d1.textContent);
+			
+			/*兼容方法  获取元素中的文本
+			 
+			 * 参数: ele 元素节点对象
+			 * return文本
+			 * */
+			function getText(ele) {
+				//说明支持使用innerText 取不到就为空 
+				if(ele.innerText){
+					//IE8-  以及除了FF低版本以外的浏览器
+					return ele.innerText;
+				}else{
+					//支持IE8+ 以及FF低版本
+					return ele.textContent;
+				}
+			}
+			console.log(getText(d1));
+			
+			//属性的操作:
+			/*自带属性: 系统自带的属性
+			 *自定义属性: 开发者根据需要自己添加的属性
+			 * */
+			var div2 = document.querySelector("#d2");
+			//js通过style操作元素的行间样式
+			var input1 = document.querySelector("#d2>input");
+			/*setAttribute(attr, value)
+			 *设置元素的属性
+			 * 支持设置元素的自带属性和自定义属性
+			 * */
+			input1.setAttribute('placeholder', '请输入今天龙猫的心情O(∩_∩)O~');
+			input1.setAttribute('bb', '1');
+			
+			/*.removeAttribute('attr')
+			 *删除元素的某一个属性*/
+			input1.removeAttribute('placeholder');
+			input1.removeAttribute('bb');
+			
+			/*.getAttribute(attr)
+			 *获取元素的某个属性*/
+			//对象调对象的方法
+			console.log(d2.getAttribute('id'));
+			//对象调对象的属性
+			console.log(d2.id);
+			//点.语法  操作元素的类名属性时,使用className
+			d2.classname;
+			d2.className = 'test1';
+			//调方法  .get/setAttribute获取类名属性时,在标准浏览器下使用class,在低版本IE下才使用className
+			/*设置属性*/
+			d2.getAttribute('class');
+			d2.setAttribute('class', 'wrap');
+			
+			//上述的方法操作的都是元素的行间属性
+			/*在js中操作元素的属性: 
+			 *点 .语法(对象的属性和方法)
+			 *[]
+			 * 1.   点语法和[]只能获取元素通过点.和[]设置的属性,不能获取写在行间的自定义属性,但是可以获取元素自带的行间属性(style id type class ....)
+			 * 2.class操作类名属性时, .和[]获取的话,必须使用.className 或 ['1className']
+			 * 3.  .和[] 的区别: 
+			 *   .后面只能是属性名;  而[]中可以是属性名,也可以是变量名
+			 * 4. 通过.和[]设置的属性不会在行间显示,也就不能通过getAttribute()来获取*/
+			d2.style.background = 'gold';
+			d2.className = "test2";
+			input1.value = 'coco';
+			//.和[]获取不到行间的自定义属性
+			console.log(d2.aa);
+			//js添加自定义属性
+			d2.index = 1;
+			console.log(d2.index);
+			
+			d2['style']['color'] = 'red';
+			d2['className'] = "test2";
+			input1['value'] = 'coco';
+			
+			//css样式的操作:
+			var d3 = document.querySelector("#d3");
+			/*js操作元素的style属性来设置元素的css样式*/
+			//style操作的是元素的行间样式
+			console.log(d3.style.width);       //取不到
+			d3.style.border = '5px solid';
+			//style只能获取行间样式,拿不到内部样式,外部样式
+			console.log(d3.style); 
+			/*若要获取元素所有的css样式属性
+			 * currentStyle   仅支持IE
+			 * getComputedStyle  支持IE以及其他的浏览器
+			 * */
+			console.log(d3.currentStyle);
+			console.log(getComputedStyle(d3));
+			
+			/*getComputedStyle(元素对象, 伪类选择器)
+			 *参数2,默认可不给定,若给伪类选择器,则是获取对应伪类选择器中的css样式*/
+			getComputedStyle(d3,":before");
+			//获取div的所有样式中的width属性
+			console.log(getComputedStyle(d3, null).width);
+			console.log(getComputedStyle(d3,null)['width']);
+			
+			/*兼容版的获取元素样式的方法
+			 *ele 元素对象
+			 *attr css属性
+			 * */
+			function getCss(ele,attr){
+				return ele.currentStyle ? ele.currentStyle[attr]:getComputedStyle(ele, null)[attr];
+			}
+			console.log(getCss(d3, "height"));
+			
+			//节点的操作: 
+			//createElement 创建元素节点
+			var h = document.createElement('h1');
+			h.innerHTML = '如此美丽,如此暴躁';
+			//A.appendChild(B);  添加子节点   向元素A的内部的最后中添加子节点B
+			document.body.appendChild(h);
+			var p = document.createElement('p');
+			//创建文本节点 
+			var txt = document.createTextNode('地球今天好开森,开森到涕泗横流');
+			p.appendChild(txt);
+			//A.insertBefore(B,C)  将节点B插入到节点C的前面 C需要是A的子元素(父元素中插入子节点)
+			document.body.insertBefore(p,h);
+			
+			//替换节点
+			var img = document.createElement('img');
+			 img.src = "img/WechatIMG135.jpeg";
+			 img.width = '300';
+			 
+			//将body中的h1替换成图片
+			document.body.replaceChild(img, h);
+			
+			//删除子节点A.removeChild(B)  将节点A中的子节点B删除
+			document.body.removeChild(d3);
+			
+			/*cloneNode()  复制节点
+			 *参数是布尔类型:  默认值false
+			 * true表示深复制: 连同节点及其中的内容都会被复制
+			 * false表示浅复制:  只能复制节点自身*/
+			
+			//cloneNode();
+			
+			var d4 = document.querySelector("#d4");
+			document.querySelector("#btn").onclick  = function(){
+				var n = d4.cloneNode(true);
+				document.body.appendChild(n);
+			}
+			/*注: cloneNode() 不会复制在js中添加到DOM元素上的属性,比如: 事件属性
+			 *
+			 */
+		</script>
+	</body>
+</html>

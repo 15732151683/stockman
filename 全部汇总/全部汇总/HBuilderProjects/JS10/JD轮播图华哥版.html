@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>JD轮播图</title>
+		<style type="text/css">
+			body{
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.wrap{
+				position: relative;
+				width: 500px;
+				height: 400px;
+				margin: 0 auto;
+			}
+			.con{
+				position: relative;
+				width: 500px;
+				height: 400px;
+			}
+			.con img{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+				opacity: 0; 
+				transition: opacity 1s; 
+			}
+			.con .show{
+				opacity: 1;
+			}
+			.btn{
+				position: absolute;
+				top: 50%;
+				margin-top: -20px;
+				width: 30px;
+				height: 40px;
+				background: rgba(0,0,0,0.4);
+				color: white;
+				text-align: center;
+				line-height: 40px;
+				cursor: pointer;
+			}
+			#next{
+				position:absolute;
+				right: 0;
+			}
+			#pre{
+				position:absolute;
+				left: 0;
+			}
+			.pagnation{
+				position: absolute;
+				bottom: 20px;
+				left: 50%;
+				margin-left: -75px;
+				width: 150px;
+				height: 30px;
+			}
+			.pagnation span{
+				float: left;
+				margin: 5px;
+				width: 20px;
+				height: 20px;
+				color: white;
+				line-height: 20px;
+				border-radius: 50%;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="con">
+				<img class="show" src="img/j1.jpg" alt="" />
+				<img src="img/j2.jpg"/>
+				<img src="img/j3.jpg"/>
+				<img src="img/j4.jpg"/>
+				<img src="img/j5.jpg"/>
+			</div>
+			<div class="pagnation">
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+			</div>
+			<div id="pre" class="btn"></div>
+			<div class="btn" id="next"></div>
+		</div>
+		<script type="text/javascript">
+			var imgs = document.getElementsByClassName('con')[0].getElementsByTagName("img");
+			
+			//autoplay
+			var timer = setInterval(autoplay, 2000);
+			function autoplay(){
+				//自动切换图
+				play();
+				//自动切换分页器
+				switchDot();
+			}
+			/**/
+			var index = 0;
+			var t;
+			
+			function play(){
+//				var opa = 100;
+//				clearInterval(t);
+//				t = setInterval(function(){
+//					opa += 0.1;
+//					if(opa  >= 1){
+//						clearInterval(t);
+//					}
+//					
+//					imgs[index].style.opacity = opa;
+//				}, 100);
+
+				imgs[index].style.opacity = 0;
+				index++;
+				if(index == 5){
+					index = 0;
+				}
+				imgs[index].style.opacity = 1;
+			}
+			function switchDot(){
+				for(var i = 0; i < spans.length; i++){
+					spans[i].style.background = 'gray';
+				}
+				spans[index].style.background = 'red';
+			}
+			document.getElementById("next").onclick = function(){
+				switchDot();
+				imgs[index].style.opacity = 0;
+				index++;
+				if(index == 5){
+					index = 0;
+				}
+				imgs[index].style.opacity = 1;
+			}
+			document.getElementById("pre").onclick = function(){
+				switchDot();
+				imgs[index].style.opacity = 0;
+				index--;
+				if(index == -1){
+					index = 4;
+				}
+				imgs[index].style.opacity = 1;
+			}
+			var wrap = document.getElementsByClassName('wrap')[0];
+			wrap.onmouseover = function(){
+				clearInterval(timer);
+			}
+			wrap.onmouseout = function(){
+				timer = setInterval(autoplay, 2000);
+			}
+			var spans = document.getElementsByClassName('pagnation')[0].getElementsByTagName('span');
+			for(var i = 0; i < spans.length; i++){
+				spans[i].onmouseover = function(){
+					for(var j = 0; j < spans.length; j++){
+						if(spans[j] == this){
+							index = j;
+							break;
+						}
+					}
+				
+				for(var m = 0; m < imgs.length; m++){
+					imgs[m].style.opacity = "0";
+					spans[m].style.background = 'gray';
+				}
+				imgs[index].style.opacity = "1";
+				spans[index].style.background = 'red'
+				}
+			}
+		</script>
+	</body>
+</html>

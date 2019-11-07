@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>history</title>
+	</head>
+	<body>
+		<h1>页面A</h1>
+		<a href="B.html">跳转到B页面</a>
+		<button>前进一页</button>
+		<button id="go">前进到页面C</button>
+	</body>
+	<script type="text/javascript">
+		//history  记录历史信息 在同一窗口下发生了页面之间的跳转切换才会产生历史记录.
+		console.log(history);
+		//length 存储历史记录的数量
+		/*forward() 前进一页    go(1)
+		 *back()    后退一页		go(-1)
+		 *go(n)      切换到指定历史界面
+		 *n>0 表示前进到n页
+		 *n<0  表示后退到n页*/
+		document.querySelector("button").onclick = function (){
+			history.forward();
+		}
+		document.getElementById("go").onclick = function (){
+			history.go(2);
+		}
+	</script>
+</html>

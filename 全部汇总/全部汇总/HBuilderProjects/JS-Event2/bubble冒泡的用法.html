@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>冒泡的用法好处</title>
+		<style type="text/css">
+			ul{
+				list-style:none;
+				padding: 0;
+			}
+			ul li{
+				padding: 10px 30px;
+				background: gray;
+			}
+			ul li a{
+				float: right;
+				color: red;
+			}
+			#box{
+				position: fixed;
+				width: 200px;
+				left: -200px;
+				bottom: 100px;
+				height: 100px;
+				background: gold;
+			}
+			#btn{
+				position: absolute;
+				top: 20px;
+				right: -30px;
+				width: 30px;
+				height: 60px;
+				background: black;
+				color: green;
+				line-height: 1.5;
+				text-align: center;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<ul>
+			<li>第1项<a href="">删除</a></li>
+			<li>第2项<a href="">删除</a></li>
+			<li>第3项<a href="">删除</a></li>
+			<li>第4项<a href="">删除</a></li>
+			<li>第5项<a href="">删除</a></li>
+			<li>第6项<a href="">删除</a></li>
+		</ul>
+		<hr />
+		<div id="box">
+			<div id="btn">分享</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		var box = document.getElementById("box");
+		box.onmouseover= function(){
+			box.style.left = 0 + 'px';
+		}
+		btn.onmouseout = function(){
+			box.style.left = -200 + 'px';
+		}
+	</script>
+	<script type="text/javascript">
+		var ul = document.querySelector("ul");
+		//利用冒泡,将事件交由父级元素处理
+		ul.onmouseover = function(e){ //onmouseover 会有bug,秒删除 可改成onclick 但是所点击的a链接会有默认行为 preventDefault 或者Javascript:void(0); 
+			//获取一下window的事件对象event
+			var eve = event || e;
+			//判断目标源对象
+			var tar = eve.target ? eve.target : eve.srcElement;
+			//nodeName 节点名称(元素节点的nodeName是对应标签名的大写形式)
+			//alert(tar.nodeName);
+			if(tar.nodeName == 'LI'){
+				tar.style.background = 'gold';
+			}else if(tar.nodeName == 'A'){
+				ul.removeChild(tar.parentElement);
+			}
+		}
+		ul.onmouseout = function (e){
+			var eve = event || e;
+			//获取目标源对象
+			var tar = eve.target ? eve.target : eve.srcElement;
+			//nodeName 节点名称(元素节点的nodeName是对应标签名的大写形式)
+			if(tar.nodeName == 'LI'){
+				tar.style.background = 'gray';
+			}
+		}
+	</script>
+</html>

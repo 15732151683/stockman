@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<title>homework登录界面</title>
+		<style type="text/css">
+			body{
+				padding: 50px 0;
+			}
+			.left-table{
+				background-color: #F4F5F4;
+				border: 1px solid #DCDDDC;
+				padding-bottom: 20px;
+			}
+			h3{
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 1.1;
+				padding: 5px;
+				border-bottom: 1px solid #DCDDDC;
+			}
+			.user{
+				padding: 9px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				border: 1px solid #DCDDDC;
+			}
+			.point{
+				color: red;
+			}
+			li{
+				line-height: 2;
+			}
+			.left{
+				border-right: 1px solid #DCDDDC;
+			}
+			.input-group{
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-6 left">
+				<div class="col-md-10 left-table">
+					<form class="form-inline">
+						<div class="col-md-12"><h3>用户登录</h3></div>
+						
+					  <div class="form-group">
+					    <div class="input-group col-md-12 col-sm-12 col-xs-12">
+					      <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+					      <input type="text" class="form-control" id="exampleInputAmount" placeholder="用户名">
+					    </div>
+					    <div class="input-group col-md-12 col-sm-12 col-xs-12">
+					      <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+					      <input type="text" class="form-control" id="exampleInputAmount" placeholder="密码">
+					    </div>
+					  </div>
+					  <div class="col-md-12 user text-center">
+						<label class="radio-inline">
+						  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">老师
+						</label>
+						<label class="radio-inline">
+						  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">学生
+						</label>
+					  </div>
+						<br />
+			<!--???????????????????????-->
+					  <button type="submit" class="btn btn-success btn-block">登录</button>
+					</form>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<div class="col-md-6 wel">
+				<div class="col-md-12">
+					<h3>欢迎使用学生作业管理系统</h3>
+				</div>
+				<div class="col-md-12">
+					<ul>
+						<li>学生使用<span class="point">学号</span>登录，初始密码为<span class="point">6个1</span>，登录后请及时修改密码</li>
+						<li>老师使用<span class="point">工号</span>登录，初始密码为<span class="point">6个0</span>，登录后请及时修改密码</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

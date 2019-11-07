@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.nav{
+				display: flex;
+				justify-content: space-around;
+				list-style: none;
+				height: 30px;
+				line-height: 30px;
+			}
+			li{
+				flex-grow: 1;
+				text-align: center;
+				border-bottom-width: 0;
+			}
+			a{
+				color: black;
+				text-decoration: none;
+			}
+			#line{
+				width: 20%;
+				height: 5px;
+				position: absolute;
+				left: 0;
+				top: 25px;
+				background: red;
+				transition : left 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="nav">
+			<li><a href="">导航1</a></li>
+			<li><a href="">导航2</a></li>
+			<li><a href="">导航3</a></li>
+			<li><a href="">导航4</a></li>
+			<li><a href="">导航5</a></li>
+			<div id="line"></div>
+		</ul>
+		
+		<script type="text/javascript">
+			var lis = document.getElementsByClassName('nav')[0].getElementsByTagName('li');
+			for(var i = 0; i < lis.length; i++){             //遍历 获取到每一个li
+				lis[i].index = i;			                //获取li的下标, 因为等会要用它来计算距离
+				lis[i].onmouseover = function(){             //具体的每一个li
+					document.getElementById("line").style.left = this.index*20+"%";    //在onmouseover这个li时,就是这个li的下标    this
+				}
+			}
+		</script>
+	</body>
+</html>

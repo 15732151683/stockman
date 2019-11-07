@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>反正scoreController 不会写

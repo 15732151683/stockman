@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#top>li{
+				width: 93px;
+				height: 50px;
+				border: 1px solid;
+				text-align: center;
+				line-height: 50px;
+			}
+			#top{
+				display: flex;
+				justify-content: space-between;
+			}
+			.con{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				height: 510px;
+				overflow: auto;
+			}
+			.wrap{
+				width: 585px;
+				margin-right: 50px;
+				border: 1px solid;
+				float: left;
+			}
+			.con>li.spotlight{
+				box-shadow: 0 0 10px mediumpurple;
+			}
+			.con>li{
+				width: 180px;
+				height: 280px;
+				border: 1px solid lightgray;
+				margin-top: 5px;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			.right{
+				width: 358px;
+				height: 508px;
+				margin-left: 50px;
+				margin-top: 55px;
+				border: 1px solid;
+				float: left;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.pics{
+				position: relative;
+				width: 100%;
+				height: 70%;
+				border: 1px solid red;
+			}
+			.pics>img{
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			input{
+				padding-left: 10px;
+				width: 180px;
+				height: 30px;
+				margin: 5px;
+				outline: none;
+				color: red;
+				border: 1px solid black;
+			}
+			#submit{
+				width: 100px;
+				height: 40px;
+				color: white;
+				background: orange;
+				border-radius: 5px;
+				text-align: center;
+				line-height: 40px;
+				margin-top: 10px;
+				margin-left: 45px;
+				cursor: pointer;
+			}
+			.edit{
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="wrap">
+			<ul id="top">
+				<li style="border: none;">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<ul class="con">
+				<li class="spotlight"><img src="img/1.png"/></li>
+				<li><img src="img/2.png"/></li>
+				<li><img src="img/3.png"/></li>
+				<li><img src="img/4.png"/></li>
+				<li><img src="img/5.png"/></li>
+				<li><img src="img/6.png"/></li>
+			</ul>
+		</section>
+		<section class="edit">
+			<p>单击可编辑文本内容:</p>
+			<input type="text" name="" id="" value="" /><br />
+			<input type="text" name="" id="" value="" /><br />
+			<input type="text" name="" id="" value="" /><br />
+			<div id="submit">保存编辑</div>
+		</section>
+		<section class="right">大图展示
+			<div class="pics">
+				<img src="img/1.png" style="display: block;"/>
+				<img src="img/2.png"/>
+				<img src="img/3.png"/>
+				<img src="img/4.png"/>
+				<img src="img/5.png"/>
+				<img src="img/6.png"/>
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript">
+		var topDivs = document.getElementById("top").getElementsByTagName('li');
+		var conDivs = document.getElementsByClassName('con')[0].getElementsByTagName('li');
+		var imags = document.getElementsByClassName('pics')[0].getElementsByTagName('img');
+		for (var i = 0; i < topDivs.length; i++) {
+			topDivs[i].index = i;
+			topDivs[i].onclick = function(){
+				for (var j = 0; j < topDivs.length; j++) {
+					topDivs[j].style.border = '1px solid'
+				}
+				this.style.border = 'none';
+				for (var m = 0; m < topDivs.length; m++) {
+					conDivs[m].className = '';
+				}
+				conDivs[this.index].className = 'spotlight';
+			}
+		}
+		for(var k = 0; k < conDivs.length; k++){
+			conDivs[k].mark = k;
+			conDivs[k].onclick = function (){
+				for (var i = 0; i < imags.length; i++) {
+					imags[i].style.display = 'none';
+				}
+				imags[this.mark].style.display = 'block';
+			}
+		}
+
+	</script>
+</html>

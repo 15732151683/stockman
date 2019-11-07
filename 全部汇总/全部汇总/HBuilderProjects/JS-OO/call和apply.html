@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>调用函数的2种方式 call 和 apply</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function sum(a,b){
+				console.log(this);
+				return a+b;
+				
+			}
+			//调用函数: 
+			//方式1:  函数名();
+			sum(8,0);
+			//方式2: call(设置this的指向,实参1,实参2,.......)
+			var res = sum.call(document, 8, 0);
+			console.log(res);
+			//方式3: apply(设置this的指向,实参数组))  如果不想更改this的指向就设为null
+			sum.apply(null, [3,6]);
+			
+		</script>
+	</body>
+</html>

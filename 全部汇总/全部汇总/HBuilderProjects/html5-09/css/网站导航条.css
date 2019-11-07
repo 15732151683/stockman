@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a,a:hover{
+	text-decoration: none;
+	color: white;
+}
+body{
+	width: 100%;
+	height: 100%;
+}
+.navbar{
+	height: 100%;
+	width: 100%;
+	background: url(../img/bg.jpg) no-repeat;
+	background-size: cover;
+	padding-top: 62px;
+	padding-bottom: 62px; 
+}
+h1{
+	color: white;
+}
+.btn-default{
+	padding: 7px 14px;
+	border: 1px solid #f4645f;
+	background: #f4645f;
+	color: white;
+}
+.btn-default:hover{
+	border: 1px solid #303030;
+	background-color: #303030;
+	color: white;
+}
+.bttn{
+	position: relative;
+	bottom: -40px;
+	border: 1px solid #f1362f;
+	background-color: transparent;
+}
+@media only screen and (max-width: 760px) {
+	.bttn{
+		width: 60%;
+		margin-top: 20px;
+		margin-left: 0;
+		margin-right:0;
+	}
+}

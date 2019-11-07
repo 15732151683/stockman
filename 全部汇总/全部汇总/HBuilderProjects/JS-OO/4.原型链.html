@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>原型链</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = new String("less is more");//这是一个对象  如果简写方式的话就是字符串
+			str.index = "我是str";   //自身
+			String.prototype.index = "我是string";  //prototype
+			Object.prototype.index = "我是Object";  //prototype的prototype
+			
+			console.log(str.length);
+			/*对象在调用某个属性或方法时,会首先遍历自身的属性或方法,如果没有则会继续查找prototype引用的对象,若查找到则调用原型中的方法,若没有,则继续查找prototype的prototype(就是上一级的原型),以此类推,如果都没有,则是在调用一个未定义的属性或方法.就会报错  ... is not a function /undefined*/
+			console.log(str.index);
+		</script>
+		
+	</body>
+</html>

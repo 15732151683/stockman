@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则案例进行数据验证以及密码等级判断</title>
+		<style type="text/css">
+			html{
+				/*100% 是根据父级或者祖先的所以要注意继承的问题*/
+				height: 100%;
+			}
+			body{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: deepskyblue;
+				/*有了高度以后 才能到视觉想要到的中间或别的位置*/
+				height: 100%;
+				background: whitesmoke;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.reg li{
+				/*li标签的line-height就是li的高度*/
+				line-height: 1.5;
+				/*能让li中的行内元素居中*/
+				text-align: center;
+				margin: 10px;
+			}
+			.reg li label{
+				/*label是行内元素 也不能做到字都对齐*/
+				display: block;
+				text-align: left;
+				font-size: 14px;
+			}
+			.reg li input{
+				outline: none;
+				width: 200px;
+				height: 20px;
+			}
+			.user,.pwd,.confirm{
+				border: 1px solid white;
+				padding: 5px 10px;
+			}
+			.level span{
+				display: inline-block;
+				width: 50px;
+				height: 20px;
+				font-size: 12px;
+				color: white;
+				background: gray;
+			}
+			#register{
+				cursor:pointer;
+				height: 30px;
+				text-align: center;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="reg">
+			<!--直接打文字不能对齐,放到label里面设置样式  注意autofocus 以及 required-->
+			<li><label>用户名:</label><input class="user" type="text" placeholder="6~16字母,数字,下划线组成" autofocus required/></li>
+			<li><label>密码:</label><input type="password" class="pwd" placeholder="6~16字母,数字组成" required/></li>
+			<li><label>确认密码:</label><input type="password" class="confirm" required/></li>
+			<li class="level">
+				<span>弱</span>
+				<span>中</span>
+				<span>强</span>
+			</li>
+			<li><input type="text" id="register" value="注册" /></li>
+		</ul>
+		<script type="text/javascript">
+			var userInput = document.getElementsByClassName("user")[0];
+			var pwdInput = document.getElementsByClassName("pwd")[0];
+			var confirmInput = document.getElementsByClassName("confirm")[0];
+			var levels = document.getElementsByClassName("level")[0].getElementsByTagName("span");
+			var regBtn =document.getElementById("register");
+			
+			var flag1,flag2,flag3;//用户名  密码  验证密码所有的都符合才能登陆
+			userInput.oninput = function(){//表单事件触发oninput的时候将就直接能够获取Input的value值了,不用等到submit提交
+				//验证用户名是否满足条件  6-16位字母开头数字字母下划线
+				var reg1 = /^[a-zA-Z]\w{5,15}$/;
+				if(reg1.test(userInput.value)){
+					userInput.style.borderColor = "green";
+					flag1 = true;
+				}else{
+					userInput.style.borderColor = "red";
+					flag1 = false;
+				}
+			}
+			
+			pwdInput.oninput = function(){
+				//重置样式
+				for (var i = 0; i < levels.length; i++) {
+					levels[i].style.background = "gray";
+				}
+				//从A到C要确定中间的状态,可以1️⃣标记flag 2️⃣用数字0 1 2 3 4 联合switch case搭建桥梁这样的来达到目的,必须意识到逻辑上不可能同时Input和submit按钮的onclick,可以用桥梁
+				var lev = whichLevel(pwdInput.value);  //判断
+				switch (lev){                          //判断结果
+					case 1:                            //进行处理
+						flag2 = true;
+						pwdInput.style.borderColor = "green";
+						levels[0].style.background = "red";
+						break;
+					case 2:
+						flag2 = true;
+						pwdInput.style.borderColor = "green";
+						levels[1].style.background = "orange";
+						break;
+					case 3:
+						flag2 = true;
+						pwdInput.style.borderColor = "green";
+						levels[2].style.background = "green";
+						break;
+					default:
+					// 不合法
+						flag2=false;
+						pwdInput.style.borderColor = "red";
+						break;
+				}
+			}
+			//判断密码和确认密码一样
+			confirmInput.oninput = function(){
+				console.log(confirmInput.value);
+				if(confirmInput.value==pwdInput.value){
+					confirmInput.style.borderColor = "green";
+					flag3=true;
+				}else{
+					confirmInput.style.borderColor = "red";
+					flag3=false;
+				}
+			}
+			
+			//进行登录
+			regBtn.onclick = function(){
+				if(flag1&&flag2&&flag3){
+					alert("yes");
+				}else{
+					alert("no");
+				}
+			}
+			/*密码等级*/
+			//密码的设置规则:6-10字母数字
+				/*1弱: 纯数字,或纯小写或纯大写
+				 *2中: 数字和字母的组合
+				 *3强:数字,小写和大写字母的组合 
+				 * */
+			function whichLevel(pwd){
+				//验证是否符合密码的基本规则
+				var reg = /^[0-9a-zA-Z]{6,10}$/;
+				if(!reg.test(pwd)){
+					//不满足基本规则  if中如果条件判断后不进行进一步的处理了就可以写 return;
+					return;
+				}
+				var r1 = /\d+/;
+				var r2 = /[a-z]+/;
+				var r3 = /[A-Z]+/;
+				var t1 = r1.test(pwd);
+				var t2 = r2.test(pwd);
+				var t3 = r3.test(pwd);
+				//记录等级
+				if(t1||t2||t3){
+					lev = 1; //弱
+				}
+				if(t1&&t2||t1&&t3||t2&&t3){
+					lev = 2; //中
+				}
+				if(t1&&t2&&t3){
+					lev = 3;  //强
+				}
+				return lev;
+			}
+			//alert(whichLevel("1234aA56"));
+		</script>
+	</body>
+</html>

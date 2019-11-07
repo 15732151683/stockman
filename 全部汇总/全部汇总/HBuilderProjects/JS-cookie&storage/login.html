@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<style>
+	/* reset */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-size: 100%;
+			font-family: "Microsoft YaHei", Arial, sans-serif;
+			background: #f5f8fa;
+		}
+		.login-wrap {
+			width: 450px;
+			margin: 50px auto;
+			padding: 15px 20px 35px;
+			border: 1px solid #edf2f7;
+			background: white;
+			color: #969696;
+		}
+		.login-header {
+			padding-left: 80px;
+			line-height: 2;
+			font-size: 16px;
+		}
+		.login-main {
+			padding: 30px 40px 0;
+		}
+		label {
+			display: block;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 30px;
+			color: #4e4e4e;
+		}
+		.form-element {
+			margin-bottom: 20px;
+		}
+		.form-input  {
+			width: 340px;
+			padding: 12px;
+			line-height: 24px;
+			border-radius: 4px;
+			border: 1px solid #ececec;
+			outline: none;
+		}
+		.form-input:focus {
+			border-color: #41b3f9;
+		}
+		#rem_pwd {
+			margin-right: 5px;
+			vertical-align: middle;
+		}
+		#btn-login {
+			width: 366px;
+			height: 42px;
+			color: white;
+			font-size: 14px;
+			background: #41b3f9;
+			border: none;
+			border-radius: 4px;
+			outline: none;
+			cursor: pointer;
+		}
+		.get_pwd {
+			margin-bottom: 20px;
+		}
+		.get_pwd a {
+			text-decoration: none;
+			color: #41b3f9; 
+		}
+		.get_pwd .mg {
+			margin: 0 4px;
+		}
+		.registe {
+			margin-left: 5px;
+		}
+		.social-login {
+			overflow: hidden;
+		}
+		.social-login img {
+			margin: 0 10px;
+			float: left;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="login-wrap">
+		<div class="login-header">登录账号</div>
+		<div class="login-main">
+			<form action="" method="get">
+				<div class="form-element">
+					<label for="username">账号</label>
+					<input type="text" class="form-input" id="username" placeholder="邮箱/手机/用户名">
+				</div>
+				<div class="form-element">
+					<label for="pwd">密码</label>
+					<input type="password" class="form-input" id="pwd" placeholder="密码">
+				</div>
+				<div class="form-element">
+					<input type="checkbox" id="rem_pwd">记住密码
+				</div>
+				<div class="form-element">
+					<input type="submit" value="登录" id="btn-login">
+				</div>
+			</form>
+			<div class="get_pwd">
+				<a href="">找回密码</a>
+				<span class="mg">|</span>
+				<span>还没有注册账号?</span>
+				<a href="" class="registe">立即注册</a>
+			</div>
+		</div>
+	</div>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*实现自动登录或者记住密码等工能: 
+		 * 
+		 **/
+		var userInput = document.getElementById("username");
+		var pwdInput = document.getElementById("pwd");
+		var check= document.getElementById("rem_pwd");
+		document.getElementById("btn-login").onclick = function(){
+			//若输入框为空则不能登录
+			if(userInput.value.length==0){
+				alert('请输入用户名');
+				return false;
+			}
+			if (pwdInput.value.length == 0) {
+				alert('请输入密码');
+				return false;
+			}
+			//判断是否选择记住密码,若选择,则存储到cookie中
+			if(check.checked){
+				//若勾选
+				addCookie("user",userInput.value,600);
+				addCookie("pwd",pwdInput.value,600);
+			}else{
+				//若未勾选
+				deleteCookieWithKey("pwd");
+			}
+			window.location.href = "home.html";
+			//阻止默认行为
+			return false;
+		}
+		
+		//当页面再次打开时,判断cookie中是否存储过,若有则直接展示在输入框中
+		if(hasCookieWithKey("user")){
+			userInput.value = getCookieWithKey("user");
+		}
+		if(hasCookieWithKey("pwd")){
+			pwdInput.value = getCookieWithKey("pwd");
+			check.checked = true;
+		}else{
+			check.checked = false;
+		}
+	</script>
+</body>
+</html>

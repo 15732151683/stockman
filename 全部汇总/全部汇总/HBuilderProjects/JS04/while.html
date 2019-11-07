@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>while循环</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*当满足特定条件时,重复执行特定的代码块,直到条件不满足则跳出循环
+			 * 语法结构:
+			 * while(condition){}
+			 */
+			//循环变量在外面定义
+			//循环变量初始化
+			var i = 1;
+			while (i < 11){
+				document.write(i+ " ");				
+				//循环变量变化
+				i++;
+			}
+			//1亿能花几天?每天花掉一半
+			var y = 1e8;
+			var m = 0;
+			while (y >= 1){
+				y /=2;
+				//累计天数
+				m++;
+			}
+			console.log("能花"+m+"天");
+			
+			
+			/*do....while
+			 先执行一次循环语句,再判断条件是否满足,若满足则继续执行,直到条件不满足
+			do{
+				循环体
+			}while(条件)
+			*/
+			
+			var m = 0;
+			do{
+				document.write("<br>菜菜美不美");
+			}while(m > 0)
+		</script>
+	</body>
+</html>

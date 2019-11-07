@@ -1,0 +1,47 @@
+ <import src="../../../template/movie-star/movie-star"/>
+<!--pages/movies/movies-detail/movies-detail.wxml-->
+<view>
+<!--电影头部  -->
+  <view class='detail-head'>
+    <image class='det-cover' src='{{result.images.large}}'></image>
+      <view class='mov-name'>
+        <text>{{result.original_title}}</text>
+      </view>
+      <view class='mov-year'>
+         <text wx:for="{{result.countries}}">{{item}}</text> · {{result.year}}
+      </view>
+      <view class='mov-curr'>
+            <text class='mov-like'>{{result.wish_count}}</text>人喜欢
+        <text class='mov-pl'>{{result.comments_count}}</text>条评论
+      </view>
+  </view>
+  <view class='head-img'>
+    <image src='{{result.images.large}}'></image>
+  </view>
+  <!-- 电影信息 -->
+  <view class='mov-info'>
+    <view class='mov-title'>
+      <text>{{result.title}}</text>
+    </view>
+    <view class='mov-li'>
+      <view>评分<view><template is="movie-star" data="{{stars}}"></template><text>{{result.rating.average}}</text></view></view>
+      <view>导演<text wx:for="{{result.directors}}">{{item.name}}</text></view>
+      <view>影人<text>{{result.name}}</text></view>
+      <view>类型<text>{{result.genres}}</text></view>
+    </view>
+  </view>
+  <!--电影简介  -->
+  <view class='mov-info'>
+    <view><text>剧情简介</text></view>
+    <view class='mov-synopsis'><text>{{result.summary}}</text></view>
+  </view>
+  <!--影人  -->
+  <view class='mov-info'>
+    <view><text>影人</text></view>
+    <view class='mov-info-imgs'>
+      <view wx:for="{{result.casts}}" class='mov-info-img'>
+        <image src='{{item.avatars.large}}'></image>
+      </view>
+    </view>
+  </view>
+</view>

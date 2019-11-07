@@ -1,0 +1,37 @@
+<!-- <text class="title" bindtap='change'>{{title}}</text>
+<view style="width:200px;height:200px;background-color:red"></view>
+<navigator url="/pages/about/about">about</navigator>
+<navigator url="/pages/mine/mine" open-type='redirect'>mine</navigator> -->
+
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserinfo && canIUse}}" class="get-userinfo" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">Hello，{{userInfo.nickName}}</text>
+    </block>
+      
+  </view>
+  <view class="btn" data-name="lisi" data-user-id='10001' bindtap='goToNews'>
+    <text class="btn-text">开启小程序之旅</text>
+  </view>
+</view>
+<view bindtap="ces">22222</view>
+<view class="page-body">
+  <view class="page-body-wrapper">
+    <!-- <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera> -->
+    <view class="btn-area">
+      <button type="primary" bindtap="takePhoto">拍照</button>
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="startRecord">开始录像</button>
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="stopRecord">结束录像</button>
+    </view>
+    <view class="preview-tips">预览</view>
+    <image wx:if="{{src}}" mode="widthFix" src="{{src}}"></image>
+    <video wx:if="{{videoSrc}}" class="video" src="{{videoSrc}}"></video>
+  </view>
+</view>
+

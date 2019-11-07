@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>雪碧图的使用/图片没下载功能可用背景图片做</title>
+		<style type="text/css">
+			.icon-word:before{
+				content: "";
+			/* 无内容,又要设置宽高,所以 display: inline-block;*/
+				display: inline-block;
+				background: url(img/icons.png) -288px -192px;
+				width: 16px;
+				height: 16px;
+			}
+			.icon-excel{
+				margin-right: 10px;
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				background: url(img/icons.png) -312px -192px;
+			}
+			.grade{
+				width: 18px;
+				height: 11px;
+				display: inline-block;
+				margin-right: 10px;
+				background: url(img/icons.png) -889px -194px;
+			}
+			.grade1{
+				background: url(img/icons.png) -912px -194px;
+			}
+			.grade2{
+				background: url(img/icons.png) -937px -194px;
+			}
+			/*ul li:nth-child(2){
+				padding-right: 10px;
+				width: 18px;
+				height: 11px;
+				display: inline-block;
+				margin-right: 10px;
+				background: url(img/icons.png) -912px -194px;
+			}*/
+			.icon-camera{
+				display: inline-block;
+				width: 18px;
+				height: 16px;
+				background-image: url(img/camera_new.png);
+			}
+			.icon-camera:hover{
+				background-position: 0 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>精灵图(雪碧图) sprite :
+	为了减轻向后台服务器请求的压力, 如果页面中使用了很多小图标,通常可以让UI设计师(美工)把这些常用的小图标整合为一张图片, 这种图片就叫精灵图
+	使用方式:
+		通过background-image将精灵图作为背景图,结合background-position确定背景位置</p>
+		
+		<ul>
+		<!--大部分要同行显示,所以行内标签,无意义标签都可以  e.g.<i></i>,em-->
+			<li class="icon-word">word</li>
+			<li><span class="icon-excel"></span>excel</li>
+			
+		</ul>
+		<ul>
+			<li><i class="grade "></i>AAAA</li>
+			<li><i class="grade grade1"></i>BBBB</li>
+			<li><i class="grade grade2"></i>CCCC</li>
+			<!--<li>DDDDD</li>-->
+		</ul>
+		<i class="icon-camera"></i>
+	</body>
+	
+</html>

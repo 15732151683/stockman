@@ -1,0 +1,17 @@
+<!--components/movie-group/movie-group.wxml-->
+<import src="/template/movie-item/movie-item-template.wxml" />
+<view class='list-container'>
+        <view class='head'>
+            <text class='list-title'>{{movieGroup.groupTitle}}</text>
+            <view class='more' bindtap='goToMore' data-title="{{movieGroup.groupTitle}}" data-key="{{movieGroup.key}}">
+                <text class='moreText'>更多</text>
+                <image class='moreImg' src="/images/icon/arrow-right.png"></image>
+            </view>
+        </view>
+        <view class='content'>
+            <view wx:for="{{movieGroup.movies}}" class='item' wx:key="{{item.movieId}}" data-movie-id="{{item.movieId}}" bindtap='goToDetail'>
+                <template is="movie-item" data="{{...item}}" />
+            
+        </view>
+    </view>
+  </view>

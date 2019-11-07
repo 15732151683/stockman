@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS中新增的关于背景的属性</title>
+		<style type="text/css">
+			.d1{
+				/*width: 900px;*/
+				height: 500px;
+				padding: 100px;
+				/*border: 20px dashed;*/
+				/*新增的方法*/
+				/*rgba(r,g,b,a)*/
+				background-color: rgba(255,0,0,0.5);
+				/*背景图的尺寸
+				 * px固定值
+				 * %百分比形式
+				 * contain 原始宽高等比缩放,直到宽高其中之一达道边界就停止
+				 * cover   原始宽高等比缩放,覆盖整个区域
+				 */
+				background-image: url(img/depoaa.jpg);
+				/*background-size: contain;*/
+				background-size: cover;
+				background-repeat: no-repeat;
+				/*background-origin:背景图片放置的位置
+				 content-box   从内容区域开始放
+				 padding-box  从padding区域开始放  默认
+				 border-box    从边框开始放置
+				 */
+				background-origin: border-box;
+				background-origin: content-box;
+				background-origin: padding-box;
+				
+				/*backgroung-clip: 背景图片从什么地方开始剪切
+				 content-box
+				 padding-box
+				 border-box*/
+				background-clip: content-box;
+				background-clip: padding-box;
+				/*CSS3中新增了可以同时设置多张图作为背景,background-position: % 和left.right,top,bottom 都可以
+				 语法:①逗号间隔每一组
+				 	  ②放置顺序:先写的放在最上面,后写的放在最下面*/
+				background: url(img/bg-tl.png) no-repeat,
+							url(img/bg-tr.png) 100% 0 no-repeat ,
+							url(img/bg-bl.png) 0 100% no-repeat,
+							url(img/bg-br.png) 100% 100% no-repeat,
+							url(img/bg-repeat.png);
+			
+				
+			}
+			.d2{
+				width: 200px;
+				height: 200px;
+				padding: 50px;
+				border: 10px dashed;
+				background: url(img/depoaa.jpg) no-repeat;
+				background-clip: content-box;
+				/*background-clip: padding-box;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="d1">
+		</div>
+		<div class="d2"></div>
+	</body>
+</html>

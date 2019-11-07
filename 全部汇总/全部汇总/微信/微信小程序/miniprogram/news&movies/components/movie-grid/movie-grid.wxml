@@ -1,0 +1,9 @@
+<!--components/movie-grid/movie-grid.wxml-->
+<import src="/template/movie-item/movie-item-template.wxml"/>
+<view class="movie-grid">
+  <view wx:for="{{movies}}" wx:for-item="movie" wx:key="{{movie.movieId}}"
+  class="{{index%3 == 2?'movie-grid-item-active':'movie-grid-item'}}"
+  >
+    <template is="movie-item" data="{{...movie}}"/>
+  </view>
+</view>

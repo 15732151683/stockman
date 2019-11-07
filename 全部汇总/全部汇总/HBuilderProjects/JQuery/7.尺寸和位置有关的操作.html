@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 100px;
+				height: 300px;
+				background: red;
+				padding: 50px;
+				border: 5px solid;
+				margin: 0 50px;
+			}
+			body{
+				height: 5000px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<!--兼容IE678要用JQ的低版本的-->
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*位置:
+			 *offset()  获取或设置元素相对于当前视口的位置
+			 * position()  仅仅获取元素到离他最近的定位父级元素(或body))的偏移量
+			 * scrollTop()  获取垂直滚动条的滚动高度  参数可选  不给参数为获取,给参数则为设置
+			 * scrollLeft()  获取水平滚动条的滚动距离  参数可选  不给参数为获取,给参数则为设置
+			 * 
+			 * 
+			 * 尺寸:
+			 * width:        获取或设置 
+			 * innerWidth(): 获取或设置  不含border 内容部分➕padding
+			 * outerWidth(): 获取或设置  含边框border的  内容部分➕padding➕border
+			 * outerWidth(true):  加参的  Width+padding+border+margin
+			 * height:        获取或设置 
+			 * innerHeight(): 获取或设置  不含border 内容部分➕padding
+			 * outerHeight(): 获取或设置  含边框border的  内容部分➕padding➕border
+			 * outerHeight(true):  加参的  height+padding+border+margin
+			 * */
+			$(function(){
+				//各种选择器获取元素
+				//返回包含2个属性(基于当前窗口左上角的left和top值)的对象
+				//不给参数则表示获取
+				console.log($("#d1").offset());
+				console.log($("#d1").offset().left);
+				console.log($("#d1").offset().top);
+				//若给参数,则表示设置  不要带单位返回值对象里面就直接是数字ㄟ( ▔, ▔ )ㄏ
+				$("#d1").offset({left: "50",top: 100});
+				console.log($("#d1").position());
+				console.log($("#d1").position().left);
+				console.log($("#d1").position().top);
+				//前提是内容支持滚动的情况下,用于获取或修改对应滚动位置
+				console.log($(":root").scrollTop());
+				$(":root").scrollTop(1000);
+				//获取宽度
+				console.log($("#d1").width());
+				//修改宽度
+				console.log($("#d1").width(200));
+				//内容➕padding的
+				console.log($("#d1").innerWidth());
+				//内容➕padding➕border
+				console.log($("#d1").outerWidth());
+				console.log($("#d1").outerWidth(true));
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/resert.css"/>
+		<link rel="stylesheet" type="text/css" href="css/test.css"/>
+		<title>rem布局移动端网页</title>
+		<!--<style type="text/css">
+			html{
+				font-size: 20px;
+			}
+			.d1{
+				height: 5rem;
+				background: orange;
+			}
+			@media only screen and (max-width: 480px){
+				html{
+					font-size: 12px;
+				}
+				.d1{
+					background-color: green;
+				}
+			}
+		</style>-->
+	</head>
+	<body>
+		<!--rem: 相对于根元素html字体大小,字体大小,字体大小,字体大小,字体大小,当然也可以用于设置宽高,margin,关于尺寸的都可以-->
+		<!--<div class="d1"></div>-->
+		<!--移动端页面或web app的UI原型图,目前大多数是参考iphone6尺寸标准(750*1334)设计的-->
+		<!--理想状态: 
+				设计稿750*1334: 想在iphone6 375*667 的屏幕下呈现,根元素的字体大小设置为: 50 = 375/750*100
+				若设计稿宽750*1334: 想在320px的屏幕下呈现,根元素的字体大小设置为: 42.97 = 320/750*100
+				若设计稿宽750*1334: 想在414px的屏幕下呈现,根元素的字体大小设置为: 55.2 = 320/750*100
+		-->
+		<header class="header">
+			<nav class="navbar">
+				<div class="city">北京
+					<span class="arrow"></span>
+				</div>
+				<input type="text" id="search">
+				<div class="msg"></div>
+			</nav>
+		</header>
+		<div class="content">
+			<div class="lunbo">
+				<img src="img/lunbo.png"/>
+			</div>
+		</div>
+	</body>
+</html>

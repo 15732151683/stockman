@@ -1,0 +1,37 @@
+
+.media{
+	border-top: 1px solid #BEBFBE;
+	border-bottom: 1px solid #BEBFBE;
+}
+.media-left{
+	padding-right: 18px;
+}
+div.secondleft{
+	padding-right: 0;
+	padding-left: 18px;
+}
+.media:hover .media-left,.media:hover .secondleft{
+	background: #CFDB00;
+}
+.media:hover .media-body{
+	color: black;
+	}
+.media-left{
+	background: #AFB0AF;
+}
+.media-body{
+	color: #AFB0AF;
+	line-height: 2;
+	text-align: center;
+}
+.media-body>h4{
+	margin-top: 25px;
+	font-size: 30px;
+}
+.media-body>p{
+	font-size: 16px;
+}
+.mediacon{
+	padding-bottom: 48px;
+}
+

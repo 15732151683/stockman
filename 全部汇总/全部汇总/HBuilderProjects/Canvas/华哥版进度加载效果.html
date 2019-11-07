@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>进度加载效果</title>
+	</head>
+
+	<body>
+		<canvas id="load" width="350" height="350"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("load");
+			var ctx = canvas.getContext("2d");
+			var timer = setInterval(load, 50);
+			var deg = 90;
+
+			function load() {
+				//清除画布
+				ctx.clearRect(0, 0, 300, 300);
+				//绘制底层圆
+				ctx.beginPath();
+				ctx.fillStyle = "#CBCCCB";
+				ctx.arc(150, 150, 150, 0, Math.PI * 2);
+				ctx.fill();
+				ctx.save();
+				//绘制中心圆
+				ctx.beginPath();
+				ctx.fillStyle = "white";
+				ctx.arc(150, 150, 100, 0, Math.PI * 2);
+				ctx.shadowColor = "#8F908F";
+				ctx.shadowBlur = 10;
+				ctx.fill();
+				ctx.restore(); //想要画完中心圆之后已经画的大圆不要受影响,画好中心圆之后提档
+				deg += 5;
+				//绘制进度圆环
+				ctx.beginPath();
+				ctx.lineWidth = 20; //线宽是从中心向两边扩散,所以要注意
+				ctx.arc(150, 150, 110, -Math.PI / 2, -deg * Math.PI / 180, true);
+				var linear = ctx.createLinearGradient(0, 0, 300, 300);
+				linear.addColorStop(0, "#48E3FE");
+				linear.addColorStop(0.2, "#55A3FE");
+				linear.addColorStop(0.5, "#E718FE");
+				linear.addColorStop(0.7, "#6990FD");
+				linear.addColorStop(0.8, "#48E3FE");
+				ctx.strokeStyle = linear;
+				ctx.stroke();
+
+				//绘制百分比
+				ctx.beginPath();
+				var per = parseInt((deg - 90) / 360 * 100) + "%";
+				ctx.font = "40px serif"
+//				ctx.textAlign = "center";
+				ctx.fillStyle = "#F52B00";
+				ctx.fillText(per, 120, 120);
+				if(deg == 450) {
+					ctx.clearRect(80,80,130,100);
+					clearInterval(timer);
+					ctx.fillStyle = "#56B72E";
+					ctx.font = "30px serif";
+					ctx.textAlign = "center";
+					ctx.fillText("COMPLETE", 150, 150);
+				}
+			}
+		</script>
+	</body>
+
+</html>

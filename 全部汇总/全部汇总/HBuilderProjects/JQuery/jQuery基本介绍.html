@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<!--jquery是基于原生JS封装的一个轻量级的第三方JS类库,
+			优势: 
+			轻量级的
+			完善的API文档
+			出色的浏览器兼容: jQuery1.x版本 兼容IE678 
+							jquery2.0+版本 不兼容IE678
+			开源
+			强大的选择器
+			出色的DOM操作
+			事件处理
+			Ajax
+			链式写法
+			丰富的插件
+			
+			设计目的: write less,do more
+			
+			使用方式:
+			a.下载 使用本地jquery
+			b. CDN引入 使用在线jQuery
+			c.包管理器 npm install jquery
+			
+		-->
+		<input type="text" />
+		<button id="btn">展示</button>
+		<!--方式1-->
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<!--方式2-->
+		<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+		<script type="text/javascript">
+			$(function() {
+				$("#btn").click(function() {
+					var txt = $("input[type=text]").val();
+					$("<p>", {
+						css: {
+							color: "red",
+							background: "gold"
+						}
+					}).html(txt).appendTo($("body")).hide().slideDown(1000);
+				});
+			});
+		</script>
+	</body>
+
+</html>

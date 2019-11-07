@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.box{
+				position: relative;
+				width: 300px;
+				height: 300px;
+				border: 2px solid;
+				border-width: 10px 5px; 
+				padding: 50px;
+				overflow: scroll;
+			}
+			#d1{
+				position: absolute;
+				top: 50px;
+				left: 100px;
+				width: 100px;
+				height: 50px;
+				background: red;
+				border: 10px solid cadetblue;
+			}
+			.con{
+				width: 800px;
+				height: 800px;
+				background: gold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="d1"></div>
+			<div class="con"></div>
+		</div>
+		
+		<script type="text/javascript">
+			/*内尺寸:  
+			 *clientWidth    :  width+padding(左右)
+			 * clientHeight  :   height+ padding(上下)
+			 * clientTop: 元素的上边框的宽
+			 * clientLeft: 元素左边框的宽度
+			 * 外尺寸:
+			 * offsetWidth : width+padding(左右)+border(左右)
+			 * offsetHeight: height+padding(上下)+border(上下)
+			 * offsetTop: 获取元素上外边框距离定位父级(祖先)元素上内边框的距离
+			 * offsetLeft: 获取元素左外边框距离定位父级(祖先)元素左内边框的距离
+			 * 
+			 * offsetParent: 获取该元素的定位父级(祖先)元素,如果没有已定位的祖先元素:
+			 * IE6/7: offsetParent是html
+			 * IE8+和标准浏览器下: offsetParent是body
+			 * */
+			
+			var box = document.querySelector(".box");
+			var d1 = document.querySelector("#d1");			
+			console.log(box.clientWidth, box.clientHeight);
+			console.log(box.clientTop, box.clientLeft);
+			console.log(box.offsetWidth, box.offsetHeight);
+			console.log(d1.offsetTop, d1.offsetLeft);
+			console.log(d1.offsetParent);
+			
+			/*滚动尺寸: 
+			 *scrollWidth 可滚动区域的宽度
+			 * scrollHeight   可滚动区域的高度
+			 * scrollLeft     水平方向的滚动距离
+			 * scrollTop		垂直方向的滚动距离
+			 * */
+			console.log(box.scrollWidth, box.scrollHeight);
+			
+			/*onscroll 当发生滚动时*/
+			box.onscroll = function(){
+				console.log(box.scrollLeft, box.scrollTop);
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>

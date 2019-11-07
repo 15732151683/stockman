@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>滚轮事件</title>
+		<style type="text/css">
+			body{
+				height: 3000px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/1.jpeg"/>
+		<script type="text/javascript">
+			/*滚轮事件:
+			 *FF下: DOMMouseScroll
+			 * 只能通过addEventListener添加
+			 * detail来获取滚动的方向
+			 * detail>0  向下滚动
+			 * detail<0 向上滚动
+			 * 
+			 * 
+			 * 
+			 * 非FF下: mousewheel
+			 * wheelDelta来获取滚动方向
+			 * wheelDelta>0 向上滚动
+			 * wheelDelta<0 向下滚动
+			 * */
+			
+			//非FF
+			document.onmousewheel = function(){
+				console.log(event.wheelDelta);
+				if(event.wheelDelta>0){
+					console.log('向上滚动');
+				}else{
+					console.log('向下滚动');
+				}
+			}
+			console.log(document.body.scrollHeight);// scrollHeight的值就是body的高度
+			
+			//FF下
+			document.addEventListener('DOMMouseScroll', fn, false);
+			function fn(eve){
+				if(eve.detail > 0){
+					console.log('向下滚动');
+				}else{
+					console.log('向上滚动');
+				}
+			}
+			/*封装兼容版的滚轮事件
+			 *obj 添加滚轮事件的节点对象
+			 * up 上滚的回调函数
+			 * down 下滚的回调函数
+			 * */
+			function mouseScroll(obj, up, down){
+				//利用嗅探判断是否为FF
+				if(navigator.userAgent.indexOf('Firefox') > -1){
+					//FF下
+					obj.addEventListener('DOMMouseScroll', scroll, false);
+				}else{
+					//非FF下
+					obj.onmousewheel = scroll;
+				}
+				//滚轮事件处理函数
+				function scroll(e){
+					var eve = window.event || e;
+					//记录滚动方向 默认false向下
+					var dir = false;
+					if(eve.detail){
+						//FF
+						dir = eve.detail>0?false:true;
+					}else{
+						//非火狐
+						dir = eve.wheelDelta<0?false:true;
+					}
+					if(dir){
+						//向上
+						typeof up == 'function' && up();
+					}else{
+						//向下
+						typeof down == 'function' && down();
+					}
+					//取消冒泡
+					eve.stopPropagation();
+					eve.cancelBubble = true;
+				}
+			}
+			
+			var img = document.querySelector("img");
+			mouseScroll(img, bigger, shrink);
+			//上滚放大
+			function bigger(){
+				img.style.width = img.offsetWidth + 20 + 'px';
+				img.style.height = img.offsetHeight + 20 + 'px';
+			}
+			//下滚缩小
+			function shrink(){
+				img.style.width = img.offsetWidth - 20 + 'px';
+				img.style.height = img.offsetHeight - 20 + 'px';
+			}
+		</script>
+	</body>
+</html>

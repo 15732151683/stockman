@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>rendering</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.item{
+				position: absolute;
+				-webkit-transition: all 1s;
+				-moz-transition: all 1s;
+				-ms-transition: all 1s;
+				-o-transition: all 1s;
+				transition: all 1s;
+			}
+			#wateflow{
+				position: relative;
+				margin: 0 auto;
+				margin-top: 40px;
+			}
+			.item img{
+				vertical-align: bottom;
+			}
+			.cover{
+				position: absolute;
+				background-color: rgba(169,174,66,.7);
+				cursor: pointer;
+				text-align: center;
+				color: white;
+				font-size: 16px;
+			}
+			#loading{
+				text-align: center;
+				font-size: 20px;
+			}
+			#toTop{
+				text-align: center;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/nav.css"/>
+	<link rel="stylesheet" type="text/css" href="css/lunbo.css"/>
+	<body>
+		<!--导航栏-->
+		<div class="container-fluid">
+			<div class="row nav">
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					<img src="img/shininglogo.png"/>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="About.html">About</a></li>
+						<li><a href="renderings.html">Renderings</a></li>
+						<li><a href="BIM.html">BIM</a></li>
+						<li><a href="">3D&nbsp;Animat</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+			</div>
+		</div>
+		<!--分割栏-->
+		<div class="container">
+			<div class="row">
+				<div id="fenyelan" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<span class="fenyelan"></span>
+					<h1 class="fenyetitle">DIGITAL EFFECT DRAWING</h1>
+					<span class="fenyelan"></span>
+				</div>
+			</div>
+		</div>
+		
+		<!--轮播区域-->
+		<!--显示区-->
+		<div class="slide-wrap">
+			<!--内容区: 内容区足够大-->
+			<div class="slide-con">
+				<div class="slide-item"><a href=""><img src="img/drawing-big1.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/3D-p1.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/3D-p2.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/en_b2.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/3D-p2.jpg" alt="" /></a></div>
+				<div class="slide-item"><a href=""><img src="img/drawing-big1.jpg" alt="" /></a></div>
+			</div>
+		
+				<!--分页器-->
+			<div class="page">
+				<span class="cur"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<!--容器: 放瀑布流的-->
+		<div id="wateflow">
+			<p id="loading">正在加载中.....</p>
+		</div>
+		<div id="toTop"><img src="img/top.png"/></div>
+		
+		<div class="footercon">
+			<!--分割栏-->
+			<div class="container">
+				<div class="row">
+					<div id="fenyelan" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<span class="fenyelan"></span>
+						<h1 class="fenyetitle">CONTACT US</h1>
+						<span class="fenyelan"></span>
+					</div>
+				</div>
+			</div>
+			<p>Email：eric@shining365.com</p>
+			<p>Mobile Phone：86 138 1690 3400</p>
+			<p>Tel：+86 21 6598 6866-304+86 21 6598 3188-304</p>
+		</div>
+		<div class="footer2">
+				<p>Copyright © 1998-2015 shining Group</p>
+		</div>
+	<script src="js/lunbo.js" type="text/javascript" charset="utf-8"></script>	
+	</body>
+	
+	<script type="text/javascript">
+		var conDiv = document.getElementById("wateflow");
+		var loading = document.getElementById("loading");
+		var imgsArr = [];//存储所有预加载好的照片
+		var num = 0;
+		for (var i = 0; i < 15; i++) {
+			var img = new Image();
+			imgsArr.push(img);
+			img.onload = function(){
+				num++;
+				if(num == 15){
+					loading.style.display = 'none';
+					showItems(15,false); 
+				}
+			}
+			//预加载成功了之后才能加上内容
+			img.src = 'img/P_0'+i+'.jpg';
+		}
+		var itemsArr = [];//存储所有的div
+		var topArr = []; //存储每个div的高度
+		var w = 192;
+		var margin = 10;
+		function showItems(count, flag){
+			var vw = window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth;
+			var col = Math.floor(vw*0.9/(w+margin));
+			conDiv.style.width = (col*(w + margin) - margin) +'px';
+			
+			
+			var hArr = []; //存储列高值
+			for(var i= 0; i < col; i++){
+				hArr[i] = 0
+			}
+			for (var i = 0; i < count; i++) {
+				var div =  itemsArr[i] || document.createElement('div');
+				div.style.width = w +'px';
+				var h = topArr[i] || w*imgsArr[i].height/imgsArr[i].width;
+				div.style.height = h + 'px';
+				div.className = 'item';
+				div.appendChild(imgsArr[i]);
+				if(flag == false){
+					topArr.push(h);
+					itemsArr.push(div);
+				}
+				var minH = hArr[0];
+				var minIndex = 0;
+				for (var j = 0; j < hArr.length; j++) {
+					if(hArr[j] < minH){
+						minH = hArr[j];
+						minIndex = j;
+					}
+				}
+				div.style.top = minH + 'px';
+				div.style.left = minIndex*(w + margin) +'px';
+				hArr[minIndex] += (margin + h);
+				var maxH = hArr[0];
+				for(var k = 0; k < hArr.length; k++){
+					if(hArr[k] > maxH){
+						maxH = hArr[k];
+					}
+				}
+				conDiv.style.height = (maxH + 220) + 'px';
+				flag == false && conDiv.appendChild(div);
+				var cover = document.createElement('div');
+				div.onmouseover = function(){
+					cover.className = 'cover';
+					this.style.cursor = 'pointer';
+					cover.style.display = 'block';
+					cover.style.width = this.offsetWidth*0.8 +'px';
+					cover.style.height = this.offsetHeight*0.8 + 'px';
+					cover.style.left =  this.offsetWidth*0.1 +'px';
+					cover.style.top =  this.offsetHeight*0.1 +'px';
+					cover.style.lineHeight = cover.offsetHeight +'px';
+					this.appendChild(cover);
+					cover.innerHTML = '我是文字';
+					}
+				div.onmouseout = function(){
+						cover.style.display = 'none';
+				}
+			}
+		}
+		window.onresize = function(){
+			showItems(15, true);
+		}
+		var toTop = document.getElementById("toTop");
+		var timer;
+		toTop.onclick = function(){
+			//有兼容性问题的  别忘了 
+			var t = document.body.scrollTop || document.documentElement.scrollTop;
+			//console.log(document.documentElement.scrollTop);
+			/*方法一: 
+			 * function move(){
+				t -=10;
+				document.body.scrollTop = document.documentElement.scrollTop = t;
+				if(t >= 0){
+					console.log(t);
+					requestAnimationFrame(move);
+				}
+			}*/                   //????????????????????????????????????????????
+			/*方法二: 
+			 * clearInterval(timer);
+			timer = setInterval(function(){
+				t -=100;
+				document.body.scrollTop = document.documentElement.scrollTop = t;
+				if(t ==0){
+					clearInterval(timer);
+				}
+			}, 10);*/
+			scrollTo(0,0);
+		}
+	</script>
+</html>

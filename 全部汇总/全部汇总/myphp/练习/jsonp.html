@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="bg" style="width:500px;height: 500px;"></div>
+		<!--比如这个在线cdn,script标签加载的跨域js(跨域:协议,域名,端口号),一样可以在本页面执行-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			function show(data){
+				alert("使用指定的回调函数");
+				for(var i in data){
+					alert(data[i]);
+				}
+			}
+		</script>
+		<script>
+			//jquery封装的ajax请求,默认的回调函数的参数名是callback,或者使用jsonp自定义参数名,相对应的在PHP中也要$funcname=$_XXXX['参数名'];
+			//如果没有自己定义回调函数名(用jq封装好的jsonpCallback),那么默认是success
+			$.ajax({
+				type:"get",
+				//把localhost改成我的电脑的IP
+				url:"http://10.80.13.143/myphp/%E7%BB%83%E4%B9%A0/jsonp.php",
+				async:true,
+				data: "username=caicai",
+				jsonp:"action",//指定了回调函数参数名
+				jsonpCallback:"show",//指定的回调函数名
+				dataType: "jsonp",
+//				success:function(data){
+//				}
+			});
+		</script>
+	</body>
+</html>

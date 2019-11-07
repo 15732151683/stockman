@@ -1,0 +1,33 @@
+在实际开发中，我们有时需要知道对象的所有属性，原生js给我们提供了一个很好的方法：Object.keys()，该方法返回一个数组
+
+var obj = {'a':'123','b':'345'};
+console.log(Object.keys(obj));  //['a','b']    
+
+var obj1 = { 100: "a", 2: "b", 7: "c"};
+console.log(Object.keys(obj1)); // console: ["2", "7", "100"]
+
+Object.assign() 方法 (ES6的语法）用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+
+const source2 = { c: 3 };
+Object.assign(target, source1, source2);
+target // {a:1, b:2, c:3}
+```
+
+`Object.assign`方法的第一个参数是目标对象，后面的参数都是源对象。
+
+
+
+树形图进行筛选添加
+function getMenuName(menus) {
+				for (var value of menus) {
+
+					if (value.children) {
+						getMenuName(value.children)
+					}
+					console.log(value.name)
+					value.d = ['22222222222222222222222']
+				}
+
+			}
+
+

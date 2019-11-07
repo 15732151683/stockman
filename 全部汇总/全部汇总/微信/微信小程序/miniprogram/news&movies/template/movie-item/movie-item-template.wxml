@@ -1,0 +1,9 @@
+<import src="../movie-star/movie-star-template.wxml" />
+<template name="movie-item">
+    
+    <view class='item-container'>
+        <image class='img' src='{{movieImg}}'></image>
+        <text class='title'>{{title}}</text>
+        <template data="{{score,starsArr:stars}}" is="movie-star"/>
+    </view>
+</template>

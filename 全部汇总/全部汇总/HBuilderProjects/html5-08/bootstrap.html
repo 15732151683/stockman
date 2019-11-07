@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <!--IE 兼容模式 强制IE浏览器采用最新的edge引擎解析
+IE 支持通过特定的 <meta> 标签来确定绘制当前页面所应该采用的 IE 版本。除非有强烈的特殊需求，否则最好是设置为 edge mode，从而通知 IE 采用其所支持的最新的模式。-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--条件注释(处理浏览器兼容的一种方式)--lt=less than>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    		.row div{
+    			border: 1px solid;
+    		}
+    </style>
+  </head>
+  <body>
+    <h1>你好，世界！</h1>
+    
+    <!--自带上下margin   左右padding-->
+   <!--container是固定px, 自动会有margin -->
+    <div class="container">
+    		<div class="row">
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">001</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">002</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">003</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">004</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">005</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">006</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">007</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">008</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">009</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">010</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">011</div>
+	    		<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">012</div>
+    		</div>
+    </div>
+    
+    <div class="container">
+    		<div class="row">
+    			<div class="col-md-3">11111</div>
+    			<div class="col-md-3 col-md-offset-6">2222</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-md-2">333</div>
+    			<div class="col-md-2 col-md-offset-3">444</div>
+    			<div class="col-md-2 col-md-offset-3">555</div>
+    		</div>
+    </div>
+    
+    <div class="container">
+    		<div class="row">
+    			<div class="col-xs-12 col-sm-8 col-md-8">col-xs-12 col-sm-8 col-md-8</div>
+    			<div class="col-xs-6 col-sm-4 col-md-4">col-xs-6 col-sm-4 col-md-4</div>
+    		</div>
+    </div>
+  <!--container-fluid: 百分比,占满body,无margin-->  
+    <div class="container-fluid">
+    		<div class="row">
+    			<div class="col-xs-12 col-sm-8">fluid: col-xs-12 col-sm-8</div>
+    			<div class="col-xs-6 col-sm-4">fluid: col-xs-6 col-sm-4</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6 col-md-4">col-xs-6 col-md-4</div>
+    			<div class="col-xs-6 col-md-4">col-xs-6 col-md-4</div>
+    			<div class="col-xs-6 col-md-4">col-xs-6 col-md-4</div>
+    		</div>
+    		<div class="row">
+  			<div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  			<div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+		</div>
+		<div class="row">
+			  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3<br>Add the extra clearfix for only the required viewport </div>
+			  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+			   <!--Add the extra clearfix for only the required viewport--> 
+			   <!--由于内容过多,高度被撑开,而多余的column是一个contiguous unit,bug就出现了 clearfix之后,所在行的一整行元素高度都集体增加了,多余的column会另起一行-->
+			  <!--<div class="clearfix visible-xs-block"></div>-->
+			  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+			  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+		</div>
+		
+		<!--列偏移 -->
+		<div class="row">
+			<div class="col-xs-5 col-xs-offset-2">列偏移</div>
+			<div class="col-xs-5">列不偏移</div>
+		</div>
+    </div>
+    
+    <div class="container">
+    		<div class="row">
+  			<div class="col-md-4">.col-md-4</div>
+  			<div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+		</div>
+		<div class="row">
+  			<div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  			<div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+		</div>
+		<div class="row">
+  			<div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+		</div>
+    </div>
+    
+    <div class="container-fluid">
+    		<div class="row">
+  			<div class="col-xs-6 col-sm-4">fdsfd</div>
+  			<div class="col-xs-6 col-sm-4">dsfdf</div>
+  			<div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0">fdsgfdsg</div>
+		</div>
+    </div>
+	
+	<!--嵌套-->
+	<!--???????????????????为什么 左边的字  会消失一部分????????????????????-->
+	<div class="row">
+		<div class="row">
+			<div class="row">
+				<div class="col-sm-3">上左</div>
+				<div class="col-sm-3 col-sm-offset-6">上右</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">中中</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">footer</div>
+		</div>
+	</div>
+
+
+
+
+
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

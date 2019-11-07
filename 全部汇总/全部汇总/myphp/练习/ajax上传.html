@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax上传</title>
+	</head>
+	<body>
+		<!--上传前端界面-->
+		<div id="piv"><img src="" class="tupian"/></div>
+		<form method="post" enctype="multipart/form-data" name="form1">
+			图片名: <input type="text" name="pic" id="pic" value="" /><br>
+			图片: <input type="file" name="file" id="file" value="" /><br>
+			<input type="button" name="btn" value="上传" />
+		</form>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("Input[type=button]").click(function(){
+			/*关于 new FormData对象
+			 * 注意1：使用jQuery
+				 $.ajax({
+				    url: '......',
+				    type: 'post',
+				    data: formdata,                    // 上传formdata封装的数据
+				    dataType: 'JSON',
+				    //cache: false,                      // 不缓存,不怎么写
+				    processData: false,                // jQuery不要去处理发送的数据
+				    contentType: false,                // jQuery不要去设置Content-Type请求头,用于定义网络文件的类型和网页的编码，决定文件接收方将以什么形式、什么编码读取这个文件
+				    success:function (data) {           //成功回调
+				        console.log(data);
+				    }
+});
+			 *注意2:  new FormData的参数是一个DOM对象，而非jQuery对象
+			 * var formData = new FormData(document.form1);
+			 *注意3:jQuery的参数序列化方法serialize()
+				*序列化表格内容为字符串，用于 Ajax 请求。 
+					*$("form").serialize()
+			 * */
+				var formData = new FormData(document.form1);
+				$.ajax({
+					type:"post",
+					url:"ajaxupload.php",
+					data:formData,
+					async:true,
+					processData: false,//不要去处理发送的数据
+					contentType: false,//不要去设置Content-Type请求头
+					dataType: "json",   //写了转变的数据类型就不用JSON.parse了
+					success:function(data){
+						//返回的数据需要包含上传后的图片信息
+						//方法1: 返回完整的HTML标签<img src="">
+						//方法2: 直接返回图片的路径
+						console.log(data);
+						if(data!=""){
+							$(".tupian").prop("src",data);
+						}
+					}
+				});
+			});
+		});
+	</script>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>预加载</title>
+		<style type="text/css">
+			.wrap{
+				position: relative;
+				width: 600px;
+				height: 600px;
+				margin: 0 auto; 
+			}
+			.load{
+				width: 400px;
+				height: 600px;
+				background: url(img/bg1.jpg) no-repeat center;
+				background-size: cover;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
+			}
+			.bar{
+				width: 300px;
+				height: 50px;
+				border: 1px solid;
+			}
+			#progress{
+				width: 0px;
+				height: 30px;
+				background: linear-gradient(to right, red 30%, orange 60%, green 100%);
+				-webkit-transition: 1s;
+				-moz-transition: 1s;
+				-ms-transition: 1s;
+				-o-transition: 1s;
+				transition: 1s;
+			}
+			.loadText{
+				color: white;
+				font-size: 20%;
+			}
+			#percent{
+				color: green;
+			}
+			.game{
+				width: 400px;
+				height: 600px;
+				background: gold;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--预加载: 提前加载资源-->
+		<!--图片预加载: 将页面中所有的图片提前加载好-->
+		<!--使用场景: 多用于游戏中-->
+		<!--做法: 
+			1.将要提前读取的资源的路径存到数组中
+			2.实现预加载效果
+		-->
+		<div class="wrap">
+			<div class="load">
+				<div class="bar">
+					<div id="progress"></div>
+				</div>
+				<p class="loadText">...正在加载中...<span id="percent">0%</span></p>
+			</div>
+			<div class="game">主界面....
+				<div id="con"></div>
+			</div>
+		</div>
+		<script src="js/preload.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var sArr = ['img/m1.jpg','img/m2.jpeg','img/m3.jpg','img/m4.jpeg','img/m5.jpeg','img/m6.jpg','img/m1.jpg','img/m2.jpeg','img/m3.jpg','img/m4.jpeg','img/m5.jpeg','img/m6.jpg','img/m1.jpg','img/m2.jpeg','img/m3.jpg','img/m4.jpeg','img/m5.jpeg','img/m6.jpg','img/m1.jpg','img/m2.jpeg','img/m3.jpg','img/m4.jpeg','img/m5.jpeg','img/m6.jpg','img/m1.jpg','img/m2.jpeg','img/m3.jpg','img/m4.jpeg','img/m5.jpeg','img/m6.jpg'];
+			
+			/*//存储预加载的图片对象
+			var imgArr = [];
+			//记录已经加载的资源的数量
+			var count = 0;
+			
+			for (var i = 0; i < sArr.length; i++) {
+				var img = new Image();
+				//将资源缓存到本地
+				imgArr.push(img);
+				//当加载完毕时
+				img.onload = function(){
+					//统计已加载的数量
+					count++;
+					//计算加载的百分比
+					var val = parseInt(count/sArr.length*100);
+					document.getElementById("percent").innerHTML = val + '%';
+					document.getElementById("progress").style.width =  val + '%';
+					//代表所有资源图片加载完毕
+					if (count == sArr.length) {
+						document.querySelector(".load").style.display = 'none';
+						document.querySelector(".game").style.display = 'block';
+					}
+				}
+				img.src = sArr[i];// 加载图片
+			}
+			*/
+			var imgsArr = loadImgs(sArr, fn1, success);
+			console.log(imgsArr);
+			for (var i = 0; i < imgsArr.length; i++) {
+				document.querySelector("#con").appendChild(imgsArr[i]);
+			}
+			//加载过程中
+			function fn1(val){
+				document.getElementById("progress").style.width = val +'%';
+				document.getElementById("percent").innerHTML = val + '%';
+			}
+			//加载成功
+			function success(){
+				document.querySelector(".load").style.display = 'none';
+				document.querySelector(".game").style.display = 'block';
+				for(var i = 0; i < sArr.length; i++){
+					imgsArr[i].style.width = '50%';
+					imgsArr[i].style.heigth = '1%';
+					document.getElementById("con").appendChild(imgsArr[i]);
+					console.log(imgsArr);
+				}
+			}
+		</script>
+		
+	</body>
+</html>

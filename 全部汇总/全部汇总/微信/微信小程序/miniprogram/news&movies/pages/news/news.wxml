@@ -1,0 +1,41 @@
+<!--pages/news/news.wxml-->
+<import src="./news-item/news-item-template.wxml"/>
+<swiper
+autoplay='false'
+indicator-dots='true' 
+indicator-color='white'
+indicator-active-color='red'
+interval='1500'
+circular='true'
+vertical='true'
+class="swiper-container">
+<swiper-item>
+  <image class="banner-img" src='/images/iqiyi.png'></image>
+</swiper-item>
+<swiper-item>
+  <image class="banner-img" src='/images/vr.png'></image>
+</swiper-item>
+<swiper-item>
+  <image class="banner-img" src='/images/wx.png'></image>
+</swiper-item>
+</swiper>
+
+<!-- <view>
+<text wx:key="{{item}}" wx:for="{{arr}}">{{index}}-{{item}}</text>
+</view>
+<view>
+<text wx:key="{{name}}" wx:for="{{arr}}" wx:for-index="i" wx:for-item="name">{{i}}-{{name}}</text>
+</view>
+<view>
+<text wx:key="{{item}}" wx:for="{{person}}">{{index}}-{{item}}</text>
+</view>
+<view>
+<text wx:key="{{item}}" wx:for="person">{{index}}-{{item}}</text>
+</view> -->
+
+<view class="news-list">
+  <view wx:for="{{newsList}}" wx:key="{{item.postId}}" bindtap='goToNewsDetail' data-news-id="{{item.postId}}">
+    <!-- <template is="news-item" data="{{ item }}"/> -->
+    <template is="news-item" data="{{ ...item }}"/>
+  </view>
+</view>

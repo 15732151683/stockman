@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>创建对象</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*JavaScript中的对象是 拥有属性和方法的集合 在JS中只有对象才有属性和方法*/
+			//创建对象
+			/*方式1:*/
+			var obj = new Object();
+			//特征----属性
+			obj.name = "lisa";
+			obj.gender = "female";
+			//行为----方法
+			obj.talk = function(){
+				alert("hello world");
+			}
+			//调用对象的属性和方法   点语法调用属性或方法
+			console.log(obj.name);
+			obj.talk();
+			
+			/*方式2: 简写形式*/
+			//对象是属性和方法的集合,以键值对书写,键名的引号可以省略;多个键值对逗号间隔
+			var obj1 = {
+				//属性  
+				name: "菜菜",
+				gender: "abnormal",
+				age: "24",
+				//方法
+				smile: function(){
+					alert("我是"+this.name);//this在对象中表示的是当前这个对象
+				}
+			};
+			obj1.smile();
+			
+			
+			/*方式3: 工厂模式*/
+			/*对象工厂模式:把对象的创建封装在函数中,用于快速的创建对象的就叫做对象工厂模式*/
+			function person(name, gender,age){
+				//原材料
+				var per = new Object();
+				//属性和方法--加工
+				per.name = name;
+				per.gender = gender;
+				per.age = age;
+				per.talk = function(){
+					alert("我是"+this.name+",今年"+this.age+"岁");
+				}
+				//返回创建好的对象 -- 出厂
+				return per;
+			};
+			var per1 = person("菜菜","ab",30);
+			per1.talk();
+			
+			/*方式4: 构造函数  注意:   这是一个名词 名词 名词*/
+			//构造函数: 用于构建,创建对象的函数.对象的模板
+			//为了区别于普通函数,通常定义构造函数时,函数名一般首字母大写形式
+			function Person(name, age){  //只写属性个方法
+				//属性
+				this.name = name;
+				this.age = age;
+				//方法
+				this.sayHi = function(){
+					alert(this.name);
+				}
+			}
+			/*系统的关键字 用于创建对象
+			 *new的作用:
+			 * 当使用new调用一个构造函数时,会在函数内部自动创建一个空对象,然后将函数中的this关键字指向该对象,并将该对象作为返回值返回
+			 * */
+			var p1 = new Person("andy",16); //
+			
+			/*系统内置的构造函数有:
+			 *Number()
+			 * Boolean()
+			 * String()
+			 * Array()
+			 * Function()
+			 * Math()
+			 * Date()
+			 * RegExp()
+			 * Object()
+			 * */
+			
+			
+			
+			function Dog(name,age,gender,color){
+				//属性
+				this.name = name;
+				this.age = age;
+				this.gender = gender;
+				this.color = color;
+				//方法
+				this.action = function(){
+					alert(this.name);
+				}
+		
+			}
+		var dog1 = new Dog("金毛", 0.3);
+		dog1.action();
+	
+		//这是类
+		function Car(type, color){
+			this.type = type;
+			this.color = color;
+			this.speedUp = function(){
+				console.log('菜菜科科带你去飙车');
+			}
+		}
+		//这是对象
+		var car1 = new Car("军用吉普", "black");
+		car1.speedUp();
+		</script>
+	</body>
+</html>

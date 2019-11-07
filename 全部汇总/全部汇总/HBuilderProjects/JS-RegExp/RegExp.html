@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*正则表达式L按照指定的规则检测或者替换满足对应条件的字符串. 通常多用于数据的验证*/
+			//1.如何创建正则表达式
+			//a.方式1: new RegExp(参数1,参数2);
+			
+			
+			/*参数1: 指定的规则 必须是字符串
+			 * 参数2:  属性.设置规则匹配的范围(模式)  可选值,可给可不给
+			 * i 忽略大小写
+			 * m 允许多行查找
+			 * g 全局查找
+			 *若没有指定参数2,默认查找到首次遇到满足规则的位置为止,若给g,则会一直查找到字符串末尾
+			 *
+			 **/
+			
+			var str = "AB caicai is so beautiful fsd";
+			var reg = new RegExp("ab");
+			/*正则对象的方法: 
+			 *test() 检测指定字符串是否满足正则表达式设置的规则,如果满足,返回true,否则返回false
+			 * */
+			reg.test(str);
+			console.log(reg.test(str));
+			
+			//b.方式2:  简写形式  /参数1/参数2  注意参数1不要加引号''否则意思为字符串中是否有[引号字母引号]这一组东西
+			var reg1 = /ab/i;
+			console.log(reg1.test("ABCOdffdsf74324398"));
+		
+			/*参数1 -匹配规则:
+			 *1.普通字符:
+			 *2.元字符:
+			 * \d 数字
+			 * \D非数字
+			 * \w 数字,字母,下划线
+			 * \W 非数字,非字母,非下划线
+			 * \s 空白(空格,换行,tab键)
+			 * \S 非空白
+			 * .除\n以外的其他字符(\n转义字符 换行)
+			 * \b 匹配单词的边界
+			 * 
+			 * 3.转义字符:   当要匹配特殊的符号时(如: \ [] {} ? / .() * $ ^),要加'\'进行转义
+			 * \n 换行
+			 * \t 制表键
+			 * \r 回车键
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 4.  []用于匹配括号中出现的字符,有一个即可 各种顺序组合方式
+			 * 
+			 * 5.连字符 - [0123456] [0-6] 某个指定区间范围
+			 * 
+			 * 6.量词
+			 * {m} 出现了m次
+			 * {m,n} 最少出现m次,最多出现n次
+			 * {m,} 最少出现m次,无上限
+			 * +    至少出现1次,无上限 同{1,}
+			 * ?		有没有出现  同{0,1} 0到1次(有也只能是1次????)
+			 * *    至少出现0次,最多无穷  同{0,}
+			 * 
+			 * 7.首尾限定符
+			 * ^   以XXXXXX开头
+			 * $   以XXXXX结尾
+			 * | 或
+			 * 
+			 * */
+			var r1 = /\d/;
+			console.log(r1.test("abcdef"));
+			var r2 = /\D/;
+			console.log(r2.test("1234"));
+			var r3 = /\w/;
+			console.log(r3.test("a_1"));
+			var r4 = /\W/;
+			console.log(r4.test("a_1"));
+			var r5 = /\s/;
+			console.log(r5.test("a_ 1"));
+			var r6 = /\S/;
+			console.log(r6.test("a_ 1"));
+			var r7 = /./
+			console.log(r7.test("\n"));
+			var r8 = /\bab/;//以ab作为整句话中各个单词的左边界
+			var r9 = /ab\b/;//以ab作为整句话中各个单词的右边界
+			console.log(r8.test("cab is abc")); //abc这个单词满足啦
+			console.log(r9.test("cab is abc")); //cab这个单词满足啦
+			var r10 = /[ab]/;
+			console.log(r10.test("acc"));
+			//[0-9] 匹配0~9之间的数字
+			//[a-z]   匹配a~z之间的数字
+			//[A-Z]   匹配A~Z之间的数字
+			//字母数字下划线
+			var r11 = /[a-zA-Z0_9_]/;
+			console.log(r11.test("sfhdjhsi15136146YUGB"));
+			var str1 = "abcfababababcab";
+			var r12 = /ab{1,2}/;   //是否出现ab 最少出现1次 最多出现3次
+			console.log(r12.test("abbbbbbbb"));   //true  test测试出一个条件满足就满足了
+			/**字符串中用于正则的操作函数: 
+			 * replace() 参数1若为正则对象,将满足指定正则规则的字符串替换为指定的新字符串
+			 */
+			console.log(str1.replace(r12,"e"));
+			var r13 = /ab{2}/g;
+			var str2 = "ab cabbf"
+			console.log(str2.replace(r13,"1"));
+			var r14 = /a{2,}/;
+			console.log(r14.test("a"));
+			
+			var r15 = /^[a-z]/;
+			console.log(r15.test("414adfdfd"));
+			var r16 = /abc$/;//以abc结尾
+			console.log(r16.test("dsabc"));
+			//邮编地址: 6位纯数字组成
+			var r17 = /^\d{6}$/;  //开头结尾都必须是数字  而且总共是6位
+			
+			//QQ号  数字组成 第1位不为0,最少5位,最多11位
+			var r18 = /^[1-9][0-9]{4,10}$/;
+			console.log(r18.test("121212121"));
+			//手机号码 11位数字  13 14 15 16 17 18 19
+			var r19 = /^1[3-9]\d{9}$/;
+			if(r19.test("08855687281")){
+				console.log("合法手机号");
+			}else{
+				console.log("不合法手机号");
+			}
+			//身份证号 18位组成 最后一位可能是数字或者X
+			var r20 = /^[1-9]\d{16}[\d|X]$/i;
+			if(r20.test("330104199512164322")){
+				console.log("合法身份证号");
+			}else{
+				console.log("不合法身份证号");
+			}
+			//用户名  6-18位 由字母 数字 _ 组成 以字母开头
+			/^[a-zA-Z]\w{5,17}$/;//$符控制了位数
+			//中文汉字 中文编码范围 \u4e00 ~ \u9fa5;   \uXXXX 以16进制表示的Unicode编码
+			/[\u4e00-\u9fa5]/;
+			//判断是否为正数
+			/^\d+$/;
+			//判断是否以 http:// 开头
+			/^http:\/\//;
+			//小数
+			/^\-?\d+\.\d+$/;
+			
+			
+		
+			/*有浏览器兼容问题:
+			 * getElementsByClassName("")IE8+
+			 * */
+			
+			//兼容版的根据类名获取元素的方法: 
+			function getByClassName(cname){
+				var arr = [];
+				var eles = document.getElementsByTagName("*");//没有兼容问题  获取了所有的标签
+				//判断是否有该类名
+				for (var i = 0; i < eles.length; i++) {
+					var reg = new RegExp("\\b"+cname+"\\b");//字符串形式需要转义一波
+					if(reg.test(eles[i].className)){
+						arr.push(eles[i]);
+					}
+				}
+				return arr;
+			}
+			
+			
+			/*正则对象的方法:
+			 * test() 
+			 * exec()  匹配对应字符串是否满足正则设置的规则,将符合条件的存储在数组中并以返回值形式返回(数组形式);若没有返回条件的,则返回null  获取到符合的第一个就好了
+			 */
+			var r20 = /ab/;
+			var res = r20.exec("ab abc");
+			console.log(res);
+			
+			
+			/*字符串中用于正则的操作函数:
+			 * replace()
+			 * match()  参数是字符串,则是查找是否含有指定子字符串;若参数是正则,则是查找满足指定规则的子字符串并以数组形式返回
+			 *search()  参数是字符串,则是查找对应字符串首次出现的下标位置;若没有,则返回-1;若参数是正则,则是查找满足指定规则的子字符串首次出现的下标位置,若没有,返回-1
+			 * split() 
+			 * 
+			 * */
+			var str3 = "abcabba";
+			var r21 = /ab/g;
+			var a = str3.match(r21);
+			console.log(a);
+			console.log(str3.search(r21));
+			console.log(str3.split(r21));
+		</script>
+	</body>
+</html>

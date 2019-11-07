@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>大图轮播</title>
+		<style type="text/css">
+			.show{
+				width: 600px;
+				height: 400px;
+				overflow: hidden;
+			}
+			.con{
+				position: relative;
+				width: 3000px;
+			}
+			img{
+				float: left;
+				width: 600px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="show">
+			<div class="con">
+				<img src="img/2.jpeg" alt="" />
+				<img src="img/1.jpeg" alt="" />
+				<img src="img/3.jpeg" alt="" />
+				<img src="img/4.jpeg" alt="" />
+				<img src="img/5.jpeg" alt="" />
+			</div>
+		</div>
+		<div class="ctrl">
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+		</div>
+		
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".ctrl button").click(function(){
+					$(".con").animate({
+						left: -$(".show").width()*$(this).index()
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "movie-grid": "/components/movie-grid/movie-grid"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>视频的处理</title>
+	</head>
+	<body>
+		<video id="video" src="img/1.mp4"></video>
+		<canvas id="canvas8" width="600" height="400"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas8");
+			var ctx = canvas.getContext("2d");
+			var v = document.getElementById("video");
+			//oncanplay 当浏览器能够开始播放指定的音视频文件时
+			v.oncanplay = function(){
+				//播放
+				v.play();
+				window.requestAnimationFrame(ani);
+				//当视频未播放完毕,将视频的每一帧绘制到画布上
+				function ani(){
+					//ended 返回的是布尔值,检测到音视频是否已经播放完毕
+					if(!v.ended){
+						ctx.drawImage(v,0,0,200,100);
+						window.requestAnimationFrame(ani);
+					}
+				}
+			}
+		</script>
+	</body>
+	
+</html>

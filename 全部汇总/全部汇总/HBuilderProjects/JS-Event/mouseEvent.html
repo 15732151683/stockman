@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>mouseEvent鼠标事件</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*click 单击
+			 *dbclick 双击
+			 *contextmenu 右击
+			 * mouseover鼠标移入
+			 * mouseout 鼠标移出
+			 * mouseenter 移入 (不支持冒泡)
+			 * mouseleave 移出  (不支持冒泡)
+			 * mousemove  移动
+			 * mousedown 按下
+			 * mouseup 抬起
+			 */
+			//执行顺序: down-up-click
+			/*mousedown:
+			 Mac下: 长按不松手,只会触发一次
+			 window下:长按不松手,会连续触发*/
+			document.onmousedown = function(){
+				console.log('按下');
+			}
+			document.onmouseup = function(){
+				console.log('抬起');
+			}
+			document.onclick = function(){
+				console.log('单击');
+			}
+			document.onmousemove = function(){
+				console.log('移动了');
+			}
+			/*双击会触发单击*/
+			document.ondblclick = function(){
+				console.log('双击');
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查找和筛选元素</title>
+	</head>
+	<body>
+		<ul>
+			<li><p class="test">欣欣欣欣欣欣欣欣欣欣欣欣欣欣</p></li>
+			<li class="test"></li>
+			<li></li>
+			<li class="test"></li>
+			<li></li>
+		</ul>
+		<script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//选择器方式获取  接下来学习方法
+			$("ul li");
+			$("ul li:eq(0)");
+			$("ul li:first");
+			
+			//查找元素的方法
+			//eq(i)  获取对应下标元位置的元素对象 下标从0开始
+			$("li").eq(0).css("border", "1px solid");
+			//first() 获取匹配第一个元素
+			$("li").first();
+			//last() 获取匹配到的最后一个元素
+			$("li").last();
+			
+			
+			//hasClass()  是否含有某个类名  返回值为布尔值
+			$("li").click(function(){
+				if($(this).hasClass("test")){
+					$(this).css("background","#ADD8E6");
+				}
+			});
+			
+			
+			//filter()  筛选出与指定表达式匹配的元素集合。
+			$("li").filter(".test").css("border","1px solid gold");
+			//map() 遍历数组元素或对象集合,并返回处理后的数组集合
+			$("li").map(function(i,item){
+				console.log(i,item);
+				$(this).css("color","red");
+			});
+			
+			//children() 获取匹配的元素的所有子元素的集合
+			console.log($("ul").children());
+			//parent() 获取匹配的元素的父元素
+			//parents() 获取匹配的元素的父元素以及各种祖先元素
+			//find()  获取满足条件的子元素或后代元素
+			console.log($("ul").find(".test"));
+			
+			//next()  获取匹配到的元素的下一个兄弟元素
+			$(".test").next().css("background","#ADD8E6");
+			
+			//nextAll() 获取匹配到的元素后面所有的兄弟元素
+			//pre() 获取匹配到的元素的上一个兄弟元素
+			//preAll()   获取匹配到的元素的上面的所有的元素
+			//siblings()   获取匹配到的元素的所有兄弟元素
+			
+			//get(i)  获取对应下标的对象并转为原生对象;若不给参数,返回获取到的原生的数组集合,比如
+			//eq() 返回的是JQ对象 可直接使用jQuery方法
+			 $("li").eq(0).css("background","pink");
+			 //get() 返回的是DOM原生对象
+			 $("li").get(0).innerHTML = "get返回的是原生对象,所以只能调用原生方法和属性";
+ 			console.log($("li").get());
+ 			
+ 			//index() 获取匹配到的元素所在集合的下标位置;若不给参数,则返回遇到的第一个的下标;若没有匹配到,则返回-1
+			$("li").click(function(){
+				console.log($(this).index());
+			});
+			//each() 可结合数组或jQuery对象来使用  获取数组中的每一个元素或jQuery对象集合中的每一个对象
+			$("li").each(function(i,item){
+				console.log(i,item);
+				//直接使用this指的是原生的对象,只能调用原生的属性和方法
+				this.innerHTML = i;
+				item.innerHTML = "hahhhah";
+			});
+			var arr = [1,2,3,4,5];
+			$(arr).each(function(i,item){
+				console.log(i,item);
+			});
+			
+		</script>
+	</body>
+</html>

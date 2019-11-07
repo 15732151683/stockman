@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽效果</title>
+		<style type="text/css">
+			#d1{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="d1"></div>
+		<script type="text/javascript">
+			var d1 = document.getElementById("d1");
+			d1.onmousedown = function(e){
+				var eve = event || e;  //这是页面的   获取事件对象
+				//获取鼠标基于当前元素的位置
+				var dx = eve.clientX - d1.offsetLeft;
+				var dy = eve.clientY - d1.offsetTop;
+				//移动时  注意是在mousedown的同时mouseover, 所以要写在onmousedown函数里面
+				document.onmousemove = function(e){
+					var eve = event || e;
+					d1.style.left = eve.clientX -dx + 'px';
+					d1.style.top = eve.clientY - dy + 'px';
+				}
+				/*d1.onmouseup = function(){
+					document.onmousemove = null;
+				}*/
+			}
+			//d1.onmouseup写在里面写在外面效果都一样   有区别么?????????????????
+			d1.onmouseup = function(){
+				document.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

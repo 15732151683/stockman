@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>懒加载</title>
+		<style type="text/css">
+			.wrap{
+				width: 800px;
+				margin: 0 auto;
+			}
+			div[class^=section]{
+				width: 800px;
+				height: 500px;
+				margin: 20px;
+				border: 1px solid;
+			}
+			div[class^=section] img{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--懒加载: 延迟加载.只有当需要时才去加载对应的资源文件或图片等-->
+		<!--图片懒加载:当用户真的要浏览时再去加载对应图片资源,-->
+		<!--优化页面的加载速度,减少向后台服务器请求的压力,优化用户体验度,节省用户的流量-->
+		<!--做法: 
+			1.不要把图片的资源路径直接赋值src属性,而是把路径事先存储在某个自定义属性中
+			2.当页面加载完毕后,根据页面的滚动距离scrollTop判断图片是否要进入用户的可视区域,如果即将进入,此时将存储在自定义属性中的图片路径赋值给图片的src属性
+			3.在onscroll事件里面重复的监听或者判断是否进入到用户的视野
+		-->
+		<div class="wrap">
+			<div class="section1"><img src="img/l1.jpg" alt="" /></div>
+			<div class="section2"><img src="" data-src = "img/l2.jpg" alt="" /></div>
+			<div class="section3"><img src="" data-src = "img/l3.jpg" alt="" /></div>
+			<div class="section4"><img src="" data-src = "img/l4.jpg" alt="" /></div>
+			<div class="section5"><img src="" data-src = "img/j5.jpg" alt="" /></div>
+			<div class="section6"><img src="" data-src = "img/l6.jpg" alt="" /></div>
+		</div>
+		<script type="text/javascript">
+			var divs = document.querySelectorAll(".wrap>div");
+			window.onscroll = function (){
+				//获取滚动距离
+				var scrollT = document.body.scrollTop || document.documentElement.scrollTop;
+				//获取页面可是范围的高H
+				var visibleH = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight;
+				//遍历所有的div判断位置
+				for (var i = 0; i < divs.length; i++) {
+					//获取图片
+					var img = divs[i].children[0];
+					//将图片的真实路径赋值给src
+					//当该区域即将进入可视范围时,将图片的真实路径赋值给src
+					if(img.getAttribute('data-src') && divs[i].offsetTop <= (scrollT+visibleH)) {
+						img.src = img.getAttribute('data-src');
+						//回滚的时候没有这个属性,就不会赋值给src了,不会再加载
+						 img.removeAttribute('data-src');
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

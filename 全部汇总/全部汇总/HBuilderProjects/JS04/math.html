@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>math</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*Math.PI  圆周率
+			 Math.abs()  取绝对值
+			 Math.ceil() 向上去取整
+			 Math.floor() 向下取整
+			 Math.random() 返回 0 ~ 1 之间的随机数。
+			 * Math.round()  四舍五入
+			 * Math.max()返回多个数的最大值
+			 *  Math.min()返回多个数的最小值
+			 * Math.sqrt() 求平方根
+			 * Math.pow(m,n)   m的n次方
+			 * Math.sin()
+			 * Math.cos()
+			 * Math.tan()
+			 * Math.cot()
+			 * 
+			 * 
+			 * 
+			 * */
+			console.log(Math.PI);
+			console.log(Math.abs(-3));
+			//向上取整: 返回不小于该数的最小整数
+			console.log(Math.ceil(3.9999999999));
+			console.log(Math.ceil(-3.9999999999));
+			//向下取整: 返回不大于该数的最大整数
+			console.log(Math.floor(-2.999));
+			//取小数点后的第一位四舍五入
+			console.log(Math.round(2.49));
+			console.log(Math.max(4,-9,8,99999999));
+			console.log(Math.min(4,-9,8,-99999999));
+			console.log(Math.sqrt(4));
+			console.log(Math.pow(4,14));
+			console.log(Math.sin(Math.PI/6));
+			//[0,1)
+			console.log(Math.random());
+			//[0,100)
+			console.log(Math.random()*100);
+			//[0,100)的整数
+			console.log(parseInt(Math.random()*100));
+			//[a,b]范围的整数  分三步走: 1.取[0,b-a]这范围,2. + a 可完美取到[a,b]3.取整
+			//parseInt(Math.random()*(b-a+1)+a);
+			//Math.floor(Math.random()*(b-a+1)+a);
+			
+			//随机生成20个[66,99]的整数:
+			for(var i = 0;i < 20; i++){
+				var num = Math.floor(Math.random()*(99-66+1)+66);
+				console.log(num);
+			}
+		</script>
+	</body>
+</html>

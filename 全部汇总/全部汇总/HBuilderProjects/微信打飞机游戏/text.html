@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var caicai = {
+				a: 20,
+				b: 30,
+				c: 40,
+				d: typeof a,       
+				e: this.a,      //全局  this.a    window调用的  undefined
+				f: this.a/2,
+				show: function(){
+					console.log(this.a/2,typeof a);   //方法里面用 this 指的是对象 
+				}
+			}
+			console.log(caicai.a);   //20
+			console.log(caicai.d);   //undefined   
+			console.log(caicai.e);   //undefined   
+			console.log(caicai.f);   //NaN
+			console.log(caicai.show()); //10 undefined
+		</script>
+	</body>
+</html>

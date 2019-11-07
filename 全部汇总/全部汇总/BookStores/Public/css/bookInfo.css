@@ -1,0 +1,40 @@
+.wrap{
+	width: 1100px;
+	margin: 20px auto 200px;
+}
+.wrap img{
+	width: 500px;
+	height: 600px;
+}
+.wrap .bookInfo{
+	width: 500px;
+	float: right;
+}
+.bookInfo p{
+	color: #9e9f9e;
+	margin-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #f6f7f6;
+}
+.bookInfo .intro{
+	background-color: #eaebea;
+	margin: 20px 0 50px;
+	color: #959695;
+}
+.intro li{
+	margin-bottom: 10px;
+}
+.intro li:first-child span,
+.intro li:nth-child(2) span{
+ 	color: #4d89bf;
+ }
+.intro li:last-child span{
+	color: #f50000;
+	font-size: 30px;
+}
+.bookInfo a{
+	background-color: #f50000;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 8px;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>scroll无间断滚动</title>
+		<style type="text/css">
+			.wrap{
+				width: 500px;
+				height: 650px;
+				margin: 0 auto;
+				/*overflow: hidden;*/
+				border: 5px solid;
+			}
+			.con{
+				position: relative;
+				left: 0;
+				width: 2500px;
+				height: 650px;
+				
+			}
+			.con img{
+				float: left;
+				width: 500px;
+				height: 100%;
+			}
+			.box{
+				width: 1200px;
+				height: 300px;
+				/*overflow: hidden;*/
+				border: 5px solid;
+			}
+			.content{
+				position: relative;
+				left: 0;
+				width: 2400px;
+				height: 300px;
+			}
+			.item{
+				float: left;
+				width: 1200px;
+				display: flex;
+				justify-content: space-around;
+			}
+			.item>div{
+				width: 200px;
+				height: 300px;
+				background: powderblue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--无间断滚动:
+			结构上: 
+			   显示区  (超出部分隐藏)
+			   内容区 (足够大)
+			js:
+			通过计时器实现内容区偏移
+			为了解决当偏移到最后一张的出现的留白问题,在最后一张后面添加一个和第一张轮播内容一样的内容,同时当最后一张内容轮播完毕时,修改内容的偏移量为第一张的位置,即初始化
+		-->
+		<!--显示区-->
+		<div class="wrap">
+			<!--内容区-->
+			<div class="con">
+				<img src="img/1.jpeg" alt="" />
+				<img src="img/2.jpeg" alt="" />
+				<img src="img/3.jpeg" alt="" />
+				<img src="img/4.jpeg" alt="" />
+				<!--在最后一张后面添加一个和第一张一样的图-->
+				<img src="img/1.jpeg" alt="" />
+			</div>
+		</div>
+		<hr />
+		
+		<!--显示区-->
+		<div class="box">
+			<!--内容区-->
+			<div class="content">
+				<div class="item">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+				</div>
+				<div class="item">
+					<!--div{$@6}*5-->
+					<div>6</div>
+					<div>7</div>
+					<div>8</div>
+					<div>9</div>
+					<div>10</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			
+			var conDiv = document.getElementsByClassName('con')[0];
+			setInterval(play, 90);
+			var dx = 0;
+			function play(){
+				dx-=20;
+				if(dx == -2000){
+					dx = 0;
+				}
+				conDiv.style.left = dx+'px';
+			}
+			var con = document.getElementsByClassName('content')[0];
+			var i = 0;
+			setInterval(function(){
+				i-=600;
+				if(i < -1200){
+					i = 0;
+				}
+				con.style.left = i + 'px';
+			}, 1000);
+		</script>
+	</body>
+</html>

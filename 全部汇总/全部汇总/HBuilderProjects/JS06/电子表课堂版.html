@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>电子表</title>
+		<style type="text/css">
+			#clock{
+				width: 400px;
+				height: 100px;
+				background: black;
+				line-height: 100px;
+				text-align: center;
+				font-family: "arial rounded mt bold";
+				font-size: 50px;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="clock"></div>
+		
+		<script type="text/javascript">
+			var div = document.getElementById("clock");
+			getT();
+			setInterval(function(){
+				//调用函数
+				getT();
+			}, 1000);
+			
+			//获取时间显示
+			function getT(){
+				var time = new Date();
+				var h = time.getHours();
+				var m = time.getMinutes();
+				var s = time.getSeconds();
+				if(h<10){
+					h = "0"+h;
+				}
+				if(m<10){
+					m = "0"+m;
+				}
+				if(s<10){
+					s = "0"+s;
+				}
+				div.innerHTML = h+":"+m+":"+s;
+			}
+			//每隔一秒获取一次此客的时间,当然秒数就一直在变化啦,(此刻的时间一直在变化)
+		</script>
+	</body>
+</html>

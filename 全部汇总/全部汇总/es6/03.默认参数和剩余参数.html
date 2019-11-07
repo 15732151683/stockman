@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // function fn(x,y) {
+    // //    此函数内部x默认为10,y默认20
+    // //     var x = x || 10;
+    // //     var y = y || 20;
+    //
+    //     if(typeof x === 'undefined'){
+    //         x  = 10;
+    //     }
+    //     if(typeof y === 'undefined'){
+    //         y  = 20;
+    //     }
+    //     console.log(x+y);
+    // }
+    // fn(0,2);
+
+    /*es6的默认参数*/
+    // function fn(x=10,y=20) {
+    //     console.log(x+y);
+    // }
+    // fn(1,2);
+
+    /*默认参数一定要放在参数列表的最后面*/
+    // function fn(x=10,y) {
+    //     console.log(x+y);
+    // }
+    // fn(1);//Error
+    // function fn(y,x = 10) {
+    //     console.log(x+y);
+    // }
+    // fn(1);
+
+
+    /*rest参数*/
+    // function fn(a,b,...c) {
+    //     //c代表的是剩余参数
+    //     console.log(a,b,c);
+    // }
+    // fn(1,2,3,4,5,6,7);
+    //在获取所有参数列表时rest和arguments的区别
+    function fn() {
+        //arguments是一个为数组,可以通过es6的Array.from转成真正的数组
+        // console.log(arguments[0]);
+        console.log(arguments);
+        // arguments.map(function (v) {
+        //     console.log(v);
+        // })
+    }
+    fn(1,2,3,4,5);
+    function test(...rest) {
+        // console.log(rest[0]);
+        // console.log(rest);
+        rest.map(function (v) {
+            console.log(v);
+        })
+    }
+    test(1,2,3,4,5);
+
+
+
+
+</script>
+</html>

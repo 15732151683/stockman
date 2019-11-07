@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>如何取消默认行为</title>
+		<style type="text/css">
+			#menu{
+				position: absolute;
+				width: 80px;
+				height: 200px;
+				line-height: 40px;
+				text-align: center;
+				list-style: none;
+				padding: 0;
+				border: 1px solid blue;
+				display: none;
+			}
+			#menu li{
+				background: lightblue;
+				color: blue;
+			}
+			#menu li:hover{
+				background: gold;
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		 <ul id="menu">
+		 	<li>菜单1</li>
+		 	<li>菜单2</li>
+		 	<li>菜单3</li>
+		 	<li>菜单4</li>
+		 	<li>菜单5</li>
+		 </ul>
+		<!--某一些事件自带默认行为,比如右键单击,表单提交等,有些场景下需要取消对应的默认行为
+			如何取消?
+			标准下: event.preventDefault()
+			IE下: 在事件处理函数中 return false 或 event.returnValue = false;
+		-->
+		
+		<script type="text/javascript">
+			var menu = document.getElementById("menu");
+			//当右键单击的时候
+			document.oncontextmenu = function(e){
+				var eve  = event || e;
+				menu.style.left = eve.clientX + 'px';
+				menu.style.top = eve.clientY + 'px';
+				menu.style.display = 'block';
+				eve.preventDefault();
+				eve.returnValue = false;
+				return false;
+			}
+			document.onclick = function(){
+				menu.style.display = 'none';
+			}
+		</script>
+	</body>
+</html>

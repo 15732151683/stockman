@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>二维数组</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//一维数组
+			//定义数组 法1: [];    法2:new Array[];
+			//访问数组元素  下标不要越界  a[0];
+			var a = [1];
+			// alert(typeof a); //object
+			//for循环的循环变量初始化只会执行1次;在初始化的时候顺便把 变量.length 给定义了,可优化代码  for(var i = 0, len = b.length; i < len; i++)
+			/*常用的操作函数: 增删改查
+			 push/pop
+			 unshift/shift
+			 slice(start,length)  返回值为数组
+			 splice(start, length, 元素1, 元素2, 元素3....) 根据具体参数不同作用不同  增加删除
+			 concat()
+			 join()
+			 
+			 sort()
+			 reverse()
+			 
+			 forEach()
+			 some()
+			 every()
+			 filter()
+			 map()
+			 * */
+			
+			
+			
+			//二维数组: 存储一维数组的数组
+			[,,,];//这个数组的length为3
+			var arr = [[20,50], [50,60], [30,100]];
+			//访问二维数组元素: 数组名[下标][下标]
+			arr[1][1];
+			//双层for循环遍历二维数组
+			for (var i = 0; i < arr.length; i++) {
+				for (var j = 0; j < arr[i].length; j++) {
+					console.log(arr[i][j]);
+				}
+			}
+		</script>
+	</body>
+</html>

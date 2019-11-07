@@ -1,0 +1,15 @@
+<!--pages/read/read.wxml-->
+<import src="./news-item/news-item.wxml"/>
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiper-con' circular='true'>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class='news-list'>
+  <view wx:for="{{newsList}}" wx:key="{{item.postId}}" bindtap='goToNewsDetail' data-news-id="{{item.postId}}">
+<template is="news-item" data="{{item}}"></template>
+  </view>
+</view>

@@ -1,0 +1,72 @@
+/* pages/read/news-detail/news-detail.wxss */
+.poster{
+  position: relative;
+  width: 100%;
+}
+.poster image{
+  width: 100%;
+  vertical-align: top;
+}
+.poster .music{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100rpx;
+  height: 105rpx;
+  opacity: .6;
+}
+.detail-con{
+  padding: 20rpx 30rpx;
+}
+.detail-head{
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+.detail-head image{
+  width: 65rpx;
+  height: 65rpx;
+}
+.detail-head text{
+  font-size: 30rpx;
+  font-weight: 200;
+  color: gray;
+  margin-left: 20rpx;
+}
+.detail-head .detail-time{
+  font-size: 25rpx;
+}
+.detail-title{
+  font-size: 35rpx;
+  letter-spacing: 7rpx;
+  padding-left: 10rpx;
+}
+.detail-des{
+  font-size: 25rpx;
+  letter-spacing: 6rpx;
+  color: grey;
+  line-height: 45rpx;
+  font-weight: 200;
+}
+.detail-icon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  margin: 20rpx auto;
+}
+.detail-icon image{
+  width: 85rpx;
+  height: 85rpx;
+  margin-left: 30rpx;
+}
+.detail-icon view{
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid gainsboro;
+  z-index: -100;
+}

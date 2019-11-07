@@ -1,0 +1,24 @@
+.footer {
+  width: 100%;
+  border-top: 1px solid #EDEEED;
+  font-size: 14px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.footer .top ul{
+  width: 510px;
+  list-style: none;
+  margin: 20px auto 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .top ul li {
+  color: #4D8AC2;
+}
+
+.footer .bottom p {
+  color: #DCDDDC;
+}

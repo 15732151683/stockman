@@ -1,0 +1,29 @@
+<!--小程序: 模块化,模板化,组件化
+模块化:将逻辑层(js)进行封装并复用
+模板化: 将试图层(wxml,wxss)进行封装与复用
+组件化: 将逻辑层和视图层一起封装复用
+模板化会导致class名冲突,模板化的逻辑放置在引用此模块的页面或者组件  
+模板化的定义使用<template></template>,需要使用name具名
+导入使用<import/>进行导入
+使用:<template is="模板名" data="需要传入进去的数据"/>-->
+<template name="news-item">
+  <view class='newsContainer'>
+  <view class='newsHeader'>
+      <image class='headerImg' src='{{item.avatar}}'></image>
+      <text class='newsTime'>{{item.date}}</text>
+  </view>
+  <view class='newsTitle'>
+      <text>{{item.title}}</text>
+  </view>
+  <image class='newsImg' src='{{item.imgSrc}}'></image>
+  <view class='newsContent'>
+      <text>{{item.content}}</text>
+  </view>
+  <view class='newsFooter'>
+      <image class='commentImg' src='/images/chat1.png'></image>
+      <text>{{item.collection}}</text>
+      <image class='seeImg' src='/images/view.png'></image>
+      <text>{{item.reading}}</text>
+  </view>
+</view>
+</template>

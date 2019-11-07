@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3新增选择器</title>
+		<style type="text/css">
+			/*通用兄弟选择器  
+			 * E~F  获取位于E后面的所有与E同级的兄弟元素F*/
+			div~p{
+				color: red;
+			}
+			/*表单有关的选择器 注意: 冒号后面不要有空格
+			 :focus 获取焦点时
+			 checked  获取被选中项
+			 enabled  获取可用状态
+			 disabled  获取不可用状态
+			 :required  获取必填项
+			 */
+			input:focus{
+				outline: none;
+				border: 1px solid green;
+			}
+			input:checked+span{
+				color: green;
+			}
+			input:enabled{
+				background-color: pink;
+			}
+			input:disabled{
+				background-color: gray;
+			}
+			input:required{
+				color: red;
+			}
+			.grid{
+				list-style: none;
+				padding: 0;
+				width: 156px;
+				height: 156px;
+				border: 1px solid;
+			}
+			.grid li{
+				float: left;
+				text-align: center;
+				line-height: 50px;
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+			}
+			/*伪结构选择器
+			 nth-child(n)   获取第n个元素     注意: 必须保证,这些标签都是同类型的子元素
+			 n数值,从1开始;
+			 也可以是表达式(n从0开始计算): 如:2n:偶数; 2n+1: 奇数; even偶数;odd奇数;
+			 							要取前几个,就写成-n+w;要取后几个,就 n+w;*/
+			/*获取第2个li*/
+			.grid li:nth-child(2n){
+				background-color: red;
+			}
+			.grid li:nth-child(even){
+				color: green;
+			}
+			
+			/*获取基数位置的元素*/
+			.grid li:nth-child(2n+1){
+				background-color: gold;
+			}
+			.grid li:nth-child(odd){
+				color: white;
+			}
+			/*获取前5个*/
+			.grid li:nth-child(-n+5){
+				font-size: 50px;
+			}
+			/*获取3列中的第2列*/
+			.grid li:nth-child(3n-1){
+				text-decoration: underline;
+			}
+			/*获取第一个子元素*/
+			.grid li:first-child{
+				background-color: pink;
+			}
+			.grid li:last-child{
+				background-color: purple;
+			}
+			/*nth-last-child(n): 倒数第n个*/
+			/*nth-of-type(n): 获取第n个对应类型的标签元素*/
+			.box div:nth-of-type(2){
+				background: red;
+			}
+			/*:empty 获取空元素*/
+			:empty{
+				height: 50px;
+				background-color: red;
+			}
+			/*:root 获取根元素html*/
+			:root{
+				background: lightgray;
+			}
+			/*:only-child 获取只是其父元素中唯一的该子元素*/
+			p:only-child{
+				border: 1px solid;
+			}
+		   /*target: 获取目标元素*/
+		  :target{
+		 	background: gold;
+			}
+			 /*属性选择器
+			  E[attr]  获取设置过attr属性的  
+			  E[attr=val]  获取设置过attr属性且值为val的元素,仅有
+			  E[attr~=val] 获取设置过attr属性且值包含val就行
+			  E[attr^=val]  获取设置过attr属性且值以val开头的
+			  E[attr$=val]  获取设置过attr属性且值以val结尾的*/
+			 a[href]{
+			 	color: red;
+			 }
+			 input[type=text]{
+			 	width: 200px;
+			 	height: 40px;
+			 }
+			 p[class~=aa]{
+			 	color: cyan;
+			 }
+			 p[class^=aa]{
+			 	color: purple;
+			 }
+			/*伪元素
+			 :before
+			 :after
+			 :first-letter  获取第一个字符
+			 :first-line 获取第一行*/
+			p:first-letter{
+				font-size: 30px;
+				font-weight: 500;
+			}
+			p:first-line{
+				text-decoration: overline;
+			}
+			/*::selection    获取选中的内容文字*/
+			/*标准写法*/
+			p::selection{
+				background: green;
+				color: white;
+			}
+			
+			/*兼容写法*/
+			/*-selection*/
+		   /*p::-webkit-selection:;*/
+		   p::-moz-selection{
+				background: green;
+				color: white;
+			}
+		   /*p::-ms-selection:;
+		   p::-o-selection:;
+		   p::selection:;*/
+			/*	CSS3中新增的属性大多有浏览器兼容问题,为了支持对应浏览器低版本,可在属性前添加前缀去兼容低版本
+			 * 浏览器前缀:
+			 * -webkit-  chrome safari
+			 * -moz-     firefox
+			 * -ms-      microsoft ie
+			 * -o-       opera*/
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<div>
+			<p class="aa bb">aa bb</p>
+			<p class="bb aa">bb aa</p>
+			<p>只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素只有一个子元素</p>
+		</div>
+		<p>div上的第一个p</p>
+		<div>这是一个div</div>
+		<p>div下的第一个p</p>
+		<p>div下的第二个p</p>
+		
+		<form action="" method="get">
+			<!--required 必须填写项-->
+			<label for="">用户名:</label><input type="text" name="" id="" value="" required/><br />
+			<!--disabled属性: 处于不可用状态-->
+			<input type="text" name="" id="" value="" disabled/><br />
+			<input type="radio" name="" id="" value="" /><br />
+			<input type="checkbox" name="" id="" value=""/>
+			<span>同意协议</span><br />
+			<input type="submit" name="" id="" value="提交" />
+		</form>
+		
+		<ul class="grid">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+		</ul>
+		<div class="box">
+			<p>222</p>
+			<div>111</div>
+			<p>444</p>
+			<div>333</div>
+		</div>
+		<a href="#d1">跳转a的锚点功能</a>
+	</body>
+</html>

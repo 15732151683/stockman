@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>关键帧动画</title>
+		<style type="text/css">
+			.d1{
+				width: 150px;
+				height: 150px;
+				background-color: pink;
+				-webkit-mask: url(img/xin.jpg) no-repeat;
+				/*1.动画名称*/
+				/*配合@keyframes设置动画,要写兼容*/
+				animation-name: pony;
+				/*2.动画时长 单位s 默认为0,必须要设置*/
+				animation-duration: 1s;
+				/*3.动画重复次数 默认1次.写法由:1数值;2.infinite 无穷次*/
+				animation-iteration-count: infinite;
+				/*4.动画速度变化函数
+				 ease 加速(慢速到慢速)
+				 ease-in 淡入
+				 ease-out 淡出
+				 ease-in-out 淡入淡出
+				 linear 匀速
+				 cubic-bezier()贝塞尔曲线*/
+				animation-timing-function: ease-in;
+				/*5.动画延迟时间 单位s*/
+				/*animation-delay: 1s;*/
+				/*6.动画播放方向*/
+				/*normal 正向播放
+				 reverse 反向播放
+				 alternate 偶数次正向播放,奇数次反向播
+				 alternate-reverse 奇数次正向播放,偶数次反向播
+				 */
+				animation-direction: alternate;
+				/*7.动画播放状态*/
+				/*running 正在播放状态
+				 paused 处于暂停状态*/
+				animation-play-state: running;
+				/*8.动画填充模式*/
+				/*forwards 动画播放结束时保留最后一帧的状态
+				 backwords 动画播放结束时回到初始状态
+				 both 和forwards的效果一样*/
+				animation-fill-mode: forwards;
+				/*简写形式*/
+				animation: pony 1s 1s infinite linear ease-in alternate forwards;
+			}
+			/*@keyframes 语法规则: 必须写在css中,而且是单独写的,不要写在标签里面
+			 @keyframes 动画名称{
+			 	from{动画属性: 值;}
+			 	百分比形式{}
+			 	to{动画属性: 值;}
+			 }*/
+			@keyframes pony{
+				from{
+					transform: scale(1);
+				}
+				50%{
+					transform: scale(1);opacity: 0;
+				}
+				to{
+					transform: scale(1.5);
+				}
+			}
+			.d2{
+				width: 100px;
+				height: 100px;
+				background: linear-gradient(red,yellow,blue);
+				/*兼容写法*/
+				-webkit-animation: zhuan 1s linear infinite;
+				-moz-animation: zhuan 1s linear infinite;
+				-o-animation: zhuan 1s linear infinite; 
+				/*标准写法*/
+				animation: zhuan 3s linear infinite;
+			}
+			@-webkit-keyframes zhuan {
+				from { transform: translateX(0) rotate(0);}
+				to { transform:translateX(500px) rotate(360deg); }
+			}
+			@-o-keyframes zhuan {
+				from { transform: translateX(0) rotate(0);}
+				to { transform:translateX(500px) rotate(360deg); }
+			}
+			@-moz-keyframes zhuan {
+				from { transform: translateX(0) rotate(0);}
+				to { transform:translateX(500px) rotate(360deg); }
+			}
+			@keyframes zhuan {
+				from { 
+					transform: translateX(0) rotate(0);
+					border-radius: 0;
+					}
+				to {
+					 transform:translateX(500px) rotate(360deg); 
+					 border-radius: 50%;
+					 }
+			}
+			/*可以支持同时设置多组动画,多组间逗号间隔*/
+			.d3{
+				margin: 100px;
+				width: 250px;
+				height: 250px;
+				-webkit-mask: url(img/xin.jpg) no-repeat;
+				background-color: blue;
+				-webkit-animation: pony 1s infinite,zhuan 2s 1s infinite linear;
+				moz-animation: pony 1s infinite,zhuan 2s 1s infinite linear;
+				-o-animation: pony 1s infinite,zhuan 2s 1s infinite linear;
+				animation: pony 1s infinite,zhuan 2s 1s infinite linear;
+			}
+		</style>	
+	</head>
+	<body>
+		<p>animation: 对IE10+,标准浏览器支持,若要兼容低版本标准浏览器需添加前缀</p>
+		<div class="d1"></div>
+		<div class="d2"></div>
+		<div class="d3"></div>
+	</body>
+</html>

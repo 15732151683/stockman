@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.jinbi{
+				position: absolute;
+				width: 60px;
+				height: 60px;
+				top: -60px;
+			}
+			#wan{
+				position: absolute;
+				width: 103px;
+				height: 48px;
+				bottom: 0;
+				background: url(img/pen.png)
+			}
+			#score{
+				color: red;
+				font-size: 18px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--对图片进行拖拽, 做为div的背景图片来处理,或者是直接对img标签进行操作???-->
+		<div id="wan"></div>   
+		<p>到碗里了啦O(∩_∩)O~<span id="score">0个</span></p>
+		<script type="text/javascript">
+			var wan = document.getElementById("wan");
+			var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+			var cnt = 0;
+			setInterval(function(){
+				create();
+			}, 500);
+			function create(){
+				var img = new Image();
+				img.src = "img/jin.png";
+				img.className = 'jinbi';
+				//屏幕视宽   竟然自己没会写  难过 /(ㄒoㄒ)/~~
+				var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+				img.onload = function(){
+					//当图片加载完毕时,才能拿到图片的宽度高度,否则都为0, 所以关于图片的一系列操作全部放到 onload函数里面
+					img.style.left =  rand(0,vw - img.offsetWidth)+ 'px';
+					document.body.appendChild(img);
+					//下落动画
+					//随机下落速度
+					var sy = rand(5, 20);
+					setInterval(function(){
+						img.style.top = img.offsetTop + sy + 'px';
+						var l = img.offsetLeft;
+						var r = l + img.offsetWidth;
+						var b = img.offsetTop + img.offsetHeight;
+						var wl = wan.offsetLeft;
+						var wr = wl + wan.offsetWidth;
+						//监测是否落地或者掉到碗里来
+						if( img.offsetTop >= (vh - img.offsetHeight) || (l>wl&&r<wr&&wan.offsetTop<=b)){
+							document.body.removeChild(img);
+						}
+						/*if(wan.offsetTop<=b){
+							if(r<wl || wr < l){  //这个规则为: 碰到就算接住了金币
+								cnt+=0;
+							}else{
+								document.body.removeChild(img);
+								cnt++;
+								score.innerHTML = cnt+'个';
+							}
+						}*/
+						if(l>wl&&r<wr&&wan.offsetTop<=b){//这里做严格要求状: 碰到不算,当完全接到碗里才算
+							cnt++;
+							console.log(cnt);   //虽然写在setInterval的前面,对于计时器来说确实是全局变量,但是一移动盆,就调用另外的函数了,相对来说create()仍旧是局部的,所以cnt变量一定会清零;
+							score.innerHTML = cnt+'个';
+						}
+					}, 30);
+				}
+			}
+			wan.onmousedown = function (e){
+				var eve = window.event || e;
+				var x = eve.clientX - wan.offsetLeft;
+				document.onmousemove = function(e){
+					var eve = window.event || e;
+					wan.style.left = eve.clientX - x + 'px';
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+			function rand(a, b){
+			return Math.floor(Math.random()*(b - a +1) + a);
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!--
+			cookie出现的原因:
+			HTTP是客户端(浏览器 client)与服务器(server)进行交互的常用的协议,而HTTP协议是一个无状态协议,一旦数据传递完成(如打开网页,加载完成),客户端和服务器就会断开连接,再次数据传递(打开网页),需要重新建立新的连接,服务器无法去记录或确认用户的身份,为了确认客户端的身份,就出现了cooKie这种机制.(短连接无法记录信息)
+			
+			
+			cookie的工作原理:
+			cookie是一段文本信息,客户端请求服务器,如果服务器需要记录用户的状态或身份,就可以向客户端浏览器发送一个cookie,客户端的浏览器就会把cookie保存起来,当再次请求该网站时,浏览器就把cookie伴随此次请求一同发送给服务器,服务器接收到请求后,就可检查cookie,确认用户的身份或者用户端的状态
+			
+			cookie使用场景:
+			保存用户的登录状态(如:自动登录),
+			购物车,浏览历史
+			跟踪用户的行为(如:统计用户的访问频率)
+			个性化定制页面
+			...
+			
+			cookie的弊端: 
+			容量有限制 一般最多4kb
+			条数有限制  最少20条,最多50条
+			cookie可以被删除
+			cookie的安全性(cookie中的内容在浏览器中可以看到,一般结合加密使用.一般重要性的机密信息,都是由服务器来存储确保数据的安全)
+			
+			同一个域名下的页面共用一个cookie,不同浏览器分别管理自己的cookie,不会相互影响,不同的浏览器有自己的cookie,泾渭分明
+		-->
+		<button id="add">新增</button>
+		<button id="view">查看</button>
+		<button id="modify">修改</button>
+		<button id="delete">删除</button>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//使用JavaScript操作document.cookie
+			/*通过document.cookie设置cookie的内容,
+			 * 以键值对的形式添加,
+			 * 键值对有且只有一个,不能同时设置多个
+			 * 若该键名之前没有,则为添加;若有则为修改
+			 **/
+			//添加
+			document.getElementById("add").onclick = function(){
+				document.cookie = "name=bob";
+				document.cookie = "pwd=212";
+				document.cookie = "name=lee";
+				//若没有设置时间限制,默认页面一旦关闭退出,cookie中的内容会被自动清除
+				//若想要保存一定时间,需要设置失效时间
+				/*方式1: expires 默认为当前时间
+				 * 方式2: max-age  存活时间 单位是秒 默认值为-1
+				 * 若这两种方式同时设置,以max-age为准
+				 **/
+				var date1 = new Date();
+				//3天内有效
+				date1.setDate(date1.getDate() + 3);
+				//将对象转为字符串
+				//date1.toString();
+				document.cookie = "gender=male"+";expires="+date1.toUTCString();
+				document.cookie = "age=18;max-age=30";
+			}
+			//查看
+			document.getElementById("view").onclick = function(){
+				console.log(document.cookie);
+				alert(getCookieWithKey('name'));
+			}
+			//修改
+			document.getElementById("modify").onclick = function(){
+				setCookie("name", "lisa", 60);
+				console.log(document.cookie);
+			}
+			//删除
+			document.getElementById("delete").onclick = function(){
+				deleteCookieWithKey("name");
+				console.log(document.cookie);
+			}
+		</script>
+	</body>
+</html>

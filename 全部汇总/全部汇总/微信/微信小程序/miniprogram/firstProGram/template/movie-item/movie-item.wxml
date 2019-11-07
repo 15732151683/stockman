@@ -1,0 +1,17 @@
+<import src="../movie-star/movie-star"/>
+<template name="movie-item">
+  <view class='mov-item'>
+    <view class='mov-img'>
+      <image src='{{movieImg}}'></image>
+    </view>
+    <view class='mov-name'>
+      <text>{{title}}</text>
+    </view>
+    <view class='mov-des'>
+      <template is="movie-star" data="{{stars}}"></template>
+      <view class='mov-score'>
+        <text>{{score}}</text>
+      </view>
+    </view>
+  </view>
+</template>

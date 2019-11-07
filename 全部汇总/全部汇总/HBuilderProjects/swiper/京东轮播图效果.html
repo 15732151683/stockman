@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>京东轮播图效果</title>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<style type="text/css">
+			.swiper-container {
+				width: 590px;
+				height: 470px;
+			}
+			.swiper-button-prev,.swiper-button-next{
+				/*position: relative;*/
+				color: white;
+				text-align: center;
+				line-height: 40px;
+				width: 20px;
+				height: 40px;
+				background: rgba(0,0,0,0.2);
+			}
+			.swiper-button-prev{
+				left: 0;
+			}
+			.swiper-button-next{
+				right: 0;
+			}
+			.swiper-button-prev:hover,.swiper-button-next:hover{
+				background: rgba(0,0,0,0.4);
+			}
+			#fenye{
+				width: auto;
+				left: 40px;
+			}
+			.swiper-pagination-bullet{
+				background: transparent;
+				border: 2px solid lightgray;
+				opacity: 1;
+			}
+			.swiper-pagination-clickable .swiper-pagination-bullet{
+				cursor: default;
+			}
+			.my-bullet{
+				background: white;
+				border: 3px solid gainsboro;
+				opacity: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--导航等组件可以放在container之外-->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="img/1.jpg"/></div>
+				<div class="swiper-slide"><img src="img/2.jpg"/></div>
+				<!--<div class="swiper-slide"><img src="img/3.jpg"/></div>-->
+				<div class="swiper-slide"><img src="img/4.jpg"/></div>
+				<div class="swiper-slide"><img src="img/5.jpg"/></div>
+				<div class="swiper-slide"><img src="img/6.jpg"/></div>
+				<div class="swiper-slide"><img src="img/7.jpg"/></div>
+				<div class="swiper-slide"><img src="img/8.jpg"/></div>
+			</div>
+			<!-- 如果需要分页器 -->
+			<div class="swiper-pagination" id="fenye"></div>
+
+			<!-- 如果需要导航按钮 -->
+			<div class="swiper-button-prev">	&lt;</div>
+			<div class="swiper-button-next">&gt;</div>
+		</div>
+
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal',
+				loop: true,
+				autoplay:true,
+
+				// 如果需要分页器
+				pagination: {
+					el: '.swiper-pagination',
+					clickable :true,
+					bulletActiveClass : 'my-bullet',
+				},
+
+				// 如果需要前进后退按钮
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+					
+				},
+			})
+		</script>
+	</body>
+
+</html>

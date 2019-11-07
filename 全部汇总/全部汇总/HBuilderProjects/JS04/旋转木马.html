@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>旋转木马</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.wrap{
+				width: 500px;
+				height: 400px;
+				margin: 300px auto;
+				position: relative;
+			}
+			.top{
+				transform-style: preserve-3d;
+				transform: rotateX(-8deg) rotateY(5deg);
+			}
+			.top>div{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			img{
+				width: 100%;
+				height: 260px;
+				transition: transform 1s;
+			}
+			.top>div:nth-child(1){
+				transform: translateZ(450px); 
+			}
+			.top>div:nth-child(2){
+				transform: rotateY(60deg) translateZ(450px); 
+			}
+			.top>div:nth-child(3){
+				transform: rotateY(120deg) translateZ(450px); 
+			}
+			.top>div:nth-child(4){
+				transform: rotateY(180deg) translateZ(450px); 
+			}
+			.top>div:nth-child(5){
+				transform: rotateY(-120deg) translateZ(450px); 
+			}
+			.top>div:nth-child(6){
+				transform: rotateY(-60deg) translateZ(450px); 
+			}
+			#btn>span{
+				display: inline-block;
+				width: 5px;
+				height: 5px;
+				border-radius: 10px;
+				border: 3px solid rgba(0,0,0,0.3);
+				margin: 10px;
+				cursor: pointer;
+			}
+			#btn>span.cur{
+				background: transparent;
+				box-shadow: 0 0 10px 5px rgba(0,0,0,0.3);
+			}
+			#btn{
+				position: relative;
+				top: 350px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!--第一题-->
+		<div class="wrap">
+			<div class="top">
+				<div><a href=""><img src="img/l1.jpg"/></a></div>
+				<div><a href=""><img src="img/l2.jpg"/></a></div>
+				<div><a href=""><img src="img/l3.jpg"/></a></div>
+				<div><a href=""><img src="img/l4.jpg"/></a></div>
+				<div><a href=""><img src="img/j5.jpg"/></a></div>
+				<div><a href=""><img src="img/l6.jpg"/></a></div>
+			</div>
+			<div id="btn">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var tops = document.getElementsByClassName("wrap")[0].getElementsByClassName('top')[0];
+			var wrap = document.getElementsByClassName("wrap")[0];
+			var btns = document.getElementById("btn").getElementsByTagName("span");
+			var timer;
+			var timer = setInterval(autoplay, 27);
+			//autoplay: 旋转木马自动轮播
+			var m = 360;                      //不能定义在里面,每次重新调用函数 变量都从0开始了
+			function autoplay(){
+				m--;
+				if(m == 0){
+					m = 360;
+				}
+				tops.style.transform ="rotateX(-8deg) rotateY("+m+"deg)";
+			}
+			//onmouseover就停止转动
+			wrap.onmouseover = function (){
+				clearInterval(timer);
+			}
+			//onmouseout的时候继续旋转,并且是同一个计时器
+			wrap.onmouseout = function(){
+				timer = setInterval(autoplay, 27);
+			}
+			//点击分页器进行选图 分页器换颜色
+			for (var i = 0; i < btns.length; i++){
+				btns[i].index = i;
+				btns[i].onclick = function(){
+					tops.style.transform = "rotateX(-8deg) rotateY("+this.index*(-60) +"deg)";
+					//点击的时候所有的点都先全部清除样式, 点击谁然后在专门加样式
+					for (var i = 0; i < btns.length; i++) {
+						btns[i].className = '';
+					}
+					this.className = 'cur';
+				}
+			}
+		</script>
+	</body>
+</html>

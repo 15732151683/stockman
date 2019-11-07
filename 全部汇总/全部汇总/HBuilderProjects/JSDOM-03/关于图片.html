@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 200px;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		 <!--图片的加载需要时间,那么有关于返回设置图片属性的就不会执行报错, 现在创建一个图片,onload当图片加载完毕后可操作一系列语句, 然后把src属性赋值给 img-->
+		<script type="text/javascript">
+			var div = document.getElementById("d1");
+			//创建图片对象
+			var img = new Image();
+			//onload: 当加载完毕时
+			/*window.onload当所有资源(DOM节点,图片,音频,视频等)都加载完毕时
+			 *img.onload 当图片加载完毕时
+			 * */
+			//当图片加载完毕时
+			img.onload = function() {
+				console.log('图片已经加载完毕');
+				console.log(img.width,img.height);
+				img.width = 200;
+				//等比缩放  w/h=img.width/img.height
+				div.style.height = img.height*200/img.width;
+				div.appendChild(img);
+			}
+			//一般赋值src写在onload后面,避免图片加载完时还没有绑定onload事件
+			//img.src = 'img/P_00.jpg';
+			img.src = 'http://img.hb.aicdn.com/0e90252cd362b8450514afe429881ca957a56c661a709-GBi83b_fw658';
+			
+			//onerror 当出错时
+			/*window.onerror 当电脑出现异常时
+			 *img.onerror  当图片加载失败时*/
+			
+		</script>
+	</body>
+</html>
